@@ -6,6 +6,13 @@
 
 :root {
     --MAIN: #262626;
+    --MAIN-LIGHT: #41414180;
+    --MENU: #2e2e2eef;
+    --TEXT: #262626;
+}
+
+body {
+    background-color: var(--MAIN);
 }
 
 /* Header */
@@ -80,12 +87,12 @@ a {
 }
 
 .current {
-    background-color: #41414180;
+    background-color: var(--MAIN-LIGHT);
     border-radius: 10px;
 }
 
 .nav-link:hover {
-    background-color: #41414180;
+    background-color: var(--MAIN-LIGHT);
     border-radius: 10px;
 }
 
@@ -121,10 +128,10 @@ a {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 75px;
         gap: 0;
         flex-direction: column;
-        background-color: var(--MAIN);
+        background-color: var(--MENU);
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -145,8 +152,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
-    background-color: lightblue;
+    height: 40vh;
 }
 
 .home-card {
@@ -165,7 +171,7 @@ a {
     width: 100%;
 }
 
-.btn {
+.home-btn {
     padding: 20px;
     background-color: var(--MAIN);
     display: block;
@@ -184,3 +190,47 @@ a {
         font-size: 1.3rem;
     }
 }
+
+/* Random Quote Section */
+
+.quote-card {
+    width: 600px;
+    height: fit-content;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+}
+
+.quote-container {
+    display: flex; 
+    font-size: 1.6rem;
+    gap: 10px;
+    padding: 0 0 20px 0;
+    color: var(--TEXT);
+}
+
+.quote-icon {
+    color: var(--MAIN);
+}
+
+.quote-author {
+    font-size: 1.3rem;
+    padding: 10px 0 0 0 ;
+}
+
+.quote-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.quote-btn {
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    background-color: var(--MAIN);
+    color: white;
+}
+
