@@ -6,6 +6,7 @@
 
 :root {
     --MAIN: #262626;
+    --MAIN-DARK: #0000003d;
     --MAIN-LIGHT: #ffffff48;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
@@ -21,7 +22,7 @@ body {
 
 header {
     height: 75px;
-    background-color: var(--MAIN);
+    background-color: var(--MAIN-DARK);
     display: flex;
     justify-content: center;
 }

@@ -48,7 +48,7 @@ const QUOTEBANK = [
     } 
 ]
 
-const COLORS = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+const COLORS = ['#205295', '#3B185F', '#C060A1', '#735F32', '#624F82', '#50577A', '#3F3B6C', '#342224', "#4C0033", "#2C3333", "#1E5128", "#734046"];
 
 window.onload = init;
 
@@ -89,12 +89,18 @@ function generateQuote() {
     document.getElementById("quote-text").innerText = randomQuoteData.quote;
     document.getElementById("quote-author").innerText = "- " + randomQuoteData.author;
 
+    // Get random Number
+    let colorSize = COLORS.length;
+    let randomNum2 = Math.floor(Math.random() * quoteSize);
+    if(randomNum2 === colorNum) {
+        if(randomNum2 === 0) {
+            randomNum2 += 1;
+        } else {
+            randomNum2 -= 1;
+        }
+    }
+    colorNum = randomNum2;
+
     // Change color of background an icon
     document.documentElement.style.setProperty("--MAIN", COLORS[colorNum]);
-
-    if(colorNum == COLORS.length - 1) {
-        colorNum = 0;
-    } else {
-        colorNum++;
-    }
 }
