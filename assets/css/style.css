@@ -61,6 +61,7 @@ a {
 
 .nav-link {
     transition: 0.7s ease;
+    padding: 10px;
 }
 
 .hamburger {
@@ -80,11 +81,15 @@ a {
 
 .current {
     background-color: #41414180;
-    padding: 10px;
     border-radius: 10px;
 }
 
-/* Media Query for nav menu */
+.nav-link:hover {
+    background-color: #41414180;
+    border-radius: 10px;
+}
+
+/* Media Query for tablet screen size and bellow */
 @media (max-width: 768px) {
     /* Logo */
     .logo-container {
@@ -167,4 +172,15 @@ a {
     margin: 10px 0;
     border-radius: 15px;
     font-size: 1.5rem;
+}
+
+/* Media Query for tablets screen size and bellow */
+@media (max-width:768px) {
+    .home-card {
+        width: 250px;
+    }
+
+    .btn {
+        font-size: 1.3rem;
+    }
 }
