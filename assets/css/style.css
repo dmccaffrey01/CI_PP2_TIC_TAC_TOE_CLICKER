@@ -133,3 +133,38 @@ a {
         left: 0;
     }
 }
+
+/* Home Buttons Section */
+
+.home-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: lightblue;
+}
+
+.home-card {
+    width: 300px;
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.buttons-container  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.btn {
+    padding: 20px;
+    background-color: var(--MAIN);
+    display: block;
+    margin: 10px 0;
+    border-radius: 15px;
+    font-size: 1.5rem;
+}
