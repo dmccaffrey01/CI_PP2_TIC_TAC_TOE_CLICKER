@@ -6,7 +6,7 @@
 
 :root {
     --MAIN: #262626;
-    --MAIN-LIGHT: #41414180;
+    --MAIN-LIGHT: #ffffff48;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
 }
@@ -151,8 +151,7 @@ a {
 .home-section {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 40vh;
+    margin: 75px 0;
 }
 
 .home-card {
@@ -184,10 +183,11 @@ a {
 @media (max-width:768px) {
     .home-card {
         width: 250px;
+        padding: 5px;
     }
 
-    .btn {
-        font-size: 1.3rem;
+    .home-btn {
+        font-size: 1.2rem;
     }
 }
 
@@ -233,5 +233,57 @@ a {
     background-color: var(--MAIN);
     color: white;
     display: block;
+}
+
+/* Media Query for tablets screen size and bellow */
+@media (max-width:768px) {
+    .quote-card {
+        width: 250px;
+    }
+
+    .quote-container {
+        font-size: 1.3rem;
+    }
+
+    .quote-buttons-container {
+        gap: 10px
+    }
+
+    .quote-btn-text {
+        display: none;
+    }
+
+    .quote-btn {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer Section */
+
+footer {
+    height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.footer-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    color: white;
+}
+
+.copyright {
+    font-size: 0.8rem;
+}
+
+.social-links {
+    font-size: 1.5rem;
+    display: flex;
+    gap: 20px;
 }
 
