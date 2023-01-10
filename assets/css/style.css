@@ -13,6 +13,8 @@
 
 body {
     background-color: var(--MAIN);
+    min-height: 100vh;
+    position: relative;
 }
 
 /* Header */
@@ -235,6 +237,10 @@ a {
     display: block;
 }
 
+#random-quote-section {
+    padding-bottom: 20px;
+}
+
 /* Media Query for tablets screen size and bellow */
 @media (max-width:768px) {
     .quote-card {
@@ -265,7 +271,8 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    
+    position: absolute;
+    bottom: -75px;
 }
 
 .footer-container {
