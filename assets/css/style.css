@@ -37,7 +37,7 @@ a {
 .logo-container {
     display: flex;
     align-items: center;
-    margin: 0 50px;
+    margin: 0 0 0 50px;
 }
 
 .logo h1 {
@@ -78,8 +78,25 @@ a {
     background-color: white;
 }
 
+.current {
+    background-color: #41414180;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 /* Media Query for nav menu */
 @media (max-width: 768px) {
+    /* Logo */
+    .logo-container {
+        margin: 0 0 0 25px;
+    }
+
+    /* Nav Bar */
+
+    .navbar {
+        margin: 0 25px 0 0;
+    }
+    
     .hamburger {
         display: block;
     }
