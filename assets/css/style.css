@@ -232,5 +232,6 @@ a {
     font-size: 1.3rem;
     background-color: var(--MAIN);
     color: white;
+    display: block;
 }
 

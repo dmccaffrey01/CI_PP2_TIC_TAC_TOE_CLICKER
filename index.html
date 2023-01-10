@@ -66,19 +66,17 @@
                 <div class="quote-container">
                     <i class="fa fa-quote-left quote-icon" aria-hidden="true"></i>
                     <div class="quote-text-author">
-                        <div class="quote-text">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil nemo odit itaque sequi dolore impedit accusantium cupiditate. Quia in, quae recusandae facere repudiandae ut, perspiciatis impedit laborum qui itaque est.
-                        </div>
-                        <div class="quote-author">-Dillon Mc Caffrey</div>
+                        <div class="quote-text" id="quote-text"></div>
+                        <div class="quote-author" id="quote-author"></div>
                     </div>
                 </div>
                 <div class="quote-buttons-container">
-                    <button id="new-quote" class="quote-btn">
+                    <button id="new-quote" class="quote-btn" onclick="generateQuote()">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i> New Quote
                     </button>
-                    <button id="tweet-quote" class="quote-btn">
+                    <a id="tweet-quote" class="quote-btn" target="_blank" href="#">
                         <i class="fa fa-twitter" aria-hidden="true"></i> Tweet
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
