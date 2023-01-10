@@ -28,8 +28,8 @@ a {
 
 .header-container {
     display: flex;
-    justify-content: flex-end;
-    max-width: 1000px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 /* Logo */
@@ -78,6 +78,7 @@ a {
     background-color: white;
 }
 
+/* Media Query for nav menu */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
@@ -98,7 +99,7 @@ a {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 75px;
+        top: 70px;
         gap: 0;
         flex-direction: column;
         background-color: var(--MAIN);
