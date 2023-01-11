@@ -91,7 +91,7 @@ function generateQuote() {
 
     // Get random Number
     let colorSize = COLORS.length;
-    let randomNum2 = Math.floor(Math.random() * quoteSize);
+    let randomNum2 = Math.floor(Math.random() * colorSize);
     if(randomNum2 === colorNum) {
         if(randomNum2 === 0) {
             randomNum2 += 1;
