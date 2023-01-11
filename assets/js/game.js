@@ -48,7 +48,7 @@ var game = {
     checkMonsterHP: function() {
         if (this.monsterHP <= 0) {
             // Create new monster
-            this.newMonster();
+            this.monsterKilled();
         } 
     },
 
@@ -56,11 +56,9 @@ var game = {
      * Creates new monster
      * Sets HP and calls update display
      */
-    newMonster: function() {
+    monsterKilled: function() {
         // Check if 10 monsters are dead
         if (this.monsterCount >= 9) {
-            // Set monster count to 0
-            this.monsterCount = 0;
 
             // Create new monster
             this.newMonster();
@@ -74,7 +72,6 @@ var game = {
             // 10 monsters are dead time to level up
             this.levelUp();
         } else if (this.isBossRound) {
-            console.log("hello");
             // Boss killed time to level up
             this.levelUp();
 
@@ -84,37 +81,45 @@ var game = {
             // Update the display
             display.updateMonsterCount();
         } else {
-            // Increment monster count by 1
-            this.monsterCount += 1;
-        
-            // Update the display
-            display.updateMonsterCount();
-
-            // Set new hp of monster
-            this.monsterHP = 10;
-
-            // Update the display
-            display.updateMonsterHP();
+            this.newMonster();
         }
+    },
+
+    /**
+     * Create new monster
+     * Increment monster count and set hp
+     */
+    newMonster: function() {
+        // Increment monster count by 1
+        this.monsterCount += 1;
+        
+        // Update the display
+        display.updateMonsterCount();
+
+        // Set new hp of monster
+        this.monsterHP = 10;
+
+        // Update the display
+        display.updateMonsterHP();
     },
 
     /**
      * Levels Up once 10 monsters are killed or boss is defeated
      */
     levelUp: function() {
-        // Checks if player is going on to a boss round
-        if (this.bossRounds.includes(this.level + 1)) {
-            this.createBossRound();
-        }
-
         // Increment level by 1
         this.level += 1;
 
         // Update the display
         display.updateLevel();
 
-        // Set isBossRound to false
-        this.isBossRound = false;
+        // Checks if player is going on to a boss round
+        if (this.bossRounds.includes(this.level)) {
+            this.createBossRound();
+        } else {
+            // Set isBossRound to false
+            this.isBossRound = false;
+        }
     },
 
     /**
@@ -164,10 +169,49 @@ var display = {
     }
 }
 
+/**
+ * Update game when monster is clicked
+ */
 // Define monster variable
 const monster = document.querySelector(".monster-clicker");
 
-// Deal damage to monster when clicked
 monster.addEventListener("click", () => {
+    // Deal damage to monster when clicked
     game.dealDamage(game.power);
+
+    // Create number on click
+    createNumberOnClick(event);
 })
+
+/**
+ * Create number to display on screen when monster is clicked
+ */
+
+function createNumberOnClick(event) {
+    // Grab the position of where the cursor is when monster is clicked
+    let cursorOffset = monster.getBoundingClientRect();
+    let position = {
+        x: event.pageX - cursorOffset.left + randomNumber(-5, 5),
+        y: event.pageY - cursorOffset.top
+    }
+    console.log(position.x, position.y);
+
+    // Create the number as html element
+    let element = document.createElement("div");
+    element.textContent = "-" + game.power;
+    element.classList.add("number", "unselectable");
+    element.style.left = position.x + "px";
+    element.style.top = position.y + "px";
+    console.log(element.style.left, element.style.top);
+    // Add the number to monster
+    monster.appendChild(element);
+
+
+}
+
+/**
+ * Create random number
+ */
+function randomNumber(min,max) {
+    return Math.round(Math.random() * (max-min) + min);
+}

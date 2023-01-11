@@ -439,6 +439,7 @@ footer {
     border-radius: 50%;
     background-color: red;
     cursor: pointer;
+    position: relative;
 }
 
 .power-container {
@@ -446,13 +447,71 @@ footer {
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 100px;
-    border-radius: 20px;
+    height: 50px;
+    border-radius: 5px;
     background-color: var(--LIGHT-GRAY);
 }
 
 .power-count {
     font-size: 1.5rem;
     color: var(--TEXT);
+}
+
+.monster-clicker > .number {
+    z-index: 99;
+    font-size: 1.2rem;
+    color: var(--TEXT);
+    position: absolute;
+}
+
+.unselectable {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Media query for height less than 800px */
+@media (max-height:800px) {
+    .level-container {
+        width: 150px;
+        height: 75px;
+    }
+
+    .level-container h2 {
+        font-size: 1.875rem;
+    }
+
+    .monster-stats-container {
+        width: 150px;
+    }
+
+    .monster-count {
+        font-size: 1.125rem;
+    }
+    
+    .monster-hp {
+        font-size: 0.975rem;
+        color: var(--TEXT);
+    }
+    
+    .monster-clicker-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .monster-clicker {
+        width: 175px;
+        height: 175px;
+    }
+
+    .power-container {
+        width: 150px;
+        height: 37.5px;
+    }
+
+    .power-count {
+        font-size: 1.125rem;
+    }
 }
 
