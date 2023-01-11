@@ -190,11 +190,11 @@ monster.addEventListener("click", () => {
 function createNumberOnClick(event) {
     // Grab the position of where the cursor is when monster is clicked
     let cursorOffset = monster.getBoundingClientRect();
+    let randomOffset = randomNumber(-20, 10);
     let position = {
-        x: event.pageX - cursorOffset.left + randomNumber(-5, 5),
+        x: event.pageX - cursorOffset.left + randomOffset,
         y: event.pageY - cursorOffset.top
     }
-    console.log(position.x, position.y);
 
     // Create the number as html element
     let element = document.createElement("div");
@@ -202,7 +202,7 @@ function createNumberOnClick(event) {
     element.classList.add("number", "unselectable");
     element.style.left = position.x + "px";
     element.style.top = position.y + "px";
-    console.log(element.style.left, element.style.top);
+
     // Add the number to monster
     monster.appendChild(element);
 
@@ -214,9 +214,27 @@ function createNumberOnClick(event) {
         element.style.top = position.y + "px";
     }, 10);
 
-    
+    // Slowly fade out
+    fadeOut(element, 2000, 0.2, function() {
+        element.remove();
+    })
 }
 
+/**
+ * Makes an element slowly fade out
+ */
+function fadeOut(element, duration, finalOpacity, callback) {
+    // Opacity starts at 1 and fades until hits final opacity
+    let opactiy = 1;
+    let elementFadingInterval = window.setInterval(() => {
+        opactiy -= 50 / duration;
+
+        if (opactiy <= finalOpacity) {
+            clearInterval(elementFadingInterval);
+            callback();
+        }
+    }, 50);
+}
 /**
  * Create random number
  */
