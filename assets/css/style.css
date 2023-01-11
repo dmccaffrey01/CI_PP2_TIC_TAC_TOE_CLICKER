@@ -8,8 +8,7 @@
     --MAIN: #262626;
     --MAIN-DARK: #0000003d;
     --MAIN-LIGHT: #ffffff48;
-    --GRAY: #264653;
-    --GREEN: #2A9D8F;
+    --DARK-BLUE: #00303d;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
 }
@@ -304,6 +303,7 @@ footer {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 75px);
+    display: none;
 }
 
 .start-card {
@@ -349,4 +349,36 @@ footer {
     .start-btn {
         font-size: 1.2rem;
     }
+}
+
+/* Clicker Section */
+
+.clicker-section {
+    height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    background: green;
+}
+
+.timer-area {
+    width: 25%;
+}
+
+.main-area {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.upgrade-area {
+    width: 25%;
 }
