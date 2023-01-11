@@ -206,7 +206,15 @@ function createNumberOnClick(event) {
     // Add the number to monster
     monster.appendChild(element);
 
+    // Slowely rise the element to top of screen
+    let movementInterval = window.setInterval(() => {
+        if (typeof element == "undefined" && element == null) clearInterval(movementInterval);
 
+        position.y--;
+        element.style.top = position.y + "px";
+    }, 10);
+
+    
 }
 
 /**
