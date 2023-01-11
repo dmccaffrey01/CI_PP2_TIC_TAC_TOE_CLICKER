@@ -20,8 +20,9 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 6,
     monsterHP: 10,
+    monsterHealthMax: 10,
     monsterCount: 0,
     level: 1,
     bossRounds: [5, 10, 15, 20, 25, 30],
@@ -143,7 +144,12 @@ var display = {
      * Update Monster HP
      */
     updateMonsterHP: function() {
+        // Change HP
         document.getElementById("monster-hp").innerHTML = game.monsterHP;
+
+        // Change Health Bar
+        const healthBar = document.querySelector(".health-progress");
+        healthBar.style.width = `${game.monsterHP / game.monsterHealthMax * 100}%`;
     },
 
     /**
@@ -241,3 +247,10 @@ function fadeOut(element, duration, finalOpacity, callback) {
 function randomNumber(min,max) {
     return Math.round(Math.random() * (max-min) + min);
 }
+
+/**
+ * Change health bar when damage is dealt
+ */
+
+
+

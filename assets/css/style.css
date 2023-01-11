@@ -402,24 +402,50 @@ footer {
     color: var(--TEXT);
 }
 
-.monster-stats-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 20px;
-    border-radius: 5px 5px 0 0;
-    background: var(--LIGHT-GRAY);
-}
-
 .monster-count {
     font-size: 1.5rem;
     color: var(--TEXT);
 }
 
+.monster-stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 200px;
+    height: 60px;
+    border-radius: 5px 5px 0 0;
+    background: var(--LIGHT-GRAY);
+}
+
 .monster-hp {
     font-size: 1.3rem;
     color: var(--TEXT);
+}
+
+.health-bar {
+    width: 95%;
+    background-color: gray;
+    border-radius: 20px;
+    height: 20px;
+}
+
+.health-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: repeating-linear-gradient(
+        to left,
+        #6a040f,
+        #9d0208,
+        #d00000
+    );
+    box-shadow: 0 5px 5px -6px #6a040f, 0 3px 7px #9d0208;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: 0.05s ease 0.05s;
 }
 
 .monster-clicker-container {
