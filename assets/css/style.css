@@ -9,6 +9,7 @@
     --MAIN-DARK: #0000003d;
     --MAIN-LIGHT: #ffffff48;
     --DARK-BLUE: #00303d;
+    --LIGHT-GRAY: #b8b8b8;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
 }
@@ -364,7 +365,6 @@ footer {
     max-width: 1200px;
     height: 100%;
     display: flex;
-    background: green;
 }
 
 .timer-area {
@@ -382,3 +382,77 @@ footer {
 .upgrade-area {
     width: 25%;
 }
+
+/* Main Area */
+
+.level-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    height: 100px;
+    margin: 0 0 20px 0;
+    border-radius: 20px;
+    background-color: var(--LIGHT-GRAY);
+}
+
+.level-container h2 {
+    font-size: 2.5rem;
+    color: var(--TEXT);
+}
+
+.monster-stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 20px;
+    border-radius: 5px 5px 0 0;
+    background: var(--LIGHT-GRAY);
+}
+
+.monster-count {
+    font-size: 1.5rem;
+    color: var(--TEXT);
+}
+
+.monster-hp {
+    font-size: 1.3rem;
+    color: var(--TEXT);
+}
+
+.monster-clicker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 5px;
+    margin: 0 0 20px 0;
+    background-color: var(--LIGHT-GRAY);
+}
+
+.monster-clicker {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: red;
+    cursor: pointer;
+}
+
+.power-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    border-radius: 20px;
+    background-color: var(--LIGHT-GRAY);
+}
+
+.power-count {
+    font-size: 1.5rem;
+    color: var(--TEXT);
+}
+
