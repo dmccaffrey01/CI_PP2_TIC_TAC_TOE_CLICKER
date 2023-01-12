@@ -1,5 +1,5 @@
 /**
- * Open and close hamburger menu
+ * Open and Close Hamburger Menu
  */
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
@@ -263,9 +263,30 @@ function randomNumber(min,max) {
     return Math.round(Math.random() * (max-min) + min);
 }
 
+
 /**
- * Change health bar when damage is dealt
+ * Open and Close Upgrade Menu
  */
+
+// Define variables
+const upgradeMenuBtn = document.querySelector(".upgrade-menu-btn");
+const upgradeMenu = document.querySelector(".upgrade-menu");
+const transitionDiv = document.querySelector(".transition-div");
+const upgradeMenuBtnIcon = document.querySelector(".upgrade-menu-btn-icon");
+
+upgradeMenuBtn.addEventListener("click", () => {
+    // Apply active class
+    upgradeMenuBtn.classList.toggle("active");
+    upgradeMenu.classList.toggle("active");
+    transitionDiv.classList.toggle("active");
+    upgradeMenuBtnIcon.classList.toggle("active");
+
+    // Remove and replace icon
+    setTimeout(() => {
+        upgradeMenuBtnIcon.classList.toggle("fa-chevron-left");
+        upgradeMenuBtnIcon.classList.toggle("fa-chevron-right");
+    }, 150);
+})
 
 
 
