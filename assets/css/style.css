@@ -601,6 +601,8 @@ footer {
     align-items: center;
 }
 
+/* Upgrade Menu Button */
+
 .upgrade-menu-container {
     width: 100%;
     height: 700px;
@@ -671,6 +673,70 @@ footer {
 .upgrade-menu-btn-icon.active:hover {
     margin: 0;
 }
+
+/* Media Query for small laptop size */
+
+@media (max-width: 1280px) {
+    .upgrade-menu-container {
+        height: 500px;
+    }
+    
+    .upgrade-menu-btn {
+        width: 30px;
+        height: 75px;
+        border-radius: 18px 3px 3px 18px;
+    }
+    
+    .upgrade-menu-btn-icon {
+        margin: 0 0 0 7px;
+        font-size: 1.5rem;
+    }
+    
+    .upgrade-menu-btn.active {
+        border-radius: 3px 18px 18px 3px;
+    }
+    
+    .transition-div.active {
+        width: calc(100% - 30px);
+    }
+    
+    .upgrade-menu-btn-icon.active {
+        margin: 0 7px 0 0;
+    }
+}
+
+/* Media Query for tablet and phone size */
+
+@media (max-width: 768px) {
+    .upgrade-menu-container {
+        height: 300px;
+    }
+    
+    .upgrade-menu-btn {
+        width: 20px;
+        height: 50px;
+        border-radius: 12px 2px 2px 12px;
+    }
+    
+    .upgrade-menu-btn-icon {
+        margin: 0 0 0 4px;
+        font-size: 1.1rem;
+    }
+    
+    .upgrade-menu-btn.active {
+        border-radius: 2px 12px 12px 2px;
+    }
+    
+    .transition-div.active {
+        width: calc(100% - 20px);
+    }
+    
+    .upgrade-menu-btn-icon.active {
+        margin: 0 4px 0 0;
+    }
+}
+
+
 
 
 
