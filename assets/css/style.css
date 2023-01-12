@@ -614,7 +614,7 @@ footer {
 }
 
 .upgrade-menu-btn {
-    background-color: var(--LIGHT-GRAY);
+    background-color: #006885;
     width: 40px;
     height: 100px;
     display: flex;
@@ -622,14 +622,14 @@ footer {
     align-items: center;
     flex-direction: column;
     cursor: pointer;
-    border-radius: 25px 5px 5px 25px;
+    border-radius: 25px 8px 8px 25px;
     z-index: 3;
     transition: all 0.3s ease-in-out;
 }
 
 .upgrade-menu-btn-icon {
     margin: 0 0 0 10px;
-    color: var(--TEXT);
+    color: white;
     font-size: 2rem;
     transition: all 0.3s ease-in-out;
 }
@@ -684,7 +684,8 @@ footer {
     .upgrade-menu-btn {
         width: 30px;
         height: 75px;
-        border-radius: 18px 3px 3px 18px;
+        border-radius: 18px 5px 5px 18px;
+        margin: 0 20px 0 0;
     }
     
     .upgrade-menu-btn-icon {
@@ -693,7 +694,7 @@ footer {
     }
     
     .upgrade-menu-btn.active {
-        border-radius: 3px 18px 18px 3px;
+        border-radius: 5px 18px 18px 5px;
     }
     
     .transition-div.active {
@@ -715,7 +716,8 @@ footer {
     .upgrade-menu-btn {
         width: 20px;
         height: 50px;
-        border-radius: 12px 2px 2px 12px;
+        border-radius: 12px 3px 3px 12px;
+        margin: 0 10px 0 0;
     }
     
     .upgrade-menu-btn-icon {
@@ -724,7 +726,7 @@ footer {
     }
     
     .upgrade-menu-btn.active {
-        border-radius: 2px 12px 12px 2px;
+        border-radius: 3px 12px 12px 3px;
     }
     
     .transition-div.active {
