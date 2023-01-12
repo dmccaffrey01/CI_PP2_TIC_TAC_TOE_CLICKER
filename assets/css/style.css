@@ -425,7 +425,7 @@ footer {
 }
 
 .health-bar {
-    width: 95%;
+    width: 90%;
     background-color: gray;
     border-radius: 20px;
     height: 20px;
@@ -497,7 +497,7 @@ footer {
 	user-select: none;
 }
 
-/* Media query for height less than 800px */
+/* Media query for small laptop and tablet */
 @media (max-width:1280px) {
     .level-container {
         width: 150px;
@@ -518,7 +518,6 @@ footer {
     
     .monster-hp {
         font-size: 0.975rem;
-        color: var(--TEXT);
     }
     
     .monster-clicker-container {
@@ -538,6 +537,56 @@ footer {
 
     .power-count {
         font-size: 1.125rem;
+    }
+}
+
+/* Media query for small laptop and tablet */
+@media (max-width:768px) {
+    .level-container {
+        width: 100px;
+        height: 50px;
+        border-radius: 15px;
+    }
+
+    .level-container h2 {
+        font-size: 1.23rem;
+    }
+
+    .monster-stats-container {
+        width: 100px;
+        height: 40px;
+        gap: 3px;
+    }
+
+    .monster-count {
+        font-size: 0.7425rem;
+    }
+    
+    .monster-hp {
+        font-size: 0.6435rem;
+    }
+
+    .health-bar {
+        height: 10px;
+    }
+    
+    .monster-clicker-container {
+        width: 165px;
+        height: 165px;
+    }
+
+    .monster-clicker {
+        width: 115px;
+        height: 115px;
+    }
+
+    .power-container {
+        width: 100px;
+        height: 25px;
+    }
+
+    .power-count {
+        font-size: 0.7425rem;
     }
 }
 
