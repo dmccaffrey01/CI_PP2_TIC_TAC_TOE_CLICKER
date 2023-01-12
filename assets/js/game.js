@@ -20,7 +20,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 
 var game = {
     // Store data on variables
-    power: 6,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -32,7 +32,7 @@ var game = {
      * Deal damage to monster HP
      * Takes away health from monsterHP 
      */
-    dealDamage: function(amount) {
+    dealDamage: function(amount) { 
         // Take amount from monsterHP
         this.monsterHP -= amount;
 
@@ -58,32 +58,41 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
-        // Check if 10 monsters are dead
-        if (this.monsterCount >= 9) {
+        // Update Monster HP
+        display.updateMonsterHP();
 
-            // Create new monster
-            this.newMonster();
- 
-            // Set monster count to 0
-            this.monsterCount = 0;
- 
-            // Update the display
-            display.updateMonsterCount();
- 
-            // 10 monsters are dead time to level up
-            this.levelUp();
-        } else if (this.isBossRound) {
-            // Boss killed time to level up
-            this.levelUp();
+        // Wait before creating new monster
+        setTimeout(() => {
+            // Check if 10 monsters are dead
+            if (this.monsterCount >= 9) {
 
-            // Set monster count to 0
-            this.monsterCount = 0;
- 
-            // Update the display
-            display.updateMonsterCount();
-        } else {
-            this.newMonster();
-        }
+                // Create new monster
+                this.newMonster();
+    
+                // Set monster count to 0
+                this.monsterCount = 0;
+    
+                // Update the display
+                display.updateMonsterCount();
+    
+                // 10 monsters are dead time to level up
+                this.levelUp();
+            } else if (this.isBossRound) {
+                // Boss killed time to level up
+                this.levelUp();
+
+                // Create New Monster
+                this.newMonster();
+
+                // Set monster count to 0
+                this.monsterCount = 0;
+    
+                // Update the display
+                display.updateMonsterCount();
+            } else {
+                this.newMonster();
+            }
+        }, 250);
     },
 
     /**
@@ -102,6 +111,9 @@ var game = {
 
         // Update the display
         display.updateMonsterHP();
+
+        // Set Monster Max Health
+        this.monsterHealthMax = 10;
     },
 
     /**
@@ -133,6 +145,9 @@ var game = {
 
         // Update the display
         display.updateBossRound();
+
+        // Set Monster Max Health
+        this.monsterHealthMax = 200;
 
         // Set isBossRound to true
         this.isBossRound = true;
