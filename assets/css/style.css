@@ -689,9 +689,6 @@ footer {
 }
 
 .upgrade-name-and-cost {
-    height: 50px;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -713,9 +710,6 @@ footer {
 }
 
 .upgrade-amount {
-    height: 30px;
-    width: 100%;
-    border-radius: 0 0 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -781,6 +775,38 @@ footer {
     .upgrade-menu-btn-icon.active {
         margin: 0 7px 0 0;
     }
+
+    .menu-content-container {
+        width: calc(100% - 30px);
+        margin: 0 0 0 30px;
+    }
+
+    .upgrade-btn {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+    }
+
+    .coins-text {
+        font-size: 1.8rem;
+    }
+
+    .upgrade-name {
+        font-size: 1rem;
+    }
+
+    .upgrade-cost-text {
+        font-size: 0.8rem;
+    }
+
+    .upgrade-image-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .upgrade-count {
+        font-size: 1.3rem;
+    }
 }
 
 /* Media Query for tablet and phone size */
@@ -812,6 +838,60 @@ footer {
     
     .upgrade-menu-btn-icon.active {
         margin: 0 4px 0 0;
+    }
+
+    .menu-content-container {
+        width: calc(100% - 20px);
+        margin: 0 0 0 20px;
+    }
+
+    .upgrade-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    .coins-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: green;
+    }
+
+    .coins-text {
+        font-size: 0.7rem;
+    }
+
+    .coins {
+        display: flex;
+        justify-content: center;
+    }
+
+    .upgrade-name-and-cost {
+        height: 12px;
+    }
+
+    .upgrade-name {
+        display: none;
+        font-size: 0rem;
+    }
+
+    .upgrade-cost-text {
+        font-size: 0.6rem;
+    }
+
+    .upgrade-image-container {
+        width: 25px;
+        height: 25px;
+    }
+
+    .upgrade-amount {
+        height: 12px;
+    }
+
+    .upgrade-count {
+        font-size: 0.7rem;
     }
 }
 
