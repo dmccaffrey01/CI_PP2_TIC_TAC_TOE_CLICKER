@@ -391,7 +391,7 @@ footer {
     margin: 0 0 20px 0;
     border-radius: 20px;
     background-color: var(--DARK-BLUE);
-    outline: 2px solid white;
+    border: 2px solid white;
 }
 
 .level-container h2 {
@@ -414,7 +414,7 @@ footer {
     height: 60px;
     border-radius: 5px;
     background-color: var(--DARK-BLUE);
-    outline: 2px solid white;
+    border: 2px solid white;
 }
 
 .monster-hp {
@@ -474,7 +474,7 @@ footer {
     height: 50px;
     border-radius: 5px;
     background-color: var(--DARK-BLUE);
-    outline: 2px solid white;
+    border: 2px solid white;
 }
 
 .power-count {
@@ -522,7 +522,7 @@ footer {
     }
 
     .health-bar {
-        height: 12px;
+        height: 8px;
     }
     
     .monster-clicker-container {
@@ -572,7 +572,7 @@ footer {
     }
 
     .health-bar {
-        height: 10px;
+        height: 5px;
     }
     
     .monster-clicker-container {
@@ -685,7 +685,7 @@ footer {
 }
 
 .upgrade-btn:hover {
-    outline: 2px solid white;
+    border: 2px solid white;
 }
 
 .upgrade-name-and-cost {
@@ -856,7 +856,6 @@ footer {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background-color: green;
     }
 
     .coins-text {
