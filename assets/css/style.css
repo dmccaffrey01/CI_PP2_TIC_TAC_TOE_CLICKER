@@ -8,8 +8,8 @@
     --MAIN: #262626;
     --MAIN-DARK: #0000003d;
     --MAIN-LIGHT: #ffffff48;
-    --DARK-BLUE: #00303d;
-    --LIGHT-GRAY: #b8b8b8;
+    --DARK-BLUE: #006885;
+    --LIGHT-GRAY: #bdbdbd;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
 }
@@ -390,17 +390,18 @@ footer {
     height: 100px;
     margin: 0 0 20px 0;
     border-radius: 20px;
-    background-color: var(--LIGHT-GRAY);
+    background-color: var(--DARK-BLUE);
+    outline: 2px solid white;
 }
 
 .level-container h2 {
     font-size: 2.5rem;
-    color: var(--TEXT);
+    color: white;
 }
 
 .monster-count {
     font-size: 1.5rem;
-    color: var(--TEXT);
+    color: white;
 }
 
 .monster-stats-container {
@@ -408,23 +409,24 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 4px;
-    width: 200px;
+    gap: 3px;
+    width: 250px;
     height: 60px;
-    border-radius: 5px 5px 0 0;
-    background: var(--LIGHT-GRAY);
+    border-radius: 5px;
+    background-color: var(--DARK-BLUE);
+    outline: 2px solid white;
 }
 
 .monster-hp {
     font-size: 1.3rem;
-    color: var(--TEXT);
+    color: white;
 }
 
 .health-bar {
     width: 90%;
     background-color: gray;
     border-radius: 20px;
-    height: 15px;
+    height: 12px;
 }
 
 .health-progress {
@@ -452,7 +454,7 @@ footer {
     height: 400px;
     border-radius: 5px;
     margin: 0 0 20px 0;
-    background-color: var(--LIGHT-GRAY);
+    
 }
 
 .monster-clicker {
@@ -471,12 +473,13 @@ footer {
     width: 200px;
     height: 50px;
     border-radius: 5px;
-    background-color: var(--LIGHT-GRAY);
+    background-color: var(--DARK-BLUE);
+    outline: 2px solid white;
 }
 
 .power-count {
     font-size: 1.5rem;
-    color: var(--TEXT);
+    color: white;
 }
 
 .monster-clicker > .number {
@@ -614,7 +617,7 @@ footer {
 }
 
 .upgrade-menu-btn {
-    background-color: #006885;
+    background-color: var(--DARK-BLUE);
     width: 40px;
     height: 100px;
     display: flex;
@@ -640,7 +643,7 @@ footer {
 }
 
 .upgrade-menu {
-    background-color: var(--DARK-BLUE);
+    background-color: var(--MAIN-DARK);
     position: absolute;
     width: 0;
     height: 100%;
@@ -663,16 +666,26 @@ footer {
     overflow: hidden;
 }
 
+.upgrade-menu-title {
+    color: white;
+    font-size: 2.5rem;
+}
+
 .upgrade-btn {
     width: 150px;
     height: 150px;
     border-radius: 20px;
-    background-color: var(--LIGHT-GRAY);
+    background-color: var(--DARK-BLUE);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: var(--TEXT);
+    color: white;
+    cursor: pointer;
+}
+
+.upgrade-btn:hover {
+    outline: 2px solid white;
 }
 
 .upgrade-name-and-cost {
@@ -695,7 +708,7 @@ footer {
 
 .upgrade-image-container {
     height: 70px;
-    width: 100%;
+    width: 70px;
     background-color: red;
 }
 
