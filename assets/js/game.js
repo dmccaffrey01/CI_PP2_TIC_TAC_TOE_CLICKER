@@ -182,6 +182,68 @@ var game = {
     }
 }
 
+/**
+ * Anything to do with upgrades
+ */
+
+var upgrades = {
+    name: [
+        "Upgrade 1",
+        "Upgrade 2",
+        "Upgrade 3"
+    ],
+    image: [
+
+    ],
+    count: [
+        0,
+        0,
+        0
+    ],
+    powerIncrease: [
+        1,
+        5,
+        10
+    ],
+    cost: [
+        50,
+        250,
+        500
+    ],
+
+    /**
+     * Purchase the upgrade
+     * Take away coins and add power
+     */
+
+    purchase: function(index) {
+        // Check if player has enough coins
+        if (game.coins >= this.cost[index]) {
+            // Take away cost from coins
+            game.coins -= this.cost[index];
+            
+            // Add 1 to count
+            this.count[index]++;
+
+            // Increase the cost by 1.15 times
+            this.cost[index] = Math.ceil(this.cost[index] * 1.15);
+
+            // Add powerIncrease to power
+            game.power += this.powerIncrease[index];
+
+            // Update coins
+            display.updateCoins
+
+            // Update power
+            display.updatePower
+        }
+    }
+}
+
+
+/**
+ * Anything that requires the page display to update
+ */
 var display = {
     /**
      * Update Monster HP
