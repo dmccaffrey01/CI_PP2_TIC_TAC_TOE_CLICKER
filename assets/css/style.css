@@ -625,6 +625,7 @@ footer {
     border-radius: 25px 8px 8px 25px;
     z-index: 3;
     transition: all 0.3s ease-in-out;
+    border: white 2px solid;
 }
 
 .upgrade-menu-btn-icon {
@@ -634,7 +635,7 @@ footer {
     transition: all 0.3s ease-in-out;
 }
 
-.upgrade-menu-btn-icon:hover {
+.upgrade-menu-btn:hover > .upgrade-menu-btn-icon{
     margin: 0;
 }
 
@@ -643,14 +644,77 @@ footer {
     position: absolute;
     width: 0;
     height: 100%;
+    border-radius: 10px;
     transition: all 0.3s ease-in-out;
     z-index: 2;
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+.menu-content-container {
+    width: calc(100% - 40px);
+    height: 100%;
+    margin: 0 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.upgrade-btn {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    background-color: var(--LIGHT-GRAY);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--TEXT);
+}
+
+.upgrade-name-and-cost {
+    height: 50px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.upgrade-name {
+    font-size: 1.3rem;
+}
+
+.upgrade-cost-text {
+    font-size: 1.1rem;
+}
+
+.upgrade-image-container {
+    height: 70px;
+    width: 100%;
+    background-color: red;
+}
+
+.upgrade-amount {
+    height: 30px;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgrade-count {
+    font-size: 1.5rem;
 }
 
 .transition-div {
     width: 0;
     height: 100%;
-    background: green;
     transition: all 0.3s ease-in-out;
 }
 

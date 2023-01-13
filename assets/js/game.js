@@ -92,7 +92,7 @@ var game = {
             } else {
                 this.newMonster();
             }
-        }, 250);
+        }, 100);
     },
 
     /**
