@@ -20,13 +20,15 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 
 var game = {
     // Store data on variables
-    power: 1,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
     level: 1,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
+    coins: 0,
+    coinsToGet: 10,
 
     /**
      * Deal damage to monster HP
@@ -65,6 +67,9 @@ var game = {
         setTimeout(() => {
             // Check if 10 monsters are dead
             if (this.monsterCount >= 9) {
+                
+                // Add coins
+                this.addCoins();
 
                 // Create new monster
                 this.newMonster();
@@ -78,6 +83,10 @@ var game = {
                 // 10 monsters are dead time to level up
                 this.levelUp();
             } else if (this.isBossRound) {
+                
+                // Add coins
+                this.addCoins();
+
                 // Boss killed time to level up
                 this.levelUp();
 
@@ -90,6 +99,11 @@ var game = {
                 // Update the display
                 display.updateMonsterCount();
             } else {
+                
+                // Add coins
+                this.addCoins();
+                
+                // Create new monster
                 this.newMonster();
             }
         }, 100);
@@ -126,6 +140,9 @@ var game = {
         // Update the display
         display.updateLevel();
 
+        // Update coins to get
+        this.coinsToGet = this.level * 10;
+
         // Checks if player is going on to a boss round
         if (this.bossRounds.includes(this.level)) {
             this.createBossRound();
@@ -151,6 +168,17 @@ var game = {
 
         // Set isBossRound to true
         this.isBossRound = true;
+
+        // Update Coins to get
+        this.coinsToGet = this.level * 200;
+    },
+
+    addCoins: function() {
+        // Add coins to get to coins
+        this.coins += this.coinsToGet;
+
+        // Update the display
+        display.updateCoins();
     }
 }
 
@@ -187,6 +215,10 @@ var display = {
     updateBossRound: function() {
         document.getElementById("monster-hp").innerHTML = game.monsterHP;
         document.getElementById("monster-count").innerHTML = game.monsterCount + "/1";
+    },
+
+    updateCoins: function() {
+        document.querySelector(".coins").innerHTML = game.coins;
     }
 }
 
