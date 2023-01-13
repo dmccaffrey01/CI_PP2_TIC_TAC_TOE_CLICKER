@@ -232,10 +232,13 @@ var upgrades = {
             game.power += this.powerIncrease[index];
 
             // Update coins
-            display.updateCoins
+            display.updateCoins();
 
             // Update power
-            display.updatePower
+            display.updatePower();
+
+            // Update upgrades menu
+            display.updateUpgradesMenu();
         }
     }
 }
@@ -279,8 +282,33 @@ var display = {
         document.getElementById("monster-count").innerHTML = game.monsterCount + "/1";
     },
 
+    /**
+     * Update Coins
+     */
     updateCoins: function() {
         document.querySelector(".coins").innerHTML = game.coins;
+    },
+
+    /**
+     * Update Power
+     */
+    updatePower: function() {
+        document.querySelector(".power").innerHTML = game.power;
+    },
+
+    /**
+     * Update Upgrades Menu
+     * Updates counts and costs
+     */
+    updateUpgradesMenu: function() {
+        // Update counts and costs
+        let counts = document.querySelectorAll(".upgrade-count");
+        let costs = document.querySelectorAll(".upgrade-cost");
+        for (let i = 0; i < counts.length; i++) {
+            counts[i].innerHTML = upgrades.count[i];
+            costs[i].innerHTML = upgrades.cost[i];
+        }
+
     }
 }
 

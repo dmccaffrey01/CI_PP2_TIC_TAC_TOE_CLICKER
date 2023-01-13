@@ -79,7 +79,7 @@
                     <div class="monster-clicker"></div>
                 </div>
                 <div class="power-container unselectable">
-                    <h3 class="power-count">Power: <span id="power-count">1</span></h3>
+                    <h3 class="power-count">Power: <span class="power">1</span></h3>
                 </div>
             </div>
             <div class="upgrade-area">
@@ -93,7 +93,7 @@
                             <div class="coins-container">
                                 <h2 class="coins-text">Coins: <span class="coins">0</span></h2>
                             </div>
-                            <div class="upgrade-btn unselectable">
+                            <div class="upgrade-btn unselectable" onclick="upgrades.purchase(0)">
                                 <div class="upgrade-name-and-cost">
                                     <p class="upgrade-name">Upgrade 1</p>
                                     <p class="upgrade-cost-text">Cost: <span class="upgrade-cost">50</span></p>
@@ -105,10 +105,10 @@
                                     <p><span class="upgrade-count">0</span></p>
                                 </div>
                             </div>
-                            <div class="upgrade-btn unselectable">
+                            <div class="upgrade-btn unselectable" onclick="upgrades.purchase(1)">
                                 <div class="upgrade-name-and-cost">
                                     <p class="upgrade-name">Upgrade 2</p>
-                                    <p class="upgrade-cost-text">Cost: <span class="upgrade-cost">50</span></p>
+                                    <p class="upgrade-cost-text">Cost: <span class="upgrade-cost">250</span></p>
                                 </div>
                                 <div class="upgrade-image-container">
 
@@ -117,10 +117,10 @@
                                     <p><span class="upgrade-count">0</span></p>
                                 </div>
                             </div>
-                            <div class="upgrade-btn unselectable">
+                            <div class="upgrade-btn unselectable" onclick="upgrades.purchase(2)">
                                 <div class="upgrade-name-and-cost">
                                     <p class="upgrade-name">Upgrade 3</p>
-                                    <p class="upgrade-cost-text">Cost: <span class="upgrade-cost">50</span></p>
+                                    <p class="upgrade-cost-text">Cost: <span class="upgrade-cost">500</span></p>
                                 </div>
                                 <div class="upgrade-image-container">
 
