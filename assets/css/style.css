@@ -460,10 +460,16 @@ footer {
 .monster-clicker {
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    background-color: red;
-    cursor: pointer;
+    
     position: relative;
+    border-radius: 45%;
+    cursor: pointer;
+}
+
+.island-bg {
+    width: 300px;
+    height: 300px;
+    position: absolute;
 }
 
 .power-container {
@@ -485,7 +491,7 @@ footer {
 .monster-clicker > .number {
     z-index: 99;
     font-size: 1.2rem;
-    color: var(--TEXT);
+    color: white;
     position: absolute;
 }
 
