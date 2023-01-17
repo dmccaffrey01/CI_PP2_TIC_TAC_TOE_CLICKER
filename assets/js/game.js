@@ -96,7 +96,6 @@ var game = {
                 display.updateMonsterCount();
 
             } else {
-                
                 // Add coins
                 this.addCoins();
                 
@@ -488,8 +487,6 @@ function createNumberOnClick(event) {
 
     // Get cursor offset
     let cursorOffset = monsterClicker.getBoundingClientRect();
-   console.log(cursorOffset);
-   console.log(event.pageY);
     // Get random offset
     let randomOffset = randomNumber(-20, 10);
     
@@ -498,8 +495,6 @@ function createNumberOnClick(event) {
         x: event.pageX - cursorOffset.left + randomOffset,
         y: event.pageY - cursorOffset.top
     }
-
-    console.log(position.y);
 
     // Create the number as html element
     let element = document.createElement("div");
