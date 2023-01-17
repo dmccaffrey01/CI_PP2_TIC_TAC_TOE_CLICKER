@@ -20,7 +20,7 @@ document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", 
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -43,6 +43,7 @@ var game = {
 
         // Check if Monster HP is below 0
         this.checkMonsterHP();
+
     },
 
     /**
@@ -500,9 +501,7 @@ function randomNumber(min, max, lastRandomNumber) {
         randNum = newNumArr[randomIndex];
     }
     return randNum;
-    
 }
-
 
 /**
  * Open and Close Upgrade Menu
