@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 2,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -53,7 +53,9 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
-        
+        // Update kill monster
+        display.monsterKilled();
+
         // Update Monster HP
         display.updateMonsterHP();
 
@@ -131,7 +133,7 @@ var game = {
         // Set isMonsterDead to true
         setTimeout(() => {
             this.isMonsterDead = false;
-        }, 1000);
+        }, 800);
     },
 
     /**
@@ -360,6 +362,20 @@ var display = {
 
         // Set new island image src
         island.src = newIslandSrc;
+    },
+
+    /**
+     * Animate death of monster
+     */
+    monsterKilled: function() {
+        // Get the image element
+        let monster = document.querySelector(".monster");
+
+        monster.style.transform = "scale(0.01)";
+
+        setTimeout(() => {
+            monster.style.transform = "scale(1)"
+        }, 800)
     },
 
     /**
