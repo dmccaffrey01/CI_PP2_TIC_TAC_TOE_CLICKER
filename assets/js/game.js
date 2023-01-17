@@ -53,7 +53,6 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
-        this.levelUp();
         // Update kill monster
         display.monsterKilled();
 
