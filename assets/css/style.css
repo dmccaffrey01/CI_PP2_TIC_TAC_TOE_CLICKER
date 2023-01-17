@@ -471,7 +471,7 @@ footer {
     position: absolute;
 }
 
-.island-bg.island-transition {
+.island-bg.transition {
     animation: new-island-transition 0.5s ease-in-out forwards;
 }
 
@@ -480,44 +480,85 @@ footer {
         transform: rotate(15deg);
     }
 
+    5% {
+        transform: translateX(5%);
+    }
+
     10% {
         transform: rotate(-15deg);
+    }
+
+    15% {
+        transform: translateX(-5%);
     }
 
     20% {
         transform: rotate(15deg);
     }
 
+    25% {
+        transform: translateX(5%);
+    }
+
     30% {
         transform: rotate(-15deg);
+    }
+
+    35% {
+        transform: translateX(-5%);
     }
 
     40% {
         transform: rotate(15deg);
     }
 
+    45% {
+        transform: translateX(5%);
+    }
+
     50% {
         transform: rotate(-15deg);
+    }
+
+    55% {
+        transform: translateX(-5%);
     }
 
     60% {
         transform: rotate(15deg);
     }
 
+    65% {
+        transform: translateX(5%);
+    }
+
     70% {
         transform: rotate(-15deg);
+    }
+
+    75% {
+        transform: translateX(-5%);
     }
 
     80% {
         transform: rotate(15deg);
     }
 
+    85% {
+        transform: translateX(5%);
+    }
+
     90% {
         transform: rotate(-15deg);
     }
 
+    95% {
+        transform: translateX(-5%);
+    }
+
     100% {
         transform: rotate(0deg);
+        transform: translateX(0)
     }
 }
 

@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 2,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -53,6 +53,7 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
+        this.levelUp();
         // Update kill monster
         display.monsterKilled();
 
@@ -156,6 +157,9 @@ var game = {
             // Set isBossRound to false
             this.isBossRound = false;
         }
+
+        // Transition new island
+        display.transitionIsland();
 
         // Display new island
         display.newIsland();
@@ -326,42 +330,60 @@ var display = {
     },
 
     /**
+     * Transition the island from 1 background to the next
+     */
+    transitionIsland: function() {
+        // Get island image element
+        let island = document.querySelector(".island-bg");
+
+        // Add transition class to it
+        island.classList.add("transition");
+
+        // Remove transition class after waiting
+        setTimeout(() => {
+            island.classList.remove("transition");
+        }, 500);
+    },
+
+    /**
      * Set a new island background for clicker
      * Create a random island image for the background
      */
     newIsland: function() {
-        // Get island image element
-        let island = document.querySelector(".island-bg");
+        setTimeout(() => {
+            // Get island image element
+            let island = document.querySelector(".island-bg");
 
-        // Get src of image
-        let islandSrc = island.src;
+            // Get src of image
+            let islandSrc = island.src;
 
-        // Split src into words
-        let srcWords = islandSrc.split("/");
+            // Split src into words
+            let srcWords = islandSrc.split("/");
 
-        // Get image name, is last word in src
-        let islandName = srcWords[srcWords.length-1];
+            // Get image name, is last word in src
+            let islandName = srcWords[srcWords.length-1];
 
-        // Get index of island name in array of island names
-        let islandIndex = this.islandNames.indexOf(islandName);
+            // Get index of island name in array of island names
+            let islandIndex = this.islandNames.indexOf(islandName);
 
-        // Get random number where last number is index in island names
-        let randNum = randomNumber(0, 8, islandIndex);
+            // Get random number where last number is index in island names
+            let randNum = randomNumber(0, 8, islandIndex);
 
-        // Set new island image to random island
-        let newIslandImgName = this.islandNames[randNum];
+            // Set new island image to random island
+            let newIslandImgName = this.islandNames[randNum];
 
-        // Create new source words
-        let newSrcWords = srcWords.slice(0, srcWords.length-1);
+            // Create new source words
+            let newSrcWords = srcWords.slice(0, srcWords.length-1);
 
-        // Add new island image name
-        newSrcWords.push(newIslandImgName);
+            // Add new island image name
+            newSrcWords.push(newIslandImgName);
 
-        // Join new source words together
-        let newIslandSrc = newSrcWords.join("/");
+            // Join new source words together
+            let newIslandSrc = newSrcWords.join("/");
 
-        // Set new island image src
-        island.src = newIslandSrc;
+            // Set new island image src
+            island.src = newIslandSrc;
+        }, 250)
     },
 
     /**
