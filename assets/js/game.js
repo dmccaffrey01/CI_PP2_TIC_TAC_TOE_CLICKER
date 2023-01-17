@@ -259,7 +259,7 @@ var upgrades = {
  * Anything that requires the page display to update
  */
 var display = {
-    islandNames: ["island-a", "island-b", "island-c", "island-d", "island-e", "island-f", "island-g", "island-h", "island-i"],
+    islandNames: ["island-a.png", "island-b.png", "island-c.png", "island-d.png", "island-e.png", "island-f.png", "island-g.png", "island-h.png", "island-i.png"],
 
     /**
      * Update Monster HP
@@ -328,9 +328,38 @@ var display = {
      */
 
     newIsland: function() {
+        // Get island image element
         let island = document.querySelector(".island-bg");
-        let randNum = randomNumber(0,8);
-        console.log(randNum);
+
+        // Get src of image
+        let islandSrc = island.src;
+
+        // Split src into words
+        let srcWords = islandSrc.split("/");
+
+        // Get image name, is last word in src
+        let islandName = srcWords[srcWords.length-1];
+
+        // Get index of island name in array of island names
+        let islandIndex = this.islandNames.indexOf(islandName);
+
+        // Get random number where last number is index in island names
+        let randNum = randomNumber(0, 8, islandIndex);
+
+        // Set new island image to random island
+        let newIslandImgName = this.islandNames[randNum];
+
+        // Create new source words
+        let newSrcWords = srcWords.slice(0, srcWords.length-1);
+
+        // Add new island image name
+        newSrcWords.push(newIslandImgName);
+
+        // Join new source words together
+        let newIslandSrc = newSrcWords.join("/");
+
+        // Set new island image src
+        island.src = newIslandSrc;
     }
 }
 
@@ -355,7 +384,11 @@ monster.addEventListener("click", () => {
 function createNumberOnClick(event) {
     // Grab the position of where the cursor is when monster is clicked
     let cursorOffset = monster.getBoundingClientRect();
+   
+    // Get random offset
     let randomOffset = randomNumber(-20, 10);
+    
+    // Define positions
     let position = {
         x: event.pageX - cursorOffset.left + randomOffset,
         y: event.pageY - cursorOffset.top
@@ -403,21 +436,31 @@ function fadeOut(element, duration, finalOpacity, callback) {
 /**
  * Create random number
  */
-function randomNumber(min,max,lastRandomNumber) {
+function randomNumber(min, max, lastRandomNumber) {
+    // Create random number
     let randNum = Math.round(Math.random() * (max-min) + min);
+    
+    // If random number is same as last random number change it
     if (randNum == lastRandomNumber) {
         let numArr = [];
         let newNumArr = [];
         let totalNumbers = (max - min) + 1;
+        
+        // Create array of numbers
         for (let i = min; i < max + 1; i++) {
             numArr.push(i);
         }
+
+        // Create new array without the last random number
         for (let i = 0; i < totalNumbers; i++) {
             if (numArr[i] != lastRandomNumber) {
                 newNumArr.push(numArr[i]);
             }
         }
+        // Create random index
         let randomIndex = Math.floor(Math.random() * newNumArr.length);
+
+        // Set randNum to be a random number in new array
         randNum = newNumArr[randomIndex];
     }
     return randNum;
