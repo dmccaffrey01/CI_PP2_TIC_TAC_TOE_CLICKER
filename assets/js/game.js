@@ -43,7 +43,6 @@ var game = {
 
         // Check if Monster HP is below 0
         this.checkMonsterHP();
-
     },
 
     /**
@@ -404,32 +403,66 @@ var display = {
  * Update game when monster is clicked
  */
 // Define monster variable
-const monster = document.querySelector(".monster-clicker");
+const monsterClicker = document.querySelector(".monster-clicker");
 
-monster.addEventListener("click", () => {
+monsterClicker.addEventListener("click", () => {
     // Deal damage to monster when clicked
     game.dealDamage(game.power);
 
     // Create number on click
     createNumberOnClick(event);
+
+    // Create damage effect on click
+    createDamageEffect(event);
 })
+
+/**
+ * Create damage effect to display on screen when monster is clicked
+ */
+function createDamageEffect(event) {
+    // Get cursor offset
+    let cursorOffset = monsterClicker.getBoundingClientRect();
+
+    // Grab the position of where the cursor is when monster is clicked
+    let position = {
+        x: event.pageX - cursorOffset.left - 32,
+        y: event.pageY - cursorOffset.top - 45
+    }
+
+    // Create the damage effect as an img element
+    let element = document.createElement("img");
+    element.src = "../assets/images/damage-effect/damage-effect-a.png";
+    element.classList.add("damage", "unselectable");
+    element.style.left = position.x + "px";
+    element.style.top = position.y + "px";
+    
+    // Add the damage effect to monster
+    monsterClicker.appendChild(element);
+
+    // Slowly fade out
+    fadeOut(element, 2000, 0.2, function() {
+        element.remove();
+    })
+}
 
 /**
  * Create number to display on screen when monster is clicked
  */
-
 function createNumberOnClick(event) {
-    // Grab the position of where the cursor is when monster is clicked
-    let cursorOffset = monster.getBoundingClientRect();
-   
+    // Get cursor offset
+    let cursorOffset = monsterClicker.getBoundingClientRect();
+   console.log(cursorOffset);
+   console.log(event.pageY);
     // Get random offset
     let randomOffset = randomNumber(-20, 10);
     
-    // Define positions
+    // Grab the position of where the cursor is when monster is clicked
     let position = {
         x: event.pageX - cursorOffset.left + randomOffset,
-        y: event.pageY - cursorOffset.top
+        y: event.pageY - cursorOffset.top - 70
     }
+
+    console.log(position.y);
 
     // Create the number as html element
     let element = document.createElement("div");
@@ -439,7 +472,7 @@ function createNumberOnClick(event) {
     element.style.top = position.y + "px";
 
     // Add the number to monster
-    monster.appendChild(element);
+    monsterClicker.appendChild(element);
 
     // Slowely rise the element to top of screen
     let movementInterval = window.setInterval(() => {

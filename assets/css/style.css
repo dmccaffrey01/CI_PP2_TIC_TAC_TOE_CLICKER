@@ -484,6 +484,13 @@ footer {
     transform: scale(0.95);
 }
 
+.monster-clicker > .damage {
+    width: 70px;
+    height: 70px;
+    z-index: 98;
+    position: absolute;
+}
+
 .power-container {
     display: flex;
     justify-content: center;
