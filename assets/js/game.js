@@ -80,9 +80,6 @@ var game = {
                 // Update the display
                 display.updateMonsterCount();
 
-                // Display new island
-                display.newIsland();
-    
                 // 10 monsters are dead time to level up
                 this.levelUp();
             } else if (this.isBossRound) {
@@ -102,9 +99,6 @@ var game = {
                 // Update the display
                 display.updateMonsterCount();
 
-                // Display new island
-                display.newIsland();
-
             } else {
                 
                 // Add coins
@@ -112,9 +106,6 @@ var game = {
                 
                 // Create new monster
                 this.newMonster();
-
-                // Display new island
-                display.newIsland();
 
             }
         }, 100);
@@ -164,6 +155,9 @@ var game = {
             // Set isBossRound to false
             this.isBossRound = false;
         }
+
+        // Display new island
+        display.newIsland();
     },
 
     /**
@@ -351,11 +345,7 @@ var display = {
         let randNum = randomNumber(0, 8, islandIndex);
 
         // Set new island image to random island
-        let newIslandImgName = this.islandNames[islandIndex + 1];
-        if (islandIndex == 8) {
-            islandIndex = 0;
-            newIslandImgName = this.islandNames[0];
-        }
+        let newIslandImgName = this.islandNames[randNum];
 
         // Create new source words
         let newSrcWords = srcWords.slice(0, srcWords.length-1);
@@ -393,11 +383,7 @@ var display = {
         let randNum = randomNumber(0, 15, monsterIndex);
 
         // Set new monster image to random monster
-        let newMonsterImgName = this.monsterNames[monsterIndex + 1]
-        if (monsterIndex == 15) {
-            monsterIndex = 0;
-            newMonsterImgName = this.monsterNames[0];
-        }
+        let newMonsterImgName = this.monsterNames[randNum]
 
         // Create new src words
         let newSrcWords = srcWords.slice(0, srcWords.length-1);
