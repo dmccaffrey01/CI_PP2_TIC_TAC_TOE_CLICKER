@@ -34,23 +34,25 @@ const QUOTEBANK = [
 
 const COLORS = ['#205295', '#3B185F', '#C060A1', '#735F32', '#624F82', '#50577A', '#3F3B6C', '#342224', "#4C0033", "#2C3333", "#1E5128", "#734046"];
 
+/**
+ * When window is loaded execute generate quote function
+ */
 window.onload = init;
 
 function init() {
     generateQuote();
 }
 
+/**
+ * Choose a random quote and color from the array and objects
+ * And display on screen
+ */
+
 function generateQuote() {
     // Get random Number
     let quoteSize = QUOTEBANK.length;
-    let randomNum = Math.floor(Math.random() * quoteSize);
-    if(randomNum === lastNum) {
-        if(randomNum === 0) {
-            randomNum += 1;
-        } else {
-            randomNum -= 1;
-        }
-    }
+    let randomNum = randomNumber(0, quoteSize-1, lastNum);
+    
     lastNum = randomNum;
 
     // Use random number to get random quote
@@ -75,16 +77,46 @@ function generateQuote() {
 
     // Get random Number
     let colorSize = COLORS.length;
-    let randomNum2 = Math.floor(Math.random() * colorSize);
-    if(randomNum2 === colorNum) {
-        if(randomNum2 === 0) {
-            randomNum2 += 1;
-        } else {
-            randomNum2 -= 1;
-        }
-    }
+    let randomNum2 = randomNumber(0, colorSize-1, colorNum);
+
+    // Set colorNum to randomNum2
     colorNum = randomNum2;
 
     // Change color of background an icon
-    document.documentElement.style.setProperty("--MAIN", COLORS[colorNum]);
+    document.documentElement.style.setProperty("--MAIN", COLORS[randomNum2]);
+
+    
+}
+
+/**
+ * Create random number
+ */
+function randomNumber(min, max, lastRandomNumber) {
+    // Create random number
+    let randNum = Math.round(Math.random() * (max-min) + min);
+    
+    // If random number is same as last random number change it
+    if (randNum == lastRandomNumber) {
+        let numArr = [];
+        let newNumArr = [];
+        let totalNumbers = (max - min) + 1;
+        
+        // Create array of numbers
+        for (let i = min; i < max + 1; i++) {
+            numArr.push(i);
+        }
+
+        // Create new array without the last random number
+        for (let i = 0; i < totalNumbers; i++) {
+            if (numArr[i] != lastRandomNumber) {
+                newNumArr.push(numArr[i]);
+            }
+        }
+        // Create random index
+        let randomIndex = Math.floor(Math.random() * newNumArr.length);
+
+        // Set randNum to be a random number in new array
+        randNum = newNumArr[randomIndex];
+    }
+    return randNum;
 }
