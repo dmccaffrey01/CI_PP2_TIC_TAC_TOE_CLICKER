@@ -427,6 +427,7 @@ footer {
     background-color: gray;
     border-radius: 20px;
     height: 12px;
+    position: relative;
 }
 
 .health-progress {
@@ -444,6 +445,19 @@ footer {
     height: 100%;
     width: 100%;
     transition: 0.1s ease 0.1s;
+}
+
+.boss-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -10px;
+    top: -4px;
+    display: none;
+}
+
+.boss-icon.active {
+    display: inline;
 }
 
 .monster-clicker-container {

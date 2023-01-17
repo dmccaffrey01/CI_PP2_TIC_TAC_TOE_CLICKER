@@ -84,8 +84,6 @@ function generateQuote() {
 
     // Change color of background an icon
     document.documentElement.style.setProperty("--MAIN", COLORS[randomNum2]);
-
-    
 }
 
 /**

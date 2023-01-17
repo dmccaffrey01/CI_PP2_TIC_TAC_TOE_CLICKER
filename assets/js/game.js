@@ -155,6 +155,12 @@ var game = {
         } else {
             // Set isBossRound to false
             this.isBossRound = false;
+
+            // Check if it is level after boss round
+            if (this.bossRounds.includes(this.level - 1)) {
+                // Remove Boss icon
+            display.removeBossIcon();
+            }
         }
 
         // Transition new island
@@ -294,10 +300,29 @@ var display = {
 
     /**
      * Update Boss round
+     * Set hp and monster count
+     * Add boss icon to health bar
      */
     updateBossRound: function() {
+        // Set hp and monster count
         document.getElementById("monster-hp").innerHTML = game.monsterHP;
         document.getElementById("monster-count").innerHTML = game.monsterCount + "/1";
+        
+        // Get boss icon
+        let bossIcon = document.querySelector(".boss-icon");
+        // Add active class
+        bossIcon.classList.add("active");
+    },
+
+    /**
+     * Remove boss icon from health bar
+     */
+    removeBossIcon: function() {
+        // Get boss icon
+        let bossIcon = document.querySelector(".boss-icon");
+
+        // Remove the active class
+        bossIcon.classList.remove("active");
     },
 
     /**
