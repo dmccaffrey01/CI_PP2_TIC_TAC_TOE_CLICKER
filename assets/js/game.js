@@ -79,6 +79,9 @@ var game = {
     
                 // Update the display
                 display.updateMonsterCount();
+
+                // Display new island
+                display.newIsland();
     
                 // 10 monsters are dead time to level up
                 this.levelUp();
@@ -98,6 +101,10 @@ var game = {
     
                 // Update the display
                 display.updateMonsterCount();
+
+                // Display new island
+                display.newIsland();
+
             } else {
                 
                 // Add coins
@@ -105,6 +112,10 @@ var game = {
                 
                 // Create new monster
                 this.newMonster();
+
+                // Display new island
+                display.newIsland();
+
             }
         }, 100);
     },
@@ -248,6 +259,8 @@ var upgrades = {
  * Anything that requires the page display to update
  */
 var display = {
+    islandNames: ["island-a", "island-b", "island-c", "island-d", "island-e", "island-f", "island-g", "island-h", "island-i"],
+
     /**
      * Update Monster HP
      */
@@ -308,7 +321,16 @@ var display = {
             counts[i].innerHTML = upgrades.count[i];
             costs[i].innerHTML = upgrades.cost[i];
         }
+    },
 
+    /**
+     * Display a new island background for clicker
+     */
+
+    newIsland: function() {
+        let island = document.querySelector(".island-bg");
+        let randNum = randomNumber(0,8);
+        console.log(randNum);
     }
 }
 
@@ -381,8 +403,25 @@ function fadeOut(element, duration, finalOpacity, callback) {
 /**
  * Create random number
  */
-function randomNumber(min,max) {
-    return Math.round(Math.random() * (max-min) + min);
+function randomNumber(min,max,lastRandomNumber) {
+    let randNum = Math.round(Math.random() * (max-min) + min);
+    if (randNum == lastRandomNumber) {
+        let numArr = [];
+        let newNumArr = [];
+        let totalNumbers = (max - min) + 1;
+        for (let i = min; i < max + 1; i++) {
+            numArr.push(i);
+        }
+        for (let i = 0; i < totalNumbers; i++) {
+            if (numArr[i] != lastRandomNumber) {
+                newNumArr.push(numArr[i]);
+            }
+        }
+        let randomIndex = Math.floor(Math.random() * newNumArr.length);
+        randNum = newNumArr[randomIndex];
+    }
+    return randNum;
+    
 }
 
 
@@ -409,6 +448,8 @@ upgradeMenuBtn.addEventListener("click", () => {
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
 })
+
+
 
 
 
