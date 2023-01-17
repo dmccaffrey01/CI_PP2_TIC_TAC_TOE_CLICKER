@@ -519,6 +519,8 @@ footer {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+    user-drag: none;
+    -webkit-user-drag: none;
 }
 
 /* Media query for small laptop and tablet */

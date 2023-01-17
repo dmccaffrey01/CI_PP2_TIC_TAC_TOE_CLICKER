@@ -1,26 +1,10 @@
 /**
- * Open and Close Hamburger Menu
- */
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-})
-
-document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-}))
-
-/**
  * Play Clicker Game
  */
 
 var game = {
     // Store data on variables
-    power: 1,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -29,12 +13,18 @@ var game = {
     isBossRound: false,
     coins: 0,
     coinsToGet: 10,
+    isMonsterDead: false,
 
     /**
      * Deal damage to monster HP
      * Takes away health from monsterHP 
      */
     dealDamage: function(amount) { 
+        // Check if monster is dead
+        if (this.isMonsterDead) {
+            return;
+        }
+
         // Take amount from monsterHP
         this.monsterHP -= amount;
 
@@ -52,6 +42,9 @@ var game = {
         if (this.monsterHP <= 0) {
             // Create new monster
             this.monsterKilled();
+
+            // Set isMonsterDead to true
+            this.isMonsterDead = true;
         } 
     },
 
@@ -60,6 +53,7 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
+        
         // Update Monster HP
         display.updateMonsterHP();
 
@@ -108,7 +102,7 @@ var game = {
                 this.newMonster();
 
             }
-        }, 100);
+        }, 300);
     },
 
     /**
@@ -133,6 +127,11 @@ var game = {
 
         // Display new monster
         display.createNewMonster();
+
+        // Set isMonsterDead to true
+        setTimeout(() => {
+            this.isMonsterDead = false;
+        }, 1000);
     },
 
     /**
@@ -269,6 +268,9 @@ var display = {
         // Change Health Bar
         const healthBar = document.querySelector(".health-progress");
         healthBar.style.width = `${game.monsterHP / game.monsterHealthMax * 100}%`;
+        if (game.monsterHP <= 0) {
+            healthBar.style.width = "0%";
+        }
     },
 
     /**
@@ -406,49 +408,22 @@ var display = {
 const monsterClicker = document.querySelector(".monster-clicker");
 
 monsterClicker.addEventListener("click", () => {
-    // Deal damage to monster when clicked
-    game.dealDamage(game.power);
-
     // Create number on click
     createNumberOnClick(event);
-
-    // Create damage effect on click
-    createDamageEffect(event);
-})
-
-/**
- * Create damage effect to display on screen when monster is clicked
- */
-function createDamageEffect(event) {
-    // Get cursor offset
-    let cursorOffset = monsterClicker.getBoundingClientRect();
-
-    // Grab the position of where the cursor is when monster is clicked
-    let position = {
-        x: event.pageX - cursorOffset.left - 32,
-        y: event.pageY - cursorOffset.top - 45
-    }
-
-    // Create the damage effect as an img element
-    let element = document.createElement("img");
-    element.src = "../assets/images/damage-effect/damage-effect-a.png";
-    element.classList.add("damage", "unselectable");
-    element.style.left = position.x + "px";
-    element.style.top = position.y + "px";
     
-    // Add the damage effect to monster
-    monsterClicker.appendChild(element);
-
-    // Slowly fade out
-    fadeOut(element, 2000, 0.2, function() {
-        element.remove();
-    })
-}
+    // Deal damage to monster when clicked
+    game.dealDamage(game.power);
+})
 
 /**
  * Create number to display on screen when monster is clicked
  */
 function createNumberOnClick(event) {
+    // Check if monster is dead
+    if (game.isMonsterDead) {
+        return;
+    }
+
     // Get cursor offset
     let cursorOffset = monsterClicker.getBoundingClientRect();
    console.log(cursorOffset);
@@ -459,7 +434,7 @@ function createNumberOnClick(event) {
     // Grab the position of where the cursor is when monster is clicked
     let position = {
         x: event.pageX - cursorOffset.left + randomOffset,
-        y: event.pageY - cursorOffset.top - 70
+        y: event.pageY - cursorOffset.top
     }
 
     console.log(position.y);
@@ -503,6 +478,7 @@ function fadeOut(element, duration, finalOpacity, callback) {
         }
     }, 50);
 }
+
 /**
  * Create random number
  */
