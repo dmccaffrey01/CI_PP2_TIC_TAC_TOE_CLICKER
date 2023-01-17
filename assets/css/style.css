@@ -472,6 +472,14 @@ footer {
     position: absolute;
 }
 
+.monster {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+}
+
 .power-container {
     display: flex;
     justify-content: center;
