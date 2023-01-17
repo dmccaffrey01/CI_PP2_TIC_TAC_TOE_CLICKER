@@ -139,6 +139,9 @@ var game = {
 
         // Set Monster Max Health
         this.monsterHealthMax = 10;
+
+        // Display new monster
+        display.createNewMonster();
     },
 
     /**
@@ -260,6 +263,7 @@ var upgrades = {
  */
 var display = {
     islandNames: ["island-a.png", "island-b.png", "island-c.png", "island-d.png", "island-e.png", "island-f.png", "island-g.png", "island-h.png", "island-i.png"],
+    monsterNames: ["monster-a.png", "monster-b.png", "monster-c.png", "monster-d.png", "monster-e.png", "monster-f.png", "monster-g.png", "monster-h.png", "monster-i.png", "monster-j.png", "monster-k.png", "monster-l.png", "monster-m.png", "monster-n.png", "monster-o.png", "monster-p.png"],
 
     /**
      * Update Monster HP
@@ -324,9 +328,9 @@ var display = {
     },
 
     /**
-     * Display a new island background for clicker
+     * Set a new island background for clicker
+     * Create a random island image for the background
      */
-
     newIsland: function() {
         // Get island image element
         let island = document.querySelector(".island-bg");
@@ -347,7 +351,11 @@ var display = {
         let randNum = randomNumber(0, 8, islandIndex);
 
         // Set new island image to random island
-        let newIslandImgName = this.islandNames[randNum];
+        let newIslandImgName = this.islandNames[islandIndex + 1];
+        if (islandIndex == 8) {
+            islandIndex = 0;
+            newIslandImgName = this.islandNames[0];
+        }
 
         // Create new source words
         let newSrcWords = srcWords.slice(0, srcWords.length-1);
@@ -360,6 +368,48 @@ var display = {
 
         // Set new island image src
         island.src = newIslandSrc;
+    },
+
+    /**
+     * Set a new random monster image for the clicker
+     */
+    createNewMonster: function() {
+        // Get the image element
+        let monster = document.querySelector(".monster");
+
+        // Get the src of the img
+        let monsterSrc = monster.src;
+
+        // Split src into words
+        let srcWords = monsterSrc.split("/");
+
+        // Get image name, is last word of source
+        let monsterName = srcWords[srcWords.length-1];
+
+        // Get index of image name in array of monster names
+        let monsterIndex = this.monsterNames.indexOf(monsterName);
+
+        // Get random number where last number is index of monster names
+        let randNum = randomNumber(0, 15, monsterIndex);
+
+        // Set new monster image to random monster
+        let newMonsterImgName = this.monsterNames[monsterIndex + 1]
+        if (monsterIndex == 15) {
+            monsterIndex = 0;
+            newMonsterImgName = this.monsterNames[0];
+        }
+
+        // Create new src words
+        let newSrcWords = srcWords.slice(0, srcWords.length-1);
+
+        // Add new monster image name
+        newSrcWords.push(newMonsterImgName);
+
+        // Join new src words together
+        let newMonsterSrc = newSrcWords.join("/");
+
+        // Set new monster image src
+        monster.src = newMonsterSrc;
     }
 }
 
