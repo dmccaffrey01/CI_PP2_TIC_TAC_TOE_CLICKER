@@ -224,6 +224,9 @@ var game = {
             // Increment amount by 1
             amount++;
         }
+
+        // Set coin display amount
+        display.coinAmount = amount;
     }
 }
 
@@ -300,6 +303,8 @@ var display = {
         y: 0
     },
     coinImages: ["coin-a.png", "coin-b.png", "coin-c.png", "coin-d.png", "coin-e.png", "coin-f.png"],
+    coinAmount: 0,
+    coinsPickedUp: 0,
 
     /**
      * Update Monster HP
@@ -498,7 +503,7 @@ var display = {
      * Create coins and display them on screen
      */
     createCoin: function() {
-        // Get island bg
+        // Get monster clicker
         let clicker = document.querySelector(".monster-clicker");
 
         // Create coin img element
@@ -510,7 +515,8 @@ var display = {
         clicker.appendChild(coin);
 
         // Slowly fade out
-        fadeOut(coin, 4000, 0.6, () => {
+        fadeOut(coin, 4000, 0.4, () => {
+            this.createNumberOnCoinPickUp(coin);
             coin.remove();
         });
 
@@ -531,7 +537,7 @@ var display = {
         coin.style.top = (clickerHeight/2) - (coinHeight/2) + "px";
 
         // Translate to random position
-        coin.style.transition = "transform 0.5s ease-in-out";
+        coin.style.transition = "transform 0.3s ease-in-out";
         coin.style.transform = `translate(${randomX}px, ${randomY}px)`;
 
         // Set timeout for 0.5s
@@ -539,6 +545,11 @@ var display = {
             // Animate coin
             this.animateCoin(coin, 3500);
         }, 500);
+
+        // Move coin to corner for pick up
+        setTimeout(() => {
+            coin.style.transform = `translate(${clickerWidth/2}px, ${0}px)`;
+        }, 3400);
     },
 
     /**
@@ -550,7 +561,7 @@ var display = {
             if (typeof coin == "undefined" && coin == null) clearInterval(coinAnimatingInterval);
             
             // Decrease duration
-            duration -= 100;
+            duration -= 120;
 
             // Change coin image
             // Get name of image
@@ -574,7 +585,48 @@ var display = {
             if (duration <= 0) {
                 clearInterval(coinAnimatingInterval);
             }
-        }, 100)
+        }, 120)
+    },
+
+    /**
+     * Create a + number when coins are picked up
+     */
+    createNumberOnCoinPickUp: function(coin) {
+        // Add coin to coins picked up
+        this.coinsPickedUp++;
+        
+        let monsterClicker = document.querySelector(".monster-clicker");
+
+        // Check if coins picked up is equal to coin amount
+        if (this.coinsPickedUp >= this.coinAmount) {
+            // Set coinsPickedUp to 0
+            this.coinsPickedUp = 0;
+
+            // Get position of coin
+            let coinRect = coin.getBoundingClientRect();
+            let monsterClickerRect = monsterClicker.getBoundingClientRect();
+            let position = {
+                x: coinRect.left - monsterClickerRect.left,
+                y: coinRect.top - monsterClickerRect.top - 10
+            }
+            console.log(position.x,position.y);
+            // Create number element
+            let number = document.createElement("div");
+            
+            // Apply class
+            number.classList.add("coin-number");
+
+            // Add text
+            number.textContent = "+" + game.coinsToGet;
+
+            // Set position of number
+            number.style.left = position.x + "px";
+            number.style.top = position.y + "px";
+
+            // Add to monster clicker
+            
+            monsterClicker.appendChild(number);
+        }
     }
 }
 
