@@ -609,7 +609,7 @@ var display = {
                 x: coinRect.left - monsterClickerRect.left,
                 y: coinRect.top - monsterClickerRect.top - 10
             }
-            console.log(position.x,position.y);
+            
             // Create number element
             let number = document.createElement("div");
             
@@ -624,8 +624,21 @@ var display = {
             number.style.top = position.y + "px";
 
             // Add to monster clicker
-            
             monsterClicker.appendChild(number);
+
+            // Slowely rise the number to top of screen
+            let movementInterval = window.setInterval(() => {
+                // Remove interval if elemnumberent is removed
+                if (typeof number == "undefined" && number == null) clearInterval(movementInterval);
+
+                position.y--;
+                number.style.top = position.y + "px";
+            }, 10);
+
+            // Slowly fade out
+            fadeOut(number, 1000, 0.2, function() {
+                number.remove();
+            })
         }
     }
 }
