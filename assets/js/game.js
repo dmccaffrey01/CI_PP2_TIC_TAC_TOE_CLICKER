@@ -190,6 +190,10 @@ var game = {
         this.coinsToGet = this.level * 200;
     },
 
+    /**
+     * Add on the coins, update the display
+     * and create coins to display
+     */
     addCoins: function() {
         // Add coins to get to coins
         this.coins += this.coinsToGet;
@@ -198,7 +202,30 @@ var game = {
         display.updateCoins();
 
         // Create and add coins to display
-        display.createCoins();
+        this.createCoins();
+    },
+
+    /**
+     * Create coins to display
+     */
+    createCoins: function() {
+        // Set the amount
+        let amount = 0;
+
+        // Set the coins to get
+        let coinsTG = this.coinsToGet;
+        console.log(coinsTG);
+
+        while(amount <= 10 && coinsTG >= 5) {
+            // Take 5 coins away
+            coinsTG -= 5;
+            console.log(coinsTG);
+            // Create a coin to display
+            display.createCoin();
+
+            // Increment amount by 1
+            amount++;
+        }
     }
 }
 
@@ -471,7 +498,7 @@ var display = {
     /**
      * Create coins and display them on screen
      */
-    createCoins: function() {
+    createCoin: function() {
         // Get island bg
         let clicker = document.querySelector(".monster-clicker");
 
