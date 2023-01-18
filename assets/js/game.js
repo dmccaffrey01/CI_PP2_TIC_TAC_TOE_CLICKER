@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -235,14 +235,7 @@ var game = {
  */
 
 var upgrades = {
-    name: [
-        "Upgrade 1",
-        "Upgrade 2",
-        "Upgrade 3"
-    ],
-    image: [
-
-    ],
+    // Store data on variables
     count: [
         0,
         0,
@@ -296,6 +289,7 @@ var upgrades = {
  * Anything that requires the page display to update
  */
 var display = {
+    // Store data on variables
     islandNames: ["island-a.png", "island-b.png", "island-c.png", "island-d.png", "island-e.png", "island-f.png", "island-g.png", "island-h.png", "island-i.png"],
     monsterNames: ["monster-a.png", "monster-b.png", "monster-c.png", "monster-d.png", "monster-e.png", "monster-f.png", "monster-g.png", "monster-h.png", "monster-i.png", "monster-j.png", "monster-k.png", "monster-l.png", "monster-m.png", "monster-n.png", "monster-o.png", "monster-p.png"],
     coinPosition: {
@@ -305,6 +299,7 @@ var display = {
     coinImages: ["coin-a.png", "coin-b.png", "coin-c.png", "coin-d.png", "coin-e.png", "coin-f.png"],
     coinAmount: 0,
     coinsPickedUp: 0,
+    coinsToGet: 10,
 
     /**
      * Update Monster HP
@@ -330,9 +325,16 @@ var display = {
 
     /**
      * Update Level
+     * Change coins to get
      */
     updateLevel: function () {
         document.getElementById("level").innerHTML = game.level;
+
+        // Wait until coins from previous level has been collected
+        // Then change coins to get
+        setTimeout(() => {
+            this.coinsToGet = game.coinsToGet;
+        },4000);
     },
 
     /**
@@ -404,6 +406,51 @@ var display = {
         setTimeout(() => {
             island.classList.remove("transition");
         }, 500);
+    },
+
+    /**
+     * Create number to display on screen when monster is clicked
+     */
+    createNumberOnClick: function(event) {
+        // Check if monster is dead
+        if (game.isMonsterDead) {
+            return;
+        }
+
+        // Get cursor offset
+        let cursorOffset = monsterClicker.getBoundingClientRect();
+        // Get random offset
+        let randomOffset = randomNumber(-20, 10);
+        
+        // Grab the position of where the cursor is when monster is clicked
+        let position = {
+            x: event.pageX - cursorOffset.left + randomOffset,
+            y: event.pageY - cursorOffset.top
+        }
+
+        // Create the number as html element
+        let element = document.createElement("div");
+        element.textContent = "-" + game.power;
+        element.classList.add("number", "unselectable");
+        element.style.left = position.x + "px";
+        element.style.top = position.y + "px";
+
+        // Add the number to monster
+        monsterClicker.appendChild(element);
+
+        // Slowely rise the element to top of screen
+        let movementInterval = window.setInterval(() => {
+            // Remove interval if element is removed
+            if (typeof element == "undefined" && element == null) clearInterval(movementInterval);
+
+            position.y--;
+            element.style.top = position.y + "px";
+        }, 10);
+
+        // Slowly fade out
+        fadeOut(element, 2000, 0.2, function() {
+            element.remove();
+        })
     },
 
     /**
@@ -609,7 +656,7 @@ var display = {
                 x: coinRect.left - monsterClickerRect.left,
                 y: coinRect.top - monsterClickerRect.top - 10
             }
-            
+
             // Create number element
             let number = document.createElement("div");
             
@@ -617,7 +664,7 @@ var display = {
             number.classList.add("coin-number");
 
             // Add text
-            number.textContent = "+" + game.coinsToGet;
+            number.textContent = "+" + display.coinsToGet;
 
             // Set position of number
             number.style.left = position.x + "px";
@@ -651,56 +698,11 @@ const monsterClicker = document.querySelector(".monster-clicker");
 
 monsterClicker.addEventListener("click", () => {
     // Create number on click
-    createNumberOnClick(event);
+    display.createNumberOnClick(event);
     
     // Deal damage to monster when clicked
     game.dealDamage(game.power);
 })
-
-/**
- * Create number to display on screen when monster is clicked
- */
-function createNumberOnClick(event) {
-    // Check if monster is dead
-    if (game.isMonsterDead) {
-        return;
-    }
-
-    // Get cursor offset
-    let cursorOffset = monsterClicker.getBoundingClientRect();
-    // Get random offset
-    let randomOffset = randomNumber(-20, 10);
-    
-    // Grab the position of where the cursor is when monster is clicked
-    let position = {
-        x: event.pageX - cursorOffset.left + randomOffset,
-        y: event.pageY - cursorOffset.top
-    }
-
-    // Create the number as html element
-    let element = document.createElement("div");
-    element.textContent = "-" + game.power;
-    element.classList.add("number", "unselectable");
-    element.style.left = position.x + "px";
-    element.style.top = position.y + "px";
-
-    // Add the number to monster
-    monsterClicker.appendChild(element);
-
-    // Slowely rise the element to top of screen
-    let movementInterval = window.setInterval(() => {
-        // Remove interval if element is removed
-        if (typeof element == "undefined" && element == null) clearInterval(movementInterval);
-
-        position.y--;
-        element.style.top = position.y + "px";
-    }, 10);
-
-    // Slowly fade out
-    fadeOut(element, 2000, 0.2, function() {
-        element.remove();
-    })
-}
 
 /**
  * Makes an element slowly fade out
