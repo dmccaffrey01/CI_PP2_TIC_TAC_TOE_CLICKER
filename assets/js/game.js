@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 5,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -270,6 +270,10 @@ var upgrades = {
 var display = {
     islandNames: ["island-a.png", "island-b.png", "island-c.png", "island-d.png", "island-e.png", "island-f.png", "island-g.png", "island-h.png", "island-i.png"],
     monsterNames: ["monster-a.png", "monster-b.png", "monster-c.png", "monster-d.png", "monster-e.png", "monster-f.png", "monster-g.png", "monster-h.png", "monster-i.png", "monster-j.png", "monster-k.png", "monster-l.png", "monster-m.png", "monster-n.png", "monster-o.png", "monster-p.png"],
+    coinPosition: {
+        x: 0,
+        y: 0
+    },
 
     /**
      * Update Monster HP
@@ -469,7 +473,7 @@ var display = {
      */
     createCoins: function() {
         // Get island bg
-        let clickerContainer = document.querySelector(".monster-clicker-container");
+        let clicker = document.querySelector(".monster-clicker");
 
         // Create coin img element
         let coin = document.createElement("img");
@@ -477,7 +481,24 @@ var display = {
         coin.classList.add("coin", "unselectable");
 
         // Add coin to island
-        clickerContainer.appendChild(coin);
+        clicker.appendChild(coin);
+
+        // Slowly fade out
+        fadeOut(coin, 4000, 0.2, () => {
+            coin.remove();
+        });
+
+        // Get random positions
+        let width = clicker.offsetWidth;
+        let height = clicker.offsetHeight;
+        let randomX = randomNumber(10, width-10, this.coinPosition.x);
+        let randomY = randomNumber(10, height-10, this.coinPosition.y);
+        this.coinPosition.x = randomX;
+        this.coinPosition.y = randomY;
+
+        // Set coin position to random positions
+        coin.style.left = randomX + "px";
+        coin.style.top = randomY + "px";
     }
 }
 
@@ -546,12 +567,17 @@ function fadeOut(element, duration, finalOpacity, callback) {
     // Opacity starts at 1 and fades until hits final opacity
     let opactiy = 1;
     let elementFadingInterval = window.setInterval(() => {
+        // 50ms interval
         opactiy -= 50 / duration;
-
+        
+        // Clear when reaches final opacity
         if (opactiy <= finalOpacity) {
             clearInterval(elementFadingInterval);
             callback();
         }
+
+        // Set the opactiy
+        element.style.opacity = String(Math.round(opactiy * 100)/ 100);
     }, 50);
 }
 
