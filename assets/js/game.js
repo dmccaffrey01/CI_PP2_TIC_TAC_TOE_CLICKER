@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 5,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -196,6 +196,9 @@ var game = {
 
         // Update the display
         display.updateCoins();
+
+        // Create and add coins to display
+        display.createCoins();
     }
 }
 
@@ -459,6 +462,22 @@ var display = {
 
         // Set new monster image src
         monster.src = newMonsterSrc;
+    },
+
+    /**
+     * Create coins and display them on screen
+     */
+    createCoins: function() {
+        // Get island bg
+        let clickerContainer = document.querySelector(".monster-clicker-container");
+
+        // Create coin img element
+        let coin = document.createElement("img");
+        coin.src = "./assets/images/coins/coin-a.png";
+        coin.classList.add("coin", "unselectable");
+
+        // Add coin to island
+        clickerContainer.appendChild(coin);
     }
 }
 

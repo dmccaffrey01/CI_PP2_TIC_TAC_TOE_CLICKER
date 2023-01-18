@@ -589,11 +589,12 @@ footer {
     transform: scale(0.95);
 }
 
-.monster-clicker > .damage {
-    width: 70px;
-    height: 70px;
+.coin {
+    width: 30px;
+    height: 30px;
     z-index: 98;
     position: absolute;
+    transition: all 0.2s ease-in-out;
 }
 
 .power-container {
