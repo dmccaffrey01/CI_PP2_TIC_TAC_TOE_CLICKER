@@ -53,6 +53,9 @@ var game = {
      * Sets HP and calls update display
      */
     monsterKilled: function() {
+        // Create and add coins to display
+        this.createCoins();
+
         // Update kill monster
         display.monsterKilled();
 
@@ -200,9 +203,6 @@ var game = {
 
         // Update the display
         display.updateCoins();
-
-        // Create and add coins to display
-        this.createCoins();
     },
 
     /**
@@ -214,12 +214,10 @@ var game = {
 
         // Set the coins to get
         let coinsTG = this.coinsToGet;
-        console.log(coinsTG);
 
         while(amount <= 10 && coinsTG >= 5) {
             // Take 5 coins away
             coinsTG -= 5;
-            console.log(coinsTG);
             // Create a coin to display
             display.createCoin();
 
@@ -301,6 +299,7 @@ var display = {
         x: 0,
         y: 0
     },
+    coinImages: ["coin-a.png", "coin-b.png", "coin-c.png", "coin-d.png", "coin-e.png", "coin-f.png"],
 
     /**
      * Update Monster HP
@@ -511,21 +510,71 @@ var display = {
         clicker.appendChild(coin);
 
         // Slowly fade out
-        fadeOut(coin, 4000, 0.2, () => {
+        fadeOut(coin, 4000, 0.6, () => {
             coin.remove();
         });
 
+        // Get widths and heights
+        let clickerWidth = clicker.offsetWidth;
+        let clickerHeight = clicker.offsetHeight;
+        let coinWidth = coin.offsetWidth;
+        let coinHeight = coin.offsetHeight;
+
         // Get random positions
-        let width = clicker.offsetWidth;
-        let height = clicker.offsetHeight;
-        let randomX = randomNumber(10, width-10, this.coinPosition.x);
-        let randomY = randomNumber(10, height-10, this.coinPosition.y);
+        let randomX = randomNumber(0 - (clickerWidth/2), clickerWidth/2, this.coinPosition.x);
+        let randomY = randomNumber(0 - (clickerHeight/2), clickerHeight/2, this.coinPosition.y);
         this.coinPosition.x = randomX;
         this.coinPosition.y = randomY;
 
-        // Set coin position to random positions
-        coin.style.left = randomX + "px";
-        coin.style.top = randomY + "px";
+        // Set coin position to center 
+        coin.style.left = (clickerWidth/2) - (coinWidth/2) + "px";
+        coin.style.top = (clickerHeight/2) - (coinHeight/2) + "px";
+
+        // Translate to random position
+        coin.style.transition = "transform 0.5s ease-in-out";
+        coin.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+        // Set timeout for 0.5s
+        setTimeout(()=> {
+            // Animate coin
+            this.animateCoin(coin, 3500);
+        }, 500);
+    },
+
+    /**
+     * Animate coin to turn around
+     */
+    animateCoin: function(coin, duration) {
+        let coinAnimatingInterval = window.setInterval(() => {
+            // Remove interval if coin has been removed
+            if (typeof coin == "undefined" && coin == null) clearInterval(coinAnimatingInterval);
+            
+            // Decrease duration
+            duration -= 100;
+
+            // Change coin image
+            // Get name of image
+            let imgSrcArr = coin.src.split("/");
+            let imgName = imgSrcArr[imgSrcArr.length-1];
+
+            // Get index of name
+            let imgIndex = this.coinImages.indexOf(imgName);
+
+            // Get new image index
+            if (imgIndex >= this.coinImages.length-1) {
+                imgIndex = 0
+            } else {
+                imgIndex++;
+            }
+
+            // Set new image to index + 1
+            coin.src = `./assets/images/coins/${this.coinImages[imgIndex]}`
+
+            // Clear interval when duration is 0
+            if (duration <= 0) {
+                clearInterval(coinAnimatingInterval);
+            }
+        }, 100)
     }
 }
 
@@ -575,6 +624,7 @@ function createNumberOnClick(event) {
 
     // Slowely rise the element to top of screen
     let movementInterval = window.setInterval(() => {
+        // Remove interval if element is removed
         if (typeof element == "undefined" && element == null) clearInterval(movementInterval);
 
         position.y--;
@@ -594,8 +644,8 @@ function fadeOut(element, duration, finalOpacity, callback) {
     // Opacity starts at 1 and fades until hits final opacity
     let opactiy = 1;
     let elementFadingInterval = window.setInterval(() => {
-        // 50ms interval
-        opactiy -= 50 / duration;
+        // Take away from opacity at 50ms interval
+        opactiy -= (1 - finalOpacity)/(duration / 50);
         
         // Clear when reaches final opacity
         if (opactiy <= finalOpacity) {
