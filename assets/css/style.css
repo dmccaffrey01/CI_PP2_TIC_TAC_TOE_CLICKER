@@ -740,6 +740,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 /* Upgrade Menu Button */
@@ -802,6 +803,16 @@ footer {
     flex-direction: column;
     gap: 20px;
     overflow: hidden;
+}
+
+.coins-container {
+   position: absolute;
+   top: 20%;
+}
+
+.coins {
+    display: flex;
+    justify-content: center;
 }
 
 .coins-text {
@@ -993,20 +1004,8 @@ footer {
         border-radius: 5px;
     }
 
-    .coins-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
     .coins-text {
         font-size: 0.7rem;
-    }
-
-    .coins {
-        display: flex;
-        justify-content: center;
     }
 
     .upgrade-name-and-cost {

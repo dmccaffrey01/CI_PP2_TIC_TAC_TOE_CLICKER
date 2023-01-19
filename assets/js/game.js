@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 1,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -135,7 +135,7 @@ var game = {
         // Set isMonsterDead to true
         setTimeout(() => {
             this.isMonsterDead = false;
-        }, 800);
+        }, 0);
     },
 
     /**
@@ -161,7 +161,7 @@ var game = {
             // Check if it is level after boss round
             if (this.bossRounds.includes(this.level - 1)) {
                 // Remove Boss icon
-            display.removeBossIcon();
+                display.removeBossIcon();
             }
         }
 
@@ -349,8 +349,12 @@ var display = {
         
         // Get boss icon
         let bossIcon = document.querySelector(".boss-icon");
+
         // Add active class
         bossIcon.classList.add("active");
+
+        // Change color of background 
+        document.documentElement.style.setProperty("--MAIN", "#9d0208");
     },
 
     /**
@@ -362,6 +366,9 @@ var display = {
 
         // Remove the active class
         bossIcon.classList.remove("active");
+
+        // Change color of background 
+        document.documentElement.style.setProperty("--MAIN", "#262626");
     },
 
     /**
@@ -399,11 +406,11 @@ var display = {
         // Get island image element
         let island = document.querySelector(".island-bg");
 
-        // Add transition class to it
+        // Add transition class
         island.classList.add("transition");
 
-        // Remove transition class after waiting
         setTimeout(() => {
+            // Remove transition class
             island.classList.remove("transition");
         }, 500);
     },
