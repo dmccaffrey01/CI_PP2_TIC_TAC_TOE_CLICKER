@@ -66,10 +66,6 @@ var game = {
         setTimeout(() => {
             // Check if 10 monsters are dead
             if (this.monsterCount >= 9) {
-                
-                // Add coins
-                this.addCoins();
-
                 // Create new monster
                 this.newMonster();
     
@@ -82,10 +78,6 @@ var game = {
                 // 10 monsters are dead time to level up
                 this.levelUp();
             } else if (this.isBossRound) {
-                
-                // Add coins
-                this.addCoins();
-
                 // Boss killed time to level up
                 this.levelUp();
 
@@ -99,12 +91,8 @@ var game = {
                 display.updateMonsterCount();
 
             } else {
-                // Add coins
-                this.addCoins();
-                
                 // Create new monster
                 this.newMonster();
-
             }
         }, 300);
     },
@@ -199,7 +187,7 @@ var game = {
      */
     addCoins: function() {
         // Add coins to get to coins
-        this.coins += this.coinsToGet;
+        this.coins += display.coinsToGet;
 
         // Update the display
         display.updateCoins();
@@ -679,6 +667,9 @@ var display = {
 
             // Add to monster clicker
             monsterClicker.appendChild(number);
+
+            // Add coins
+            game.addCoins();
 
             // Slowely rise the number to top of screen
             let movementInterval = window.setInterval(() => {
