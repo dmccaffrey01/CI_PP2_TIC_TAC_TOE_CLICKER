@@ -4,18 +4,18 @@
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
     monstersPerLevel: 3,
-    level: 4,
+    level: 1,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
     coinsToGet: 10,
     isMonsterDead: false,
-    newMonsterDelay: 0,
+    newMonsterDelay: 800,
     time: 0,
     interval: null,
 
@@ -215,9 +215,9 @@ var game = {
         // Set the coins to get
         let coinsTG = this.coinsToGet;
 
-        while(amount <= 10 && coinsTG >= 5) {
+        while(amount <= 15 && coinsTG >= 10) {
             // Take 5 coins away
-            coinsTG -= 5;
+            coinsTG -= 10;
             // Create a coin to display
             display.createCoin();
 
@@ -366,7 +366,7 @@ var display = {
         this.createNewMonster();
 
         // Start clicker hover animation
-        this.animationOn = false;
+        this.animationOn = true;
         this.clickerHoverAnimation();
     },
 
