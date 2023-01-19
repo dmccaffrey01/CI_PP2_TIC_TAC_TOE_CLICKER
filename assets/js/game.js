@@ -15,6 +15,17 @@ var game = {
     coins: 0,
     coinsToGet: 10,
     isMonsterDead: false,
+    newMonsterDelay: 0,
+    time: 0,
+    interval: null,
+
+    /**
+     * Start the game
+     */
+    startGame: function() {
+        // Start timer
+        this.startTimer();
+    },
 
     /**
      * Deal damage to monster HP
@@ -124,7 +135,7 @@ var game = {
         // Set isMonsterDead to true
         setTimeout(() => {
             this.isMonsterDead = false;
-        }, 0);
+        }, this.newMonsterDelay);
     },
 
     /**
@@ -216,6 +227,43 @@ var game = {
 
         // Set coin display amount
         display.coinAmount = amount;
+    },
+
+    /**
+     * Update the timer
+     */
+    timer: function() {
+        // Increment time
+        this.time++;
+
+        // Format our time
+        let hrs = Math.floor(this.time / 3600);
+        let mins = Math.floor((this.time - (hrs * 3600)) / 60);
+        let secs = this.time % 60;
+
+        // Add 0 to front
+        if (secs < 10) secs = "0" + secs;
+        if (mins < 10) mins = "0" + mins;
+        if (hrs < 10) hrs = "0" + hrs;
+
+        // Display our time
+        display.updateTimer(secs, mins, hrs);
+    },
+
+    /**
+     * Start the timer
+     */
+    startTimer: function() {
+        // If already started return
+        if (this.interval) {
+            return
+        }
+        
+        // Create interval for timer
+        this.interval = setInterval(() => {
+            this.timer();
+            console.log(this.time);
+        }, 1000);
     }
 }
 
@@ -311,6 +359,7 @@ var display = {
         this.updateMonsterHP();
         this.updatePower();
         this.updateCoins();
+        this.updateTimer("00", "00", "00");
 
         // Create new island and monster
         this.newIsland();
@@ -336,18 +385,18 @@ var display = {
             // If animation off clear interval
             if (!this.animationOn) {
                 clearInterval(animationInterval);
-            }
-            
-            // Create random number between 5 and 15
-            let randomTranslate = randomNumber(8, 14);
-            
-            // Check whether to translate up or down
-            if (upOrDown == "up") {
-                clicker.style.transform = `translateY(${randomTranslate}px)`;
-                upOrDown = "down";
             } else {
-                clicker.style.transform = `translateY(${-randomTranslate}px)`;
-                upOrDown = "up";
+                // Create random number between 5 and 15
+                let randomTranslate = randomNumber(8, 14);
+                
+                // Check whether to translate up or down
+                if (upOrDown == "up") {
+                    clicker.style.transform = `translateY(${randomTranslate}px)`;
+                    upOrDown = "down";
+                } else {
+                    clicker.style.transform = `translateY(${-randomTranslate}px)`;
+                    upOrDown = "up";
+                }
             }
         }, 1000)
     },
@@ -748,6 +797,17 @@ var display = {
                 number.remove();
             })
         }
+    },
+
+    /**
+     * Update the timer
+     */
+    updateTimer: function(secs, mins, hrs) {
+        // Get timer
+        let timer = document.querySelector(".timer");
+
+        // Set text
+        timer.textContent = `${hrs}:${mins}:${secs}`;
     }
 }
 
@@ -759,11 +819,11 @@ const playBtn = document.querySelector(".play-btn");
 
 // Add event listener for click
 playBtn.addEventListener("click", () => {
-    // Start game functions
-    // game.startGame();
-
     // Start display functions
     display.startGame();
+
+    // Start game functions
+    game.startGame();
 })
 
 /**
