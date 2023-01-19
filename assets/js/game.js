@@ -309,7 +309,7 @@ var display = {
         this.createNewMonster();
 
         // Start clicker hover animation
-        this.animationOn = true
+        this.animationOn = false;
         this.clickerHoverAnimation();
     },
 
