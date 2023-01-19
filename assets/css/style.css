@@ -804,7 +804,7 @@ footer {
     outline-offset: -2px;
 }
 
-.menu-content-container {
+.upgrade-menu-content-container {
     width: calc(100% - 40px);
     height: 100%;
     margin: 0 0 0 40px;
@@ -893,7 +893,7 @@ footer {
     font-size: 1.5rem;
 }
 
-.transition-div {
+.upgrade-transition-div {
     width: 0;
     height: 100%;
     transition: all 0.3s ease-in-out;
@@ -907,7 +907,7 @@ footer {
     border-radius: 5px 25px 25px 5px;
 }
 
-.transition-div.active {
+.upgrade-transition-div.active {
     width: calc(100% - 40px);
 }
 
@@ -942,7 +942,7 @@ footer {
         border-radius: 5px 18px 18px 5px;
     }
     
-    .transition-div.active {
+    .upgrade-transition-div.active {
         width: calc(100% - 30px);
     }
     
@@ -1006,7 +1006,7 @@ footer {
         border-radius: 3px 12px 12px 3px;
     }
     
-    .transition-div.active {
+    .upgrade-transition-div.active {
         width: calc(100% - 20px);
     }
     
@@ -1114,7 +1114,7 @@ footer {
     outline-offset: -2px;
 }
 
-.save-content-container {
+.save-menu-content-container {
     width: calc(100% - 40px);
     height: 100%;
     margin: 0 0 0 40px;
@@ -1125,6 +1125,12 @@ footer {
     gap: 20px;
     overflow: hidden;
     z-index: 3;
+}
+
+.save-transition-div {
+    width: 0;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
 }
 
 .save-menu.active {
@@ -1141,6 +1147,10 @@ footer {
 
 .save-menu-btn-icon.active:hover {
     margin: 0;
+}
+
+.save-transition-div.active {
+    width: calc(100% - 40px);
 }
 
 .timer-container {

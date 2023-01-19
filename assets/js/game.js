@@ -834,17 +834,17 @@ function randomNumber(min, max, lastRandomNumber) {
 // Define variables
 const upgradeMenuBtn = document.querySelector(".upgrade-menu-btn");
 const upgradeMenu = document.querySelector(".upgrade-menu");
-const transitionDiv = document.querySelector(".transition-div");
+const upgradeTransitionDiv = document.querySelector(".upgrade-transition-div");
 const upgradeMenuBtnIcon = document.querySelector(".upgrade-menu-btn-icon");
 const coinsContainer = document.querySelector(".coins-container");
-const menuContentContainer = document.querySelector(".menu-content-container");
+const upgradeMenuContentContainer = document.querySelector(".upgrade-menu-content-container");
 const upgradeArea = document.querySelector(".upgrade-area");
 
 upgradeMenuBtn.addEventListener("click", () => {
     // Apply active class
     upgradeMenuBtn.classList.toggle("active");
     upgradeMenu.classList.toggle("active");
-    transitionDiv.classList.toggle("active");
+    upgradeTransitionDiv.classList.toggle("active");
     upgradeMenuBtnIcon.classList.toggle("active");
     coinsContainer.classList.toggle("active");
 
@@ -856,9 +856,44 @@ upgradeMenuBtn.addEventListener("click", () => {
 
     // Move coins container
     if (upgradeMenu.classList.contains("active")) {
-        menuContentContainer.insertBefore(coinsContainer, menuContentContainer.firstChild);
+        upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
     } else {
         upgradeArea.appendChild(coinsContainer);
+    }
+})
+
+/**
+ * Open and Close Save Menu
+ */
+
+// Define variables
+const saveMenuBtn = document.querySelector(".save-menu-btn");
+const saveMenu = document.querySelector(".save-menu");
+const saveTransitionDiv = document.querySelector(".save-transition-div");
+const saveMenuBtnIcon = document.querySelector(".save-menu-btn-icon");
+const timerContainer = document.querySelector(".timer-container");
+const saveMenuContentContainer = document.querySelector(".save-menu-content-container");
+const saveArea = document.querySelector(".save-area");
+
+saveMenuBtn.addEventListener("click", () => {
+    // Apply active class
+    saveMenuBtn.classList.toggle("active");
+    saveMenu.classList.toggle("active");
+    saveTransitionDiv.classList.toggle("active");
+    saveMenuBtnIcon.classList.toggle("active");
+    timerContainer.classList.toggle("active");
+
+    // Remove and replace icon
+    setTimeout(() => {
+        saveMenuBtnIcon.classList.toggle("fa-chevron-left");
+        saveMenuBtnIcon.classList.toggle("fa-chevron-right");
+    }, 150);
+
+    // Move coins container
+    if (saveMenu.classList.contains("active")) {
+        saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
+    } else {
+        saveArea.appendChild(timerContainer);
     }
 })
 
