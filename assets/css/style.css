@@ -803,11 +803,22 @@ footer {
     flex-direction: column;
     gap: 20px;
     overflow: hidden;
+    z-index: 3;
 }
 
 .coins-container {
    position: absolute;
-   top: 20%;
+   height: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   top: calc(50% - 50px);
+}
+
+.coins-container.active {
+    position: relative;
+    
+    top: 0;
 }
 
 .coins {

@@ -774,6 +774,9 @@ const upgradeMenuBtn = document.querySelector(".upgrade-menu-btn");
 const upgradeMenu = document.querySelector(".upgrade-menu");
 const transitionDiv = document.querySelector(".transition-div");
 const upgradeMenuBtnIcon = document.querySelector(".upgrade-menu-btn-icon");
+const coinsContainer = document.querySelector(".coins-container");
+const menuContentContainer = document.querySelector(".menu-content-container");
+const upgradeArea = document.querySelector(".upgrade-area");
 
 upgradeMenuBtn.addEventListener("click", () => {
     // Apply active class
@@ -781,12 +784,20 @@ upgradeMenuBtn.addEventListener("click", () => {
     upgradeMenu.classList.toggle("active");
     transitionDiv.classList.toggle("active");
     upgradeMenuBtnIcon.classList.toggle("active");
+    coinsContainer.classList.toggle("active");
 
     // Remove and replace icon
     setTimeout(() => {
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-left");
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
+
+    // Move coins container
+    if (upgradeMenu.classList.contains("active")) {
+        menuContentContainer.insertBefore(coinsContainer, menuContentContainer.firstChild);
+    } else {
+        upgradeArea.appendChild(coinsContainer);
+    }
 })
 
 
