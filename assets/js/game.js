@@ -290,6 +290,21 @@ var display = {
     coinsToGet: 10,
 
     /**
+     * Start the game
+     */
+    startGame: function() {
+        // Get start section
+        let startScreen = document.querySelector(".start-screen");
+        
+        // Get clicker section
+        let clickerSection = document.querySelector(".clicker-section");
+
+        // Add play class
+        startScreen.classList.add("play");
+        clickerSection.classList.add("play");
+    },
+
+    /**
      * Update Monster HP
      */
     updateMonsterHP: function() {
@@ -689,11 +704,27 @@ var display = {
 }
 
 /**
+ * Start the game when play btn is clicked
+ */
+// Define playBtn var
+const playBtn = document.querySelector(".play-btn");
+
+// Add event listener for click
+playBtn.addEventListener("click", () => {
+    // Start game functions
+    // game.startGame();
+
+    // Start display functions
+    display.startGame();
+})
+
+/**
  * Update game when monster is clicked
  */
 // Define monster variable
 const monsterClicker = document.querySelector(".monster-clicker");
 
+// Add event listener for click
 monsterClicker.addEventListener("click", () => {
     // Create number on click
     display.createNumberOnClick(event);

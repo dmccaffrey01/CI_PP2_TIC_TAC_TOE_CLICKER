@@ -304,6 +304,9 @@ footer {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 75px);
+}
+
+.start-screen.play {
     display: none;
 }
 
@@ -313,6 +316,7 @@ footer {
     background-color: var(--MAIN-DARK);
     padding: 20px;
     border-radius: 20px;
+    border: 2px solid white;
 }
 
 .start-btns-container {
@@ -335,6 +339,8 @@ footer {
 
 .start-btn:hover {
     color: white;
+    outline: 2px solid white;
+    outline-offset: -2px;
 }
 
 /* Media Query for tablets screen size and bellow */
@@ -356,8 +362,12 @@ footer {
 
 .clicker-section {
     height: calc(100vh - 75px);
-    display: flex;
     justify-content: center;
+    display: none;
+}
+
+.clicker-section.play {
+    display: flex;
 }
 
 .content-wrapper {
