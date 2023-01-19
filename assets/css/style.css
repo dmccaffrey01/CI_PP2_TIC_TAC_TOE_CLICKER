@@ -608,7 +608,7 @@ footer {
 }
 
 .coin-number {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: #66ff00;
     position: absolute;
 }
@@ -631,7 +631,7 @@ footer {
 
 .monster-clicker > .number {
     z-index: 99;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: white;
     position: absolute;
 }
@@ -641,7 +641,6 @@ footer {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-    user-drag: none;
     -webkit-user-drag: none;
 }
 

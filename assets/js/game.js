@@ -8,7 +8,8 @@ var game = {
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
-    level: 1,
+    monstersPerLevel: 3,
+    level: 4,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
@@ -65,7 +66,7 @@ var game = {
         // Wait before creating new monster
         setTimeout(() => {
             // Check if 10 monsters are dead
-            if (this.monsterCount >= 9) {
+            if (this.monsterCount >= this.monstersPerLevel - 1) {
                 // Create new monster
                 this.newMonster();
     
@@ -304,6 +305,13 @@ var display = {
         startScreen.classList.add("play");
         clickerSection.classList.add("play");
 
+        // Update displays
+        this.updateLevel();
+        this.updateMonsterCount();
+        this.updateMonsterHP();
+        this.updatePower();
+        this.updateCoins();
+
         // Create new island and monster
         this.newIsland();
         this.createNewMonster();
@@ -363,7 +371,7 @@ var display = {
      * Update Monster Count
      */
     updateMonsterCount: function() {
-        document.getElementById("monster-count").innerHTML = game.monsterCount + "/10";
+        document.getElementById("monster-count").innerHTML = `${game.monsterCount}/${game.monstersPerLevel}`;
     },
 
     /**
