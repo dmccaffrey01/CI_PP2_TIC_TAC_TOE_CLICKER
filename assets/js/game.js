@@ -288,6 +288,7 @@ var display = {
     coinAmount: 0,
     coinsPickedUp: 0,
     coinsToGet: 10,
+    animationOn: false,
 
     /**
      * Start the game
@@ -302,6 +303,45 @@ var display = {
         // Add play class
         startScreen.classList.add("play");
         clickerSection.classList.add("play");
+
+        // Create new island and monster
+        this.newIsland();
+        this.createNewMonster();
+
+        // Start clicker hover animation
+        this.animationOn = true
+        this.clickerHoverAnimation();
+    },
+
+    /**
+     * Make the clicker hover
+     */
+    clickerHoverAnimation: function() {
+        // Get the clicker
+        let clicker = document.querySelector(".monster-clicker");
+
+        // Define upDown var
+        let upOrDown = "up";
+
+        // Set animation interval
+        let animationInterval = window.setInterval(() => {
+            // If animation off clear interval
+            if (!this.animationOn) {
+                clearInterval(animationInterval);
+            }
+            
+            // Create random number between 5 and 15
+            let randomTranslate = randomNumber(8, 14);
+            
+            // Check whether to translate up or down
+            if (upOrDown == "up") {
+                clicker.style.transform = `translateY(${randomTranslate}px)`;
+                upOrDown = "down";
+            } else {
+                clicker.style.transform = `translateY(${-randomTranslate}px)`;
+                upOrDown = "up";
+            }
+        }, 1000)
     },
 
     /**

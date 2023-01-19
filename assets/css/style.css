@@ -486,6 +486,7 @@ footer {
     position: relative;
     border-radius: 45%;
     cursor: pointer;
+    transition: transform 1s linear;
 }
 
 .island-bg {
