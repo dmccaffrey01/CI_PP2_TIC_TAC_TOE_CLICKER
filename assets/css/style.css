@@ -852,10 +852,11 @@ footer {
     flex-direction: column;
     color: white;
     cursor: pointer;
+    border: 2px solid white;
 }
 
 .upgrade-btn:hover {
-    border: 2px solid white;
+    border: 2px solid var(--MAIN-LIGHT);
 }
 
 .upgrade-name-and-cost {
@@ -867,6 +868,7 @@ footer {
 
 .upgrade-name {
     font-size: 1.3rem;
+    border-bottom: 2px solid white;
 }
 
 .upgrade-cost-text {
@@ -904,7 +906,7 @@ footer {
 }
 
 .upgrade-menu-btn.active {
-    border-radius: 5px 25px 25px 5px;
+    border-radius: 8px 25px 25px 8px;
 }
 
 .upgrade-transition-div.active {
@@ -1070,7 +1072,8 @@ footer {
     width: 100%;
     height: 700px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     align-items: center;
     position: relative;
     transition: all 0.6s ease-in-out;
@@ -1117,7 +1120,7 @@ footer {
 .save-menu-content-container {
     width: calc(100% - 40px);
     height: 100%;
-    margin: 0 0 0 40px;
+    margin: 0 40px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1138,11 +1141,11 @@ footer {
 }
 
 .save-menu-btn.active {
-    border-radius: 5px 25px 25px 5px;
+    border-radius: 25px 8px 8px 25px;
 }
 
 .save-menu-btn-icon.active {
-    margin: 0 10px 0 0;
+    margin: 0 0 0 10px;
 }
 
 .save-menu-btn-icon.active:hover {
@@ -1153,6 +1156,30 @@ footer {
     width: calc(100% - 40px);
 }
 
+.menu-btn {
+    width: 120px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: var(--DARK-BLUE);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.menu-btn p {
+    border-bottom: 2px solid white;
+}
+
+.menu-btn:hover {
+    border: 2px solid var(--MAIN-LIGHT);
+}
+
 .timer-container {
    position: absolute;
    height: 100px;
@@ -1160,7 +1187,9 @@ footer {
    justify-content: center;
    align-items: center;
    top: calc(50% - 50px);
+   z-index: 1;
 }
+
 
 .timer-container.active {
     position: relative;
