@@ -622,11 +622,20 @@ footer {
     border-radius: 5px;
     background-color: var(--DARK-BLUE);
     border: 2px solid white;
+    position: relative;
+}
+
+.power-container > .number {
+    z-index: 99;
+    font-size: 1.5rem;
+    color: white;
+    position: absolute;
 }
 
 .power-count {
     font-size: 1.5rem;
     color: white;
+    position: relative;
 }
 
 .monster-clicker > .number {
@@ -1185,6 +1194,7 @@ footer {
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: column;
    top: calc(50% - 50px);
    z-index: 1;
 }
@@ -1198,6 +1208,7 @@ footer {
 .timer {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .timer-text {

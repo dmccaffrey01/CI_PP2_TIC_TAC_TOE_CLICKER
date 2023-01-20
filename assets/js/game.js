@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 1,
+    power: 10,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -13,9 +13,9 @@ var game = {
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
-    coinsToGet: 10,
+    coinsToGet: 500,
     isMonsterDead: false,
-    newMonsterDelay: 800,
+    newMonsterDelay: 0,
     time: 0,
     interval: null,
 
@@ -262,7 +262,6 @@ var game = {
         // Create interval for timer
         this.interval = setInterval(() => {
             this.timer();
-            console.log(this.time);
         }, 1000);
     }
 }
@@ -313,7 +312,7 @@ var upgrades = {
             display.updateCoins();
 
             // Update power
-            display.updatePower();
+            display.updatePower(this.powerIncrease[index]);
 
             // Update upgrades menu
             display.updateUpgradesMenu();
@@ -481,8 +480,40 @@ var display = {
     /**
      * Update Power
      */
-    updatePower: function() {
-        document.querySelector(".power").innerHTML = game.power;
+    updatePower: function(addedPower) {
+        // Change power
+        let power = document.querySelector(".power");
+        power.innerHTML = game.power;
+
+        if (arguments.length >= 1) {
+            // Create number of addedPower
+            let number = document.createElement("div");
+
+            // Add class to number
+            number.classList.add("number", "unselectable");
+            
+            // Add text
+            number.textContent = "+" + addedPower;
+
+            // Get power container
+            let powerContainer = document.querySelector(".power-container");
+
+            // Get power position
+            let powerOffset = power.getBoundingClientRect();
+            let powerContainerOffset = powerContainer.getBoundingClientRect();
+            let positionX = powerOffset.left - powerContainerOffset.left;
+            
+            // Add width to number position
+            number.style.left = positionX + 25 + "px";
+            
+            // Append number to container
+            powerContainer.appendChild(number);
+
+            // Slowly fade out
+            fadeOut(number, 3000, 0.2, function() {
+                number.remove();
+            })
+        }
     },
 
     /**
