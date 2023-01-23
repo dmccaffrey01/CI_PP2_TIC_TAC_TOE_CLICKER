@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 5,
+    power: 10000,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -287,10 +287,11 @@ var upgrades = {
         10
     ],
     cost: [
-        50,
-        250,
-        500
+        1,
+        2,
+        3
     ],
+    buyUpgradeDelay: false,
 
     /**
      * Purchase the upgrade
@@ -298,6 +299,11 @@ var upgrades = {
      */
 
     purchase: function(index) {
+        // Return if delay is active
+        if (this.buyUpgradeDelay) {
+            return
+        }
+        
         // Check if player has enough coins
         if (game.coins >= this.cost[index]) {
             // Take away cost from coins
@@ -319,7 +325,10 @@ var upgrades = {
             display.updatePower(this.powerIncrease[index]);
 
             // Update upgrades menu
-            display.updateUpgradesMenu();
+            display.updateUpgradesMenu(index);
+
+            // Change buy upgrades delay
+            this.buyUpgradeDelay = true;
         }
     }
 }
@@ -490,32 +499,39 @@ var display = {
         power.innerHTML = game.power;
 
         if (arguments.length >= 1) {
-            // Create number of addedPower
+            // Create number of addedPower after 0.1s
             let number = document.createElement("div");
-
-            // Add class to number
-            number.classList.add("number", "unselectable");
             
+            // Add class to number
+             number.classList.add("power-number", "unselectable");
+                
             // Add text
             number.textContent = "+" + addedPower;
 
             // Get power container
+            let powerNumber = document.querySelector(".power-count-number")
             let powerContainer = document.querySelector(".power-container");
 
             // Get power position
-            let powerOffset = power.getBoundingClientRect();
+            let powerOffset = powerNumber.getBoundingClientRect();
             let powerContainerOffset = powerContainer.getBoundingClientRect();
-            let positionX = powerOffset.left - powerContainerOffset.left;
-            
+            let positionX = (powerOffset.left - powerContainerOffset.left) + powerNumber.offsetWidth;
+            let positionY = (powerOffset.top - powerContainerOffset.top);
+             
             // Add width to number position
-            number.style.left = positionX + 25 + "px";
-            
+            number.style.left = positionX + "px";
+            number.style.top = positionY + "px";
+             
             // Append number to container
             powerContainer.appendChild(number);
 
             // Slowly fade out
-            fadeOut(number, 3000, 0.2, function() {
+            fadeOut(number, 1000, 0.2, function() {
+                // Remove number
                 number.remove();
+
+                // Change buy upgrade delay
+                upgrades.buyUpgradeDelay = false;
             })
         }
     },
@@ -524,7 +540,7 @@ var display = {
      * Update Upgrades Menu
      * Updates counts and costs
      */
-    updateUpgradesMenu: function() {
+    updateUpgradesMenu: function(index) {
         // Update counts and costs
         let counts = document.querySelectorAll(".upgrade-count");
         let costs = document.querySelectorAll(".upgrade-cost");
@@ -532,9 +548,15 @@ var display = {
             counts[i].innerHTML = upgrades.count[i];
             costs[i].innerHTML = upgrades.cost[i];
         }
+
+        if (arguments.length >= 1) {
+            // Create numbers
+            this.createCountNumber(index);
+
+            // Change name bar
+            this.updateUpgradeBuyBar(index);
+        }
         
-        // Create numbers
-        this.createCountNumber();
     },
 
     /**
@@ -554,6 +576,46 @@ var display = {
 
         // Append number to count
         let count;
+    },
+
+    /**
+     * Update the upgrade name bar
+     */
+    updateUpgradeBuyBar: function(index) {
+        // Return if delay is active
+        if (this.buyUpgradeDelay) {
+            return;
+        }
+        
+        // Get upgrade name pseudo
+        let upgradeNameBars = document.querySelectorAll(".upgrade-buy-bar");
+        let upgradeNameBar = upgradeNameBars[index];
+
+        // Get max width
+        let maxWidth = upgradeNameBar.offsetWidth;
+
+        // Set width to be 0
+        upgradeNameBar.style.width = "0px";
+        let width = 0;
+
+        // Set interval to increase bar for 900ms
+        let upgradeInterval = window.setInterval(() => {
+            // Clear interval when bar is 100%
+            if (width >= maxWidth - ((10/900) * maxWidth)) {
+                clearInterval(upgradeInterval);
+            }
+
+            // Change width by .005%
+            width += (10/900) * maxWidth;
+
+            // Set width 
+            upgradeNameBar.style.width = width + "px";
+
+            // Set final width
+            if (width >= maxWidth) {
+                upgradeNameBar.style.width = maxWidth + "px";
+            }
+        }, 10)
     },
 
     /**
@@ -949,7 +1011,7 @@ function fadeOut(element, duration, finalOpacity, callback) {
     let elementFadingInterval = window.setInterval(() => {
         // Take away from opacity at 50ms interval
         opactiy -= (1 - finalOpacity)/(duration / 50);
-        
+
         // Clear when reaches final opacity
         if (opactiy <= finalOpacity) {
             clearInterval(elementFadingInterval);
