@@ -592,12 +592,8 @@ footer {
     position: absolute;
     left: 60px;
     top: 0px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     z-index: 98;
-}
-
-.monster-clicker:active > .monster {
-    transform: scale(0.95);
 }
 
 .coin {

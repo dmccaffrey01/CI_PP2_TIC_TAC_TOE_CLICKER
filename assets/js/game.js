@@ -41,8 +41,11 @@ var game = {
         // Take amount from monsterHP
         this.monsterHP -= amount;
 
-        // Call update Monster HP function
+        // Update Monster HP function
         display.updateMonsterHP();
+
+        // Animate monster to take damage
+        display.dealDamageAnimation();
 
         // Check if Monster HP is below 0
         this.checkMonsterHP();
@@ -653,6 +656,22 @@ var display = {
             // Set new island image src
             island.src = newIslandSrc;
         }, 250)
+    },
+
+    /**
+     * Animate deal damage to monster
+     */
+    dealDamageAnimation: function() {
+        // Get monster
+        let monster = document.querySelector(".monster");
+
+        // Change scale of monster
+        monster.style.transform = "scale(0.80)";
+
+        // Change scale to normal after 0.1s
+        setTimeout(() => {
+            monster.style.transform = "scale(1)";
+        }, 100);
     },
 
     /**
