@@ -1010,15 +1010,11 @@ function saveGame() {
         level: game.level,
         isBossRound: game.isBossRound,
         coins: game.coins,
-        gameCoinsToGet: game.coinsToGet,
+        coinsToGet: game.coinsToGet,
         isMonsterDead: game.isMonsterDead,
         newMonsterDelay: game.newMonsterDelay,
         time: game.time,
         interval: game.interval,
-        coinAmount: display.coinAmount,
-        coinsPickedUp: display.coinsPickedUp,
-        displayCoinsToGet: display.coinsToGet,
-        animationOn: display.animationOn,
         count: upgrades.count,
         powerIncrease: upgrades.powerIncrease,
         cost: upgrades.cost
@@ -1028,7 +1024,46 @@ function saveGame() {
     localStorage.setItem("gameSave", JSON.stringify(gameSave));
 }
 
+/**
+ * Load game save
+ */
+function loadGame() {
+    // Convert game save from string to vars
+    var savedGame = JSON.parse(localStorage.getItem("gameSave"));
 
+    // Set game vars to saved game vars
+    if (localStorage.getItem("gameSave") !== null) {
+        if (typeof savedGame.power !== "undefined") game.power = savedGame.power;
+        if (typeof savedGame.monsterHP !== "undefined") game.monsterHP = savedGame.monsterHP;
+        if (typeof savedGame.monsterHealthMax !== "undefined") game.monsterHealthMax = savedGame.monsterHealthMax;
+        if (typeof savedGame.monsterCount !== "undefined") game.monsterCount = savedGame.monsterCount;
+        if (typeof savedGame.monstersPerLevel !== "undefined") game.monstersPerLevel = savedGame.monstersPerLevel;
+        if (typeof savedGame.level !== "undefined") game.level = savedGame.level;
+        if (typeof savedGame.isBossRound !== "undefined") game.isBossRound = savedGame.isBossRound;
+        if (typeof savedGame.coins !== "undefined") game.coins = savedGame.coins;
+        if (typeof savedGame.coinsToGet !== "undefined") game.coinsToGet = savedGame.coinsToGet;
+        if (typeof savedGame.isMonsterDead !== "undefined") game.isMonsterDead = savedGame.isMonsterDead;
+        if (typeof savedGame.newMonsterDelay !== "undefined") game.newMonsterDelay = savedGame.newMonsterDelay;
+        if (typeof savedGame.time !== "undefined") game.time = savedGame.time;
+        if (typeof savedGame.interval !== "undefined") game.interval = savedGame.interval;
+        if (typeof savedGame.count !== "undefined") {
+            for (i=0; i < savedGame.count.length; i++) {
+                upgrades.count[i] = savedGame.count[i];
+            }
+        };
+        if (typeof savedGame.powerIncrease !== "undefined") {
+            for (i=0; i < savedGame.powerIncrease.length; i++) {
+                upgrades.powerIncrease[i] = savedGame.powerIncrease[i];
+            }
+        };
+        if (typeof savedGame.cost !== "undefined") {
+            for (i=0; i < savedGame.cost.length; i++) {
+                upgrades.cost[i] = savedGame.cost[i];
+            }
+        };
+        
+    }
+}
 
 
 
