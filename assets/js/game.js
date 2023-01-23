@@ -996,6 +996,38 @@ saveMenuBtn.addEventListener("click", () => {
     }
 })
 
+/**
+ * Save the game
+ */
+function saveGame() {
+    // Create variables
+    var gameSave = {
+        power: game.power,
+        monsterHP: game.monsterHP,
+        monsterHealthMax: game.monsterHealthMax,
+        monsterCount: game.monsterCount,
+        monstersPerLevel: game.monstersPerLevel,
+        level: game.level,
+        isBossRound: game.isBossRound,
+        coins: game.coins,
+        gameCoinsToGet: game.coinsToGet,
+        isMonsterDead: game.isMonsterDead,
+        newMonsterDelay: game.newMonsterDelay,
+        time: game.time,
+        interval: game.interval,
+        coinAmount: display.coinAmount,
+        coinsPickedUp: display.coinsPickedUp,
+        displayCoinsToGet: display.coinsToGet,
+        animationOn: display.animationOn,
+        count: upgrades.count,
+        powerIncrease: upgrades.powerIncrease,
+        cost: upgrades.cost
+    };
+
+    // Store variables in local storage as string
+    localStorage.setItem("gameSave", JSON.stringify(gameSave));
+}
+
 
 
 
