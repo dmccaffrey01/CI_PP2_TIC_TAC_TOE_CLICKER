@@ -14,6 +14,7 @@ var game = {
     isBossRound: false,
     coins: 0,
     coinsToGet: 500,
+    coinsAdded: 0,
     isMonsterDead: false,
     newMonsterDelay: 0,
     time: 0,
@@ -149,7 +150,7 @@ var game = {
         display.updateLevel();
 
         // Update coins to get
-        this.coinsToGet = this.level * 10;
+        this.coinsToGet += (this.level - 1) * 10;
 
         // Checks if player is going on to a boss round
         if (this.bossRounds.includes(this.level)) {
@@ -199,7 +200,7 @@ var game = {
      */
     addCoins: function() {
         // Add coins to get to coins
-        this.coins += display.coinsToGet;
+        this.coins += game.coinsAdded;
 
         // Update the display
         display.updateCoins();
@@ -335,7 +336,6 @@ var display = {
     coinImages: ["coin-a.png", "coin-b.png", "coin-c.png", "coin-d.png", "coin-e.png", "coin-f.png"],
     coinAmount: 0,
     coinsPickedUp: 0,
-    coinsToGet: 10,
     animationOn: false,
 
     /**
@@ -359,6 +359,7 @@ var display = {
         this.updatePower();
         this.updateCoins();
         this.updateTimer("00", "00", "00");
+        this.updateUpgradesMenu();
 
         // Create new island and monster
         this.newIsland();
@@ -432,8 +433,8 @@ var display = {
         // Wait until coins from previous level has been collected
         // Then change coins to get
         setTimeout(() => {
-            this.coinsToGet = game.coinsToGet;
-        },4000);
+            game.coinsAdded = game.coinsToGet;
+        }, 4050);
     },
 
     /**
@@ -528,6 +529,28 @@ var display = {
             counts[i].innerHTML = upgrades.count[i];
             costs[i].innerHTML = upgrades.cost[i];
         }
+        
+        // Create numbers
+        this.createCountNumber();
+    },
+
+    /**
+     * Create numbers when upgrade is bought
+     */
+    createCountNumber: function() {
+        // Create count number
+
+        // Create element
+        let number = document.createElement("div");
+
+        // Add text content
+        number.textContent = "+1";
+
+        // Add class styleing
+        number.classList.add("number", "unselectable");
+
+        // Append number to count
+        let count;
     },
 
     /**
@@ -802,7 +825,7 @@ var display = {
             number.classList.add("coin-number");
 
             // Add text
-            number.textContent = "+" + display.coinsToGet;
+            number.textContent = "+" + game.coinsAdded;
 
             // Set position of number
             number.style.left = position.x + "px";
@@ -988,6 +1011,20 @@ upgradeMenuBtn.addEventListener("click", () => {
 })
 
 /**
+ * Purchase upgrade when upgarde button is clicked
+ */
+// Get btns
+const upgradeBtns = document.querySelectorAll(".upgrade-btn");
+
+// Add event listeners to each
+upgradeBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+        // Purchase upgrade
+        upgrades.purchase(index);
+    });
+});
+
+/**
  * Open and Close Save Menu
  */
 
@@ -1069,6 +1106,7 @@ function saveGame() {
         isBossRound: game.isBossRound,
         coins: game.coins,
         coinsToGet: game.coinsToGet,
+        coinsAdded: game.coinsAdded,
         isMonsterDead: game.isMonsterDead,
         newMonsterDelay: game.newMonsterDelay,
         time: game.time,
@@ -1109,6 +1147,7 @@ function loadGame() {
         if (typeof savedGame.isBossRound !== "undefined") game.isBossRound = savedGame.isBossRound;
         if (typeof savedGame.coins !== "undefined") game.coins = savedGame.coins;
         if (typeof savedGame.coinsToGet !== "undefined") game.coinsToGet = savedGame.coinsToGet;
+        if (typeof savedGame.coinsAdded !== "undefined") game.coinsAdded = savedGame.coinsAdded;
         if (typeof savedGame.isMonsterDead !== "undefined") game.isMonsterDead = savedGame.isMonsterDead;
         if (typeof savedGame.newMonsterDelay !== "undefined") game.newMonsterDelay = savedGame.newMonsterDelay;
         if (typeof savedGame.time !== "undefined") game.time = savedGame.time;
