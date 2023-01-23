@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 10,
+    power: 5,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -1054,7 +1054,6 @@ function saveGame() {
         isMonsterDead: game.isMonsterDead,
         newMonsterDelay: game.newMonsterDelay,
         time: game.time,
-        interval: game.interval,
         count: upgrades.count,
         powerIncrease: upgrades.powerIncrease,
         cost: upgrades.cost
@@ -1104,6 +1103,31 @@ function loadGame() {
                 upgrades.cost[i] = savedGame.cost[i];
             }
         };
+    }
+}
+
+/**
+ * Save game when save game button is clicked
+ */
+
+// Define btn var
+const resetGameBtn = document.querySelector(".reset-game-btn");
+
+// Add listener for click
+resetGameBtn.addEventListener("click", () => {
+    // Save game function
+    resetGame();
+})
+
+/**
+ * Reset the game
+ */
+function resetGame() {
+    if (confirm("Are you sure you want to reset your game")) {
+        var gameSave = {}
+        localStorage.setItem("gameSave", JSON.stringify(gameSave));
+        location.reload();
+        loadGame();
     }
 }
 
