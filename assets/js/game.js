@@ -859,7 +859,7 @@ var display = {
         mainArea.appendChild(element);
 
         // Fade out slowly
-        fadeOut(element, 4000, 0.2, () => {
+        fadeOut(element, 3000, 0.2, () => {
             element.remove();
         })
     }
@@ -1037,6 +1037,24 @@ saveGameBtn.addEventListener("click", () => {
 })
 
 /**
+ * Save the game when ctrl + s is hit
+ */
+document.addEventListener("keydown", (event) => {
+    // Check if ctrl + s was hit
+    if (event.ctrlKey && event.which == 83) {
+        event.preventDefault();
+        saveGame();
+    }
+}, false);
+
+/**
+ * Save the game every 30 seconds
+ */
+setInterval (function() {
+    saveGame();
+}, 30000);
+
+/**
  * Save the game
  */
 function saveGame() {
@@ -1064,6 +1082,13 @@ function saveGame() {
 
     // Update display to show saved game
     display.saveGame();
+}
+
+/**
+ * Load game when window is reloaded
+ */
+window.onload = function() {
+    loadGame();
 }
 
 /**
