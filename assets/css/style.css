@@ -1180,6 +1180,13 @@ footer {
     border: 2px solid white;
 }
 
+.save-game-text {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 0;
+}
+
 .menu-btn p {
     border-bottom: 2px solid white;
 }

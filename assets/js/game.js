@@ -839,6 +839,29 @@ var display = {
 
         // Set text
         timer.textContent = `${hrs}:${mins}:${secs}`;
+    },
+
+    /**
+     * Display saved game
+     */
+    saveGame: function() {
+        // Create element
+        let element = document.createElement("div");
+
+        // Add text content
+        element.textContent = "Game Saved!";
+
+        // Add class styling
+        element.classList.add("save-game-text", "unselectable");
+
+        // Add element to main area
+        let mainArea = document.querySelector(".main-area");
+        mainArea.appendChild(element);
+
+        // Fade out slowly
+        fadeOut(element, 4000, 0.2, () => {
+            element.remove();
+        })
     }
 }
 
@@ -850,6 +873,9 @@ const playBtn = document.querySelector(".play-btn");
 
 // Add event listener for click
 playBtn.addEventListener("click", () => {
+    // Load the game
+    loadGame();
+    
     // Start display functions
     display.startGame();
 
@@ -974,6 +1000,7 @@ const timerContainer = document.querySelector(".timer-container");
 const saveMenuContentContainer = document.querySelector(".save-menu-content-container");
 const saveArea = document.querySelector(".save-area");
 
+// Add listener for click
 saveMenuBtn.addEventListener("click", () => {
     // Apply active class
     saveMenuBtn.classList.toggle("active");
@@ -994,6 +1021,19 @@ saveMenuBtn.addEventListener("click", () => {
     } else {
         saveArea.appendChild(timerContainer);
     }
+})
+
+/**
+ * Save game when save game button is clicked
+ */
+
+// Define btn var
+const saveGameBtn = document.querySelector(".save-game-btn");
+
+// Add listener for click
+saveGameBtn.addEventListener("click", () => {
+    // Save game function
+    saveGame();
 })
 
 /**
@@ -1022,6 +1062,9 @@ function saveGame() {
 
     // Store variables in local storage as string
     localStorage.setItem("gameSave", JSON.stringify(gameSave));
+
+    // Update display to show saved game
+    display.saveGame();
 }
 
 /**
@@ -1061,7 +1104,6 @@ function loadGame() {
                 upgrades.cost[i] = savedGame.cost[i];
             }
         };
-        
     }
 }
 
