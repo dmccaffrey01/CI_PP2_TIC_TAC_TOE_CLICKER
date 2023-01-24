@@ -379,10 +379,6 @@ footer {
     display: flex;
 }
 
-.timer-area {
-    width: 25%;
-}
-
 /* Main Area */
 
 .main-area {
@@ -655,6 +651,10 @@ footer {
 
 /* Media query for small laptop and tablet */
 @media (max-width:1280px) {
+    .main-area {
+        width: 40%;
+    }
+    
     .level-container {
         width: 150px;
         height: 75px;
@@ -881,6 +881,8 @@ footer {
     z-index: 3;
 }
 
+/* Coins */
+
 .coins-container {
    position: absolute;
    height: 100px;
@@ -911,6 +913,8 @@ footer {
     color: var(--MINUS-RED);
     position: absolute;
 }
+
+/* Upgrade buttons */
 
 .upgrade-btn {
     width: 150px;
@@ -1020,8 +1024,20 @@ footer {
 /* Media Query for small laptop size */
 
 @media (max-width: 1280px) {
+    .upgrade-area {
+        width: 30%;
+    }
+    
     .upgrade-menu-container {
         height: 500px;
+        width: calc(100% - 20px);
+        max-width: 240px;
+        margin: 0 20px 0 0;
+    }
+
+    .upgrade-menu-content-container {
+        width: calc(100% - 30px);
+        margin: 0 0 0 30px;
     }
     
     .upgrade-menu-btn {
@@ -1046,11 +1062,6 @@ footer {
     
     .upgrade-menu-btn-icon.active {
         margin: 0 7px 0 0;
-    }
-
-    .menu-content-container {
-        width: calc(100% - 30px);
-        margin: 0 0 0 30px;
     }
 
     .upgrade-btn {
@@ -1311,5 +1322,10 @@ footer {
     font-size: 2.5rem;
 }
 
+/* Media Query for small laptop size */
 
-
+@media (max-width: 1280px) {
+    .save-area {
+        width: 30%;
+    }
+}
