@@ -595,7 +595,7 @@ var display = {
         let coinsTextOffset = coinsText.getBoundingClientRect();
         let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
         let positionX = (coinsTextOffset.left - upgradeBtnOffset.left) + coinsText.offsetWidth;
-        let positionY = (coinsTextOffset.top - upgradeBtnOffset.top) - 2;
+        let positionY = (coinsTextOffset.top - upgradeBtnOffset.top);
           
         // Add width to number position
         number.style.left = positionX + "px";
@@ -673,7 +673,7 @@ var display = {
        let amountNumberOffset = amountNumber.getBoundingClientRect();
        let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
        let positionX = (amountNumberOffset.left - upgradeBtnOffset.left) + amountNumber.offsetWidth;
-       let positionY = (amountNumberOffset.top - upgradeBtnOffset.top) - 2;
+       let positionY = (amountNumberOffset.top - upgradeBtnOffset.top);
         
        // Add width to number position
        number.style.left = positionX + "px";

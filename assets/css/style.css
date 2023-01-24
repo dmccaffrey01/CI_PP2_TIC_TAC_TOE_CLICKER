@@ -891,7 +891,6 @@ footer {
 
 .coins-container {
    position: absolute;
-   height: 100px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -915,7 +914,7 @@ footer {
 }
 
 .upgrade-btn > .minus-coin-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--MINUS-RED);
     position: absolute;
 }
@@ -964,7 +963,7 @@ footer {
 }
 
 .upgrade-cost-container {
-    width: 60px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -979,16 +978,6 @@ footer {
     font-size: 1.1rem;
     position: absolute;
     color: var(--MINUS-RED);
-}
-
-.upgrade-image-container {
-    height: 60px;
-    width: 60px;
-}
-
-.upgrade-image {
-    height: 100%;
-    width: 100%;
 }
 
 .upgrade-buy-bar-container {
@@ -1019,7 +1008,7 @@ footer {
 }
 
 .upgrade-btn > .count-number {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--ADD-GREEN);
     position: absolute;
 }
@@ -1089,31 +1078,60 @@ footer {
         margin: 0 7px 0 0;
     }
 
+    .coins-text {
+        font-size: 1.8rem;
+    }
+
+    .upgrade-btn > .minus-coin-number {
+        font-size: 1.4rem;
+    }
+
     .upgrade-btn {
         width: 100px;
         height: 100px;
         border-radius: 15px;
     }
 
-    .coins-text {
-        font-size: 1.8rem;
+    .upgrade-name-container {
+        height: 20px;
     }
 
     .upgrade-name {
         font-size: 1rem;
     }
 
-    .upgrade-cost-text {
+    .upgrade-btn-middle {
+        height: 40px;
+    }
+
+    .upgrade-cost-text, .upgrade-cost {
         font-size: 0.8rem;
     }
 
-    .upgrade-image-container {
-        width: 50px;
-        height: 50px;
+    .upgrade-btn > .cost-number {
+        font-size: 0.6rem;
+    }
+
+    .upgrade-buy-bar-container {
+        height: 13px;
+    }
+
+    .upgrade-buy-bar {
+        width: 66px;
+        height: 2px;
+    }
+
+    .upgrade-amount {
+        height: 13px;
+        margin: 1px 0 0 0;
     }
 
     .upgrade-count {
-        font-size: 1.3rem;
+        font-size: 1rem;
+    }
+
+    .upgrade-btn > .count-number {
+        font-size: 0.8rem;
     }
 }
 
@@ -1153,14 +1171,18 @@ footer {
         margin: 0 0 0 20px;
     }
 
+    .coins-text {
+        font-size: 0.7rem;
+    }
+
+    .upgrade-btn > .minus-coin-number {
+        font-size: 0.5rem;
+    }
+
     .upgrade-btn {
         width: 50px;
         height: 50px;
         border-radius: 5px;
-    }
-
-    .coins-text {
-        font-size: 0.7rem;
     }
 
     .upgrade-name-and-cost {
