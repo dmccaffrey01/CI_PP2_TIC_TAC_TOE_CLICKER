@@ -881,6 +881,12 @@ footer {
     z-index: 3;
 }
 
+.upgrade-transition-div {
+    width: 0;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
 /* Coins */
 
 .coins-container {
@@ -922,8 +928,8 @@ footer {
     border-radius: 20px;
     background-color: var(--DARK-BLUE);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     color: white;
     cursor: pointer;
@@ -935,32 +941,38 @@ footer {
     border: 2px solid var(--MAIN-LIGHT);
 }
 
-.upgrade-name-and-cost {
+.upgrade-name-container {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgrade-name {
+    font-size: 1.5rem;
+}
+
+.upgrade-btn-middle {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--MAIN-DARK);
+    border-top: 1px solid white;
+}
+
+.upgrade-cost-container {
+    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1px;
 }
 
-.upgrade-name {
+.upgrade-cost-text, .upgrade-cost {
     font-size: 1.3rem;
-    position: relative;
-}
-
-.upgrade-buy-bar {
-    content: "";
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    border-radius: 5px;
-}
-
-.upgrade-cost-text {
-    font-size: 1.1rem;
 }
 
 .upgrade-btn > .cost-number {
@@ -970,8 +982,8 @@ footer {
 }
 
 .upgrade-image-container {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
 }
 
 .upgrade-image {
@@ -979,10 +991,27 @@ footer {
     width: 100%;
 }
 
-.upgrade-amount {
+.upgrade-buy-bar-container {
+    width: 100%;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--MAIN-DARK);
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+.upgrade-buy-bar {
+    width: 100px;
+    height: 3px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.upgrade-amount {
+    height: 20px;
+    margin: 2px 0 0 0;
 }
 
 .upgrade-count {
@@ -995,11 +1024,7 @@ footer {
     position: absolute;
 }
 
-.upgrade-transition-div {
-    width: 0;
-    height: 100%;
-    transition: all 0.3s ease-in-out;
-}
+/* Active class */
 
 .upgrade-menu.active {
     width: 100%;

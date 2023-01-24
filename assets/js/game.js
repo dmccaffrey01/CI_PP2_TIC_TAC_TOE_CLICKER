@@ -625,7 +625,7 @@ var display = {
         number.classList.add("cost-number", "unselectable");
 
         // Get amount container
-        let upgradeCosts = document.querySelectorAll(".upgrade-cost-text");
+        let upgradeCosts = document.querySelectorAll(".upgrade-cost");
         let upgradeBtns = document.querySelectorAll(".upgrade-btn");
         let upgradeCost = upgradeCosts[index];
         let upgradeBtn = upgradeBtns[index];
@@ -634,7 +634,7 @@ var display = {
         let upgradeCostOffset = upgradeCost.getBoundingClientRect();
         let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
         let positionX = (upgradeCostOffset.left - upgradeBtnOffset.left) + upgradeCost.offsetWidth;
-        let positionY = (upgradeCostOffset.top - upgradeBtnOffset.top) - 2;
+        let positionY = (upgradeCostOffset.top - upgradeBtnOffset.top);
           
         // Add width to number position
         number.style.left = positionX + "px";
