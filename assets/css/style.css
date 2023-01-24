@@ -13,6 +13,7 @@
     --MENU: #2e2e2eef;
     --TEXT: #262626;
     --ADD-GREEN: #66ff00;
+    --MINUS-RED: #ff1b14;
 }
 
 body {
@@ -898,7 +899,7 @@ footer {
 .upgrade-btn > .cost-number {
     font-size: 1.1rem;
     position: absolute;
-    color: white;
+    color: var(--MINUS-RED);
 }
 
 .upgrade-image-container {

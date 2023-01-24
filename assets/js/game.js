@@ -578,7 +578,7 @@ var display = {
         let number = document.createElement("div");
 
         // Add text content
-        number.textContent = "+1";
+        number.textContent = "+" + (upgrades.cost[index] - upgrades.previousCost[index]);
 
         // Add class styleing
         number.classList.add("cost-number", "unselectable");
