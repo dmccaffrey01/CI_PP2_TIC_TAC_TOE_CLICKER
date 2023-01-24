@@ -291,6 +291,11 @@ var upgrades = {
         2,
         3
     ],
+    previousCost: [
+        1,
+        2,
+        3
+    ],
     buyUpgradeDelay: false,
 
     /**
@@ -311,6 +316,9 @@ var upgrades = {
             
             // Add 1 to count
             this.count[index]++;
+
+            // Update previous cost
+            this.previousCost[index] = this.cost[index];
 
             // Increase the cost by 1.15 times
             this.cost[index] = Math.ceil(this.cost[index] * 1.15);
@@ -550,8 +558,11 @@ var display = {
         }
 
         if (arguments.length >= 1) {
-            // Create numbers
+            // Create count number
             this.createCountNumber(index);
+
+            // Create cost number
+            this.createCostNumber(index);
 
             // Change name bar
             this.updateUpgradeBuyBar(index);
@@ -560,11 +571,48 @@ var display = {
     },
 
     /**
-     * Create numbers when upgrade is bought
+     * Create cost number when upgrade is bought
+     */
+    createCostNumber: function(index) {
+        // Create element
+        let number = document.createElement("div");
+
+        // Add text content
+        number.textContent = "+1";
+
+        // Add class styleing
+        number.classList.add("cost-number", "unselectable");
+
+        // Get amount container
+        let upgradeCosts = document.querySelectorAll(".upgrade-cost-text");
+        let upgradeBtns = document.querySelectorAll(".upgrade-btn");
+        let upgradeCost = upgradeCosts[index];
+        let upgradeBtn = upgradeBtns[index];
+
+        // Get power position
+        let upgradeCostOffset = upgradeCost.getBoundingClientRect();
+        let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
+        let positionX = (upgradeCostOffset.left - upgradeBtnOffset.left) + upgradeCost.offsetWidth;
+        let positionY = (upgradeCostOffset.top - upgradeBtnOffset.top) - 2;
+          
+        // Add width to number position
+        number.style.left = positionX + "px";
+        number.style.top = positionY + "px";
+        
+        // Append number to upgradeBtn
+        upgradeBtn.appendChild(number);
+
+        // Slowly fade out
+        fadeOut(number, 1000, 0.2, function() {
+            // Remove number
+            number.remove();
+        })
+    },
+
+    /**
+     * Create count number when upgrade is bought
      */
     createCountNumber: function(index) {
-        // Create count number
-
         // Create element
         let number = document.createElement("div");
 
@@ -579,7 +627,6 @@ var display = {
        let  upgradeBtns = document.querySelectorAll(".upgrade-btn");
        let amountNumber = amountNumbers[index];
        let  upgradeBtn = upgradeBtns[index];
-       console.log(upgradeBtns, upgradeBtn, amountNumbers, amountNumber);
 
        // Get power position
        let amountNumberOffset = amountNumber.getBoundingClientRect();

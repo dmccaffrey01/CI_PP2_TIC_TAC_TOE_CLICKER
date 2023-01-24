@@ -895,6 +895,12 @@ footer {
     font-size: 1.1rem;
 }
 
+.upgrade-btn > .cost-number {
+    font-size: 1.1rem;
+    position: absolute;
+    color: white;
+}
+
 .upgrade-image-container {
     height: 70px;
     width: 70px;
