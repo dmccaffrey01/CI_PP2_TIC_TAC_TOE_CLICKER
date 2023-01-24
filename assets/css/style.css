@@ -1485,6 +1485,7 @@ footer {
 @media (max-width: 768px) {
     .save-menu-container {
         margin: 0;
+        transition: all 0s;
     }
     
     .save-menu-btn {
@@ -1532,6 +1533,13 @@ footer {
         font-size: 1.4rem;
     }
 
+    .save-menu {
+        opacity: 0;
+        top: 100%;
+        transition: all 0.3s ease-in-out;
+        display: none;
+    }
+
     .save-menu.active {
         width: 200px;
         height: 365px;
@@ -1540,6 +1548,8 @@ footer {
         top: 95px;
         background-color: var(--MAIN-DARK);
         z-index: 200;
+        opacity: 1;
+        display: flex;
     }
 
     .menu-btn {

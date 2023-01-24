@@ -1242,6 +1242,13 @@ saveMenuBtn.addEventListener("click", () => {
             overlay.classList.toggle("active");
             toggleActiveClassSaveMenu();
 
+            // Move coins container
+            if (saveMenu.classList.contains("active")) {
+                saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
+            } else {
+                saveArea.appendChild(timerContainer);
+            }
+
             // Remove transition class
             setTimeout(() => {
                 overlay.classList.toggle("transition")
@@ -1258,6 +1265,13 @@ saveMenuBtn.addEventListener("click", () => {
                 overlay.classList.toggle("active");
                 toggleActiveClassSaveMenu();
 
+                // Move coins container
+                if (saveMenu.classList.contains("active")) {
+                    saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
+                } else {
+                    saveArea.appendChild(timerContainer);
+                }
+
                 // Turn saveMenuOpen to true
                 saveMenuOpen = true;
             }, 300)
@@ -1272,13 +1286,6 @@ saveMenuBtn.addEventListener("click", () => {
         saveMenuBtnIcon.classList.toggle("fa-chevron-left");
         saveMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
-
-    // Move coins container
-    if (saveMenu.classList.contains("active")) {
-        saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
-    } else {
-        saveArea.appendChild(timerContainer);
-    }
 })
 
 /**
