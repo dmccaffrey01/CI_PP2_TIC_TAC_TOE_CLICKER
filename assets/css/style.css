@@ -12,6 +12,7 @@
     --LIGHT-GRAY: #bdbdbd;
     --MENU: #2e2e2eef;
     --TEXT: #262626;
+    --ADD-GREEN: #66ff00;
 }
 
 body {
@@ -605,7 +606,7 @@ footer {
 
 .coin-number {
     font-size: 1.7rem;
-    color: #66ff00;
+    color: var(--ADD-GREEN);
     position: absolute;
 }
 
@@ -625,7 +626,7 @@ footer {
 .power-container > .power-number {
     z-index: 99;
     font-size: 1.5rem;
-    color: white;
+    color: var(--ADD-GREEN);
     position: absolute;
 }
 
@@ -886,6 +887,7 @@ footer {
     position: absolute;
     bottom: -4px;
     left: 0;
+    border-radius: 5px;
 }
 
 .upgrade-cost-text {

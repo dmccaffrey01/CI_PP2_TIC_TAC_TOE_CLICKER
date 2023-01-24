@@ -516,7 +516,7 @@ var display = {
             let powerOffset = powerNumber.getBoundingClientRect();
             let powerContainerOffset = powerContainer.getBoundingClientRect();
             let positionX = (powerOffset.left - powerContainerOffset.left) + powerNumber.offsetWidth;
-            let positionY = (powerOffset.top - powerContainerOffset.top);
+            let positionY = (powerOffset.top - powerContainerOffset.top) - 2;
              
             // Add width to number position
             number.style.left = positionX + "px";
@@ -562,7 +562,7 @@ var display = {
     /**
      * Create numbers when upgrade is bought
      */
-    createCountNumber: function() {
+    createCountNumber: function(index) {
         // Create count number
 
         // Create element
@@ -575,7 +575,9 @@ var display = {
         number.classList.add("number", "unselectable");
 
         // Append number to count
-        let count;
+        let counts = document.querySelectorAll(".upgrade-count");
+        let count = counts[index];
+        count.appendChild(number);
     },
 
     /**
