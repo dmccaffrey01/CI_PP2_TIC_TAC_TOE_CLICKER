@@ -564,10 +564,51 @@ var display = {
             // Create cost number
             this.createCostNumber(index);
 
+            // Create coin minus number
+            this.createMinusCoinNumber(index);
+
             // Change name bar
             this.updateUpgradeBuyBar(index);
         }
         
+    },
+
+    /**
+     * Create minus coin number when upgrade is bought
+     */
+    createMinusCoinNumber: function(index) {
+        // Create element
+        let number = document.createElement("div");
+
+        // Add text content
+        number.textContent = "-" + upgrades.previousCost[index];
+
+        // Add class styleing
+        number.classList.add("minus-coin-number", "unselectable");
+
+        // Get amount container
+        let coinsText = document.querySelector(".coins");
+        let upgradeBtns = document.querySelectorAll(".upgrade-btn");
+        let upgradeBtn = upgradeBtns[index];
+        console.log(coinsText);
+        // Get power position
+        let coinsTextOffset = coinsText.getBoundingClientRect();
+        let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
+        let positionX = (coinsTextOffset.left - upgradeBtnOffset.left) + coinsText.offsetWidth;
+        let positionY = (coinsTextOffset.top - upgradeBtnOffset.top) - 2;
+          
+        // Add width to number position
+        number.style.left = positionX + "px";
+        number.style.top = positionY + "px";
+        
+        // Append number to upgradeBtn
+        upgradeBtn.appendChild(number);
+
+        // Slowly fade out
+        fadeOut(number, 1000, 0.2, function() {
+            // Remove number
+            number.remove();
+        })
     },
 
     /**

@@ -692,12 +692,40 @@ footer {
         height: 175px;
     }
 
-    .power-container {
-        width: 150px;
-        height: 37.5px;
+    .monster {
+        width: 105px;
+        height: 105px;
+        left: 35px;
     }
 
-    .power-count {
+    .island-bg {
+        width: 175px;
+        height: 175px;
+    }
+
+    .power-container {
+        width: 150px;
+        height: 50px;
+    }
+
+    .power-count, .power-count-number {
+        font-size: 1.125rem;
+    }
+
+    .coin {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .coin-number {
+        font-size: 1.3rem;
+    }
+    
+    .power-container > .power-number {
+        font-size: 1.125rem;
+    }
+    
+    .monster-clicker > .number {
         font-size: 1.125rem;
     }
 }
@@ -744,10 +772,38 @@ footer {
 
     .power-container {
         width: 100px;
-        height: 25px;
+        height: 40px;
     }
 
-    .power-count {
+    .power-count, .power-count-number {
+        font-size: 0.7425rem;
+    }
+
+    .monster {
+        width: 69px;
+        height: 69px;
+        left: 23px;
+    }
+
+    .island-bg {
+        width: 115px;
+        height: 115px;
+    }
+
+    .coin {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .coin-number {
+        font-size: 0.9rem;
+    }
+    
+    .power-container > .power-number {
+        font-size: 0.7425rem;
+    }
+    
+    .monster-clicker > .number {
         font-size: 0.7425rem;
     }
 }
@@ -831,6 +887,7 @@ footer {
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-direction: column;
    top: calc(50% - 50px);
 }
 
@@ -847,6 +904,12 @@ footer {
 .coins-text {
     color: white;
     font-size: 2.5rem;
+}
+
+.upgrade-btn > .minus-coin-number {
+    font-size: 2.5rem;
+    color: var(--MINUS-RED);
+    position: absolute;
 }
 
 .upgrade-btn {
