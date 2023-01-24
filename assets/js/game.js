@@ -590,7 +590,7 @@ var display = {
         let coinsText = document.querySelector(".coins");
         let upgradeBtns = document.querySelectorAll(".upgrade-btn");
         let upgradeBtn = upgradeBtns[index];
-        console.log(coinsText);
+
         // Get power position
         let coinsTextOffset = coinsText.getBoundingClientRect();
         let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
@@ -1180,29 +1180,74 @@ const coinsContainer = document.querySelector(".coins-container");
 const upgradeMenuContentContainer = document.querySelector(".upgrade-menu-content-container");
 const upgradeArea = document.querySelector(".upgrade-area");
 const overlay = document.querySelector(".overlay");
+let upgradeMenuOpen = false;
 
 upgradeMenuBtn.addEventListener("click", () => {
-    // Apply active class
-    overlay.classList.toggle("active");
-    upgradeMenuBtn.classList.toggle("active");
-    upgradeMenu.classList.toggle("active");
-    upgradeTransitionDiv.classList.toggle("active");
-    upgradeMenuBtnIcon.classList.toggle("active");
-    coinsContainer.classList.toggle("active");
+    // Check screen size
+    if (window.innerWidth <= 768) {
+        // Check if upgrade menu is open
+        if (upgradeMenuOpen) {
+            // Remove active class
+            overlay.classList.toggle("active");
+            toggleActiveClassUpgradeMenu();
 
+            // Move coins container
+            if (upgradeMenu.classList.contains("active")) {
+                upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
+            } else {
+                upgradeArea.appendChild(coinsContainer);
+            }
+
+            // Remove transition class
+            setTimeout(() => {
+                overlay.classList.toggle("transition")
+
+                // Turn upgradeMenuOpen to false
+                upgradeMenuOpen = false;
+            }, 150);
+        } else {
+            // Apply transition class to overlay
+            overlay.classList.toggle("transition");
+
+            // Apply active class to upgrade menu elements after 0.3s
+            setTimeout(() => {
+                overlay.classList.toggle("active");
+                toggleActiveClassUpgradeMenu();
+
+                // Move coins container
+                if (upgradeMenu.classList.contains("active")) {
+                    upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
+                } else {
+                    upgradeArea.appendChild(coinsContainer);
+                }
+
+                // Turn upgradeMenuOpen to true
+                upgradeMenuOpen = true;
+            }, 300)
+        }
+    } else {
+        // Apply active class to save menu elements
+        toggleActiveClassUpgradeMenu();
+    }
+    
     // Remove and replace icon
     setTimeout(() => {
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-left");
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
-
-    // Move coins container
-    if (upgradeMenu.classList.contains("active")) {
-        upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
-    } else {
-        upgradeArea.appendChild(coinsContainer);
-    }
 })
+
+/**
+ * Toggle active class to upgrade menu elements
+ */
+function toggleActiveClassUpgradeMenu() {
+    // Apply active class
+    upgradeMenuBtn.classList.toggle("active");
+    upgradeMenu.classList.toggle("active");
+    upgradeTransitionDiv.classList.toggle("active");
+    upgradeMenuBtnIcon.classList.toggle("active");
+    coinsContainer.classList.toggle("active");
+}
 
 /**
  * Purchase upgrade when upgarde button is clicked
@@ -1255,7 +1300,7 @@ saveMenuBtn.addEventListener("click", () => {
 
                 // Turn saveMenuOpen to false
                 saveMenuOpen = false;
-            }, 300);
+            }, 150);
         } else {
             // Apply transition class to overlay
             overlay.classList.toggle("transition");
@@ -1289,7 +1334,7 @@ saveMenuBtn.addEventListener("click", () => {
 })
 
 /**
- * Add active class to save menu elements
+ * Toggle active class to save menu elements
  */
 function toggleActiveClassSaveMenu() {
     // Apply active class
