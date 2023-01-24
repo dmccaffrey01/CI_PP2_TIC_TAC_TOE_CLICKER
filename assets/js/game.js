@@ -1239,6 +1239,7 @@ saveMenuBtn.addEventListener("click", () => {
     saveTransitionDiv.classList.toggle("active");
     saveMenuBtnIcon.classList.toggle("active");
     timerContainer.classList.toggle("active");
+    overlay.classList.toggle("active");
 
     // Remove and replace icon
     setTimeout(() => {

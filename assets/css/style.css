@@ -142,7 +142,7 @@ a {
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        z-index: 199;
+        z-index: 999;
     }
 
     .nav-item {
@@ -1153,12 +1153,11 @@ footer {
         height: calc(100vh - 75px);
         top: 75px;
         left: 0;
-        z-index: 100;
+        z-index: 199;
     }
     
     .upgrade-menu-container {
         margin: 0;
-        z-index: 101;
     }
     
     .upgrade-menu-btn {
@@ -1169,7 +1168,7 @@ footer {
     }
     
     .upgrade-menu-btn-icon {
-        margin: 0 0 0 4px;
+        margin: 0;
         font-size: 1.1rem;
     }
     
@@ -1177,10 +1176,11 @@ footer {
         border-radius: 3px 12px 12px 3px;
         position: fixed;
         left: calc(50vw - 100px);
+        z-index: 201;
     }
 
     .upgrade-transition-div.active {
-        width: calc(100% - 20px);
+        width: 0;
     }
 
     .upgrade-menu-content-container {
@@ -1213,9 +1213,10 @@ footer {
         width: 200px;
         height: 365px;
         position: fixed;
-        left: calc(50vw - 100px);
+        right: calc(50vw - 100px);
         top: 95px;
         background-color: var(--MAIN-DARK);
+        z-index: 200;
     }
 
     .upgrade-btn {
@@ -1402,7 +1403,6 @@ footer {
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   top: calc(50% - 50px);
    z-index: 1;
    right: 0;
 }
@@ -1480,40 +1480,69 @@ footer {
 
 @media (max-width: 768px) {
     .save-menu-container {
-        height: 300px;
-        width: 100%;
         margin: 0;
     }
     
     .save-menu-btn {
         width: 20px;
         height: 50px;
-        border-radius: 12px 3px 3px 12px;
+        border-radius: 3px 12px 12px 3px;
+        margin: 0 0 0 10px;
     }
     
     .save-menu-btn-icon {
-        margin: 0 0 0 4px;
+        margin: 0;
         font-size: 1.1rem;
     }
     
     .save-menu-btn.active {
-        border-radius: 3px 12px 12px 3px;
+        border-radius: 12px 3px 3px 12px;
+        position: fixed;
+        right: calc(50vw - 100px);
+        z-index: 201;
     }
     
     .save-transition-div.active {
-        width: calc(100% - 20px);
-    }
-    
-    .save-menu-btn-icon.active {
-        margin: 0 4px 0 0;
+        width: 0;
     }
 
-    .menu-content-container {
+    .save-menu-content-container {
         width: calc(100% - 20px);
-        margin: 0 0 0 20px;
+        margin: 0 20px 0 0;
+        gap: 10px;
+    }
+
+    .timer-container {
+        right: 0;
+    }
+
+    .timer-container.active {
+        right: 0;
     }
 
     .timer-text {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
     }
+
+    .timer-container.active > .timer-text {
+        font-size: 1.4rem;
+    }
+
+    .save-menu.active {
+        width: 200px;
+        height: 365px;
+        position: fixed;
+        left: calc(50vw - 100px);
+        top: 95px;
+        background-color: var(--MAIN-DARK);
+        z-index: 200;
+    }
+
+    .menu-btn {
+        width: 96px;
+        height: 64px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+    }
+
 }
