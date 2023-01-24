@@ -572,12 +572,33 @@ var display = {
         number.textContent = "+1";
 
         // Add class styleing
-        number.classList.add("number", "unselectable");
+        number.classList.add("count-number", "unselectable");
 
-        // Append number to count
-        let counts = document.querySelectorAll(".upgrade-count");
-        let count = counts[index];
-        count.appendChild(number);
+       // Get amount container
+       let amountNumbers = document.querySelectorAll(".upgrade-amount-number");
+       let  upgradeBtns = document.querySelectorAll(".upgrade-btn");
+       let amountNumber = amountNumbers[index];
+       let  upgradeBtn = upgradeBtns[index];
+       console.log(upgradeBtns, upgradeBtn, amountNumbers, amountNumber);
+
+       // Get power position
+       let amountNumberOffset = amountNumber.getBoundingClientRect();
+       let upgradeBtnOffset = upgradeBtn.getBoundingClientRect();
+       let positionX = (amountNumberOffset.left - upgradeBtnOffset.left) + amountNumber.offsetWidth;
+       let positionY = (amountNumberOffset.top - upgradeBtnOffset.top) - 2;
+        
+       // Add width to number position
+       number.style.left = positionX + "px";
+       number.style.top = positionY + "px";
+        
+        // Append number to upgradeBtn
+        upgradeBtn.appendChild(number);
+
+       // Slowly fade out
+       fadeOut(number, 1000, 0.2, function() {
+           // Remove number
+           number.remove();
+       })
     },
 
     /**

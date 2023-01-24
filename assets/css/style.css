@@ -860,6 +860,7 @@ footer {
     color: white;
     cursor: pointer;
     border: 2px solid white;
+    position: relative;
 }
 
 .upgrade-btn:hover {
@@ -912,6 +913,12 @@ footer {
 
 .upgrade-count {
     font-size: 1.5rem;
+}
+
+.upgrade-btn > .count-number {
+    font-size: 1.5rem;
+    color: var(--ADD-GREEN);
+    position: absolute;
 }
 
 .upgrade-transition-div {
