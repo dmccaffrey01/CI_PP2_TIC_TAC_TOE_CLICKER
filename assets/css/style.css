@@ -367,6 +367,7 @@ footer {
     height: calc(100vh - 75px);
     justify-content: center;
     display: none;
+    overflow: hidden;
 }
 
 .clicker-section.play {
@@ -374,8 +375,14 @@ footer {
 }
 
 .overlay {
-    display: none;
-    bottom: -100vh;
+    position: fixed;
+    height: calc(100% - 75px);
+    width: 100%;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 202;
+    background-color: var(--MAIN);
     transition: all 0.3s ease-in-out;
 }
 
@@ -1145,14 +1152,11 @@ footer {
 /* Media Query for tablet and phone size */
 
 @media (max-width: 768px) {
-    .overlay.active {
-        background-color: var(--MAIN);
-        display: flex;
-        position: fixed;
-        width: 100vw;
-        height: calc(100vh - 75px);
+    .overlay.transition {
         top: 75px;
-        left: 0;
+    }
+
+    .overlay.active {
         z-index: 199;
     }
     

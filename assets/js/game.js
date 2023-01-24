@@ -1183,12 +1183,12 @@ const overlay = document.querySelector(".overlay");
 
 upgradeMenuBtn.addEventListener("click", () => {
     // Apply active class
+    overlay.classList.toggle("active");
     upgradeMenuBtn.classList.toggle("active");
     upgradeMenu.classList.toggle("active");
     upgradeTransitionDiv.classList.toggle("active");
     upgradeMenuBtnIcon.classList.toggle("active");
     coinsContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
 
     // Remove and replace icon
     setTimeout(() => {
@@ -1230,17 +1230,43 @@ const saveMenuBtnIcon = document.querySelector(".save-menu-btn-icon");
 const timerContainer = document.querySelector(".timer-container");
 const saveMenuContentContainer = document.querySelector(".save-menu-content-container");
 const saveArea = document.querySelector(".save-area");
+let saveMenuOpen = false;
 
 // Add listener for click
 saveMenuBtn.addEventListener("click", () => {
-    // Apply active class
-    saveMenuBtn.classList.toggle("active");
-    saveMenu.classList.toggle("active");
-    saveTransitionDiv.classList.toggle("active");
-    saveMenuBtnIcon.classList.toggle("active");
-    timerContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
+    // Check screen size
+    if (window.innerWidth <= 768) {
+        // Check if save menu is open
+        if (saveMenuOpen) {
+            // Remove active class
+            overlay.classList.toggle("active");
+            toggleActiveClassSaveMenu();
 
+            // Remove transition class
+            setTimeout(() => {
+                overlay.classList.toggle("transition")
+
+                // Turn saveMenuOpen to false
+                saveMenuOpen = false;
+            }, 300);
+        } else {
+            // Apply transition class to overlay
+            overlay.classList.toggle("transition");
+
+            // Apply active class to save menu elements after 0.3s
+            setTimeout(() => {
+                overlay.classList.toggle("active");
+                toggleActiveClassSaveMenu();
+
+                // Turn saveMenuOpen to true
+                saveMenuOpen = true;
+            }, 300)
+        }
+    } else {
+        // Apply active class to save menu elements
+        toggleActiveClassSaveMenu();
+    }
+    
     // Remove and replace icon
     setTimeout(() => {
         saveMenuBtnIcon.classList.toggle("fa-chevron-left");
@@ -1254,6 +1280,18 @@ saveMenuBtn.addEventListener("click", () => {
         saveArea.appendChild(timerContainer);
     }
 })
+
+/**
+ * Add active class to save menu elements
+ */
+function toggleActiveClassSaveMenu() {
+    // Apply active class
+    saveMenuBtn.classList.toggle("active");
+    saveMenu.classList.toggle("active");
+    saveTransitionDiv.classList.toggle("active");
+    saveMenuBtnIcon.classList.toggle("active");
+    timerContainer.classList.toggle("active");
+}
 
 /**
  * Save game when save game button is clicked
