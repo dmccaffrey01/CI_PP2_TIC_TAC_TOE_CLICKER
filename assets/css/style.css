@@ -142,6 +142,7 @@ a {
         width: 100%;
         text-align: center;
         transition: 0.3s;
+        z-index: 199;
     }
 
     .nav-item {
@@ -370,6 +371,12 @@ footer {
 
 .clicker-section.play {
     display: flex;
+}
+
+.overlay {
+    display: none;
+    bottom: -100vh;
+    transition: all 0.3s ease-in-out;
 }
 
 .content-wrapper {
@@ -1138,8 +1145,20 @@ footer {
 /* Media Query for tablet and phone size */
 
 @media (max-width: 768px) {
+    .overlay.active {
+        background-color: var(--MAIN);
+        display: flex;
+        position: fixed;
+        width: 100vw;
+        height: calc(100vh - 75px);
+        top: 75px;
+        left: 0;
+        z-index: 100;
+    }
+    
     .upgrade-menu-container {
-        height: 300px;
+        margin: 0;
+        z-index: 101;
     }
     
     .upgrade-menu-btn {
@@ -1156,59 +1175,95 @@ footer {
     
     .upgrade-menu-btn.active {
         border-radius: 3px 12px 12px 3px;
+        position: fixed;
+        left: calc(50vw - 100px);
     }
-    
+
     .upgrade-transition-div.active {
         width: calc(100% - 20px);
     }
-    
-    .upgrade-menu-btn-icon.active {
-        margin: 0 4px 0 0;
-    }
 
-    .menu-content-container {
+    .upgrade-menu-content-container {
         width: calc(100% - 20px);
         margin: 0 0 0 20px;
+        gap: 10px;
+    }
+
+    .coins-container {
+        left: 10px;
+    }
+
+    .coins-container.active {
+        left: 0;
     }
 
     .coins-text {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .coins-container.active > .coins-text {
+        font-size: 1.4rem;
     }
 
     .upgrade-btn > .minus-coin-number {
-        font-size: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .upgrade-menu.active {
+        width: 200px;
+        height: 365px;
+        position: fixed;
+        left: calc(50vw - 100px);
+        top: 95px;
+        background-color: var(--MAIN-DARK);
     }
 
     .upgrade-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 5px;
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
     }
 
-    .upgrade-name-and-cost {
-        height: 12px;
+    .upgrade-name-container {
+        height: 16px;
     }
 
     .upgrade-name {
-        display: none;
-        font-size: 0rem;
+        font-size: 0.8rem;
     }
 
-    .upgrade-cost-text {
-        font-size: 0.6rem;
+    .upgrade-btn-middle {
+        height: 32px;
     }
 
-    .upgrade-image-container {
-        width: 25px;
-        height: 25px;
+    .upgrade-cost-text, .upgrade-cost {
+        font-size: 0.64rem;
+    }
+
+    .upgrade-btn > .cost-number {
+        font-size: 0.48rem;
+    }
+
+    .upgrade-buy-bar-container {
+        height: 10px;
+    }
+
+    .upgrade-buy-bar {
+        width: 53px;
+        height: 2px;
     }
 
     .upgrade-amount {
-        height: 12px;
+        height: 10px;
+        margin: 1px 0 0 0;
     }
 
     .upgrade-count {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .upgrade-btn > .count-number {
+        font-size: 0.6rem;
     }
 }
 
@@ -1414,5 +1469,51 @@ footer {
 
     .timer-text {
         font-size: 1.8rem;
+    }
+
+    .save-game-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Media Query for tablet and phone size */
+
+@media (max-width: 768px) {
+    .save-menu-container {
+        height: 300px;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .save-menu-btn {
+        width: 20px;
+        height: 50px;
+        border-radius: 12px 3px 3px 12px;
+    }
+    
+    .save-menu-btn-icon {
+        margin: 0 0 0 4px;
+        font-size: 1.1rem;
+    }
+    
+    .save-menu-btn.active {
+        border-radius: 3px 12px 12px 3px;
+    }
+    
+    .save-transition-div.active {
+        width: calc(100% - 20px);
+    }
+    
+    .save-menu-btn-icon.active {
+        margin: 0 4px 0 0;
+    }
+
+    .menu-content-container {
+        width: calc(100% - 20px);
+        margin: 0 0 0 20px;
+    }
+
+    .timer-text {
+        font-size: 0.7rem;
     }
 }

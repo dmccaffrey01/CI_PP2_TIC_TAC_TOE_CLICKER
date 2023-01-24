@@ -1179,6 +1179,7 @@ const upgradeMenuBtnIcon = document.querySelector(".upgrade-menu-btn-icon");
 const coinsContainer = document.querySelector(".coins-container");
 const upgradeMenuContentContainer = document.querySelector(".upgrade-menu-content-container");
 const upgradeArea = document.querySelector(".upgrade-area");
+const overlay = document.querySelector(".overlay");
 
 upgradeMenuBtn.addEventListener("click", () => {
     // Apply active class
@@ -1187,6 +1188,7 @@ upgradeMenuBtn.addEventListener("click", () => {
     upgradeTransitionDiv.classList.toggle("active");
     upgradeMenuBtnIcon.classList.toggle("active");
     coinsContainer.classList.toggle("active");
+    overlay.classList.toggle("active");
 
     // Remove and replace icon
     setTimeout(() => {
