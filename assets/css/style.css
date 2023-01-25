@@ -1,3 +1,6 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -20,6 +23,7 @@ body {
     background-color: var(--MAIN);
     min-height: 100vh;
     position: relative;
+    font-family: "Lato", sans-serif;
 }
 
 /* Header */
@@ -29,6 +33,7 @@ header {
     background-color: var(--MAIN-DARK);
     display: flex;
     justify-content: center;
+    font-family: "Source-Sans-Pro", sans-serif;
 }
 
 li {
@@ -338,10 +343,10 @@ footer {
     background-color: var(--MAIN-LIGHT);
     cursor: pointer;
     font-size: 1.8rem;
+    color: white;
 }
 
 .start-btn:hover {
-    color: white;
     outline: 2px solid white;
     outline-offset: -2px;
 }
