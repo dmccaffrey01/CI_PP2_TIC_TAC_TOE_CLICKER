@@ -1374,7 +1374,6 @@ function moveTimerContainer() {
     }
 }
 
-
 /**
  * Save game when save game button is clicked
  */
@@ -1486,7 +1485,7 @@ function loadGame() {
 }
 
 /**
- * Save game when save game button is clicked
+ * Reset game when reset game button is clicked
  */
 
 // Define btn var
@@ -1510,5 +1509,70 @@ function resetGame() {
     }
 }
 
+/**
+ * Toggle music on and off
+ */
 
+// Define toggle btn 
+const musicToggleBtn = document.querySelector(".music-toggle-btn");
+const musicToggle = document.querySelector(".music-toggle");
+const musicToggleText = document.querySelector(".music-toggle-text");
+let musicToggleOn = true;
+
+// Add event listener for toggle btn
+musicToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
+
+    // Check if toggle on
+    if (musicToggleOn) {
+        musicToggleOn = false;
+    } else {
+        musicToggleOn = true;
+    }
+})
+
+/**
+ * Move toggle btn over
+ */
+function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
+    
+    // Get width of toggle
+    let toggleWidth = toggle.offsetWidth;
+
+    // Get width of toggleBtn
+    let toggleBtnWidth = toggleBtn.offsetWidth;
+
+    // Set positionX
+    let positionX = 0;
+
+    // Check if toggle is on
+    if (toggleOn) {
+        // Calculate toggle btn position
+        positionX = (toggleWidth - (toggleBtnWidth * 2)) / 2;
+        
+        // Set btn to position
+        toggleBtn.style.left = positionX + "px";
+
+        // Change color of toggle
+        toggle.style.backgroundColor = "var(--MINUS-RED)";
+
+        //Change text of toggle
+        toggleText.textContent = "OFF";
+    } else {
+        // Calculate toggle btn position
+        positionX = toggleWidth / 2
+
+        // Set btn to position
+        toggleBtn.style.left = positionX + "px";
+
+        // Change color of toggle
+        toggle.style.backgroundColor = "var(--ADD-GREEN)"
+
+        //Change text of toggle
+        toggleText.textContent = "ON";
+    }
+
+    
+}
 

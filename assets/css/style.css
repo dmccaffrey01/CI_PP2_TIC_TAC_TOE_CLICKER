@@ -1677,8 +1677,9 @@ footer {
     width: 80px;
     height: 45px;
     border-radius: 30px;
-    background-color: var(--SETTINGS-BG);
+    background-color: var(--ADD-GREEN);
     position: relative;
+    transition: all 0.3s ease-in-out;
 }
 
 .toggle-btn {
@@ -1686,10 +1687,11 @@ footer {
     height: 35px;
     border-radius: 50%;
     position: absolute;
-    left: 5px;
+    left: 40px;
     top: 5px;
     background-color: white;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .toggle-text {
