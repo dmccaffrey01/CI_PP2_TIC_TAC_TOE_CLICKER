@@ -1192,11 +1192,7 @@ upgradeMenuBtn.addEventListener("click", () => {
             toggleActiveClassUpgradeMenu();
 
             // Move coins container
-            if (upgradeMenu.classList.contains("active")) {
-                upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
-            } else {
-                upgradeArea.appendChild(coinsContainer);
-            }
+            moveCoinsContainer();
 
             // Remove transition class
             setTimeout(() => {
@@ -1215,17 +1211,23 @@ upgradeMenuBtn.addEventListener("click", () => {
                 toggleActiveClassUpgradeMenu();
 
                 // Move coins container
-                if (upgradeMenu.classList.contains("active")) {
-                    upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
-                } else {
-                    upgradeArea.appendChild(coinsContainer);
-                }
+                moveCoinsContainer();
 
                 // Turn upgradeMenuOpen to true
                 upgradeMenuOpen = true;
             }, 300)
         }
     } else {
+        // Change upgradeMenuOpen
+        if (upgradeMenuOpen) {
+            upgradeMenuOpen = false;
+        } else {
+            upgradeMenuOpen = true;
+        }
+        
+        // Move coins container
+        moveCoinsContainer();
+        
         // Apply active class to save menu elements
         toggleActiveClassUpgradeMenu();
     }
@@ -1248,6 +1250,19 @@ function toggleActiveClassUpgradeMenu() {
     upgradeMenuBtnIcon.classList.toggle("active");
     coinsContainer.classList.toggle("active");
 }
+
+/**
+ * Move coins container
+ */
+function moveCoinsContainer() {
+    // Check if upgrade menu is open
+    if (upgradeMenuOpen) {
+        upgradeMenuContentContainer.insertBefore(coinsContainer, upgradeMenuContentContainer.firstChild);
+    } else {
+        upgradeArea.appendChild(coinsContainer);
+    }
+}
+
 
 /**
  * Purchase upgrade when upgarde button is clicked
@@ -1287,12 +1302,8 @@ saveMenuBtn.addEventListener("click", () => {
             overlay.classList.toggle("active");
             toggleActiveClassSaveMenu();
 
-            // Move coins container
-            if (saveMenu.classList.contains("active")) {
-                saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
-            } else {
-                saveArea.appendChild(timerContainer);
-            }
+            // Move timer container
+            moveTimerContainer();
 
             // Remove transition class
             setTimeout(() => {
@@ -1310,20 +1321,26 @@ saveMenuBtn.addEventListener("click", () => {
                 overlay.classList.toggle("active");
                 toggleActiveClassSaveMenu();
 
-                // Move coins container
-                if (saveMenu.classList.contains("active")) {
-                    saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
-                } else {
-                    saveArea.appendChild(timerContainer);
-                }
+                // Move timer container
+                moveTimerContainer();
 
                 // Turn saveMenuOpen to true
                 saveMenuOpen = true;
             }, 300)
         }
     } else {
+        // Change saveMenuOpen
+        if (saveMenuOpen) {
+            saveMenuOpen = false;
+        } else {
+            saveMenuOpen = true;
+        }
+
         // Apply active class to save menu elements
         toggleActiveClassSaveMenu();
+
+        // Move timer container
+        moveTimerContainer();
     }
     
     // Remove and replace icon
@@ -1344,6 +1361,19 @@ function toggleActiveClassSaveMenu() {
     saveMenuBtnIcon.classList.toggle("active");
     timerContainer.classList.toggle("active");
 }
+
+/**
+ * Move timer container
+ */
+function moveTimerContainer() {
+    // Check if save menu is open
+    if (saveMenuOpen) {
+        saveMenuContentContainer.insertBefore(timerContainer, saveMenuContentContainer.firstChild);
+    } else {
+        saveArea.appendChild(timerContainer);
+    }
+}
+
 
 /**
  * Save game when save game button is clicked
