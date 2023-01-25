@@ -46,6 +46,7 @@
     <!-- Start Screen Section -->
     <section class="start-screen">
         <div class="start-card">
+            <!-- Start Buttons -->
             <div class="start-btns-container">
                 <button class="start-btn play-btn">
                     Play
@@ -64,17 +65,21 @@
     <section class="clicker-section">
         <div class="overlay"></div>
         <div class="content-wrapper">
+            <!-- Save menu and timer area -->
             <div class="save-area">
+                <!-- Timer -->
                 <div class="timer-container">
                     <div class="timer-text">Timer</div>
                     <div class="timer-text timer">00:00:00</div>
                 </div>
+                <!-- Save Menu -->
                 <div class="save-menu-container">
                     <div class="save-menu-btn">
                         <i class="fa-solid fa-chevron-right save-menu-btn-icon"></i>
                     </div>
                     <div class="save-transition-div"></div>
                     <div class="save-menu">
+                        <!-- Save menu content -->
                         <div class="save-menu-content-container">
                             <div class="save-game-btn menu-btn unselectable">
                                 <p>Save</p>
@@ -92,12 +97,14 @@
                     </div>
                 </div>
             </div> 
-
+            <!-- Main area with clicker and displays -->
             <div class="main-area">
+                <!-- Level and monster count -->
                 <div class="level-container unselectable">
                     <h2>Level: <span id="level">1</span></h2>
                     <h3 class="monster-count">Monster: <span id="monster-count">0/10</span></h3>
                 </div>
+                <!-- Monster hp -->
                 <div class="monster-stats-container unselectable">
                     <h3 class="monster-hp">HP: <span id="monster-hp">10</span></h3>
                     <div class="health-bar">
@@ -105,29 +112,34 @@
                         <div class="health-progress"></div>
                     </div>
                 </div>
+                <!-- Monster clicker -->
                 <div class="monster-clicker-container">
                     <div class="monster-clicker">
                         <img src="assets/images/islands/island-a.png" alt="island background" class="island-bg unselectable">
                         <img src="assets/images/monsters/monster-a.png" alt="monster" class="monster unselectable">
                     </div>
                 </div>
+                <!-- Power -->
                 <div class="power-container unselectable">
                     <h3 class="power-count">Power</h3>
                     <h3 class="power-count-number"><span class="power">1</span></h3>
                 </div>
             </div>
-
+            <!-- Upgrade menu and coins area-->
             <div class="upgrade-area">
+                <!-- Coins -->
                 <div class="coins-container">
                     <div class="coins-text">Coins</div>
                     <div class="coins-text coins">0</div>
                 </div>
+                <!-- Upgrade menu-->
                 <div class="upgrade-menu-container">
                     <div class="upgrade-menu-btn">
                         <i class="fa-solid fa-chevron-left upgrade-menu-btn-icon"></i>
                     </div>
                     <div class="upgrade-transition-div"></div>
                     <div class="upgrade-menu">
+                        <!-- Upgrade menu content -->
                         <div class="upgrade-menu-content-container">
                             <div class="upgrade-btn unselectable">
                                 <div class="upgrade-name-container">
@@ -184,6 +196,27 @@
                     </div>
                 </div>
             </div> 
+        </div>
+    </section>
+
+    <!-- Settings Modal -->
+    <section class="settings-section">
+        <div class="settings-menu">
+            <!-- Settings menu content -->
+            <div class="settings-menu-content-container">
+                <div class="menu-btn unselectable">
+                    <p>Audio</p>
+                    <i class="fa-regular fa-floppy-disk"></i>
+                </div>
+                <div class="menu-btn unselectable">
+                    <p>Display</p>
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+                <div class="menu-btn unselectable">
+                    <p>Secret</p>
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
         </div>
     </section>
 
