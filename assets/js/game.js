@@ -1768,3 +1768,40 @@ caToggleBtn.addEventListener("click", () => {
         caToggleOn = true;
     }
 })
+
+/**
+ * Toggle all animations (dea) on and off
+ */
+
+// Define variables 
+const deaToggleBtn = document.querySelector(".dea-toggle-btn");
+const deaToggle = document.querySelector(".dea-toggle");
+const deaToggleText = document.querySelector(".dea-toggle-text");
+const toggleAnimations = [
+    [iaToggleBtn, iaToggle, iaToggleText, iaToggleOn],
+    [naToggleBtn, naToggle, naToggleText, naToggleOn],
+    [maToggleBtn, maToggle, maToggleText, maToggleOn],
+    [caToggleBtn, caToggle, caToggleText, caToggleOn]
+]
+let deaToggleOn = true;
+
+// Add event listener for toggle btn
+deaToggleBtn.addEventListener("click", () => {
+    for (let i = 0; i < toggleAnimations.length; i++) {
+        animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], toggleAnimations[i][3]);
+        if (toggleAnimations[i][3] == true) {
+            toggleAnimations[i][3] = false;
+        } else {
+            toggleAnimations[i][3] = true;
+        }
+    }
+
+    animateToggleBtn(deaToggleBtn, deaToggle, deaToggleText, deaToggleOn);
+
+    // Check if toggle on
+    if (deaToggleOn) {
+        deaToggleOn = false;
+    } else {
+        deaToggleOn = true;
+    }
+})
