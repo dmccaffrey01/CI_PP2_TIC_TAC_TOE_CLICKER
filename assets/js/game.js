@@ -1608,17 +1608,35 @@ function closeSettingsMenu() {
 /**
  * Return to previous settings wrapper when btn is clicked
  */
+
 // Define variables
 const returnSettingsMenuBtn = document.querySelector(".return-settings-menu-btn");
 
 // Add listener for btn click to close menu
 returnSettingsMenuBtn.addEventListener("click", () => {
+    // Check if 
     if (settingsWrapperType === "home") {
         closeSettingsMenu();
     } else {
-        
+        returnToWrapperHome();
     }
 })
+
+/**
+ * Return the settings menu wrapper to home
+ */
+function returnToWrapperHome() {
+    // Remove active class from wrapper
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.remove("active");
+
+    // Add active class to home
+    settingsWrapper = document.querySelector(`.settings-wrapper-home`);
+    settingsWrapper.classList.add("active");
+
+    // Set settings wrapper type
+    settingsWrapperType = "home"
+}
 
 /**
  * Toggle music on and off
