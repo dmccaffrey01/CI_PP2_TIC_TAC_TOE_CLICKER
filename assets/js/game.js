@@ -1571,11 +1571,53 @@ function resetGame() {
 const settingsBtn = document.querySelector(".settings-btn");
 const settingsSection = document.querySelector(".settings-section");
 const clickerSection = document.querySelector(".clicker-section");
+let settingsWrapperType = "home";
 
-// Add listener for btn click
+// Add listener for btn click to open menu
 settingsBtn.addEventListener("click", () => {
+    // Remove play class from clicker section
     clickerSection.classList.remove("play");
+
+    // Add active class to settings section and wrapper
     settingsSection.classList.add("active");
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.add("active");
+})
+
+/**
+ * Close settings menu when btn is clicked
+ */
+// Define variables
+const closeSettingsMenuBtn = document.querySelector(".close-settings-menu-btn");
+
+// Add listener for btn click to close menu
+closeSettingsMenuBtn.addEventListener("click", () => {
+    closeSettingsMenu();
+})
+
+function closeSettingsMenu() {
+    // Remove active class from settings section and wrapper
+    settingsSection.classList.remove("active");
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.remove("active");
+
+    // Add play class to clicker section
+    clickerSection.classList.add("play");
+}
+
+/**
+ * Return to previous settings wrapper when btn is clicked
+ */
+// Define variables
+const returnSettingsMenuBtn = document.querySelector(".return-settings-menu-btn");
+
+// Add listener for btn click to close menu
+returnSettingsMenuBtn.addEventListener("click", () => {
+    if (settingsWrapperType === "home") {
+        closeSettingsMenu();
+    } else {
+        
+    }
 })
 
 /**
