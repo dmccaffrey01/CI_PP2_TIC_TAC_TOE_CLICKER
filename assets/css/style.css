@@ -1727,7 +1727,7 @@ footer {
 
 .slider-range::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 15px;
+    width: 10px;
     height: 40px;
     background-color: white;
     border-radius: 20px;
@@ -1749,11 +1749,15 @@ footer {
 }
 
 .slider-progress::-webkit-progress-bar {
-    background-color: var(--LIGHT-GRAY);
+    background-color: var(--SETTINGS-BG);
 }
 
 .slider-progress::-webkit-progress-value {
     background-color: var(--SETTINGS-BG)
+}
+
+.slider-value-container {
+    width: 40px;
 }
 
 .slider-value {

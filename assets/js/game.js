@@ -1513,7 +1513,7 @@ function resetGame() {
  * Toggle music on and off
  */
 
-// Define toggle btn 
+// Define variables 
 const musicToggleBtn = document.querySelector(".music-toggle-btn");
 const musicToggle = document.querySelector(".music-toggle");
 const musicToggleText = document.querySelector(".music-toggle-text");
@@ -1535,8 +1535,7 @@ musicToggleBtn.addEventListener("click", () => {
 /**
  * Move toggle btn over
  */
-function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
-    
+function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {  
     // Get width of toggle
     let toggleWidth = toggle.offsetWidth;
 
@@ -1572,7 +1571,19 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
         //Change text of toggle
         toggleText.textContent = "ON";
     }
+}
 
-    
+/**
+ * Change music volume level
+ */
+
+// Define variables
+const musicSlider = document.querySelector(".music-slider-range");
+const musicSliderValue = document.querySelector(".music-slider-value");
+
+// When slider moves 
+musicSlider.oninput = () => {
+    // Change slider value
+    musicSliderValue.textContent = musicSlider.value;
 }
 
