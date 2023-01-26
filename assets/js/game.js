@@ -1130,6 +1130,10 @@ var display = {
     }
 }
 
+var settings = {
+    
+}
+
 /**
  * Start the game when play btn is clicked
  */
@@ -1558,6 +1562,21 @@ function resetGame() {
         loadGame();
     }
 }
+
+/**
+ * Open settings menu when btn is clicked
+ */
+
+// Define variables
+const settingsBtn = document.querySelector(".settings-btn");
+const settingsSection = document.querySelector(".settings-section");
+const clickerSection = document.querySelector(".clicker-section");
+
+// Add listener for btn click
+settingsBtn.addEventListener("click", () => {
+    clickerSection.classList.remove("play");
+    settingsSection.classList.add("active");
+})
 
 /**
  * Toggle music on and off
