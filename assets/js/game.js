@@ -515,6 +515,7 @@ var display = {
      * Create power increase number
      */
     createPowerIncreaseNumber: function(addedPower) {
+        // Check if animation is on
         if (!naToggleOn) {
             return;
         }
@@ -588,6 +589,11 @@ var display = {
      * Create minus coin number when upgrade is bought
      */
     createMinusCoinNumber: function(index) {
+        // Check if animation is on
+        if (!naToggleOn) {
+            return;
+        }
+        
         // Create element
         let number = document.createElement("div");
 
@@ -626,6 +632,11 @@ var display = {
      * Create cost number when upgrade is bought
      */
     createCostNumber: function(index) {
+        // Check if animation is on
+        if (!naToggleOn) {
+            return;
+        }
+        
         // Create element
         let number = document.createElement("div");
 
@@ -665,6 +676,11 @@ var display = {
      * Create count number when upgrade is bought
      */
     createCountNumber: function(index) {
+        // Check if animation is on
+        if (!naToggleOn) {
+            return;
+        }
+        
         // Create element
         let number = document.createElement("div");
 
@@ -764,6 +780,11 @@ var display = {
      * Create number to display on screen when monster is clicked
      */
     createNumberOnClick: function(event) {
+        // Check if animation is on
+        if (!naToggleOn) {
+            return;
+        }
+        
         // Check if monster is dead
         if (game.isMonsterDead) {
             return;
@@ -850,6 +871,11 @@ var display = {
      * Animate deal damage to monster
      */
     dealDamageAnimation: function() {
+        // Check if animation is on
+        if (!maToggleOn) {
+            return;
+        }
+        
         // Get monster
         let monster = document.querySelector(".monster");
 
@@ -866,6 +892,10 @@ var display = {
      * Animate death of monster
      */
     monsterKilled: function() {
+        // Check if animation is on
+        if (!maToggleOn) {
+            return;
+        }
         // Get the image element
         let monster = document.querySelector(".monster");
 
@@ -971,6 +1001,11 @@ var display = {
      * Animate coin to turn around
      */
     animateCoin: function(coin, duration) {
+        // Check if animation is on
+        if (!caToggleOn) {
+            return;
+        }
+
         let coinAnimatingInterval = window.setInterval(() => {
             // Remove interval if coin has been removed
             if (typeof coin == "undefined" && coin == null) clearInterval(coinAnimatingInterval);
@@ -1708,5 +1743,28 @@ maToggleBtn.addEventListener("click", () => {
         maToggleOn = false;
     } else {
         maToggleOn = true;
+    }
+})
+
+/**
+ * Toggle coin animation (ca) on and off
+ */
+
+// Define variables 
+const caToggleBtn = document.querySelector(".ca-toggle-btn");
+const caToggle = document.querySelector(".ca-toggle");
+const caToggleText = document.querySelector(".ca-toggle-text");
+let caToggleOn = true;
+
+// Add event listener for toggle btn
+caToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(caToggleBtn, caToggle, caToggleText, caToggleOn);
+
+    // Check if toggle on
+    if (caToggleOn) {
+        caToggleOn = false;
+    } else {
+        caToggleOn = true;
     }
 })
