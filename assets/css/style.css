@@ -1644,7 +1644,6 @@ footer {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 30px;
     margin: 40px 0 0 0;
 }
 
@@ -1658,12 +1657,18 @@ footer {
 /* Music settings */
 
 .music-settings-container {
-    height: 40%;
+    border-top: 2px solid white;
+}
+
+.settings-container {
+    height: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    width: 100%;
+    border-bottom: 2px solid white;
 }
 
 .toggle-container {
@@ -1674,8 +1679,8 @@ footer {
 }
 
 .toggle {
-    width: 80px;
-    height: 45px;
+    width: 70px;
+    height: 35px;
     border-radius: 30px;
     background-color: var(--ADD-GREEN);
     position: relative;
@@ -1683,15 +1688,19 @@ footer {
 }
 
 .toggle-btn {
-    width: 35px;
-    height: 35px;
+    width: 31px;
+    height: 31px;
     border-radius: 50%;
     position: absolute;
-    left: 40px;
-    top: 5px;
+    left: 33px;
+    top: 2px;
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+}
+
+.toggle-text-container {
+    width: 50px;
 }
 
 .toggle-text {
@@ -1703,7 +1712,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80px;
+    height: 60px;
     gap: 10px;
     
 }
@@ -1764,3 +1773,4 @@ footer {
     color: white;
     font-size: 1.8rem;
 }
+

@@ -204,6 +204,7 @@
         <div class="settings-menu">
             <!-- Settings menu content -->
             <div class="settings-menu-content-container">
+                <!-- Return and close buttons -->
                 <div class="return-and-close-container">
                     <div class="return-settings-menu-btn">
                         <i class="fa-solid fa-left-long"></i>
@@ -212,6 +213,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
+                <!-- Home settings content -->
                 <div class="settings-wrapper-home">
                     <div class="audio-settings-btn menu-btn unselectable">
                         <p>Audio</p>
@@ -226,15 +228,21 @@
                         <i class="fa-solid fa-question"></i>
                     </div>
                 </div>
+                <!-- Audio settings content -->
                 <div class="settings-wrapper-audio">
-                    <div class="music-settings-container unselectable">
+                    <!-- Music settings -->
+                    <div class="music-settings-container settings-container unselectable">
                         <div class="audio-settings-text">Music</div>
+                        <!-- Music toggle -->
                         <div class="toggle-container music-toggle-container">
                             <div class="toggle music-toggle">
                                 <div class="toggle-btn music-toggle-btn"></div>
                             </div>
-                            <div class="toggle-text music-toggle-text">On</div>
+                            <div class="toggle-text-container">
+                                <div class="toggle-text music-toggle-text">On</div>
+                            </div>
                         </div>
+                        <!-- Music slider -->
                         <div class="slider-container music-slider-container">
                             <div class="slider music-slider">
                                 <input type="range" min="0" max="100"  value="50" class="slider-range music-slider-range">
@@ -242,6 +250,29 @@
                             </div>
                             <div class="slider-value-container">
                                 <div class="slider-value music-slider-value">50</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sound effect (se) settings -->
+                    <div class="se-settings-container settings-container unselectable">
+                        <div class="audio-settings-text">Sound Effects</div>
+                        <!-- Se toggle -->
+                        <div class="toggle-container se-toggle-container">
+                            <div class="toggle se-toggle">
+                                <div class="toggle-btn se-toggle-btn"></div>
+                            </div>
+                            <div class="toggle-text-container">
+                                <div class="toggle-text se-toggle-text">On</div>
+                            </div>
+                        </div>
+                        <!-- Se slider -->
+                        <div class="slider-container se-slider-container">
+                            <div class="slider se-slider">
+                                <input type="range" min="0" max="100"  value="50" class="slider-range se-slider-range">
+                                <progress min="0" max="100" value="50" class="slider-progress se-slider-progress"></progress>
+                            </div>
+                            <div class="slider-value-container">
+                                <div class="slider-value se-slider-value">50</div>
                             </div>
                         </div>
                     </div>
