@@ -507,41 +507,49 @@ var display = {
         power.innerHTML = game.power;
 
         if (arguments.length >= 1) {
-            // Create number of addedPower after 0.1s
-            let number = document.createElement("div");
-            
-            // Add class to number
-             number.classList.add("power-number", "unselectable");
-                
-            // Add text
-            number.textContent = "+" + addedPower;
-
-            // Get power container
-            let powerNumber = document.querySelector(".power-count-number")
-            let powerContainer = document.querySelector(".power-container");
-
-            // Get power position
-            let powerOffset = powerNumber.getBoundingClientRect();
-            let powerContainerOffset = powerContainer.getBoundingClientRect();
-            let positionX = (powerOffset.left - powerContainerOffset.left) + powerNumber.offsetWidth;
-            let positionY = (powerOffset.top - powerContainerOffset.top) - 2;
-             
-            // Add width to number position
-            number.style.left = positionX + "px";
-            number.style.top = positionY + "px";
-             
-            // Append number to container
-            powerContainer.appendChild(number);
-
-            // Slowly fade out
-            fadeOut(number, 1000, 0.2, function() {
-                // Remove number
-                number.remove();
-
-                // Change buy upgrade delay
-                upgrades.buyUpgradeDelay = false;
-            })
+            // Create power increase number
+            this.createPowerIncreaseNumber(addedPower);
         }
+    },
+
+    /**
+     * Create power increase number
+     */
+    createPowerIncreaseNumber: function(addedPower) {
+        // Create number of addedPower after 0.1s
+        let number = document.createElement("div");
+            
+        // Add class to number
+         number.classList.add("power-number", "unselectable");
+            
+        // Add text
+        number.textContent = "+" + addedPower;
+
+        // Get power container
+        let powerNumber = document.querySelector(".power-count-number")
+        let powerContainer = document.querySelector(".power-container");
+
+        // Get power position
+        let powerOffset = powerNumber.getBoundingClientRect();
+        let powerContainerOffset = powerContainer.getBoundingClientRect();
+        let positionX = (powerOffset.left - powerContainerOffset.left) + powerNumber.offsetWidth;
+        let positionY = (powerOffset.top - powerContainerOffset.top) - 2;
+         
+        // Add width to number position
+        number.style.left = positionX + "px";
+        number.style.top = positionY + "px";
+         
+        // Append number to container
+        powerContainer.appendChild(number);
+
+        // Slowly fade out
+        fadeOut(number, 1000, 0.2, function() {
+            // Remove number
+            number.remove();
+
+            // Change buy upgrade delay
+            upgrades.buyUpgradeDelay = false;
+        })
     },
 
     /**
