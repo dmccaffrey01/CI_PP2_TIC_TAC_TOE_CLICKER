@@ -229,11 +229,18 @@
                 <div class="settings-wrapper-audio">
                     <div class="music-settings-container unselectable">
                         <div class="audio-settings-text">Music</div>
-                        <div class="music-toggle-container">
+                        <div class="toggle-container music-toggle-container">
                             <div class="toggle music-toggle">
                                 <div class="toggle-btn music-toggle-btn"></div>
                             </div>
                             <div class="toggle-text music-toggle-text">On</div>
+                        </div>
+                        <div class="slider-container music-slider-container">
+                            <div class="slider music-slider">
+                                <input type="range" min="0" max="100"  value="50" class="slider-range music-slider-range">
+                                <progress min="0" max="100" value="50" class="slider-progress music-slider-progress"></progress>
+                            </div>
+                            <div class="slider-value music-slider-value">50</div>
                         </div>
                     </div>
                 </div>
