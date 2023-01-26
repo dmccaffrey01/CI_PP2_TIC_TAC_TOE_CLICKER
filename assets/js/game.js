@@ -386,7 +386,6 @@ var display = {
         this.createNewMonster();
 
         // Start clicker hover animation
-        this.animationOn = true;
         this.clickerHoverAnimation();
     },
 
@@ -403,7 +402,7 @@ var display = {
         // Set animation interval
         let animationInterval = window.setInterval(() => {
             // If animation off clear interval
-            if (!this.animationOn) {
+            if (!iaToggleOn) {
                 clearInterval(animationInterval);
             } else {
                 // Create random number between 5 and 15
@@ -741,6 +740,10 @@ var display = {
      * Transition the island from 1 background to the next
      */
     transitionIsland: function() {
+        if (!iaToggleOn) {
+            return;
+        }
+        
         // Get island image element
         let island = document.querySelector(".island-bg");
 
@@ -1547,6 +1550,9 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
     // Get width of toggle
     let toggleWidth = toggle.offsetWidth;
 
+    // Get heigth of toggle
+    let toggleHeight = toggle.offsetHeight;
+
     // Get width of toggleBtn
     let toggleBtnWidth = toggleBtn.offsetWidth;
 
@@ -1556,7 +1562,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
     // Check if toggle is on
     if (toggleOn) {
         // Calculate toggle btn position
-        positionX = (toggleWidth - (toggleBtnWidth * 2)) / 2;
+        positionX = 6;
         
         // Set btn to position
         toggleBtn.style.left = positionX + "px";
@@ -1568,7 +1574,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
         toggleText.textContent = "OFF";
     } else {
         // Calculate toggle btn position
-        positionX = toggleWidth / 2
+        positionX = toggleWidth - toggleHeight - 2;
 
         // Set btn to position
         toggleBtn.style.left = positionX + "px";
@@ -1631,3 +1637,49 @@ seSlider.oninput = () => {
     // Change slider value
     seSliderValue.textContent = seSlider.value;
 }
+
+/**
+ * Toggle island animation (ia) on and off
+ */
+
+// Define variables 
+const iaToggleBtn = document.querySelector(".ia-toggle-btn");
+const iaToggle = document.querySelector(".ia-toggle");
+const iaToggleText = document.querySelector(".ia-toggle-text");
+let iaToggleOn = true;
+
+// Add event listener for toggle btn
+iaToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(iaToggleBtn, iaToggle, iaToggleText, iaToggleOn);
+
+    // Check if toggle on
+    if (iaToggleOn) {
+        iaToggleOn = false;
+    } else {
+        iaToggleOn = true;
+    }
+})
+
+/**
+ * Toggle number animation (na) on and off
+ */
+
+// Define variables 
+const naToggleBtn = document.querySelector(".na-toggle-btn");
+const naToggle = document.querySelector(".na-toggle");
+const naToggleText = document.querySelector(".na-toggle-text");
+let naToggleOn = true;
+
+// Add event listener for toggle btn
+naToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(naToggleBtn, naToggle, naToggleText, naToggleOn);
+
+    // Check if toggle on
+    if (naToggleOn) {
+        naToggleOn = false;
+    } else {
+        naToggleOn = true;
+    }
+})
