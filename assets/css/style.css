@@ -1656,6 +1656,10 @@ footer {
     margin: 40px 0 0 0;
 }
 
+.settings-wrapper-audio.active {
+    display: flex;
+}
+
 .audio-settings-text {
     font-size: 2.5rem;
     color: white;
@@ -1792,6 +1796,10 @@ footer {
     flex-direction: column;
     margin: 40px 0 0 0;
     gap: 10px;
+}
+
+.settings-wrapper-display.active {
+    display: flex;
 }
 
 .display-setting {

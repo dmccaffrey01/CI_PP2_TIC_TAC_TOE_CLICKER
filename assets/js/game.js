@@ -1639,6 +1639,48 @@ function returnToWrapperHome() {
 }
 
 /**
+ * Open audio settings menu when btn is clicked
+ */
+
+// Define variables
+const audioSettingsBtn = document.querySelector(".audio-settings-btn");
+
+// Add listener for btn click to open menu
+audioSettingsBtn.addEventListener("click", () => {
+    // Set settingsWrapperType
+    settingsWrapperType = "audio"
+    
+    // Add active class to settings section and wrapper
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.add("active");
+
+    // Remove active class from settings wrapper home
+    let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
+    settingsWrapperHome.classList.remove("active");
+})
+
+/**
+ * Open display settings menu when btn is clicked
+ */
+
+// Define variables
+const displaySettingsBtn = document.querySelector(".display-settings-btn");
+
+// Add listener for btn click to open menu
+displaySettingsBtn.addEventListener("click", () => {
+    // Set settingsWrapperType
+    settingsWrapperType = "display"
+    
+    // Add active class to settings section and wrapper
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.add("active");
+
+    // Remove active class from settings wrapper home
+    let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
+    settingsWrapperHome.classList.remove("active");
+})
+
+/**
  * Toggle music on and off
  */
 
