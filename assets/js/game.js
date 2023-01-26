@@ -1587,3 +1587,39 @@ musicSlider.oninput = () => {
     musicSliderValue.textContent = musicSlider.value;
 }
 
+/**
+ * Toggle sound effects (se) on and off
+ */
+
+// Define variables 
+const seToggleBtn = document.querySelector(".se-toggle-btn");
+const seToggle = document.querySelector(".se-toggle");
+const seToggleText = document.querySelector(".se-toggle-text");
+let seToggleOn = true;
+
+// Add event listener for toggle btn
+seToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(seToggleBtn, seToggle, seToggleText, seToggleOn);
+
+    // Check if toggle on
+    if (seToggleOn) {
+        seToggleOn = false;
+    } else {
+        seToggleOn = true;
+    }
+})
+
+/**
+ * Change se volume level
+ */
+
+// Define variables
+const seSlider = document.querySelector(".se-slider-range");
+const seSliderValue = document.querySelector(".se-slider-value");
+
+// When slider moves 
+seSlider.oninput = () => {
+    // Change slider value
+    seSliderValue.textContent = seSlider.value;
+}
