@@ -515,6 +515,10 @@ var display = {
      * Create power increase number
      */
     createPowerIncreaseNumber: function(addedPower) {
+        if (!naToggleOn) {
+            return;
+        }
+        
         // Create number of addedPower after 0.1s
         let number = document.createElement("div");
             
@@ -1681,5 +1685,28 @@ naToggleBtn.addEventListener("click", () => {
         naToggleOn = false;
     } else {
         naToggleOn = true;
+    }
+})
+
+/**
+ * Toggle monster animation (ma) on and off
+ */
+
+// Define variables 
+const maToggleBtn = document.querySelector(".ma-toggle-btn");
+const maToggle = document.querySelector(".ma-toggle");
+const maToggleText = document.querySelector(".ma-toggle-text");
+let maToggleOn = true;
+
+// Add event listener for toggle btn
+maToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(maToggleBtn, maToggle, maToggleText, maToggleOn);
+
+    // Check if toggle on
+    if (maToggleOn) {
+        maToggleOn = false;
+    } else {
+        maToggleOn = true;
     }
 })
