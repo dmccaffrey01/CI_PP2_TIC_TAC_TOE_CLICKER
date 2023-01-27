@@ -1950,3 +1950,49 @@ deaToggleBtn.addEventListener("click", () => {
         deaToggleOn = true;
     }
 })
+
+/**
+ * Enter and check password to cheats
+ * Unlock or display error message
+ */
+
+// Define variables
+const cheatPassword = "123";
+const cheatPasswordInput = document.querySelector(".cheat-password-input");
+const passwordText = document.querySelector(".secret-settings-text");
+const cheatPasswordBtn = document.querySelector(".cheat-password-btn");
+const cheatPasswordBtnIcon = document.querySelector(".cheat-password-btn-icon");
+let correctCheatPasswordEntered = false;
+
+// Add event listener for cheat password btn
+cheatPasswordBtn.addEventListener("click", () => {
+    if (correctCheatPasswordEntered) {
+        return;
+    }
+    
+    // Get value of input
+    let passwordGuess = cheatPasswordInput.value;
+    
+    // Check if password is correct
+    if (passwordGuess === cheatPassword) {
+        cheatPasswordCorrect();
+    } else {
+        cheatPasswordIncorrect();
+    }
+})
+
+function cheatPasswordCorrect() {
+   // Change correctCheatPasswordEntered
+   correctCheatPasswordEntered = true;
+        
+   // Change btn icon by removeing and adding class
+   cheatPasswordBtnIcon.classList.remove("fa-lock");
+   cheatPasswordBtnIcon.classList.add("fa-unlock");
+
+   // Update password text
+   updateCheatPasswordText("correct");
+}
+
+function updateCheatPasswordText(state) {
+    console.log("Correct");
+}
