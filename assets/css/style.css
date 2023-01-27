@@ -1882,9 +1882,16 @@ footer {
 }
 
 .cheat-password-text-letters {
-    color: var(--ADD-GREEN);
     height: 40px;
     letter-spacing: -2px;
+}
+
+.cheat-password-text-letters.correct {
+    color: var(--ADD-GREEN);
+}
+
+.cheat-password-text-letters.incorrect {
+    color: var(--MINUS-RED);
 }
 
 .cheat-password-text-cursor {
