@@ -341,13 +341,50 @@
                     </div>   
                 </div>
                 <!-- Secret settings content -->
-                <div class="settings-wrapper-secret active">
+                <div class="settings-wrapper-secret">
                     <div class="cheat-password-container">
                         <div class="secret-settings-text">Password:</div>
                         <input type="text" class="cheat-password-input">
                         <div class="cheat-password-btn">
                             <i class="fa-solid fa-lock cheat-password-btn-icon"></i>
                         </div>
+                    </div>
+                </div>
+                <!-- Cheat settings content -->
+                <div class="settings-wrapper-cheat active">
+                    <div class="cheat-setting">
+                        <div class="cheat-settings-text">Power</div>
+                        <input type="number" class="power-cheat-setting-input" placeholder="1">
+                    </div>
+                    <div class="cheat-setting">
+                        <div class="cheat-settings-text">Monsters Per Level</div>
+                        <div class="slider-container mpl-slider-container">
+                            <div class="slider mpl-slider">
+                                <input type="range" min="1" max="10"  value="10" class="slider-range mpl-slider-range">
+                                <progress min="1" max="10" value="10" class="slider-progress mpl-slider-progress"></progress>
+                            </div>
+                            <div class="slider-value-container">
+                                <div class="slider-value mpl-slider-value">10</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cheat-setting">
+                        <div class="cheat-settings-text">Coins Per Monster</div>
+                        <input type="number" class="coins-cheat-setting-input" placeholder="10">
+                    </div>
+                    <div class="cheat-setting">
+                        <div class="cheat-settings-text">New Monster Delay</div>
+                        <div class="display-toggle-container dea-toggle-container">
+                            <div class="display-toggle dea-toggle">
+                                <div class="display-toggle-btn dea-toggle-btn"></div>
+                            </div>
+                            <div class="display-toggle-text-container">
+                                <div class="display-toggle-text dea-toggle-text">On</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cheat-change-btn">
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </div>
                 </div>
             </div>
