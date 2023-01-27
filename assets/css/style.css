@@ -313,7 +313,6 @@ footer {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 75px);
-    display: none;
 }
 
 .start-screen.play {

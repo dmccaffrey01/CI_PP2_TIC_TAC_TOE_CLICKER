@@ -1681,6 +1681,27 @@ displaySettingsBtn.addEventListener("click", () => {
 })
 
 /**
+ * Open secret settings menu when btn is clicked
+ */
+
+// Define variables
+const secretSettingsBtn = document.querySelector(".secret-settings-btn");
+
+// Add listener for btn click to open menu
+secretSettingsBtn.addEventListener("click", () => {
+    // Set settingsWrapperType
+    settingsWrapperType = "secret"
+    
+    // Add active class to settings section and wrapper
+    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
+    settingsWrapper.classList.add("active");
+
+    // Remove active class from settings wrapper home
+    let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
+    settingsWrapperHome.classList.remove("active");
+})
+
+/**
  * Toggle music on and off
  */
 
