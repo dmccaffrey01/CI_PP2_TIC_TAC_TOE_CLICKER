@@ -1868,3 +1868,47 @@ footer {
     display: flex;
 }
 
+.cheat-password-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.secret-settings-text {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.cheat-password-input {
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 2px solid white;
+    color: white;
+    font-size: 2rem;
+    background-color: var(--MAIN);
+}
+
+.cheat-password-input:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
+.cheat-password-btn {
+    padding: 20px;
+    background-color: var(--DARK-BLUE);
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cheat-password-btn-icon {
+    color: white;
+    font-size: 2rem;
+}
