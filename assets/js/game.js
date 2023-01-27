@@ -1818,6 +1818,9 @@ iaToggleBtn.addEventListener("click", () => {
         iaToggleOn = false;
     } else {
         iaToggleOn = true;
+
+        // Start clicker hover animation
+        display.clickerHoverAnimation();
     }
 })
 
@@ -1911,9 +1914,9 @@ deaToggleBtn.addEventListener("click", () => {
     for (let i = 0; i < toggleAnimations.length; i++) {
         animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], toggleAnimations[i][3]);
         if (toggleAnimations[i][3] == true) {
-            toggleAnimations[i][3] = false;
+            
         } else {
-            toggleAnimations[i][3] = true;
+            
         }
     }
 

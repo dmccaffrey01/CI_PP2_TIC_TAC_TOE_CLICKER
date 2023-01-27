@@ -313,6 +313,7 @@ footer {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 75px);
+    display: none;
 }
 
 .start-screen.play {
@@ -1785,7 +1786,7 @@ footer {
     font-size: 1.8rem;
 }
 
-/* Display settings sectin */
+/* Display settings section */
 
 .settings-wrapper-display {
     width: 100%;
@@ -1850,3 +1851,20 @@ footer {
     color: white;
     font-size: 1.3rem;
 }
+
+/* Secret settings section */
+
+.settings-wrapper-display {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px 0 0 0;
+}
+
+.settings-wrapper-display.active {
+    display: flex;
+}
+
