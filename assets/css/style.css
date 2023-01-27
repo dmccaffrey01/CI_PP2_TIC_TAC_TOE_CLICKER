@@ -1878,6 +1878,24 @@ footer {
 .secret-settings-text {
     font-size: 2.5rem;
     color: white;
+    display: flex;
+}
+
+.cheat-password-text-letters {
+    color: var(--ADD-GREEN);
+    height: 40px;
+    letter-spacing: -2px;
+}
+
+.cheat-password-text-cursor {
+    width: 4px;
+    height: 40px;
+    background: white;
+    display: none;
+}
+
+.cheat-password-text-cursor.active {
+    display: flex;
 }
 
 .cheat-password-input {

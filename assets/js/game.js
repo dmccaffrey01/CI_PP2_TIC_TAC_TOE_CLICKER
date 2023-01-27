@@ -1952,17 +1952,24 @@ deaToggleBtn.addEventListener("click", () => {
 })
 
 /**
- * Enter and check password to cheats
+ * Enter and check password guess to cheats
  * Unlock or display error message
  */
 
 // Define variables
-const cheatPassword = "123";
+const cheatPassword = "";
 const cheatPasswordInput = document.querySelector(".cheat-password-input");
 const passwordText = document.querySelector(".secret-settings-text");
 const cheatPasswordBtn = document.querySelector(".cheat-password-btn");
 const cheatPasswordBtnIcon = document.querySelector(".cheat-password-btn-icon");
 let correctCheatPasswordEntered = false;
+let passwordTextWord1 = "";
+let passwordTextWord2 = "";
+let delayPerLetter = 400;
+let passwordTextStartDelay = 250;
+let passwordTextCursorDelay = 500;
+let cheatPasswordGuessDelay = 0;
+
 
 // Add event listener for cheat password btn
 cheatPasswordBtn.addEventListener("click", () => {
@@ -1981,18 +1988,107 @@ cheatPasswordBtn.addEventListener("click", () => {
     }
 })
 
+/**
+ * Change password btn
+ * Change password text
+ * Open cheat settings content
+ */
 function cheatPasswordCorrect() {
    // Change correctCheatPasswordEntered
    correctCheatPasswordEntered = true;
-        
+
+   // Set passwordText Words
+   passwordTextWord1 = "Correct!";
+   passwordTextWord2 = "Cheats Enabled!";
+
+   // Get length of words
+   let wordsLength = passwordTextWord1.length + passwordTextWord2.length;
+
+   // Set delay
+   cheatPasswordGuessDelay = (wordsLength * delayPerLetter) + passwordTextStartDelay;
+       
    // Change btn icon by removeing and adding class
-   cheatPasswordBtnIcon.classList.remove("fa-lock");
-   cheatPasswordBtnIcon.classList.add("fa-unlock");
+   setTimeout(() => {
+    cheatPasswordBtnIcon.classList.remove("fa-lock");
+    cheatPasswordBtnIcon.classList.add("fa-lock-open");
+   }, cheatPasswordGuessDelay);
 
    // Update password text
    updateCheatPasswordText("correct");
 }
 
-function updateCheatPasswordText(state) {
-    console.log("Correct");
+/**
+ * Updates the password text by correct or incorrect guess
+ */
+function updateCheatPasswordText(passwordState) {
+    // Check if correct or incorrect
+    if (passwordState === "correct") {
+        // Clear text
+        passwordText.innerHTML = `
+        <div class="cheat-password-text-letters"></div>
+        <div class="cheat-password-text-cursor"></div>
+        `;
+
+        setTimeout(() => {
+            // Get cursor
+            let passwordTextCursor = document.querySelector(".cheat-password-text-cursor");
+
+            // Get letters
+            let passwordTextLetters = document.querySelector(".cheat-password-text-letters");
+            
+            // Set duration
+            let duration = cheatPasswordGuessDelay - passwordTextStartDelay;
+
+            // Create arrays for words
+            let arr1 = passwordTextWord1.split("");
+            let arr2 = passwordTextWord2.split("");
+            let startArr2 = false;
+
+            // Create interval for cursor
+            let cursorInterval = window.setInterval(() => {
+                // Clear interval when duration is 0
+                if (duration <= delayPerLetter) {
+                    clearInterval(cursorInterval);
+                }
+
+                // Flash cursor
+                passwordTextCursor.classList.toggle("active");
+            }, passwordTextCursorDelay)
+
+
+            // Create interval to update letters
+            let letterInterval = window.setInterval(() => {
+                // Clear interval when duration is 0
+                if (duration <= delayPerLetter) {
+                    clearInterval(letterInterval);
+                }
+
+                // Check arr1 length
+                if (startArr2) {
+                    // Get letter
+                    let letter = arr2.shift();
+                
+                    // Add letter to display
+                    passwordTextLetters.textContent += letter;
+                } else {
+                    // Get letter
+                    let letter = arr1.shift();
+                
+                    // Add letter to display
+                    passwordTextLetters.textContent += letter;
+                }
+
+                // Check if arr1 is empty
+                if (arr1.length <= 0 && !startArr2) {
+                    setTimeout(() => {
+                        passwordTextLetters.textContent = "";
+                        startArr2 = true;
+                    }, (delayPerLetter - 50));
+                }
+
+                duration -= delayPerLetter;
+                console.log(duration)
+            }, delayPerLetter)
+        }, passwordTextStartDelay);
+    }
 }
