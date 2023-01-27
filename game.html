@@ -354,7 +354,7 @@
                 <div class="settings-wrapper-cheat active">
                     <div class="cheat-setting">
                         <div class="cheat-settings-text">Power</div>
-                        <input type="number" class="power-cheat-setting-input" placeholder="1">
+                        <input type="number" min="1" max="999999" class="cheat-setting-input power-cheat-setting-input" placeholder="1">
                     </div>
                     <div class="cheat-setting">
                         <div class="cheat-settings-text">Monsters Per Level</div>
@@ -370,21 +370,22 @@
                     </div>
                     <div class="cheat-setting">
                         <div class="cheat-settings-text">Coins Per Monster</div>
-                        <input type="number" class="coins-cheat-setting-input" placeholder="10">
+                        <input type="number" min="10" max="999999" class="cheat-setting-input coins-cheat-setting-input" placeholder="10">
                     </div>
                     <div class="cheat-setting">
                         <div class="cheat-settings-text">New Monster Delay</div>
-                        <div class="display-toggle-container dea-toggle-container">
-                            <div class="display-toggle dea-toggle">
-                                <div class="display-toggle-btn dea-toggle-btn"></div>
+                        <div class="cheat-toggle-container nmd-toggle-container">
+                            <div class="cheat-toggle nmd-toggle">
+                                <div class="cheat-toggle-btn nmd-toggle-btn"></div>
                             </div>
-                            <div class="display-toggle-text-container">
-                                <div class="display-toggle-text dea-toggle-text">On</div>
+                            <div class="cheat-toggle-text-container">
+                                <div class="cheat-toggle-text nmd-toggle-text">On</div>
                             </div>
                         </div>
                     </div>
                     <div class="cheat-change-btn">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <div class="cheat-change-btn-text">Change</div>
+                        <i class="fa-solid fa-pen-to-square cheat-change-btn-icon"></i>
                     </div>
                 </div>
             </div>

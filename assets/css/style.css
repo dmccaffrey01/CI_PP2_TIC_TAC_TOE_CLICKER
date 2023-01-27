@@ -1906,6 +1906,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .cheat-password-btn-icon {
@@ -1913,7 +1914,7 @@ footer {
     font-size: 2rem;
 }
 
-/* Secret settings section */
+/* Cheat settings section */
 
 .settings-wrapper-cheat {
     width: 100%;
@@ -1923,8 +1924,126 @@ footer {
     justify-content: center;
     flex-direction: column;
     margin: 40px 0 0 0;
+    gap: 10px;
 }
 
 .settings-wrapper-cheat.active {
     display: flex;
 }
+
+.cheat-setting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cheat-settings-text {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.cheat-setting-input {
+    width: 100px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    border: 2px solid white;
+    color: white;
+    font-size: 0.9rem;
+    background-color: var(--MAIN);
+    text-align: center;
+}
+
+.cheat-setting-input:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
+.mpl-slider-container {
+    height: 30px;
+    gap: 5px;
+}
+
+.mpl-slider {
+    width: 100px;
+    height: 5px;
+}
+
+.mpl-slider-range {
+    left: -1px;
+    top: -6px;
+    width: 102px;
+}
+
+.mpl-slider-range::-webkit-slider-thumb {
+    width: 5px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.mpl-slider-progress {
+    width: 100px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+.mpl-slider-value-container {
+    width: 20px;
+}
+
+.mpl-slider-value {
+    font-size: 0.9rem;
+}
+
+.cheat-change-btn {
+    padding: 5px 10px;
+    background-color: var(--DARK-BLUE);
+    border-radius: 15px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.cheat-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.cheat-toggle {
+    width: 35px;
+    height: 17px;
+    border-radius: 30px;
+    background-color: var(--ADD-GREEN);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.cheat-toggle-btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 1px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cheat-toggle-text-container {
+    width: 20px;
+}
+
+.cheat-toggle-text {
+    color: white;
+    font-size: 0.9rem;
+}
+
