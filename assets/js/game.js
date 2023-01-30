@@ -1639,16 +1639,11 @@ function returnToWrapperHome() {
 }
 
 /**
- * Open audio settings menu when btn is clicked
+ * Set settings wrapper
  */
-
-// Define variables
-const audioSettingsBtn = document.querySelector(".audio-settings-btn");
-
-// Add listener for btn click to open menu
-audioSettingsBtn.addEventListener("click", () => {
+function setSettingsWrapper(wrapperType) {
     // Set settingsWrapperType
-    settingsWrapperType = "audio"
+    settingsWrapperType = wrapperType;
     
     // Add active class to settings section and wrapper
     let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
@@ -1657,6 +1652,19 @@ audioSettingsBtn.addEventListener("click", () => {
     // Remove active class from settings wrapper home
     let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
     settingsWrapperHome.classList.remove("active");
+}
+
+
+/**
+ * Open audio settings menu when btn is clicked
+ */
+
+// Define variables
+const audioSettingsBtn = document.querySelector(".audio-settings-btn");
+
+// Add listener for btn click to open menu
+audioSettingsBtn.addEventListener("click", () => {
+    setSettingsWrapper("audio");
 })
 
 /**
@@ -1668,16 +1676,7 @@ const displaySettingsBtn = document.querySelector(".display-settings-btn");
 
 // Add listener for btn click to open menu
 displaySettingsBtn.addEventListener("click", () => {
-    // Set settingsWrapperType
-    settingsWrapperType = "display"
-    
-    // Add active class to settings section and wrapper
-    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
-    settingsWrapper.classList.add("active");
-
-    // Remove active class from settings wrapper home
-    let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
-    settingsWrapperHome.classList.remove("active");
+    setSettingsWrapper("display");
 })
 
 /**
@@ -1689,16 +1688,7 @@ const secretSettingsBtn = document.querySelector(".secret-settings-btn");
 
 // Add listener for btn click to open menu
 secretSettingsBtn.addEventListener("click", () => {
-    // Set settingsWrapperType
-    settingsWrapperType = "secret"
-    
-    // Add active class to settings section and wrapper
-    let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
-    settingsWrapper.classList.add("active");
-
-    // Remove active class from settings wrapper home
-    let settingsWrapperHome = document.querySelector(".settings-wrapper-home");
-    settingsWrapperHome.classList.remove("active");
+    setSettingsWrapper("secret");
 })
 
 /**
@@ -1973,7 +1963,11 @@ let cheatPasswordGuessDelay = 0;
 
 // Add event listener for cheat password btn
 cheatPasswordBtn.addEventListener("click", () => {
+    // Check if cheats are enabled
     if (correctCheatPasswordEntered) {
+        // Open cheats settings menu
+        openCheatsSettingsMenu();
+
         return;
     }
     
@@ -2009,11 +2003,13 @@ function cheatPasswordCorrect() {
    // Set delay
    cheatPasswordGuessDelay = (wordsLength * delayPerLetter) + passwordTextStartDelay;
        
-   // Change btn icon by removeing and adding class
-   setTimeout(() => {
+    // Change btn icon by removeing and adding class
     cheatPasswordBtnIcon.classList.remove("fa-lock");
     cheatPasswordBtnIcon.classList.add("fa-lock-open");
-   }, cheatPasswordGuessDelay);
+
+    // Change placeholder text
+    cheatPasswordInput.type = "text";
+    cheatPasswordInput.placeholder = "Click Lock"; 
 
    // Update password text
    updateCheatPasswordText("correct");
@@ -2050,7 +2046,7 @@ function updateCheatPasswordText(passwordState) {
     // Get letters
     let passwordTextLetters = document.querySelector(".cheat-password-text-letters");
 
-    // Check if correct or incorrect
+    // Check if correct or incorrect add class
     if (passwordState === "correct") {
         passwordTextLetters.classList.add("correct");
     } else {
@@ -2082,6 +2078,7 @@ function updateCheatPasswordText(passwordState) {
         let letterInterval = window.setInterval(() => {
             // Clear interval when duration is 0
             if (duration <= delayPerLetter) {
+                passwordText.innerHTML = "Password:"
                 clearInterval(letterInterval);
             }
 
@@ -2112,4 +2109,22 @@ function updateCheatPasswordText(passwordState) {
             console.log(duration)
         }, delayPerLetter)
     }, passwordTextStartDelay);
+}
+
+/**
+ * Open cheats settings menu
+ */
+function openCheatsSettingsMenu() {
+    setSettingsWrapper("cheat");
+    removeSecretSettingsWrapper();
+}
+
+/**
+ * Remove secret settings wrapper
+ */
+
+function removeSecretSettingsWrapper() {
+   // Remove active class from settings wrapper secret
+   let settingsWrapperHome = document.querySelector(".settings-wrapper-secret");
+   settingsWrapperHome.classList.remove("active"); 
 }

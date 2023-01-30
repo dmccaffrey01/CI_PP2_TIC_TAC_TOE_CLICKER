@@ -341,7 +341,7 @@ footer {
     padding: 15px 20px;
     border: none;
     border-radius: 15px;
-    background-color: var(--MAIN-LIGHT);
+    background-color: var(--DARK-BLUE);
     cursor: pointer;
     font-size: 1.8rem;
     color: white;
@@ -1878,7 +1878,10 @@ footer {
 .secret-settings-text {
     font-size: 2.5rem;
     color: white;
+    height: 48px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cheat-password-text-letters {
