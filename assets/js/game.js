@@ -1706,12 +1706,8 @@ musicToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
     animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
 
-    // Check if toggle on
-    if (musicToggleOn) {
-        musicToggleOn = false;
-    } else {
-        musicToggleOn = true;
-    }
+    // Change toggle on
+    musicToggleOn = switchToggleBool(musicToggleOn);
 })
 
 /**
@@ -1759,6 +1755,18 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
 }
 
 /**
+ * Switch Toggle Bool
+ */
+function switchToggleBool(bool) {
+    if (bool) {
+        bool = false;
+    } else {
+        bool = true;
+    }
+    return bool;
+}
+
+/**
  * Change music volume level
  */
 // Define variables
@@ -1786,12 +1794,8 @@ seToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
     animateToggleBtn(seToggleBtn, seToggle, seToggleText, seToggleOn);
 
-    // Check if toggle on
-    if (seToggleOn) {
-        seToggleOn = false;
-    } else {
-        seToggleOn = true;
-    }
+    // Change toggle on
+    seToggleOn = switchToggleBool(seToggleOn);
 })
 
 /**
@@ -1849,12 +1853,9 @@ naToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
     animateToggleBtn(naToggleBtn, naToggle, naToggleText, naToggleOn);
 
-    // Check if toggle on
-    if (naToggleOn) {
-        naToggleOn = false;
-    } else {
-        naToggleOn = true;
-    }
+    // Change toggle on
+    naToggleOn = switchToggleBool(naToggleOn);
+    console.log(naToggleOn);
 })
 
 /**
@@ -1872,12 +1873,8 @@ maToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
     animateToggleBtn(maToggleBtn, maToggle, maToggleText, maToggleOn);
 
-    // Check if toggle on
-    if (maToggleOn) {
-        maToggleOn = false;
-    } else {
-        maToggleOn = true;
-    }
+    // Change toggle on
+    maToggleOn = switchToggleBool(maToggleOn);
 })
 
 /**
@@ -1894,12 +1891,8 @@ caToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
     animateToggleBtn(caToggleBtn, caToggle, caToggleText, caToggleOn);
 
-    // Check if toggle on
-    if (caToggleOn) {
-        caToggleOn = false;
-    } else {
-        caToggleOn = true;
-    }
+    // Change toggle on
+    caToggleOn = switchToggleBool(caToggleOn);
 })
 
 /**
@@ -1910,7 +1903,7 @@ caToggleBtn.addEventListener("click", () => {
 const deaToggleBtn = document.querySelector(".dea-toggle-btn");
 const deaToggle = document.querySelector(".dea-toggle");
 const deaToggleText = document.querySelector(".dea-toggle-text");
-const toggleAnimations = [
+let toggleAnimations = [
     [iaToggleBtn, iaToggle, iaToggleText, iaToggleOn],
     [naToggleBtn, naToggle, naToggleText, naToggleOn],
     [maToggleBtn, maToggle, maToggleText, maToggleOn],
@@ -1920,6 +1913,12 @@ let deaToggleOn = true;
 
 // Add event listener for toggle btn
 deaToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(deaToggleBtn, deaToggle, deaToggleText, deaToggleOn);
+
+    // Change toggle on
+    deaToggleOn = switchToggleBool(deaToggleOn);
+    
     // Create objects
     let toggleObj = {
         "iaToggleOn": iaToggleOn,
@@ -1928,47 +1927,55 @@ deaToggleBtn.addEventListener("click", () => {
         "caToggleOn": caToggleOn
     }
 
+    // Change toggle
     for (let i = 0; i < toggleAnimations.length; i++) {
-        animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], toggleAnimations[i][3]);
-        switch (toggleObj[i]) {
+        // Switch toggle ons
+        switch (Object.keys(toggleObj)[i]) {
             case "iaToggleOn":
-                if (iaToggleOn) {
-                    iaToggleOn = false;
-                } else {
-                    iaToggleOn = true;
+                if (iaToggleOn !== deaToggleOn) {
+                    if (iaToggleOn) {
+                        iaToggleOn = false;
+                    } else {
+                        iaToggleOn = true;
+                       
+                        // Start clicker hover animation
+                        display.clickerHoverAnimation();
+                    }
                 }
+                // Set toggle on
+                toggleAnimations[i][3] = iaToggleOn;
                 break;
             case "naToggleOn":
-                if (naToggleOn) {
-                    naToggleOn = false;
-                } else {
-                    naToggleOn = true;
+                if (naToggleOn !== deaToggleOn) {
+                    // Change toggle on
+                    naToggleOn = switchToggleBool(naToggleOn);
                 }
+                // Set toggle on
+                toggleAnimations[i][3] = naToggleOn;
                 break;
             case "maToggleOn":
-                if (maToggleOn) {
-                    maToggleOn = false;
-                } else {
-                    maToggleOn = true;
+                if (maToggleOn !== deaToggleOn) {
+                    // Change toggle on
+                    maToggleOn = switchToggleBool(maToggleOn);
                 }
+                // Set toggle on
+                toggleAnimations[i][3] = maToggleOn;
                 break;
             case "caToggleOn":
-                if (caToggleOn) {
-                    caToggleOn = false;
-                } else {
-                    caToggleOn = true;
+                if (caToggleOn !== deaToggleOn) {
+                    // Change toggle on
+                    caToggleOn = switchToggleBool(caToggleOn);
                 }
+                // Set toggle on
+                toggleAnimations[i][3] = caToggleOn;
                 break;
         }
-    }
-
-    animateToggleBtn(deaToggleBtn, deaToggle, deaToggleText, deaToggleOn);
-
-    // Check if toggle on
-    if (deaToggleOn) {
-        deaToggleOn = false;
-    } else {
-        deaToggleOn = true;
+        
+        // Animate toggle ons
+        if (toggleAnimations[i][3] == deaToggleOn) {
+            // Animate toggle on
+            animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], !toggleAnimations[i][3]);
+        }
     }
 })
 
