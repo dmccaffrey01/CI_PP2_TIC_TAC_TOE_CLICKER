@@ -1966,7 +1966,7 @@ cheatPasswordBtn.addEventListener("click", () => {
     // Check if cheats are enabled
     if (correctCheatPasswordEntered) {
         // Open cheats settings menu
-        openCheatsSettingsMenu();
+        openCheatSettingsMenu();
 
         return;
     }
@@ -2114,7 +2114,7 @@ function updateCheatPasswordText(passwordState) {
 /**
  * Open cheats settings menu
  */
-function openCheatsSettingsMenu() {
+function openCheatSettingsMenu() {
     setSettingsWrapper("cheat");
     removeSecretSettingsWrapper();
 }
@@ -2127,4 +2127,39 @@ function removeSecretSettingsWrapper() {
    // Remove active class from settings wrapper secret
    let settingsWrapperHome = document.querySelector(".settings-wrapper-secret");
    settingsWrapperHome.classList.remove("active"); 
+}
+
+/**
+ * Change game when cheats are enabled
+ */
+// Define variables
+const cheatChangeBtn = document.querySelector(".cheat-change-btn");
+
+// Add event listener for change btn
+cheatChangeBtn.addEventListener("click", () => {
+    // Get all cheat values and replace game values
+    changeCheatSettings();
+})
+
+/**
+ * Get all cheat values and replace game values
+ */
+function changeCheatSettings() {
+    // Get all cheat values
+    let cheatPower = document.querySelector(".power-cheat-setting-input").value;
+    let cheatMonstersPerLevel = document.querySelector(".mpl-slider-range").value;
+    let cheatCoinsPerMonster = document.querySelector(".coins-cheat-setting-input").value;
+    let cheatNewMonsterDelayText = document.querySelector(".nmd-toggle-text").textContent;
+    let cheatNewMonsterDelay;
+    if (cheatNewMonsterDelayText == "On") {
+        cheatNewMonsterDelay = true;
+    } else {
+        cheatNewMonsterDelay = false;
+    }
+
+    // Replace all game values with cheat values
+    game.power = cheatPower;
+    game.monstersPerLevel = cheatMonstersPerLevel;
+    game.coinsToGet = cheatCoinsPerMonster;
+    game.newMonsterDelay = cheatNewMonsterDelay;
 }
