@@ -75,7 +75,12 @@ var game = {
         display.startKillMonsterGame();
 
         // Display remember number
-        display.showRememberNumber();
+        display.createRememberNumber();
+
+        // Start timing game
+        setTimeout(() => {
+            display.startTimingGame();
+        }, 3000);
     },
 
 
@@ -458,15 +463,36 @@ var display = {
         killMonsterSection.classList.add("active");
     },
 
-    showRememberNumber: function() {
-        // Get remember number
-        let rememberNumberDiv = document.querySelector(".remember-number");
+    createRememberNumber: function() {
+        // Create remember number div
+        let div = document.createElement("div");
+
+        // Add class
+        div.classList.add("remember-number");
 
         // Get random number
         let rememberNumber = randomNumber(3,5);
 
         // Place remember number in div
-        rememberNumberDiv.textContent = rememberNumber;
+        div.textContent = rememberNumber;
+
+        // Get kill monster section
+        let killMonsterSection = document.querySelector(".kill-monster-section");
+
+        // Add div to kill monster section
+        killMonsterSection.appendChild(div);
+
+        // Fade out after 3s
+        fadeOut(div, 3000, 0.2, () => {
+            div.remove();
+        })
+    },
+
+    /**
+     * Start the timing game
+     */
+    startTimingGame: function() {
+        
     },
 
     /**
