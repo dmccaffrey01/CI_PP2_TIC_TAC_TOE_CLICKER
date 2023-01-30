@@ -1761,7 +1761,6 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
 /**
  * Change music volume level
  */
-
 // Define variables
 const musicSlider = document.querySelector(".music-slider-range");
 const musicSliderValue = document.querySelector(".music-slider-value");
@@ -2122,11 +2121,23 @@ function openCheatSettingsMenu() {
 /**
  * Remove secret settings wrapper
  */
-
 function removeSecretSettingsWrapper() {
    // Remove active class from settings wrapper secret
    let settingsWrapperHome = document.querySelector(".settings-wrapper-secret");
    settingsWrapperHome.classList.remove("active"); 
+}
+
+/**
+ * Change monsters per level
+ */
+// Define variables
+const mplSlider = document.querySelector(".mpl-slider-range");
+const mplSliderValue = document.querySelector(".mpl-slider-value");
+
+// When slider moves 
+mplSlider.oninput = () => {
+    // Change slider value
+    mplSliderValue.textContent = mplSlider.value;
 }
 
 /**
