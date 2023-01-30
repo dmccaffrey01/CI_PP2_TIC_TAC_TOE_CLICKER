@@ -1690,7 +1690,7 @@ footer {
 }
 
 .toggle {
-    width: 70px;
+    width: 72px;
     height: 35px;
     border-radius: 30px;
     background-color: var(--ADD-GREEN);
@@ -1703,7 +1703,7 @@ footer {
     height: 31px;
     border-radius: 50%;
     position: absolute;
-    left: 33px;
+    left: 39px;
     top: 2px;
     background-color: white;
     cursor: pointer;
@@ -1822,7 +1822,7 @@ footer {
 }
 
 .display-toggle {
-    width: 58px;
+    width: 52px;
     height: 25px;
     border-radius: 30px;
     background-color: var(--ADD-GREEN);
@@ -1835,7 +1835,7 @@ footer {
     height: 21px;
     border-radius: 50%;
     position: absolute;
-    left: 31px;
+    left: 29px;
     top: 2px;
     background-color: white;
     cursor: pointer;
@@ -2058,7 +2058,7 @@ footer {
     height: 15px;
     border-radius: 50%;
     position: absolute;
-    left: 18px;
+    left: 19px;
     top: 1px;
     background-color: white;
     cursor: pointer;

@@ -1732,7 +1732,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
     // Get heigth of toggle
     let toggleHeight = toggle.offsetHeight;
 
-    // Get width of toggleBtn
+    // Get width of toggle btn
     let toggleBtnWidth = toggleBtn.offsetWidth;
 
     // Set positionX
@@ -1741,7 +1741,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
     // Check if toggle is on
     if (toggleOn) {
         // Calculate toggle btn position
-        positionX = 6;
+        positionX = toggleWidth - (2 * toggleHeight);
         
         // Set btn to position
         toggleBtn.style.left = positionX + "px";
@@ -1753,7 +1753,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
         toggleText.textContent = "OFF";
     } else {
         // Calculate toggle btn position
-        positionX = toggleWidth - toggleHeight - 2;
+        positionX = toggleWidth - toggleBtnWidth - (toggleWidth - (2 * toggleHeight));
 
         // Set btn to position
         toggleBtn.style.left = positionX + "px";
