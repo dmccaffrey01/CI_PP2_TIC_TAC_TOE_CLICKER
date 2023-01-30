@@ -842,6 +842,23 @@ footer {
     }
 }
 
+/* Kill Monster Section */
+
+.kill-monster-section {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    background-color: var(--MAIN-LIGHT);
+}
+
+.kill-monster-section.active {
+    display: flex;
+    top: 0px;
+}
+
 /* Upgrade Area */
 
 .upgrade-area {
