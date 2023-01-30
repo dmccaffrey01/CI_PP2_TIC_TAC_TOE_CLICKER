@@ -56,6 +56,9 @@ var game = {
      */
     checkMonsterHP: function() {
         if (this.monsterHP <= 0) {
+            // Start kill monster game
+            this.startKillMonsterGame();
+            
             // Create new monster
             this.monsterKilled();
 
@@ -63,6 +66,17 @@ var game = {
             this.isMonsterDead = true;
         } 
     },
+
+    /**
+     * Start kill monster game
+     */
+    startKillMonsterGame: function() {
+        // Start kill monster game
+        let killMonsterSection = document.querySelector(".kill-monster-section");
+
+        killMonsterSection.classList.add("active");
+    },
+
 
     /**
      * Creates new monster
