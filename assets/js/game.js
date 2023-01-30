@@ -1883,7 +1883,6 @@ maToggleBtn.addEventListener("click", () => {
 /**
  * Toggle coin animation (ca) on and off
  */
-
 // Define variables 
 const caToggleBtn = document.querySelector(".ca-toggle-btn");
 const caToggle = document.querySelector(".ca-toggle");
@@ -2128,7 +2127,7 @@ function removeSecretSettingsWrapper() {
 }
 
 /**
- * Change monsters per level
+ * Change monsters per level (mpl) slider
  */
 // Define variables
 const mplSlider = document.querySelector(".mpl-slider-range");
@@ -2139,6 +2138,28 @@ mplSlider.oninput = () => {
     // Change slider value
     mplSliderValue.textContent = mplSlider.value;
 }
+
+/**
+ * Toggle new monster delay (nmd) on and off
+ */
+// Define variables 
+const nmdToggleBtn = document.querySelector(".nmd-toggle-btn");
+const nmdToggle = document.querySelector(".nmd-toggle");
+const nmdToggleText = document.querySelector(".nmd-toggle-text");
+let nmdToggleOn = true;
+
+// Add event listener for toggle btn
+nmdToggleBtn.addEventListener("click", () => {
+    // Animate toggle btn
+    animateToggleBtn(nmdToggleBtn, nmdToggle, nmdToggleText, nmdToggleOn);
+
+    // Check if toggle on
+    if (nmdToggleOn) {
+        nmdToggleOn = false;
+    } else {
+        nmdToggleOn = true;
+    }
+})
 
 /**
  * Change game when cheats are enabled
