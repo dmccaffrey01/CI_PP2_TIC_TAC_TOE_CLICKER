@@ -16,7 +16,7 @@ var game = {
     coinsToGet: 500,
     coinsAdded: 0,
     isMonsterDead: false,
-    newMonsterDelay: 0,
+    newMonsterDelay: 800,
     time: 0,
     interval: null,
 
@@ -110,7 +110,7 @@ var game = {
                 // Create new monster
                 this.newMonster();
             }
-        }, 300);
+        }, 500);
     },
 
     /**
@@ -885,6 +885,7 @@ var display = {
         // Change scale to normal after 0.1s
         setTimeout(() => {
             monster.style.transform = "scale(1)";
+
         }, 100);
     },
 
@@ -899,11 +900,27 @@ var display = {
         // Get the image element
         let monster = document.querySelector(".monster");
 
-        monster.style.transform = "scale(0.01)";
+        // Get wrapper
+        let monsterWrapper = document.querySelector(".monster-wrapper");
 
+        // Transition monster
+        monsterWrapper.classList.add("transition");
+
+        // Scale monster to disappear
         setTimeout(() => {
-            monster.style.transform = "scale(1)"
-        }, 800)
+            monster.classList.add("transition");
+            monster.style.transform = "scale(0.01)";
+        }, 100);
+
+        // Remove transtion
+        setTimeout(() => {
+            monster.classList.remove("transition");
+            monsterWrapper.classList.remove("transition");
+        }, 500)
+        
+        setTimeout(() => {
+            monster.style.transform = "scale(1)";
+        }, game.newMonsterDelay);
     },
 
     /**

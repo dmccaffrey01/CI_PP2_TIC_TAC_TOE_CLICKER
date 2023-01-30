@@ -520,10 +520,10 @@ footer {
 }
 
 .island-bg.transition {
-    animation: new-island-transition 0.5s ease-in-out forwards;
+    animation: new-image-transition 0.5s ease-in-out forwards;
 }
 
-@keyframes new-island-transition {
+@keyframes new-image-transition {
     0% {
         transform: rotate(15deg);
     }
@@ -616,8 +616,16 @@ footer {
     position: absolute;
     left: 60px;
     top: 0px;
-    transition: all 0.1s ease-in-out;
+    transition: transform 0.1s linear;
     z-index: 98;
+}
+
+.monster.transition {
+    transition: transform 0.5s linear;
+}
+
+.monster-wrapper.transition {
+    animation: new-image-transition 0.5s ease-in-out forwards;
 }
 
 .coin {
