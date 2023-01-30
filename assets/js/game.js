@@ -1920,12 +1920,45 @@ let deaToggleOn = true;
 
 // Add event listener for toggle btn
 deaToggleBtn.addEventListener("click", () => {
+    // Create objects
+    let toggleObj = {
+        "iaToggleOn": iaToggleOn,
+        "naToggleOn": naToggleOn,
+        "maToggleOn": maToggleOn,
+        "caToggleOn": caToggleOn
+    }
+
     for (let i = 0; i < toggleAnimations.length; i++) {
         animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], toggleAnimations[i][3]);
-        if (toggleAnimations[i][3] == true) {
-            
-        } else {
-            
+        switch (toggleObj[i]) {
+            case "iaToggleOn":
+                if (iaToggleOn) {
+                    iaToggleOn = false;
+                } else {
+                    iaToggleOn = true;
+                }
+                break;
+            case "naToggleOn":
+                if (naToggleOn) {
+                    naToggleOn = false;
+                } else {
+                    naToggleOn = true;
+                }
+                break;
+            case "maToggleOn":
+                if (maToggleOn) {
+                    maToggleOn = false;
+                } else {
+                    maToggleOn = true;
+                }
+                break;
+            case "caToggleOn":
+                if (caToggleOn) {
+                    caToggleOn = false;
+                } else {
+                    caToggleOn = true;
+                }
+                break;
         }
     }
 
@@ -2104,7 +2137,6 @@ function updateCheatPasswordText(passwordState) {
             }
 
             duration -= delayPerLetter;
-            console.log(duration)
         }, delayPerLetter)
     }, passwordTextStartDelay);
 }
@@ -2178,12 +2210,22 @@ cheatChangeBtn.addEventListener("click", () => {
  */
 function changeCheatSettings() {
     // Get all cheat values
-    let cheatPower = document.querySelector(".power-cheat-setting-input").value;
-    let cheatMonstersPerLevel = document.querySelector(".mpl-slider-range").value;
-    let cheatCoinsPerMonster = document.querySelector(".coins-cheat-setting-input").value;
+    // Power
+    let cheatPower = Number(document.querySelector(".power-cheat-setting-input").value);
+    if (cheatPower == 0) {
+        cheatPower = 1;
+    }
+    // Monsters per level
+    let cheatMonstersPerLevel = Number(document.querySelector(".mpl-slider-range").value);
+    // Coins per monster
+    let cheatCoinsPerMonster = Number(document.querySelector(".coins-cheat-setting-input").value);
+    if (cheatCoinsPerMonster == 0) {
+        cheatCoinsPerMonster = 10;
+    }
+    // New monster delay
     let cheatNewMonsterDelayText = document.querySelector(".nmd-toggle-text").textContent;
-    let cheatNewMonsterDelay;
-    if (cheatNewMonsterDelayText == "On") {
+    let cheatNewMonsterDelay = String(cheatNewMonsterDelayText)
+    if (cheatNewMonsterDelayText == "ON") {
         cheatNewMonsterDelay = true;
     } else {
         cheatNewMonsterDelay = false;
@@ -2193,5 +2235,18 @@ function changeCheatSettings() {
     game.power = cheatPower;
     game.monstersPerLevel = cheatMonstersPerLevel;
     game.coinsToGet = cheatCoinsPerMonster;
+    game.coinsAdded = cheatCoinsPerMonster;
+    if (cheatNewMonsterDelay) {
+        cheatNewMonsterDelay = 800;
+    } else {
+        cheatNewMonsterDelay = 0;
+    }
     game.newMonsterDelay = cheatNewMonsterDelay;
+    
+    // Update display
+    display.updatePower();
+    display.updateMonsterCount();
+    
+    // Close settings menu
+    closeSettingsMenu();
 }
