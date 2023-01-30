@@ -1582,6 +1582,12 @@ settingsBtn.addEventListener("click", () => {
     settingsSection.classList.add("active");
     let settingsWrapper = document.querySelector(`.settings-wrapper-${settingsWrapperType}`);
     settingsWrapper.classList.add("active");
+
+    // Change color if boss round
+    if (game.isBossRound) {
+        // Change color of background 
+        document.documentElement.style.setProperty("--MAIN", "#262626"); 
+    }
 })
 
 /**
@@ -1603,6 +1609,12 @@ function closeSettingsMenu() {
 
     // Add play class to clicker section
     clickerSection.classList.add("play");
+
+    // Change color if boss round
+    if (game.isBossRound) {
+        // Change color of background 
+        document.documentElement.style.setProperty("--MAIN", "#9d0208"); 
+    }
 }
 
 /**
