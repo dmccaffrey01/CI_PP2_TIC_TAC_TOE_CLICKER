@@ -71,10 +71,11 @@ var game = {
      * Start kill monster game
      */
     startKillMonsterGame: function() {
-        // Start kill monster game
-        let killMonsterSection = document.querySelector(".kill-monster-section");
+        // Display kill monster section
+        display.startKillMonsterGame();
 
-        killMonsterSection.classList.add("active");
+        // Display remember number
+        display.showRememberNumber();
     },
 
 
@@ -447,6 +448,25 @@ var display = {
         if (game.monsterHP <= 0) {
             healthBar.style.width = "0%";
         }
+    },
+
+    startKillMonsterGame: function() {
+        // Get kill monster section
+        let killMonsterSection = document.querySelector(".kill-monster-section");
+
+        // Add active class
+        killMonsterSection.classList.add("active");
+    },
+
+    showRememberNumber: function() {
+        // Get remember number
+        let rememberNumberDiv = document.querySelector(".remember-number");
+
+        // Get random number
+        let rememberNumber = randomNumber(3,5);
+
+        // Place remember number in div
+        rememberNumberDiv.textContent = rememberNumber;
     },
 
     /**

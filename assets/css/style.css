@@ -846,6 +846,9 @@ footer {
 
 .kill-monster-section {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
     height: 0;
     position: absolute;
@@ -854,11 +857,19 @@ footer {
     background-color: var(--MAIN-LIGHT);
     z-index: 2;
     transition: all 1s;
+    overflow: hidden;
 }
 
 .kill-monster-section.active {
     top: 75px;
     height: calc(100% - 75px);
+}
+
+/* Remember number */
+
+.remember-number {
+    font-size: 50rem;
+    color: var(--TEXT);
 }
 
 /* Upgrade Area */
