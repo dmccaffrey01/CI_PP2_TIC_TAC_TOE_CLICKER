@@ -1523,14 +1523,27 @@ var audio = {
      * Stop music if music toggle off
      */
     updateMusic: function() {
+        // Check if toggle on or off
         if (musicToggleOn) {
+            // Play soundtrack
             this.playSoundtrackBG();
         } else {
+            // Stop soundtrack
             let music = document.getElementById("bg-soundtrack");
             music.pause();
         }
-    }
+    },
 
+    /**
+     * Update the music volume
+     */
+    updateMusicVolume: function(value) {
+        // Get music
+        let music = document.getElementById("bg-soundtrack");
+        
+        // Change volume
+        music.volume = value / 100;
+    }
 }
 
 /**
@@ -2203,6 +2216,9 @@ const musicSliderValue = document.querySelector(".music-slider-value");
 musicSlider.oninput = () => {
     // Change slider value
     musicSliderValue.textContent = musicSlider.value;
+
+    // Update music volume
+    audio.updateMusicVolume(musicSlider.value);
 }
 
 /**
