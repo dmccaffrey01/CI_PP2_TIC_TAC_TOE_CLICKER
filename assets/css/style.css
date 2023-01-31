@@ -915,7 +915,7 @@ footer {
     height: 30px;
     border-radius: 50px;
     background-color: var(--MINUS-RED);
-    box-shadow: 0 20px 20px -15px var(--MINUS-RED);
+    box-shadow: 0 10px 10px -7px var(--MINUS-RED);
     position: relative;
     overflow: hidden;
 }

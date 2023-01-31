@@ -90,6 +90,16 @@ var game = {
         }, 3050);
     },
 
+    /**
+     * Add to timing count
+     */
+    addToTimingCount: function() {
+        // Increment timing count
+        this.timingCount++
+
+        // Update display
+        display.updateTimingCount();
+    },
 
     /**
      * Creates new monster
@@ -592,6 +602,8 @@ var display = {
         // Check if elements overlap
         if (this.checkOverlap(timingBar, timingGreenArea)) {
             console.log(this.checkOverlap(timingBar, timingGreenArea));
+            // Add to timing count
+            game.addToTimingCount();
         } else {
             console.log(this.checkOverlap(timingBar, timingGreenArea));
         }
@@ -610,6 +622,17 @@ var display = {
             domRect1.right < domRect2.left ||
             domRect1.left > domRect2.right
         );
+    },
+
+    /**
+     * Update timing count display
+     */
+    updateTimingCount: function() {
+        // Get timing count
+        let timingCount = document.querySelector(".timing-count");
+
+        // Change number
+        timingCount.textContent = game.timingCount;
     },
 
     /**
