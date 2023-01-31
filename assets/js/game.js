@@ -21,7 +21,7 @@ var game = {
     interval: null,
     timingRememberNumber: 0,
     timingCount: 0,
-    timingTimer: 20.0,
+    timingTimer: 15.0,
 
     /**
      * Start the game
@@ -76,7 +76,7 @@ var game = {
     startKillMonsterGame: function() {
         // Set all variables
         game.timingCount = 0;
-        game.timingTimer = 20.0;
+        game.timingTimer = 15.0;
         
         // Display kill monster section
         display.startKillMonsterGame();
@@ -87,18 +87,8 @@ var game = {
         // Start timing game
         setTimeout(() => {
             display.startTimingGame();
+            this.startTimingTimer();
         }, 3050);
-    },
-
-    /**
-     * Add to timing count
-     */
-    addToTimingCount: function() {
-        // Increment timing count
-        this.timingCount++
-
-        // Update display
-        display.updateTimingCount();
     },
 
     /**
@@ -304,6 +294,44 @@ var game = {
         this.interval = setInterval(() => {
             this.timer();
         }, 1000);
+    },
+
+    /**
+     * Start timing timer
+     */
+    startTimingTimer: function() {
+        // Create interval for timer
+        this.timingInterval = setInterval(() => {
+            // Clear interval
+            if (this.timingTimer <= 0.2) {
+                clearInterval(this.timingInterval);
+            }
+            // Update timer
+            this.timingTime();
+        }, 100);
+    },
+
+    /**
+     * Update the timing timer
+     */
+    timingTime: function() {
+        // Increment time
+        this.timingTimer -= 0.1;
+
+        // Display our time
+        display.updateTimingTimer(this.timingTimer);
+    },
+
+
+    /**
+     * Add to timing count
+     */
+    addToTimingCount: function() {
+        // Increment timing count
+        this.timingCount++
+
+        // Update display
+        display.updateTimingCount();
     }
 }
 
@@ -549,7 +577,12 @@ var display = {
         let tbcWidth = timingBoxContainer.offsetWidth;
 
         // Set duration
-        let duration = 20000;
+        let duration = false;
+
+        // Start duration timer
+        setTimeout(()=> {
+            duration = true;
+        }, 14900)
 
         // Set movement direction
         let moveRight = true;
@@ -557,7 +590,7 @@ var display = {
         // Create movement interval
         let movementInterval = window.setInterval(() => {
             // Clear interval
-            if (duration <= 1) {
+            if (duration) {
                 clearInterval(movementInterval);
             }
 
@@ -583,9 +616,6 @@ var display = {
                 // Change style
                 timingBar.style.left = positionX + "px";
             }
-
-            // Take away from duration
-            duration--;
         }, 1)
     },
 
@@ -601,11 +631,10 @@ var display = {
 
         // Check if elements overlap
         if (this.checkOverlap(timingBar, timingGreenArea)) {
-            console.log(this.checkOverlap(timingBar, timingGreenArea));
             // Add to timing count
             game.addToTimingCount();
         } else {
-            console.log(this.checkOverlap(timingBar, timingGreenArea));
+            // Decrement time
         }
     },
 
@@ -633,6 +662,17 @@ var display = {
 
         // Change number
         timingCount.textContent = game.timingCount;
+    },
+
+    /**
+     * Update timer display
+     */
+    updateTimingTimer: function(time) {
+        // Get timer
+        let timingTimer = document.querySelector(".timing-timer");
+
+        // Update display
+        timingTimer.textContent = Math.round(game.timingTimer * 10) / 10 + "s";
     },
 
     /**
