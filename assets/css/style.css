@@ -875,11 +875,21 @@ footer {
 /* Timing Game */
 
 .timing-game-container {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.timing-game-container.active {
+    display: flex;
+}
+
+.timing-game-container.fade {
+    opacity: 1;
 }
 
 .timing-count-container {
@@ -888,12 +898,12 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 150px;
 }
 
 .timing-count {
     color: var(--TEXT);
     font-size: 10rem;
+    line-height: 7.5rem;
 }
 
 .timing-attack-btn-text {
@@ -947,7 +957,6 @@ footer {
     align-items: center;
     flex-direction: column;
     width: 400px;
-    height: 150px;
     gap: 5px;
     position: relative;
 }
@@ -955,6 +964,7 @@ footer {
 .timing-timer {
     font-size: 3rem;
     color: var(--TEXT);
+    line-height: 2.25rem;
 }
 
 .timing-countdown {

@@ -80,7 +80,7 @@ var game = {
         // Start timing game
         setTimeout(() => {
             display.startTimingGame();
-        }, 3000);
+        }, 3050);
     },
 
 
@@ -492,7 +492,14 @@ var display = {
      * Start the timing game
      */
     startTimingGame: function() {
-        
+        // Get timing game container
+        let timingGameContainer = document.querySelector(".timing-game-container");
+
+        // Add classes
+        timingGameContainer.classList.add("active");
+        setTimeout(() => {
+            timingGameContainer.classList.add("fade");
+        }, 50);
     },
 
     /**
