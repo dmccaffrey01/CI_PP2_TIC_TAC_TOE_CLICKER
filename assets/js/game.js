@@ -476,6 +476,11 @@ var display = {
         startScreen.classList.add("play");
         clickerSection.classList.add("play");
 
+        // Add fade class
+        setTimeout(() => {
+            clickerSection.classList.add("fade");
+        }, 500);
+
         // Update displays
         this.updateLevel();
         this.updateMonsterCount();
@@ -487,6 +492,11 @@ var display = {
         
         // Start the bg audio
         audio.playSoundtrackBG();
+
+        setTimeout(() => {
+            // Update music
+            audio.updateMusic();
+        }, 500)
 
         // Create new island and monster
         this.newIsland();
@@ -1512,7 +1522,7 @@ var audio = {
 
         // Play audio
         audio.play();
-        
+    
         // Add event listener
         audio.addEventListener("ended", () => {
             this.playSoundtrackBG();
@@ -1971,20 +1981,16 @@ function loadGame() {
             // Update music volume
             audio.updateMusicVolume(savedGame.musicVolume);
         };
-        console.log(musicToggleOn);
+        
         if (typeof savedGame.musicToggleOn !== "undefined") {
             if (!savedGame.musicToggleOn && musicToggleOn) {
-                setTimeout(() => {
-                    console.log(musicToggleOn)
-                    // Animate toggle btn
-                    animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
+                
+                // Animate toggle btn
+                animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
 
-                    // Change toggle on
-                    musicToggleOn = switchToggleBool(musicToggleOn);
-                    console.log(musicToggleOn);
-                    // Update music
-                    audio.updateMusic();
-                }, 500)
+                // Change toggle on
+                musicToggleOn = switchToggleBool(musicToggleOn);
+                
             }
         }
     }
@@ -2325,7 +2331,6 @@ naToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     naToggleOn = switchToggleBool(naToggleOn);
-    console.log(naToggleOn);
 })
 
 /**
