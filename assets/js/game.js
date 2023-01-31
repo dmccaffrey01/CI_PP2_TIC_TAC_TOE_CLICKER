@@ -642,6 +642,19 @@ var display = {
         // Get timing game container
         let timingGameContainer = document.querySelector(".timing-game-container");
 
+        // Get green areas
+        let timingGreenArea = document.querySelector(".timing-green-area");
+        let timingGreenAreaDisplay = document.querySelector(".timing-green-area-display");
+
+        // Change to easy game
+        if (egToggleOn) {
+            timingGreenArea.classList.add("easy-game");
+            timingGreenAreaDisplay.classList.add("easy-game");
+        } else {
+            timingGreenArea.classList.remove("easy-game");
+            timingGreenAreaDisplay.classList.remove("easy-game");
+        }
+
         // Add classes
         timingGameContainer.classList.add("active");
         setTimeout(() => {
@@ -2865,13 +2878,13 @@ mplSlider.oninput = () => {
 }
 
 /**
- * Toggle new monster delay (nmd) on and off
+ * Toggle easy game (eg) on and off
  */
 // Define variables 
 const egToggleBtn = document.querySelector(".eg-toggle-btn");
 const egToggle = document.querySelector(".eg-toggle");
 const egToggleText = document.querySelector(".eg-toggle-text");
-let egToggleOn = true;
+let egToggleOn = false;
 
 // Add event listener for toggle btn
 egToggleBtn.addEventListener("click", () => {

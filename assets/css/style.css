@@ -944,6 +944,14 @@ footer {
     height: 100%;
 }
 
+.timing-green-area.easy-game {
+    width: 140px;
+}
+
+.timing-green-area-display.easy-game {
+    width: 120px;
+}
+
 .timing-bar {
     width: 5px;
     height: 100%;
@@ -2216,7 +2224,7 @@ footer {
     width: 35px;
     height: 17px;
     border-radius: 30px;
-    background-color: var(--ADD-GREEN);
+    background-color: var(--MINUS-RED);
     position: relative;
     transition: all 0.3s ease-in-out;
 }
@@ -2226,7 +2234,7 @@ footer {
     height: 15px;
     border-radius: 50%;
     position: absolute;
-    left: 19px;
+    left: 1px;
     top: 1px;
     background-color: white;
     cursor: pointer;
