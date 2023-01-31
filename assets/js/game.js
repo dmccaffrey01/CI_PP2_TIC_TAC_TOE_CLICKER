@@ -8,7 +8,7 @@ var game = {
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
-    monstersPerLevel: 3,
+    monstersPerLevel: 10,
     level: 1,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
@@ -60,8 +60,16 @@ var game = {
      */
     checkMonsterHP: function() {
         if (this.monsterHP <= 0) {
-            // Start kill monster game
-            this.startKillMonsterGame();
+            if (this.monsterCount == 4 || this.monsterCount == 9) {
+                // Start kill monster game
+                this.startKillMonsterGame();
+            } else {
+                // Create new monster
+                this.monsterKilled();
+
+                // Set isMonsterDead to true
+                this.isMonsterDead = true;
+            }
         } 
     },
 
