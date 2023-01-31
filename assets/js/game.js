@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 1,
+    power: 10000,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -110,6 +110,9 @@ var game = {
 
         // Update Monster HP
         display.updateMonsterHP();
+
+        // Play monster death sound effect
+        audio.playMonsterDeath();
 
         // Wait before creating new monster
         setTimeout(() => {
@@ -1264,7 +1267,6 @@ var display = {
         setTimeout(() => {
             monster.style.transform = "scale(1)";
         }, game.newMonsterDelay);
-        console.log(game.newMonsterDelay)
     },
 
     /**
@@ -1593,6 +1595,24 @@ var audio = {
 
         // Set audio src
         audio.src = "./assets/audio/hit-marker.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
+    },
+
+    /**
+     * Play monster death sound
+     */
+    playMonsterDeath: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/monster-death.mp3";
 
         // Set audio time
         audio.currentTime = 0;
