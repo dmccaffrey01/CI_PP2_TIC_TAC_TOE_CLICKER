@@ -484,6 +484,9 @@ var display = {
         this.updateCoins();
         this.updateTimer("00", "00", "00");
         this.updateUpgradesMenu();
+        
+        // Start the bg audio
+        audio.playSoundtrackBG();
 
         // Create new island and monster
         this.newIsland();
@@ -1268,7 +1271,7 @@ var display = {
 
         // Get index of image name in array of monster names
         let monsterIndex = this.monsterNames.indexOf(monsterName);
-
+        
         // Get random number where last number is index of monster names
         let randNum = randomNumber(0, 15, monsterIndex);
 
@@ -1474,8 +1477,60 @@ var display = {
     }
 }
 
-var settings = {
+/**
+ * Audio Settings
+ */
+var audio = {
+    soundtrack: ["violin-bg-soundtrack-a.webm", "violin-bg-soundtrack-b.webm", "violin-bg-soundtrack-c.webm", "violin-bg-soundtrack-d.webm", "violin-bg-soundtrack-e.webm", "violin-bg-soundtrack-f.webm"],
+    lastAudioPlayed: 5,
+    musicPlayedIndex: 0,
     
+    /**
+     * Play the background audio
+     */
+    playSoundtrackBG: function() {
+        // Get audio
+        let audio = document.getElementById("bg-soundtrack");
+
+        // Add class 
+        audio.classList.add(`music${this.musicPlayedIndex}`)
+        
+        this.musicPlayedIndex++;
+
+        // Create random number
+        let randNum = randomNumber(0, this.soundtrack.length, this.lastAudioPlayed);
+        
+        // Set src
+        audio.src = `./assets/audio/${this.soundtrack[randNum]}`;
+        
+        // Set lastAudioPlayed
+        this.lastAudioPlayed = randNum;
+        
+        // Set current time
+        audio.currentTime = 0;
+
+        // Play audio
+        audio.play();
+        
+        // Add event listener
+        audio.addEventListener("ended", () => {
+            this.playSoundtrackBG();
+        })
+    },
+    
+    /**
+     * Play music if music toggle on
+     * Stop music if music toggle off
+     */
+    updateMusic: function() {
+        if (musicToggleOn) {
+            this.playSoundtrackBG();
+        } else {
+            let music = document.getElementById("bg-soundtrack");
+            music.pause();
+        }
+    }
+
 }
 
 /**
@@ -2076,6 +2131,9 @@ musicToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     musicToggleOn = switchToggleBool(musicToggleOn);
+
+    // Update music
+    audio.updateMusic();
 })
 
 /**
