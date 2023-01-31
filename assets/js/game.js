@@ -1436,6 +1436,9 @@ var display = {
             // Add coins
             game.addCoins();
 
+            // Play audio
+            audio.playCoinCollect();
+
             // Slowely rise the number to top of screen
             let movementInterval = window.setInterval(() => {
                 // Remove interval if elemnumberent is removed
@@ -1557,6 +1560,24 @@ var audio = {
         
         // Change volume
         music.volume = value / 100;
+    },
+
+    /**
+     * Play coin collect sound
+     */
+    playCoinCollect: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/coin-collect.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
     }
 }
 
