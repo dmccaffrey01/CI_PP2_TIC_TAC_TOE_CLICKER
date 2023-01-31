@@ -1484,6 +1484,7 @@ var audio = {
     soundtrack: ["violin-bg-soundtrack-a.webm", "violin-bg-soundtrack-b.webm", "violin-bg-soundtrack-c.webm", "violin-bg-soundtrack-d.webm", "violin-bg-soundtrack-e.webm", "violin-bg-soundtrack-f.webm"],
     lastAudioPlayed: 5,
     musicPlayedIndex: 0,
+    musicVolume: 100,
     
     /**
      * Play the background audio
@@ -1540,6 +1541,9 @@ var audio = {
     updateMusicVolume: function(value) {
         // Get music
         let music = document.getElementById("bg-soundtrack");
+
+        // Set music volume
+        this.musicVolume = value;
         
         // Change volume
         music.volume = value / 100;
@@ -1554,9 +1558,6 @@ const playBtn = document.querySelector(".play-btn");
 
 // Add event listener for click
 playBtn.addEventListener("click", () => {
-    // Load the game
-    loadGame();
-    
     // Start display functions
     display.startGame();
 
@@ -1904,7 +1905,9 @@ function saveGame() {
         time: game.time,
         count: upgrades.count,
         powerIncrease: upgrades.powerIncrease,
-        cost: upgrades.cost
+        cost: upgrades.cost,
+        musicVolume: audio.musicVolume,
+        musicToggleOn: musicToggleOn
     };
 
     // Store variables in local storage as string
@@ -1943,7 +1946,6 @@ function loadGame() {
         if (typeof savedGame.isMonsterDead !== "undefined") game.isMonsterDead = savedGame.isMonsterDead;
         if (typeof savedGame.newMonsterDelay !== "undefined") game.newMonsterDelay = savedGame.newMonsterDelay;
         if (typeof savedGame.time !== "undefined") game.time = savedGame.time;
-        if (typeof savedGame.interval !== "undefined") game.interval = savedGame.interval;
         if (typeof savedGame.count !== "undefined") {
             for (i=0; i < savedGame.count.length; i++) {
                 upgrades.count[i] = savedGame.count[i];
@@ -1959,6 +1961,32 @@ function loadGame() {
                 upgrades.cost[i] = savedGame.cost[i];
             }
         };
+        if (typeof savedGame.musicVolume !== "undefined") {
+            // Change slider text value
+            musicSliderValue.textContent = savedGame.musicVolume;
+
+            // Change slider value
+            musicSlider.value = savedGame.musicVolume;
+
+            // Update music volume
+            audio.updateMusicVolume(savedGame.musicVolume);
+        };
+        console.log(musicToggleOn);
+        if (typeof savedGame.musicToggleOn !== "undefined") {
+            if (!savedGame.musicToggleOn && musicToggleOn) {
+                setTimeout(() => {
+                    console.log(musicToggleOn)
+                    // Animate toggle btn
+                    animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
+
+                    // Change toggle on
+                    musicToggleOn = switchToggleBool(musicToggleOn);
+                    console.log(musicToggleOn);
+                    // Update music
+                    audio.updateMusic();
+                }, 500)
+            }
+        }
     }
 }
 
