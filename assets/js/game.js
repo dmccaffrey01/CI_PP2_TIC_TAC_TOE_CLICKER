@@ -2091,7 +2091,9 @@ function saveGame() {
         powerIncrease: upgrades.powerIncrease,
         cost: upgrades.cost,
         musicVolume: audio.musicVolume,
-        musicToggleOn: musicToggleOn
+        musicToggleOn: musicToggleOn,
+        soundEffectVolume: audio.soundEffectVolume,
+        seToggleOn: seToggleOn
     };
 
     // Store variables in local storage as string
@@ -2155,7 +2157,6 @@ function loadGame() {
             // Update music volume
             audio.updateMusicVolume(savedGame.musicVolume);
         };
-        
         if (typeof savedGame.musicToggleOn !== "undefined") {
             if (!savedGame.musicToggleOn && musicToggleOn) {
                 
@@ -2166,7 +2167,28 @@ function loadGame() {
                 musicToggleOn = switchToggleBool(musicToggleOn);
                 
             }
-        }
+        };
+        if (typeof savedGame.soundEffectVolume !== "undefined") {
+            // Change slider text value
+            seSliderValue.textContent = savedGame.soundEffectVolume;
+
+            // Change slider value
+            seSlider.value = savedGame.soundEffectVolume;
+
+            // Change sound effec volume
+            audio.soundEffectVolume = savedGame.soundEffectVolume;
+        };
+        if (typeof savedGame.musicToggleOn !== "undefined") {
+            if (!savedGame.musicToggleOn && musicToggleOn) {
+                
+                // Animate toggle btn
+                animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
+
+                // Change toggle on
+                musicToggleOn = switchToggleBool(musicToggleOn);
+                
+            }
+        };
     }
 }
 
