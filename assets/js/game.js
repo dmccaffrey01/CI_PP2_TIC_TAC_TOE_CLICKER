@@ -188,6 +188,9 @@ var game = {
         // Update the display
         display.updateLevel();
 
+        // Play level up sound effect 
+        audio.playLevelUp();
+
         // Update coins to get
         this.coinsToGet += (this.level - 1) * 10;
 
@@ -444,6 +447,9 @@ var upgrades = {
 
             // Update upgrades menu
             display.updateUpgradesMenu(index);
+
+            // Play upgrade sound effect
+            audio.playUpgrade();
 
             // Change buy upgrades delay
             this.buyUpgradeDelay = true;
@@ -1073,33 +1079,38 @@ var display = {
         
         // Get upgrade name pseudo
         let upgradeNameBars = document.querySelectorAll(".upgrade-buy-bar");
-        let upgradeNameBar = upgradeNameBars[index];
+        
+        for (let i = 0; i < upgradeNameBars.length; i++) {
+            
+            let upgradeNameBar = upgradeNameBars[i];
 
-        // Get max width
-        let maxWidth = upgradeNameBar.offsetWidth;
+            // Get max width
+            let maxWidth = upgradeNameBar.offsetWidth;
 
-        // Set width to be 0
-        upgradeNameBar.style.width = "0px";
-        let width = 0;
+            // Set width to be 0
+            upgradeNameBar.style.width = "0px";
+            let width = 0;
 
-        // Set interval to increase bar for 900ms
-        let upgradeInterval = window.setInterval(() => {
-            // Clear interval when bar is 100%
-            if (width >= maxWidth - ((10/900) * maxWidth)) {
-                clearInterval(upgradeInterval);
-            }
+            // Set interval to increase bar for 900ms
+            let upgradeInterval = window.setInterval(() => {
+                // Clear interval when bar is 100%
+                if (width >= maxWidth - ((10/900) * maxWidth)) {
+                    clearInterval(upgradeInterval);
+                }
 
-            // Change width by .005%
-            width += (10/900) * maxWidth;
+                // Change width by .005%
+                width += (10/900) * maxWidth;
 
-            // Set width 
-            upgradeNameBar.style.width = width + "px";
+                // Set width 
+                upgradeNameBar.style.width = width + "px";
 
-            // Set final width
-            if (width >= maxWidth) {
-                upgradeNameBar.style.width = maxWidth + "px";
-            }
-        }, 10)
+                // Set final width
+                if (width >= maxWidth) {
+                    upgradeNameBar.style.width = maxWidth + "px";
+                }
+            }, 10)
+        }
+        
     },
 
     /**
@@ -1613,6 +1624,42 @@ var audio = {
 
         // Set audio src
         audio.src = "./assets/audio/monster-death.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
+    },
+
+    /**
+     * Play level up sound
+     */
+    playLevelUp: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/level-up.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
+    },
+
+    /**
+     * Play upgrade sound
+     */
+    playUpgrade: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/upgrade.mp3";
 
         // Set audio time
         audio.currentTime = 0;
