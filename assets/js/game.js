@@ -504,6 +504,19 @@ var display = {
         this.updateCoins();
         this.updateTimer("00", "00", "00");
         this.updateUpgradesMenu();
+
+        // Update audio
+        // Change slider value
+        musicSliderValue.textContent = musicSlider.value;
+
+        // Update music volume
+        audio.updateMusicVolume(musicSlider.value);
+
+        // Change slider value
+        seSliderValue.textContent = seSlider.value;
+
+        // Update music volume
+        audio.soundEffectVolume = seSlider.value;
         
         // Start the bg audio
         audio.playSoundtrackBG();
@@ -2186,7 +2199,6 @@ function loadGame() {
 
                 // Change toggle on
                 seToggleOn = switchToggleBool(seToggleOn);
-                
             }
         };
     }
