@@ -1518,6 +1518,7 @@ var audio = {
     lastAudioPlayed: 5,
     musicPlayedIndex: 0,
     musicVolume: 100,
+    soundEffectVolume: 100,
     
     /**
      * Play the background audio
@@ -1586,11 +1587,19 @@ var audio = {
      * Play coin collect sound
      */
     playCoinCollect: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
         // Set audio src
         audio.src = "./assets/audio/coin-collect.mp3";
+
+        // Set volume
+        audio.volume = this.soundEffectVolume / 100;
 
         // Set audio time
         audio.currentTime = 0;
@@ -1604,11 +1613,19 @@ var audio = {
      * Play hit marker sound
      */
     playHitMarker: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
         // Set audio src
         audio.src = "./assets/audio/hit-marker.mp3";
+
+        // Set volume
+        audio.volume = this.soundEffectVolume / 100;
 
         // Set audio time
         audio.currentTime = 0;
@@ -1622,11 +1639,19 @@ var audio = {
      * Play monster death sound
      */
     playMonsterDeath: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
         // Set audio src
         audio.src = "./assets/audio/monster-death.mp3";
+
+        // Set volume
+        audio.volume = this.soundEffectVolume / 100;
 
         // Set audio time
         audio.currentTime = 0;
@@ -1640,11 +1665,19 @@ var audio = {
      * Play level up sound
      */
     playLevelUp: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
         // Set audio src
         audio.src = "./assets/audio/level-up.mp3";
+
+        // Set volume
+        audio.volume = this.soundEffectVolume / 100;
 
         // Set audio time
         audio.currentTime = 0;
@@ -1658,6 +1691,11 @@ var audio = {
      * Play upgrade sound
      */
     playUpgrade: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
@@ -1676,6 +1714,11 @@ var audio = {
      * Play boss level sound
      */
     playBossLevel: function() {
+        // Return if sound effect toggled off
+        if (!seToggleOn) {
+            return;
+        }
+
         // Create new audio
         let audio = new Audio();
 
@@ -2417,6 +2460,9 @@ const seSliderValue = document.querySelector(".se-slider-value");
 seSlider.oninput = () => {
     // Change slider value
     seSliderValue.textContent = seSlider.value;
+
+    // Change sound effect volume
+    audio.soundEffectVolume = seSlider.value;
 }
 
 /**
