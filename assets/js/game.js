@@ -1264,6 +1264,7 @@ var display = {
         setTimeout(() => {
             monster.style.transform = "scale(1)";
         }, game.newMonsterDelay);
+        console.log(game.newMonsterDelay)
     },
 
     /**
@@ -2699,22 +2700,18 @@ mplSlider.oninput = () => {
  * Toggle new monster delay (nmd) on and off
  */
 // Define variables 
-const nmdToggleBtn = document.querySelector(".nmd-toggle-btn");
-const nmdToggle = document.querySelector(".nmd-toggle");
-const nmdToggleText = document.querySelector(".nmd-toggle-text");
-let nmdToggleOn = true;
+const egToggleBtn = document.querySelector(".eg-toggle-btn");
+const egToggle = document.querySelector(".eg-toggle");
+const egToggleText = document.querySelector(".eg-toggle-text");
+let egToggleOn = true;
 
 // Add event listener for toggle btn
-nmdToggleBtn.addEventListener("click", () => {
+egToggleBtn.addEventListener("click", () => {
     // Animate toggle btn
-    animateToggleBtn(nmdToggleBtn, nmdToggle, nmdToggleText, nmdToggleOn);
+    animateToggleBtn(egToggleBtn, egToggle, egToggleText, egToggleOn);
 
-    // Check if toggle on
-    if (nmdToggleOn) {
-        nmdToggleOn = false;
-    } else {
-        nmdToggleOn = true;
-    }
+    // Change toggle on
+    egToggleOn = switchToggleBool(egToggleOn);
 })
 
 /**
@@ -2746,26 +2743,12 @@ function changeCheatSettings() {
     if (cheatCoinsPerMonster == 0) {
         cheatCoinsPerMonster = 10;
     }
-    // New monster delay
-    let cheatNewMonsterDelayText = document.querySelector(".nmd-toggle-text").textContent;
-    let cheatNewMonsterDelay = String(cheatNewMonsterDelayText)
-    if (cheatNewMonsterDelayText == "ON") {
-        cheatNewMonsterDelay = true;
-    } else {
-        cheatNewMonsterDelay = false;
-    }
 
     // Replace all game values with cheat values
     game.power = cheatPower;
     game.monstersPerLevel = cheatMonstersPerLevel;
     game.coinsToGet = cheatCoinsPerMonster;
     game.coinsAdded = cheatCoinsPerMonster;
-    if (cheatNewMonsterDelay) {
-        cheatNewMonsterDelay = 800;
-    } else {
-        cheatNewMonsterDelay = 0;
-    }
-    game.newMonsterDelay = cheatNewMonsterDelay;
     
     // Update display
     display.updatePower();
