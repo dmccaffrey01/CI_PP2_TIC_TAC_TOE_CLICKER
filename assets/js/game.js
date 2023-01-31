@@ -21,7 +21,8 @@ var game = {
     interval: null,
     timingRememberNumber: 0,
     timingCount: 0,
-    timingTimer: 15.0,
+    timingTimer: 10.0,
+    timingTimeMax: 10.0,
 
     /**
      * Start the game
@@ -61,12 +62,6 @@ var game = {
         if (this.monsterHP <= 0) {
             // Start kill monster game
             this.startKillMonsterGame();
-            
-            // Create new monster
-            this.monsterKilled();
-
-            // Set isMonsterDead to true
-            this.isMonsterDead = true;
         } 
     },
 
@@ -76,7 +71,7 @@ var game = {
     startKillMonsterGame: function() {
         // Set all variables
         game.timingCount = 0;
-        game.timingTimer = 15.0;
+        game.timingTimer = this.timingTimeMax;
         
         // Display kill monster section
         display.startKillMonsterGame();
@@ -88,7 +83,7 @@ var game = {
         setTimeout(() => {
             display.startTimingGame();
             this.startTimingTimer();
-        }, 3050);
+        }, 1050);
     },
 
     /**
@@ -305,6 +300,7 @@ var game = {
             // Clear interval
             if (this.timingTimer <= 0.2) {
                 clearInterval(this.timingInterval);
+                this.endKillMonsterGame();
             }
             // Update timer
             this.timingTime();
@@ -332,6 +328,41 @@ var game = {
 
         // Update display
         display.updateTimingCount();
+    },
+
+    /**
+     * End the kill monster game
+     */
+    endKillMonsterGame:function() {
+        // End kill monster game
+        display.endKillMonsterGame();
+
+        if (this.timingCount >= this.timingRememberNumber) {
+            // Create new monster
+            this.monsterKilled();
+
+            // Set isMonsterDead to true
+            this.isMonsterDead = true;
+        } else {
+            this.respawnMonster();
+        }
+    },
+
+    /**
+     * Respawn the monster
+     */
+    respawnMonster: function() {
+        // Set new hp of monster
+        this.monsterHP = 10;
+
+        // Update the display
+        display.updateMonsterHP();
+
+        // Set Monster Max Health
+        this.monsterHealthMax = 10;
+
+        // Display new monster
+        display.createNewMonster();
     }
 }
 
@@ -508,6 +539,21 @@ var display = {
         killMonsterSection.classList.add("active");
     },
 
+    endKillMonsterGame: function() {
+        // Get kill monster section
+        let killMonsterSection = document.querySelector(".kill-monster-section");
+
+        // Remove active class
+        killMonsterSection.classList.remove("active");
+
+         // Get timing game container
+         let timingGameContainer = document.querySelector(".timing-game-container");
+
+         // Remove classes
+         timingGameContainer.classList.remove("active");
+         timingGameContainer.classList.remove("fade");
+    },
+
     createRememberNumber: function() {
         // Create remember number div
         let div = document.createElement("div");
@@ -528,8 +574,8 @@ var display = {
         // Add div to kill monster section
         killMonsterSection.appendChild(div);
 
-        // Fade out after 3s
-        fadeOut(div, 3000, 0.2, () => {
+        // Fade out after 1s
+        fadeOut(div, 1000, 0.2, () => {
             div.remove();
         })
     },
@@ -582,7 +628,7 @@ var display = {
         // Start duration timer
         setTimeout(()=> {
             duration = true;
-        }, 14900)
+        }, (game.timingTimeMax * 1000) - 100)
 
         // Set movement direction
         let moveRight = true;
@@ -633,8 +679,15 @@ var display = {
         if (this.checkOverlap(timingBar, timingGreenArea)) {
             // Add to timing count
             game.addToTimingCount();
+
+            // Move and change green area
+            this.updateGreenArea();
         } else {
             // Decrement time
+            game.timingTimer--;
+
+            // Update display
+            this.updateTimingTimer();
         }
     },
 
@@ -671,8 +724,34 @@ var display = {
         // Get timer
         let timingTimer = document.querySelector(".timing-timer");
 
+        // Get timer progress
+        let timerProgress = document.querySelector(".timing-countdown-progress");
+
         // Update display
         timingTimer.textContent = Math.round(game.timingTimer * 10) / 10 + "s";
+
+        timerProgress.style.width = (game.timingTimer / game.timingTimeMax) * 100 + "%";
+    },
+
+    /**
+     * Move and change green area
+     */
+    updateGreenArea: function() {
+        // Get green area
+        let greenArea = document.querySelector(".timing-green-area");
+
+        // Get box container
+        let boxContainer = document.querySelector(".timing-box-container");
+
+        // Get widths
+        let gaWidth = greenArea.offsetWidth;
+        let bcWidth = boxContainer.offsetWidth;
+
+        // Set x position
+        let positionX = randomNumber(0, (bcWidth - gaWidth));
+
+        // Set left
+        greenArea.style.left = positionX + "px";
     },
 
     /**

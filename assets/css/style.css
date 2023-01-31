@@ -854,7 +854,7 @@ footer {
     position: absolute;
     left: 0;
     top: 100%;
-    background-color: var(--MAIN-LIGHT);
+    background-color: var(--MAIN);
     z-index: 2;
     transition: all 1s;
     overflow: hidden;
@@ -869,7 +869,7 @@ footer {
 
 .remember-number {
     font-size: 50rem;
-    color: var(--TEXT);
+    color: white;
 }
 
 /* Timing Game */
@@ -901,7 +901,7 @@ footer {
 }
 
 .timing-count {
-    color: var(--TEXT);
+    color: white;
     font-size: 10rem;
     line-height: 7.5rem;
 }
@@ -922,12 +922,20 @@ footer {
 
 .timing-green-area {
     position: absolute;
-    width: 100px;
+    width: 90px;
     height: 100%;
     left: 50%;
+    translate: -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timing-green-area-display {
     background-color: var(--ADD-GREEN);
     box-shadow: 0 20px 20px -15px var(--ADD-GREEN);
-    translate: -50%;
+    width: 70px;
+    height: 100%;
 }
 
 .timing-bar {
@@ -963,7 +971,7 @@ footer {
 
 .timing-timer {
     font-size: 3rem;
-    color: var(--TEXT);
+    color: white;
     line-height: 2.25rem;
 }
 
@@ -977,8 +985,9 @@ footer {
 
 .timing-countdown-progress {
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: var(--DARK-BLUE);
+    transition: all 0.1s linear;
 }
 
 /* Upgrade Area */
