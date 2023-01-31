@@ -2178,14 +2178,14 @@ function loadGame() {
             // Change sound effec volume
             audio.soundEffectVolume = savedGame.soundEffectVolume;
         };
-        if (typeof savedGame.musicToggleOn !== "undefined") {
-            if (!savedGame.musicToggleOn && musicToggleOn) {
+        if (typeof savedGame.seToggleOn !== "undefined") {
+            if (!savedGame.seToggleOn && seToggleOn) {
                 
                 // Animate toggle btn
-                animateToggleBtn(musicToggleBtn, musicToggle, musicToggleText, musicToggleOn);
+                animateToggleBtn(seToggleBtn, seToggle, seToggleText, seToggleOn);
 
                 // Change toggle on
-                musicToggleOn = switchToggleBool(musicToggleOn);
+                seToggleOn = switchToggleBool(seToggleOn);
                 
             }
         };
