@@ -4,7 +4,7 @@
 
 var game = {
     // Store data on variables
-    power: 10000,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -50,6 +50,9 @@ var game = {
 
         // Animate monster to take damage
         display.dealDamageAnimation();
+
+        // Play hit marker sound effect
+        audio.playHitMarker();
 
         // Check if Monster HP is below 0
         this.checkMonsterHP();
@@ -1571,6 +1574,24 @@ var audio = {
 
         // Set audio src
         audio.src = "./assets/audio/coin-collect.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
+    },
+
+    /**
+     * Play hit marker sound
+     */
+    playHitMarker: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/hit-marker.mp3";
 
         // Set audio time
         audio.currentTime = 0;
