@@ -922,7 +922,7 @@ footer {
 
 .timing-green-area {
     position: absolute;
-    width: 40px;
+    width: 100px;
     height: 100%;
     left: 50%;
     background-color: var(--ADD-GREEN);
@@ -969,8 +969,8 @@ footer {
 
 .timing-countdown {
     width: 300px;
-    height: 30px;
-    border-radius: 50px;
+    height: 20px;
+    border-radius: 30px;
     background-color: var(--LIGHT-GRAY);
     overflow: hidden;
 }

@@ -580,6 +580,39 @@ var display = {
     },
 
     /**
+     * Check if clicked on green area
+     */
+    checkIfClickedGreen: function() {
+        // Get timing bar
+        let timingBar = document.querySelector(".timing-bar");
+
+        // Get green area
+        let timingGreenArea = document.querySelector(".timing-green-area");
+
+        // Check if elements overlap
+        if (this.checkOverlap(timingBar, timingGreenArea)) {
+            console.log(this.checkOverlap(timingBar, timingGreenArea));
+        } else {
+            console.log(this.checkOverlap(timingBar, timingGreenArea));
+        }
+    },
+
+    /**
+     * Check overlap of elements
+     */
+    checkOverlap: function(el1, el2) {
+        // Get offsets
+        let domRect1 = el1.getBoundingClientRect();
+        let domRect2 = el2.getBoundingClientRect();
+
+        // Check positions
+        return !(
+            domRect1.right < domRect2.left ||
+            domRect1.left > domRect2.right
+        );
+    },
+
+    /**
      * Update Monster Count
      */
     updateMonsterCount: function() {
@@ -1326,6 +1359,18 @@ monsterClicker.addEventListener("click", () => {
     
     // Deal damage to monster when clicked
     game.dealDamage(game.power);
+})
+
+/**
+ * Attack monster when timing attack btn is clicked
+ */
+// Define variable
+const timingAttackBtn = document.querySelector(".timing-attack-btn");
+
+// Add event listener for click
+timingAttackBtn.addEventListener("click", () => {
+    // Check if clicked on green area
+    display.checkIfClickedGreen();
 })
 
 /**
