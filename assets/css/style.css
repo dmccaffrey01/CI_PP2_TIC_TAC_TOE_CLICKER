@@ -865,11 +865,110 @@ footer {
     height: calc(100% - 75px);
 }
 
-/* Remember number */
+/* Remember Number */
 
 .remember-number {
     font-size: 50rem;
     color: var(--TEXT);
+}
+
+/* Timing Game */
+
+.timing-game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.timing-count-container {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+}
+
+.timing-count {
+    color: var(--TEXT);
+    font-size: 10rem;
+}
+
+.timing-attack-btn-text {
+    color: white;
+}
+
+.timing-box-container {
+    width: 500px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: var(--MINUS-RED);
+    box-shadow: 0 20px 20px -15px var(--MINUS-RED);
+    position: relative;
+    overflow: hidden;
+}
+
+.timing-green-area {
+    position: absolute;
+    width: 70px;
+    height: 100%;
+    left: 50%;
+    background-color: var(--ADD-GREEN);
+    box-shadow: 0 20px 20px -15px var(--ADD-GREEN);
+    translate: -50%;
+}
+
+.timing-bar {
+    width: 5px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.timing-attack-btn {
+    width: 70px;
+    height: 70px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: var(--DARK-BLUE);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.timing-timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 400px;
+    height: 150px;
+    gap: 5px;
+    position: relative;
+}
+
+.timing-timer {
+    font-size: 3rem;
+    color: var(--TEXT);
+}
+
+.timing-countdown {
+    width: 300px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: var(--LIGHT-GRAY);
+    overflow: hidden;
+}
+
+.timing-countdown-progress {
+    height: 100%;
+    width: 50%;
+    background-color: var(--DARK-BLUE);
 }
 
 /* Upgrade Area */
