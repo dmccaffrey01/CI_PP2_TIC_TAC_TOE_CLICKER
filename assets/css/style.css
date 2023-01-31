@@ -911,8 +911,8 @@ footer {
 }
 
 .timing-box-container {
-    width: 500px;
-    height: 50px;
+    width: 300px;
+    height: 30px;
     border-radius: 50px;
     background-color: var(--MINUS-RED);
     box-shadow: 0 20px 20px -15px var(--MINUS-RED);
@@ -922,7 +922,7 @@ footer {
 
 .timing-green-area {
     position: absolute;
-    width: 70px;
+    width: 40px;
     height: 100%;
     left: 50%;
     background-color: var(--ADD-GREEN);

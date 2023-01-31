@@ -19,6 +19,9 @@ var game = {
     newMonsterDelay: 800,
     time: 0,
     interval: null,
+    timingRememberNumber: 0,
+    timingCount: 0,
+    timingTimer: 20.0,
 
     /**
      * Start the game
@@ -71,6 +74,10 @@ var game = {
      * Start kill monster game
      */
     startKillMonsterGame: function() {
+        // Set all variables
+        game.timingCount = 0;
+        game.timingTimer = 20.0;
+        
         // Display kill monster section
         display.startKillMonsterGame();
 
@@ -472,6 +479,7 @@ var display = {
 
         // Get random number
         let rememberNumber = randomNumber(3,5);
+        game.timingRememberNumber = rememberNumber;
 
         // Place remember number in div
         div.textContent = rememberNumber;
@@ -492,6 +500,12 @@ var display = {
      * Start the timing game
      */
     startTimingGame: function() {
+        // Update displays
+        let timingCount = document.querySelector(".timing-count");
+        timingCount.textContent = game.timingCount;
+        let timingTimer = document.querySelector(".timing-timer");
+        timingTimer.textContent = game.timingTimer + "s";
+        
         // Get timing game container
         let timingGameContainer = document.querySelector(".timing-game-container");
 
@@ -500,6 +514,69 @@ var display = {
         setTimeout(() => {
             timingGameContainer.classList.add("fade");
         }, 50);
+
+        // Start timing bar
+        setTimeout(() => {
+            this.startTimingBar();
+        }, 250)
+    },
+
+    /**
+     * Start the movement of the timing bar
+     */
+    startTimingBar: function() {
+        // Get timing bar
+        let timingBar = document.querySelector(".timing-bar");
+
+        // Set position to 0
+        let positionX = 0;
+        timingBar.style.left = positionX + "px";
+
+        // Get timing box container
+        let timingBoxContainer = document.querySelector(".timing-box-container")
+
+        // Get width of timing box conatiner
+        let tbcWidth = timingBoxContainer.offsetWidth;
+
+        // Set duration
+        let duration = 20000;
+
+        // Set movement direction
+        let moveRight = true;
+
+        // Create movement interval
+        let movementInterval = window.setInterval(() => {
+            // Clear interval
+            if (duration <= 1) {
+                clearInterval(movementInterval);
+            }
+
+            // Check movement direction
+            if (moveRight) {
+                // Check if at end
+                if (positionX >= tbcWidth - 1) {
+                    moveRight = false;
+                }
+                // Increment position x
+                positionX++;
+
+                // Change style
+                timingBar.style.left = positionX + "px";
+            } else {
+                // Check if at end
+                if (positionX <= 1) {
+                    moveRight = true;
+                }
+                // Increment position x
+                positionX--;
+
+                // Change style
+                timingBar.style.left = positionX + "px";
+            }
+
+            // Take away from duration
+            duration--;
+        }, 1)
     },
 
     /**
