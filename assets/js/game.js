@@ -226,6 +226,9 @@ var game = {
         // Update the display
         display.updateBossRound();
 
+        // Play boss level sound effect
+        audio.playBossLevel();
+
         // Set Monster Max Health
         this.monsterHealthMax = 200;
 
@@ -1660,6 +1663,24 @@ var audio = {
 
         // Set audio src
         audio.src = "./assets/audio/upgrade.mp3";
+
+        // Set audio time
+        audio.currentTime = 0;
+
+        // Load and play sound
+        audio.load();
+        audio.play();
+    },
+
+    /**
+     * Play boss level sound
+     */
+    playBossLevel: function() {
+        // Create new audio
+        let audio = new Audio();
+
+        // Set audio src
+        audio.src = "./assets/audio/boss-level.mp3";
 
         // Set audio time
         audio.currentTime = 0;
