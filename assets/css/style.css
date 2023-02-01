@@ -2310,6 +2310,10 @@ footer {
     justify-content: space-between;
 }
 
+.cell-hover {
+    background-color: var(--LIGHT-GRAY);
+}
+
 .ttt-bar {
     width: 100%;
     height: 30px;

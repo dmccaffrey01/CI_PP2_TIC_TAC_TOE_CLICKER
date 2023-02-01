@@ -1806,6 +1806,32 @@ timingAttackBtn.addEventListener("click", () => {
 })
 
 /**
+ * Place ttt icon when cell is clicked
+ */
+// Define variables
+const tttGameContainer = document.querySelector(".ttt-game-container");
+
+// Add event listener for click
+tttGameContainer.addEventListener("click", (e) => {
+    // Check if target is a non placed cell
+    if (e.target.classList.contains("ttt-cell") && !e.target.classList.contains("placed")) {
+        selectedCell = e.target;
+
+        // Place X icon
+        selectedCell.innerHTML += `
+        <div class="ttt-icon-x">
+            <div class="ttt-bar"></div>
+            <div class="ttt-bar"></div>
+        </div>
+        `;
+
+        // Add placed class
+        selectedCell.classList.add("placed")
+    }
+})
+
+
+/**
  * Makes an element slowly fade out
  */
 function fadeOut(element, duration, finalOpacity, callback) {
