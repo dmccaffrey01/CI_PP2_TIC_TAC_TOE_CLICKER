@@ -2353,3 +2353,69 @@ footer {
     color: white;
     font-size: 1.5rem;
 }
+
+.winning-line {
+    position: absolute;
+    background-color: var(--ADD-GREEN);
+    border-radius: 30px;
+}
+
+.winning-line.combo-1 {
+    top: 60px;
+    width: 0px;
+    height: 30px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-2 {
+    top: 235px;
+    width: 0px;
+    height: 30px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-3 {
+    top: 410px;
+    width: 0px;
+    height: 30px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-4 {
+    left: 60px;
+    width: 30px;
+    height: 0px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-5 {
+    left: 235px;
+    width: 30px;
+    height: 0px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-6 {
+    left: 410px;
+    width: 30px;
+    height: 0px;
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-7 {
+    top: 235px;
+    left: -90px;
+    width: 0px;
+    height: 30px;
+    transform: rotate(45deg);
+    transition: all 0.1s linear;
+}
+
+.winning-line.combo-8 {
+    top: 235px;
+    left: -90px;
+    width: 0px;
+    height: 30px;
+    transform: rotate(-45deg);
+    transition: all 0.1s linear;
+}

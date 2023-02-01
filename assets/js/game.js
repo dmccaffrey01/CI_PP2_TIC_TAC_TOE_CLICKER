@@ -1823,6 +1823,7 @@ var tttGame = {
                 }
             }
             if (comboCount >= 3) {
+                this.drawWinningLine(i+1);
                 return true;
             }
             comboCount = 0;
@@ -1904,7 +1905,7 @@ var tttGame = {
         
             // Place the icon on board
             tttGame.placeIconOnBoard("o", cellIndex);
-        }, 5000);
+        }, 3500);
     },
 
     /**
@@ -1946,7 +1947,15 @@ var tttGame = {
      */
     someoneWon: function(icon) {
         // Check who won
-        console.log("winner", icon);
+        setTimeout(() => {
+            if (this.cpuTurn) {
+                // Update text
+                this.updateHeadingText("CPU WINS!")
+            } else {
+                // Update text
+                this.updateHeadingText("YOU WIN!")
+            }
+        }, 2000);
     },
 
     /**
@@ -1966,6 +1975,171 @@ var tttGame = {
             // Fade in
             headingText.classList.remove("fade");
         }, 500);
+    },
+
+    /**
+     * Draw winning line
+     */
+    drawWinningLine: function(winningCombo) {
+        setTimeout(() => {
+            // Create element
+            let line = document.createElement("div");
+            
+            // Add class to element
+            line.classList.add("winning-line");
+
+            // Get game container
+            let tttGameContainer = document.querySelector(".ttt-game-container");
+
+            // Append line
+            tttGameContainer.appendChild(line);
+
+            // Set width var
+            let width = 0;
+
+            // Add combo class
+            switch (winningCombo) {
+                case 1:
+                    // Add class
+                    line.classList.add("combo-1");
+
+                    // Set interval
+                    
+                    let widthInterval1 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval1);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.width = width + "px";
+                    }, 1)
+                    break;
+                case 2:
+                    // Add class
+                    line.classList.add("combo-2");
+
+                    // Set interval
+                    let widthInterval2 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval2);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.width = width + "px";
+                    }, 1)
+                    break;
+                case 3:
+                    // Add class
+                    line.classList.add("combo-3");
+
+                    // Set interval
+                    let widthInterval3 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval3);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.width = width + "px";
+                    }, 1)
+                    break;
+                case 4:
+                    // Add class
+                    line.classList.add("combo-4");
+
+                    // Set interval
+                    let widthInterval4 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval4);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.height = width + "px";
+                    }, 1)
+                    break;
+                case 5:
+                    // Add class
+                    line.classList.add("combo-5");
+
+                    // Set interval
+                    let widthInterval5 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval5);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.height = width + "px";
+                    }, 1)
+                    break;
+                case 6:
+                    // Add class
+                    line.classList.add("combo-6");
+
+                    // Set interval
+                    let widthInterval6 = window.setInterval(() => {
+                        if (width >= 500) {
+                            clearInterval(widthInterval6);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.height = width + "px";
+                    }, 1)
+                    break;
+                case 7:
+                    // Add class
+                    line.classList.add("combo-7");
+
+                    // Set interval
+                    let widthInterval7 = window.setInterval(() => {
+                        if (width >= 680) {
+                            clearInterval(widthInterval7);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.width = width + "px";
+                    }, 1)
+                    break;
+                case 8:
+                    // Add class
+                    line.classList.add("combo-8");
+
+                    // Set interval
+                    let widthInterval8 = window.setInterval(() => {
+                        if (width >= 680) {
+                            clearInterval(widthInterval8);
+                        }
+
+                        // Change width
+                        width += 1;
+                        console.log(width);
+                        // Change line
+                        line.style.width = width + "px";
+                    }, 1)
+                    break;
+                default:
+                    break;
+            }
+        }, 2500)
     }
 }
 
