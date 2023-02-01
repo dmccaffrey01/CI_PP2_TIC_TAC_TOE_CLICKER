@@ -71,6 +71,8 @@ var game = {
 
                 // Set isMonsterDead to true
                 this.isMonsterDead = true;
+
+                tttGame.startTicTacToeGame();
             }
         } 
     },
@@ -1767,6 +1769,118 @@ var tttGame = {
     cpuTurn: false,
 
     /**
+     * Start Tic Tac Toe game
+     */
+    startTicTacToeGame: function() {
+        // Reset Cells
+        this.resetCells();
+
+        // Reset Board
+        this.resetBoard();
+
+        // Reset Text
+        this.updateHeadingText("You Start Place an X")
+
+        // Display ttt section
+        this.displaySection();
+    },
+
+    /**
+     * Reset Cells
+     */
+    resetCells: function() {
+        // Get cells
+        let cells = document.querySelectorAll(".ttt-cell");
+
+        // Loop through cells
+        for (let i = 0; i < cells.length; i++) {
+            // Get cell
+            let cell = cells[i];
+
+            // Check if cell contains more than 1 element
+            if (cell.children.length >= 2) {
+                let icon = cell.childNodes[1].nextElementSibling;
+                
+                // Remove icon
+                cell.removeChild(icon);
+            }
+        }
+
+        // Get winning line
+        let line = document.querySelector("winning-line");
+
+        // Get container
+        let container = document.querySelector(".ttt-game-container");
+
+        // Remove line
+        container.removeChild(line);
+    },
+
+    /**
+     * Reset board
+     */
+    resetBoard: function() {
+        // Loop through each index
+        for (let i = 0; i < this.board.length; i++) {
+            this.board[i] = i;
+        }
+    },
+
+    /**
+     * Display ttt section
+     */
+    displaySection: function() {
+        // Get clicker section
+        let clickerSection = document.querySelector(".clicker-section");
+
+        // Remove fade class
+        clickerSection.classList.remove("fade");
+
+        setTimeout(() => {
+            // Remove play class
+            clickerSection.classList.remove("play");
+
+            // Get ttt section
+            let tttSection = document.querySelector(".ttt-section");
+
+            // Add play class
+            tttSection.classList.add("play");
+
+            // Add fade class
+            setTimeout(() => {
+                tttSection.classList.add("fade");
+            }, 500)
+        }, 500)
+    },
+
+    /**
+     * Display clicker section
+     */
+    displayClickerSection: function() {
+        // Get ttt section
+        let tttSection = document.querySelector(".ttt-section");
+
+        // Remove fade class
+        tttSection.classList.remove("fade");
+
+        setTimeout(() => {
+            // Remove play class
+            tttSection.classList.remove("play");
+
+            // Get clicker section
+            let clickerSection = document.querySelector(".clicker-section");
+
+            // Add play class
+            clickerSection.classList.add("play");
+
+            // Add fade class
+            setTimeout(() => {
+                clickerSection.classList.add("fade");
+            }, 500)
+        }, 500)
+    },
+
+    /**
      * Place the icon on board
      */
     placeIconOnBoard: function(icon, index) {
@@ -1956,6 +2070,11 @@ var tttGame = {
                 this.updateHeadingText("YOU WIN!")
             }
         }, 2000);
+
+        // Transition back to clicker game
+        setTimeout(() => {
+            this.displayClickerSection();
+        }, 5000);
     },
 
     /**
@@ -2012,7 +2131,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.width = width + "px";
                     }, 1)
@@ -2029,7 +2148,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.width = width + "px";
                     }, 1)
@@ -2046,7 +2165,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.width = width + "px";
                     }, 1)
@@ -2063,7 +2182,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.height = width + "px";
                     }, 1)
@@ -2080,7 +2199,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.height = width + "px";
                     }, 1)
@@ -2097,7 +2216,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.height = width + "px";
                     }, 1)
@@ -2114,7 +2233,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.width = width + "px";
                     }, 1)
@@ -2131,7 +2250,7 @@ var tttGame = {
 
                         // Change width
                         width += 1;
-                        console.log(width);
+                        
                         // Change line
                         line.style.width = width + "px";
                     }, 1)
