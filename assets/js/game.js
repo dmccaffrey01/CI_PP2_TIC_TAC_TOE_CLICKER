@@ -1,7 +1,6 @@
 /**
- * Play Clicker Game
+ * Code to do with clicker game
  */
-
 var game = {
     // Store data on variables
     power: 10000,
@@ -383,7 +382,7 @@ var game = {
 
         // Display new monster
         display.createNewMonster();
-    }
+    },
 }
 
 /**
@@ -1761,6 +1760,171 @@ var audio = {
 }
 
 /**
+ * Code to do with tic tac toe game
+ */
+var tttGame = {
+    board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    cpuTurn: false,
+
+    /**
+     * Place the icon on board
+     */
+    placeIconOnBoard: function(icon, index) {
+        // Replace board index
+        this.board[index] = icon;
+
+        // Check for winner
+        this.checkForWinner(icon);
+    },
+
+    /**
+     * Check if there is a winner
+     */
+    checkForWinner: function(icon) {
+        // Check winning combinations for icon
+        if (this.checkWinningCombination(icon)) {
+            // Someone Won
+            //this.someoneWon(icon);
+        } else {
+            // Next persons go
+            this.nextPersonsTurn(icon);
+            console.log('go')
+        }
+    },
+
+    /**
+     * Check winning combinations
+     */
+    checkWinningCombination: function(icon) {
+        // Set winning combinations
+        let winningCombinations = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
+
+        // Loop through each combination and check icon
+        for (let i = 0; i < winningCombinations.length; i++) {
+            let comboCount = 0;
+            for (let j = 0; j < winningCombinations[i].length; j++) {
+                if (this.board[winningCombinations[i][j]] == icon) {
+                    comboCount++;
+                }
+            }
+            if (comboCount >= 3) {
+                return true;
+            }
+            comboCount = 0;
+        }
+
+        // Return false if no winner
+        return false;
+    },
+
+    /**
+     * Next persons go
+     */
+    nextPersonsTurn: function(icon) {
+        // Check whose go it is
+        if (icon == "x") {
+            // Cpu's turn
+            this.cpuTurn = true;
+
+            // Play cpu turn
+            this.playCpusTurn();
+        } else {
+            // Players turn
+            this.cpuTurn = false;
+        }
+    },
+
+    /**
+     * Play players turn
+     */
+    playPlayersTurn: function(cell) {
+        // Place X icon
+        cell.innerHTML += `
+        <div class="ttt-icon-x">
+            <div class="ttt-bar"></div>
+            <div class="ttt-bar"></div>
+        </div>
+        `;
+
+        // Add placed class
+        cell.classList.add("placed")
+
+        // Get index of cell
+        let parent = cell.parentElement;
+        let cellIndex = Array.prototype.indexOf.call(parent.children, cell) - 1;
+    
+        // Place the icon on board
+        tttGame.placeIconOnBoard("x", cellIndex);
+    },
+
+    /**
+     * Play cpus turn
+     */
+    playCpusTurn: function() {
+        // Get random cell
+        let cell = this.getRandomCell();
+
+        // Place O icon
+        cell.innerHTML += `
+        <div class="ttt-icon-o"></div>
+        `;
+
+        // Add placed class
+        cell.classList.add("placed")
+
+        // Get index of cell
+        let parent = cell.parentElement;
+        let cellIndex = Array.prototype.indexOf.call(parent.children, cell) - 1;
+    
+        // Place the icon on board
+        tttGame.placeIconOnBoard("o", cellIndex);
+    },
+
+    /**
+     * Get random cell
+     */
+    getRandomCell: function() {
+        // Create copy of board
+        let boardCopy = this.board.slice();
+        
+        // Get board state
+        let boardState = [];
+
+        // Add possible cell options
+        for (let i = 0; i < this.board.length; i++) {
+            // Check if there is icon placed
+            if (boardCopy[i] != "x" || boardCopy[i] != "o") {
+                // Push into board state if not
+                boardState.push(boardCopy[i]);
+            }
+        }
+
+        // Get random index between 0 and boardState length - 1
+        let randIndex = randomNumber(0, boardState.length-1);
+
+        // Get random board positon
+        let randBoardPos = boardState[randIndex];
+
+        // Get cells
+        let cells = document.querySelectorAll(".ttt-cell");
+
+        // Get random cell
+        let cell = cells[randBoardPos];
+
+        return cell;
+    }
+}
+
+/**
  * Start the game when play btn is clicked
  */
 // Define playBtn var
@@ -1814,22 +1978,14 @@ const tttGameContainer = document.querySelector(".ttt-game-container");
 // Add event listener for click
 tttGameContainer.addEventListener("click", (e) => {
     // Check if target is a non placed cell
-    if (e.target.classList.contains("ttt-cell") && !e.target.classList.contains("placed")) {
+    if (e.target.classList.contains("ttt-cell") && !e.target.classList.contains("placed") && !tttGame.cpuTurn) {
+        // Set selected cell
         selectedCell = e.target;
 
-        // Place X icon
-        selectedCell.innerHTML += `
-        <div class="ttt-icon-x">
-            <div class="ttt-bar"></div>
-            <div class="ttt-bar"></div>
-        </div>
-        `;
-
-        // Add placed class
-        selectedCell.classList.add("placed")
+        // Play players turn
+        tttGame.playPlayersTurn(selectedCell);
     }
 })
-
 
 /**
  * Makes an element slowly fade out
