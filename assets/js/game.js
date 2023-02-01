@@ -1906,13 +1906,13 @@ var tttGame = {
                 boardState.push(boardCopy[i]);
             }
         }
-        console.log(boardState);
+       
         // Get random index between 0 and boardState length - 1
         let randIndex = randomNumber(0, boardState.length-1);
 
         // Get random board positon
         let randBoardPos = boardState[randIndex];
-        console.log(randBoardPos);
+        
         // Get cells
         let cells = document.querySelectorAll(".ttt-cell");
 

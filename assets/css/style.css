@@ -2299,6 +2299,7 @@ footer {
     align-items: center;
     outline: 2px solid white;
     outline-offset: -2px;
+    position: relative;
 }
 
 .ttt-icon-x {
@@ -2338,4 +2339,11 @@ footer {
     outline: 30px solid white;
     outline-offset: -30px;
     border-radius: 50%;
+}
+
+.cell-text {
+    position: absolute;
+    bottom: -1.7rem;
+    color: white;
+    font-size: 1.5rem;
 }
