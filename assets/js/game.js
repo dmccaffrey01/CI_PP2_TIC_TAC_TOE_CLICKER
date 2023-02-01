@@ -1784,11 +1784,10 @@ var tttGame = {
         // Check winning combinations for icon
         if (this.checkWinningCombination(icon)) {
             // Someone Won
-            //this.someoneWon(icon);
+            this.someoneWon(icon);
         } else {
             // Next persons go
             this.nextPersonsTurn(icon);
-            console.log('go')
         }
     },
 
@@ -1902,18 +1901,18 @@ var tttGame = {
         // Add possible cell options
         for (let i = 0; i < this.board.length; i++) {
             // Check if there is icon placed
-            if (boardCopy[i] != "x" || boardCopy[i] != "o") {
+            if (boardCopy[i] != "x" && boardCopy[i] != "o") {
                 // Push into board state if not
                 boardState.push(boardCopy[i]);
             }
         }
-
+        console.log(boardState);
         // Get random index between 0 and boardState length - 1
         let randIndex = randomNumber(0, boardState.length-1);
 
         // Get random board positon
         let randBoardPos = boardState[randIndex];
-
+        console.log(randBoardPos);
         // Get cells
         let cells = document.querySelectorAll(".ttt-cell");
 
@@ -1921,6 +1920,11 @@ var tttGame = {
         let cell = cells[randBoardPos];
 
         return cell;
+    },
+
+    someoneWon: function(icon) {
+        // Check who won
+        console.log("winner", icon);
     }
 }
 
