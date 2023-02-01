@@ -2281,6 +2281,53 @@ playBtn.addEventListener("click", () => {
 })
 
 /**
+ * Open and close how to play sectin
+ */
+// Define playBtn var
+const htpBtn = document.querySelector(".htp-btn");
+const htpCloseBtn = document.querySelector(".htp-close-btn");
+
+// Add event listener for click
+htpBtn.addEventListener("click", () => {
+    // Get start screen
+    let startScreen = document.querySelector(".start-screen");
+
+    // Add play class
+    startScreen.classList.add("play");
+
+    // Get htp section
+    let htpSection = document.querySelector(".htp-section");
+
+    // Add active classs
+    htpSection.classList.add("active");
+
+    setTimeout(() => {
+        // Add fade class
+        htpSection.classList.add("fade");
+    }, 500);
+})
+
+// Add event listener for close btn
+htpCloseBtn.addEventListener("click", () => {
+    // Get htp section
+    let htpSection = document.querySelector(".htp-section");
+
+    // Remove fade class
+    htpSection.classList.remove("fade");
+
+    setTimeout(() => {
+        // Remove active class
+        htpSection.classList.remove("active");
+
+        // Get start screen
+        let startScreen = document.querySelector(".start-screen");
+
+        // Remove play class
+        startScreen.classList.remove("play");
+    }, 500); 
+})
+
+/**
  * Update game when monster is clicked
  */
 // Define monster variable
