@@ -172,7 +172,7 @@ var game = {
         // Display new monster
         display.createNewMonster();
 
-        // Set isMonsterDead to true
+        // Set isMonsterDead to false
         setTimeout(() => {
             this.isMonsterDead = false;
         }, this.newMonsterDelay);
@@ -1800,6 +1800,9 @@ const timingAttackBtn = document.querySelector(".timing-attack-btn");
 timingAttackBtn.addEventListener("click", () => {
     // Check if clicked on green area
     display.checkIfClickedGreen();
+
+    // Play hit marker sound
+    audio.playHitMarker();
 })
 
 /**
@@ -2110,8 +2113,6 @@ function saveGame() {
         coins: game.coins,
         coinsToGet: game.coinsToGet,
         coinsAdded: game.coinsAdded,
-        isMonsterDead: game.isMonsterDead,
-        newMonsterDelay: game.newMonsterDelay,
         time: game.time,
         count: upgrades.count,
         powerIncrease: upgrades.powerIncrease,
@@ -2155,8 +2156,6 @@ function loadGame() {
         if (typeof savedGame.coins !== "undefined") game.coins = savedGame.coins;
         if (typeof savedGame.coinsToGet !== "undefined") game.coinsToGet = savedGame.coinsToGet;
         if (typeof savedGame.coinsAdded !== "undefined") game.coinsAdded = savedGame.coinsAdded;
-        if (typeof savedGame.isMonsterDead !== "undefined") game.isMonsterDead = savedGame.isMonsterDead;
-        if (typeof savedGame.newMonsterDelay !== "undefined") game.newMonsterDelay = savedGame.newMonsterDelay;
         if (typeof savedGame.time !== "undefined") game.time = savedGame.time;
         if (typeof savedGame.count !== "undefined") {
             for (i=0; i < savedGame.count.length; i++) {

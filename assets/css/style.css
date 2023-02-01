@@ -945,11 +945,11 @@ footer {
 }
 
 .timing-green-area.easy-game {
-    width: 140px;
+    width: 180px;
 }
 
 .timing-green-area-display.easy-game {
-    width: 120px;
+    width: 160px;
 }
 
 .timing-bar {
@@ -2250,3 +2250,88 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Tic tac toe section */
+
+.ttt-section {
+    position: abosolute;
+    width: 100%;
+    height: calc(100vh - 75px);
+    top: 75px;
+    background-color: var(--MAIN);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ttt-game-container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    position: relative;
+}
+
+.ttt-heading {
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: -50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ttt-text {
+    color: white;
+    font-size: 2rem;
+}
+
+.ttt-cell {
+    width: 150px;
+    height: 150px;
+    border-radius: 25px;
+    background-color: var(--DARK-BLUE);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+.ttt-icon-x {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ttt-bar {
+    width: 100%;
+    height: 30px;
+    background: white;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.ttt-bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 45px;
+}
+
+.ttt-bar:nth-child(2) {
+    transform: rotate(-45deg);
+    bottom: 45px;
+}
+
+.ttt-icon-o {
+    width: 80%;
+    height: 80%;
+    outline: 30px solid white;
+    outline-offset: -30px;
+    border-radius: 50%;
+}
