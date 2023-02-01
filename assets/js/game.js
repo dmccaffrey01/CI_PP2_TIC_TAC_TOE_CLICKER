@@ -71,8 +71,6 @@ var game = {
 
                 // Set isMonsterDead to true
                 this.isMonsterDead = true;
-
-                tttGame.startTicTacToeGame();
             }
         } 
     },
@@ -143,6 +141,8 @@ var game = {
                 // Update the display
                 display.updateMonsterCount();
 
+                // Start tic tac toe game
+                tttGame.startTicTacToeGame();
             } else {
                 // Create new monster
                 this.newMonster();
@@ -1803,17 +1803,20 @@ var tttGame = {
                 
                 // Remove icon
                 cell.removeChild(icon);
+
+                // Remove placed class
+                cell.classList.remove("placed");
             }
         }
 
         // Get winning line
-        let line = document.querySelector("winning-line");
-
+        let line = document.querySelector(".winning-line");
+        
         // Get container
         let container = document.querySelector(".ttt-game-container");
 
         // Remove line
-        container.removeChild(line);
+        if (line != null) container.removeChild(line);
     },
 
     /**
