@@ -1532,7 +1532,7 @@ var display = {
         fadeOut(element, 3000, 0.2, () => {
             element.remove();
         })
-    }
+    },
 }
 
 /**
@@ -1773,6 +1773,13 @@ var tttGame = {
         // Replace board index
         this.board[index] = icon;
 
+        // Update Text
+        if (this.cpuTurn) {
+            this.updateHeadingText(`CPU placed in position ${index + 1}`);
+        } else {
+            this.updateHeadingText(`You placed in position ${index + 1}`);
+        }
+
         // Check for winner
         this.checkForWinner(icon);
     },
@@ -1836,9 +1843,19 @@ var tttGame = {
 
             // Play cpu turn
             this.playCpusTurn();
+
+            // Update text
+            setTimeout(() => {
+                this.updateHeadingText("CPU's Turn");
+            }, 2000);
         } else {
             // Players turn
             this.cpuTurn = false;
+
+            // Update text
+            setTimeout(() => {
+                this.updateHeadingText("Your Turn");
+            }, 2000);
         }
     },
 
@@ -1869,23 +1886,25 @@ var tttGame = {
      * Play cpus turn
      */
     playCpusTurn: function() {
-        // Get random cell
-        let cell = this.getRandomCell();
+        setTimeout(() => {
+            // Get random cell
+            let cell = this.getRandomCell();
 
-        // Place O icon
-        cell.innerHTML += `
-        <div class="ttt-icon-o"></div>
-        `;
+            // Place O icon
+            cell.innerHTML += `
+            <div class="ttt-icon-o"></div>
+            `;
 
-        // Add placed class
-        cell.classList.add("placed")
+            // Add placed class
+            cell.classList.add("placed")
 
-        // Get index of cell
-        let parent = cell.parentElement;
-        let cellIndex = Array.prototype.indexOf.call(parent.children, cell) - 1;
-    
-        // Place the icon on board
-        tttGame.placeIconOnBoard("o", cellIndex);
+            // Get index of cell
+            let parent = cell.parentElement;
+            let cellIndex = Array.prototype.indexOf.call(parent.children, cell) - 1;
+        
+            // Place the icon on board
+            tttGame.placeIconOnBoard("o", cellIndex);
+        }, 5000);
     },
 
     /**
@@ -1922,9 +1941,31 @@ var tttGame = {
         return cell;
     },
 
+    /**
+     * Someone has won
+     */
     someoneWon: function(icon) {
         // Check who won
         console.log("winner", icon);
+    },
+
+    /**
+     * Update the heading text
+     */
+    updateHeadingText: function(text) {
+        // Get heading text
+        let headingText = document.querySelector(".ttt-heading-text");
+
+        // Fade out
+        headingText.classList.add("fade");
+
+        // Change text
+        setTimeout(() => {
+            headingText.textContent = text;
+
+            // Fade in
+            headingText.classList.remove("fade");
+        }, 500);
     }
 }
 

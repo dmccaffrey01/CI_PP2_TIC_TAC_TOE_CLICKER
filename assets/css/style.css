@@ -2283,9 +2283,15 @@ footer {
     justify-content: center;
 }
 
-.ttt-text {
+.ttt-heading-text {
     color: white;
     font-size: 2rem;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.ttt-heading-text.fade {
+    opacity: 0;
 }
 
 .ttt-cell {
