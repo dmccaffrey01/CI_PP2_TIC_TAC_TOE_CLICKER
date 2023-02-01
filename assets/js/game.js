@@ -3,7 +3,7 @@
  */
 var game = {
     // Store data on variables
-    power: 10000,
+    power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
     monsterCount: 0,
@@ -3253,7 +3253,7 @@ deaToggleBtn.addEventListener("click", () => {
  */
 
 // Define variables
-const cheatPassword = "";
+const cheatPassword = "dillonisawesome123";
 const cheatPasswordInput = document.querySelector(".cheat-password-input");
 const passwordText = document.querySelector(".secret-settings-text");
 const cheatPasswordBtn = document.querySelector(".cheat-password-btn");
