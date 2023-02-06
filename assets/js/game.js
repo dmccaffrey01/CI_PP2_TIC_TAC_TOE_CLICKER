@@ -3,6 +3,9 @@
  */
 var game = {
     // Store data on variables
+    leaderboardPlayers: 0,
+    totalClicks: 0,
+    totalCoins: 0,
     power: 1,
     monsterHP: 10,
     monsterHealthMax: 10,
@@ -390,8 +393,12 @@ var game = {
      * Beat the game
      */
     beatTheGame: function() {
-        // Display congratulations section
-        
+        setTimeout(() => {
+            // Display congratulations section
+            display.beatTheGame();
+        }, 500)
+
+        // Reset game
     }
 }
 
@@ -541,6 +548,8 @@ var display = {
 
         // Start clicker hover animation
         this.clickerHoverAnimation();
+
+        this.beatTheGame();
     },
 
     /**
@@ -1543,6 +1552,72 @@ var display = {
             element.remove();
         })
     },
+
+    /**
+     * Beat the game
+     */
+    beatTheGame: function() {
+        // Get sections
+        let clickerSection = document.querySelector(".clicker-section");
+        let congratsSection = document.querySelector(".congrats-section");
+
+        // Remove fade
+        clickerSection.classList.remove("fade");
+
+        setTimeout(() => {
+            // Remove clickerSection
+            clickerSection.classList.remove("play");
+
+            // Add congratulations section
+            congratsSection.classList.add("active");
+
+            // Add fade to congrats seciton
+            congratsSection.classList.add("fade");
+
+            setTimeout(() => {
+                // Display leaderboard entry
+                this.leaderboardEntry();
+            }, 2000)
+        }, 500);
+    },
+
+    /**
+     * Display leaderboard entry section
+     */
+    leaderboardEntry: function() {
+        // Get content container
+        let congratsContentContainer = document.querySelector(".congrats-content-container");
+
+        // Fade content out
+        congratsContentContainer.classList.add("fade");
+
+        
+        setTimeout(() => {
+            // Change content
+            congratsContentContainer.innerHTML = `
+                <div class="congrats-text">Enter Your Name:</div>
+                <input class="leaderboard-name-entry"></input>
+                <div class="leaderboard-name-entry-btn">
+                    <i class="fa-solid fa-right-to-bracket leaderboard-name-entry-icon"></i>
+                </div>
+            `
+
+            // Get entry btn
+            let entryBtn = document.querySelector("leaderboard-name-entry-btn");
+
+            // Add event listener
+            entryBtn.addEventListener("click", () => {
+                // Get players name
+                let name = document.querySelector(".leaderboard-name-entry").value;
+
+                // Add player to leaderboard
+                addPlayerToLeaderboard(name);
+            })
+            
+            // Fade back in
+            congratsContentContainer.classList.remove("fade");
+        }, 1000)
+    }
 }
 
 /**
@@ -2119,8 +2194,15 @@ var tttGame = {
                     this.startTicTacToeGame();
                 }, 2000);
             } else {
-                // Beat the game
-                game.beatTheGame();
+                // Transition back to clicker game
+                setTimeout(() => {
+                    this.displayClickerSection();
+
+                    // Beat the game
+                    game.beatTheGame();
+                }, 5000);
+
+                
             }
         } else {
             // Transition back to clicker game
@@ -2426,10 +2508,27 @@ leaderboardCloseBtn.addEventListener("click", () => {
 })
 
 /**
+ * Add player to leader board when btn is clicked
+ */
+
+
+/**
  * Add player to leaderboard
  */
-function addPlayerToLeaderboard() {
+function addPlayerToLeaderboard(name) {
+    // Set player name
+    let playerName = name;
+    // Get player stats
+    let gameStats = {
+        name: playerName,
+        time: game.time,
+        totalClicks: game.totalClicks,
+        power: game.power,
+        totalCoins: game.totalCoins
+    }
 
+    // Store variables in local storage as string
+    localStorage.setItem(`${name}GameStats`, JSON.stringify(gameStats));
 }
 
 /**
@@ -2778,6 +2877,9 @@ setInterval (function() {
 function saveGame() {
     // Create variables
     var gameSave = {
+        leaderboardPlayers: game.leaderboardPlayers,
+        totalClicks: game.totalClicks,
+        totalCoins: game.totalCoins,
         power: game.power,
         monsterHP: game.monsterHP,
         monsterHealthMax: game.monsterHealthMax,
@@ -2821,6 +2923,9 @@ function loadGame() {
 
     // Set game vars to saved game vars
     if (localStorage.getItem("gameSave") !== null) {
+        if (typeof savedGame.leaderboardPlayers !== "undefined") game.leaderboardPlayers = savedGame.leaderboardPlayers;
+        if (typeof savedGame.totalClicks !== "undefined") game.totalClicks = savedGame.totalClicks;
+        if (typeof savedGame.totalCoins !== "undefined") game.totalCoins = savedGame.totalCoins;
         if (typeof savedGame.power !== "undefined") game.power = savedGame.power;
         if (typeof savedGame.monsterHP !== "undefined") game.monsterHP = savedGame.monsterHP;
         if (typeof savedGame.monsterHealthMax !== "undefined") game.monsterHealthMax = savedGame.monsterHealthMax;
@@ -2890,13 +2995,13 @@ function loadGame() {
         };
 
         // Update displays
-        this.updateLevel();
-        this.updateMonsterCount();
-        this.updateMonsterHP();
-        this.updatePower();
-        this.updateCoins();
-        this.updateTimer("00", "00", "00");
-        this.updateUpgradesMenu();
+        display.updateLevel();
+        display.updateMonsterCount();
+        display.updateMonsterHP();
+        display.updatePower();
+        display.updateCoins();
+        display.updateTimer("00", "00", "00");
+        display.updateUpgradesMenu();
     }
 }
 
@@ -2918,7 +3023,9 @@ resetGameBtn.addEventListener("click", () => {
  */
 function resetGame() {
     if (confirm("Are you sure you want to reset your game")) {
-        var gameSave = {}
+        var gameSave = {
+            leaderboardPlayers: game.leaderboardPlayers
+        }
         localStorage.setItem("gameSave", JSON.stringify(gameSave));
         location.reload();
         loadGame();

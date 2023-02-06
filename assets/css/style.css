@@ -2651,3 +2651,77 @@ footer {
     bottom: 0;
     cursor: pointer;
 }
+
+/* Congrats section */
+
+.congrats-section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    height: calc(100% - 75px);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.congrats-section.active {
+    display: flex;
+}
+
+.congrats-section.fade {
+    opacity: 1;
+}
+
+.congrats-text {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.congrats-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.congrats-content-container.fade {
+    opacity: 0;
+}
+
+.leaderboard-name-entry {
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 2px solid white;
+    color: white;
+    font-size: 2rem;
+    background-color: var(--MAIN);
+}
+
+.leaderboard-name-entry:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
+.leaderboard-name-entry-btn {
+    padding: 20px;
+    background-color: var(--DARK-BLUE);
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.leaderboard-name-entry-icon {
+    color: white;
+    font-size: 2rem;
+}
