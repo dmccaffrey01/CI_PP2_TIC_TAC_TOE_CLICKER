@@ -2594,6 +2594,7 @@ footer {
     width: 100%;
     border: none;
     border-collapse: collapse;
+    position: relative;
 }
 
 .leaderboard-table tr:first-child {
@@ -2634,4 +2635,12 @@ footer {
 
 .view-stats-btn:hover {
     color: var(--DARK-BLUE);
+}
+
+.leaderboard-placeholder-text {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    color: white;
+    font-size: 2.5rem;
 }

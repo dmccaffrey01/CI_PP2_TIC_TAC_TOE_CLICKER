@@ -2281,7 +2281,7 @@ playBtn.addEventListener("click", () => {
 })
 
 /**
- * Open and close how to play sectin
+ * Open and close how to play section
  */
 // Define playBtn var
 const htpBtn = document.querySelector(".htp-btn");
@@ -2318,6 +2318,53 @@ htpCloseBtn.addEventListener("click", () => {
     setTimeout(() => {
         // Remove active class
         htpSection.classList.remove("active");
+
+        // Get start screen
+        let startScreen = document.querySelector(".start-screen");
+
+        // Remove play class
+        startScreen.classList.remove("play");
+    }, 500); 
+})
+
+/**
+ * Open and close leaderboard section
+ */
+// Define playBtn var
+const leaderboardBtn = document.querySelector(".leaderboard-btn");
+const leaderboardCloseBtn = document.querySelector(".leaderboard-close-btn");
+
+// Add event listener for click
+leaderboardBtn.addEventListener("click", () => {
+    // Get start screen
+    let startScreen = document.querySelector(".start-screen");
+
+    // Add play class
+    startScreen.classList.add("play");
+
+    // Get leaderboard section
+    let leaderboardSection = document.querySelector(".leaderboard-section");
+
+    // Add active classs
+    leaderboardSection.classList.add("active");
+
+    setTimeout(() => {
+        // Add fade class
+        leaderboardSection.classList.add("fade");
+    }, 500);
+})
+
+// Add event listener for close btn
+leaderboardCloseBtn.addEventListener("click", () => {
+    // Get leaderboard section
+    let leaderboardSection = document.querySelector(".leaderboard-section");
+
+    // Remove fade class
+    leaderboardSection.classList.remove("fade");
+
+    setTimeout(() => {
+        // Remove active class
+        leaderboardSection.classList.remove("active");
 
         // Get start screen
         let startScreen = document.querySelector(".start-screen");

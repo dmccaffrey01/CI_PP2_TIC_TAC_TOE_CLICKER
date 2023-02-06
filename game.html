@@ -44,7 +44,7 @@
     </header>
 
     <!-- Start Screen Section -->
-    <section class="start-screen play">
+    <section class="start-screen">
         <div class="start-card">
             <!-- Start Buttons -->
             <div class="start-btns-container">
@@ -54,7 +54,7 @@
                 <button class="start-btn htp-btn">
                     How to Play
                 </button>
-                <button class="start-btn">
+                <button class="start-btn leaderboard-btn">
                     Leaderboard
                 </button>
             </div>
@@ -615,12 +615,15 @@
     </section>
 
     <!-- Leaderboard section -->
-    <section class="leaderboard-section active fade">
+    <section class="leaderboard-section">
         <div class="leaderboard-container">
             <div class="leaderboard-close-btn">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-            <table class="leaderboard-table">\
+            <div class="leaderboard-placeholder-text">
+                Wow Such Empty!
+            </div>
+            <table class="leaderboard-table">
                 <colgroup>
                     <col>
                     <col>
@@ -632,16 +635,6 @@
                         <th>Time</th>
                         <th>Stats</th>
                     </tr>
-                    <tr>
-                        <td>Dillon</td>
-                        <td>00:05:02</td>
-                        <td>
-                            <div class="view-stats-btn">
-                                <p class="view-stats-btn-text">View Stats</p>
-                            </div>
-                        </td>
-                    </tr>
-                    
                 </tbody>
             </table>
         </div>
