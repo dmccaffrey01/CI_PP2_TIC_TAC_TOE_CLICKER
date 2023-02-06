@@ -554,8 +554,6 @@ var display = {
 
         // Start clicker hover animation
         this.clickerHoverAnimation();
-
-        this.beatTheGame();
     },
 
     /**
@@ -2501,7 +2499,13 @@ leaderboardBtn.addEventListener("click", () => {
 
 // Add event listener for close btn
 leaderboardCloseBtn.addEventListener("click", () => {
+    // Close leaderboard
     closeLeaderboard();
+
+    // Reset game if game is finshed
+    if (game.level >= 20) {
+        resetGame();
+    }
 })
 
 /**
