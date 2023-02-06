@@ -2555,7 +2555,7 @@ function openLeaderboard() {
         // Add to tbody
         tbody.innerHTML += `
             <tr>
-                <td>Name</td>
+                <td>${i}</td>
                 <td>Time</td>
                 <td>
                     <div class="view-stats-btn">
@@ -2607,11 +2607,63 @@ function closeLeaderboard() {
 }
 
 /**
+ * Get the leaderboard player name
+ */
+function getPlayerName(index) {
+    // Convert game stats from string to vars
+    let gameStats = JSON.parse(localStorage.getItem(`gameStatsPlayer${index}`));
+
+    return gameStats.name;
+}
+
+/**
  * Reset leaderboard
  */
 function resetLeaderboard() {
-    
+    if (confirm("Are you sure you want to reset leaderboard")) {
+        // Loop through each player
+        for (let i = 0; i < game.leaderboardPlayers; i++) {
+            // Set game stats to empty
+            let gameStats = {};
+            localStorage.setItem(`gameStatsPlayer${i}`, JSON.stringify(gameStats));
+        }
+
+        // Set players to 0
+        game.leaderboardPlayers = 0;
+
+        // Save game
+        saveGame();
+
+        // Get tbody
+        let tbody = document.querySelector(".leaderboard-tbody");
+
+        // Set innerhtml
+        tbody.innerHTML = `
+        <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Stats</th>
+        </tr>
+        `
+
+        // Get placeholder text
+        let placeholder = document.querySelector(".leaderboard-placeholder-text");
+
+        // Add placeholder
+        placeholder.classList.remove("remove");
+
+    }  
 }
+
+/**
+ * Reset leaderboard when button is clicked
+ */
+let resetLeaderboardBtn = document.querySelector(".leaderboard-reset-btn");
+
+// Add event listener
+resetLeaderboardBtn.addEventListener("click", () => {
+    resetLeaderboard();
+})
 
 /**
  * Update game when monster is clicked
