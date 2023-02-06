@@ -2571,7 +2571,7 @@ footer {
     align-items: center;
     flex-direction: column;
     position: relative;
-    padding: 20px;
+    padding: 70px;
 }
 
 .leaderboard-close-btn {
@@ -2586,4 +2586,52 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.leaderboard-table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.leaderboard-table tr:first-child {
+    border-bottom: 2px solid white;
+}
+
+.leaderboard-table th {
+    padding: 10px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.leaderboard-table td {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    font-size: 1.2rem;
+}
+
+.leaderboard-table td {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.leaderboard-table td:first-child {
+    border-left: none;
+}
+
+.leaderboard-table td:last-child {
+    border-right: none;
+}
+
+.view-stats-btn {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.view-stats-btn:hover {
+    color: var(--DARK-BLUE);
 }
