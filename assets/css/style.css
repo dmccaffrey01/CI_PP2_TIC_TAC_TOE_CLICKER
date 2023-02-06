@@ -2537,6 +2537,10 @@ footer {
     font-size: 1.5rem;
 }
 
+.password-hint {
+    color: var(--ADD-GREEN);
+}
+
 /* Leaderboard section */
 
 .leaderboard-section {

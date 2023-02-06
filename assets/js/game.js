@@ -3712,7 +3712,7 @@ deaToggleBtn.addEventListener("click", () => {
  */
 
 // Define variables
-const cheatPassword = "dillonisawesome123";
+const cheatPassword = "distinctiondillon123";
 const cheatPasswordInput = document.querySelector(".cheat-password-input");
 const passwordText = document.querySelector(".secret-settings-text");
 const cheatPasswordBtn = document.querySelector(".cheat-password-btn");
