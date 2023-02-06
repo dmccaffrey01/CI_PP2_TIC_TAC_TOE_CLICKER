@@ -1623,7 +1623,15 @@ var display = {
                 congratsSection.classList.remove("fade");
 
                 setTimeout(() => {
-                    congratsSection.classList.remove("active")
+                    // Reset congrats section
+                    congratsSection.classList.remove("active");
+
+                    congratsContentContainer.innerHTML = `
+                        <div class="congrats-content-container">
+                            <div class="congrats-text">Congratulations!</div>
+                            <div class="congrats-text">You Beat The Game</div>
+                        </div>
+                    `
                     
                     // Add player to leaderboard
                     addPlayerToLeaderboard(name);
@@ -2519,7 +2527,7 @@ function addPlayerToLeaderboard(name) {
     }
 
     // Store variables in local storage as string
-    localStorage.setItem(`gameStatsPlayer${game.leaderboardPlayers}`, JSON.stringify(gameStats));
+    localStorage.setItem(`gameStatsPlayer${game.leaderboardPlayers-1}`, JSON.stringify(gameStats));
 }
 
 /**
@@ -2555,8 +2563,8 @@ function openLeaderboard() {
         // Add to tbody
         tbody.innerHTML += `
             <tr>
-                <td>${i}</td>
-                <td>Time</td>
+                <td>${getPlayerName(i)}</td>
+                <td>${getPlayerTime(i)}</td>
                 <td>
                     <div class="view-stats-btn">
                         View Stats
@@ -2612,8 +2620,28 @@ function closeLeaderboard() {
 function getPlayerName(index) {
     // Convert game stats from string to vars
     let gameStats = JSON.parse(localStorage.getItem(`gameStatsPlayer${index}`));
-
     return gameStats.name;
+}
+
+/**
+ * Get the leaderboard player time
+ */
+function getPlayerTime(index) {
+    // Convert game stats from string to vars
+    let gameStats = JSON.parse(localStorage.getItem(`gameStatsPlayer${index}`));
+    let time = gameStats.time;
+
+    // Format our time
+    let hrs = Math.floor(time / 3600);
+    let mins = Math.floor((time - (hrs * 3600)) / 60);
+    let secs = time % 60;
+
+    // Add 0 to front
+    if (secs < 10) secs = "0" + secs;
+    if (mins < 10) mins = "0" + mins;
+    if (hrs < 10) hrs = "0" + hrs;
+
+    return `${hrs}:${mins}:${secs}`;
 }
 
 /**
