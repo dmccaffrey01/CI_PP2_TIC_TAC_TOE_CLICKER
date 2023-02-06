@@ -8,7 +8,7 @@ var game = {
     monsterHealthMax: 10,
     monsterCount: 0,
     monstersPerLevel: 10,
-    level: 1,
+    level: 19,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
@@ -385,6 +385,14 @@ var game = {
         // Display new monster
         display.createNewMonster();
     },
+
+    /**
+     * Beat the game
+     */
+    beatTheGame: function() {
+        // Display congratulations section
+        
+    }
 }
 
 /**
@@ -1767,6 +1775,7 @@ var audio = {
 var tttGame = {
     board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     cpuTurn: false,
+    turns: 0,
 
     /**
      * Start Tic Tac Toe game
@@ -1827,6 +1836,9 @@ var tttGame = {
         for (let i = 0; i < this.board.length; i++) {
             this.board[i] = i;
         }
+
+        // Reset turns
+        this.turns = 0;
     },
 
     /**
@@ -1896,7 +1908,7 @@ var tttGame = {
         } else {
             this.updateHeadingText(`You placed in position ${index + 1}`);
         }
-
+        
         // Check for winner
         this.checkForWinner(icon);
     },
@@ -1905,10 +1917,18 @@ var tttGame = {
      * Check if there is a winner
      */
     checkForWinner: function(icon) {
-        // Check winning combinations for icon
+        // Check winning combinations for icon and draw
         if (this.checkWinningCombination(icon)) {
             // Someone Won
             this.someoneWon(icon);
+        } else if (this.checkForDraw()) {
+            // Update heading text
+            this.updateHeadingText("It's a draw! Play Again");
+
+            setTimeout(() => {
+                // Reset game
+                this.startTicTacToeGame();
+            }, 2000);
         } else {
             // Next persons go
             this.nextPersonsTurn(icon);
@@ -1951,9 +1971,23 @@ var tttGame = {
     },
 
     /**
+     * Check for draw
+     */
+    checkForDraw: function() {
+        if (this.turns >= 8) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    /**
      * Next persons go
      */
     nextPersonsTurn: function(icon) {
+        // Increment turn
+        this.turns++;
+        
         // Check whose go it is
         if (icon == "x") {
             // Cpu's turn
@@ -2074,10 +2108,27 @@ var tttGame = {
             }
         }, 2000);
 
-        // Transition back to clicker game
-        setTimeout(() => {
-            this.displayClickerSection();
-        }, 5000);
+        // Check if final level
+        if (game.level >= 20) {
+            // Check who won
+            if (this.cpuTurn) {
+                // Reset game
+                this.updateHeadingText("You lost Try again");
+
+                setTimeout(() => {
+                    this.startTicTacToeGame();
+                }, 2000);
+            } else {
+                // Beat the game
+                game.beatTheGame();
+            }
+        } else {
+            // Transition back to clicker game
+            setTimeout(() => {
+                this.displayClickerSection();
+            }, 5000);
+        }
+        
     },
 
     /**
@@ -2373,6 +2424,13 @@ leaderboardCloseBtn.addEventListener("click", () => {
         startScreen.classList.remove("play");
     }, 500); 
 })
+
+/**
+ * Add player to leaderboard
+ */
+function addPlayerToLeaderboard() {
+
+}
 
 /**
  * Update game when monster is clicked
@@ -2830,6 +2888,15 @@ function loadGame() {
                 seToggleOn = switchToggleBool(seToggleOn);
             }
         };
+
+        // Update displays
+        this.updateLevel();
+        this.updateMonsterCount();
+        this.updateMonsterHP();
+        this.updatePower();
+        this.updateCoins();
+        this.updateTimer("00", "00", "00");
+        this.updateUpgradesMenu();
     }
 }
 

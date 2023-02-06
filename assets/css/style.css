@@ -2644,3 +2644,10 @@ footer {
     color: white;
     font-size: 2.5rem;
 }
+
+.leaderboard-add {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+}
