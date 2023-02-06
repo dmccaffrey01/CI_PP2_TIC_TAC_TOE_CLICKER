@@ -2645,11 +2645,15 @@ footer {
     font-size: 2.5rem;
 }
 
-.leaderboard-add {
-    padding: 20px;
+.leaderboard-placeholder-text.remove {
+    display: none;
+}
+
+.leaderboard-reset-btn {
     position: absolute;
-    bottom: 0;
-    cursor: pointer;
+    bottom: 10px;
+    color: white;
+    font-size: 2.5rem;
 }
 
 /* Congrats section */

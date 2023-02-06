@@ -58,6 +58,9 @@ var game = {
 
         // Check if Monster HP is below 0
         this.checkMonsterHP();
+
+        // Increment total clicks
+        this.totalClicks++;
     },
 
     /**
@@ -250,6 +253,9 @@ var game = {
     addCoins: function() {
         // Add coins to get to coins
         this.coins += game.coinsAdded;
+
+        // Increment total coins
+        this.totalCoins += game.coinsAdded;
 
         // Update the display
         display.updateCoins();
@@ -1603,15 +1609,28 @@ var display = {
             `
 
             // Get entry btn
-            let entryBtn = document.querySelector("leaderboard-name-entry-btn");
+            let entryBtn = document.querySelector(".leaderboard-name-entry-btn");
 
             // Add event listener
             entryBtn.addEventListener("click", () => {
                 // Get players name
                 let name = document.querySelector(".leaderboard-name-entry").value;
 
-                // Add player to leaderboard
-                addPlayerToLeaderboard(name);
+                // Close congrats section
+                let congratsSection = document.querySelector(".congrats-section");
+
+                // Fade out
+                congratsSection.classList.remove("fade");
+
+                setTimeout(() => {
+                    congratsSection.classList.remove("active")
+                    
+                    // Add player to leaderboard
+                    addPlayerToLeaderboard(name);
+
+                    // Open leaderboard
+                    openLeaderboard();
+                }, 500)
             })
             
             // Fade back in
@@ -2469,6 +2488,44 @@ const leaderboardCloseBtn = document.querySelector(".leaderboard-close-btn");
 
 // Add event listener for click
 leaderboardBtn.addEventListener("click", () => {
+    openLeaderboard();
+})
+
+// Add event listener for close btn
+leaderboardCloseBtn.addEventListener("click", () => {
+    closeLeaderboard();
+})
+
+/**
+ * Add player to leaderboard
+ */
+function addPlayerToLeaderboard(name) {
+    // Set player name
+    let playerName = name;
+
+    // Increment leaderboard players
+    game.leaderboardPlayers++;
+
+    // Save game
+    saveGame();
+
+    // Get player stats
+    let gameStats = {
+        name: playerName,
+        time: game.time,
+        totalClicks: game.totalClicks,
+        power: game.power,
+        totalCoins: game.totalCoins
+    }
+
+    // Store variables in local storage as string
+    localStorage.setItem(`gameStatsPlayer${game.leaderboardPlayers}`, JSON.stringify(gameStats));
+}
+
+/**
+ * Open leaderboard
+ */
+function openLeaderboard() {
     // Get start screen
     let startScreen = document.querySelector(".start-screen");
 
@@ -2481,14 +2538,44 @@ leaderboardBtn.addEventListener("click", () => {
     // Add active classs
     leaderboardSection.classList.add("active");
 
+    // Remove placeholder if there are leaderboard players
+    if (game.leaderboardPlayers >= 1) {
+        // Get placeholder text
+        let placeholder = document.querySelector(".leaderboard-placeholder-text")
+
+        // Remove
+        placeholder.classList.add("remove");
+    }
+
+    // Get table body
+    let tbody = document.querySelector(".leaderboard-tbody");
+
+    // Update leaderboard names
+    for (let i = 0; i < game.leaderboardPlayers; i++) {
+        // Add to tbody
+        tbody.innerHTML += `
+            <tr>
+                <td>Name</td>
+                <td>Time</td>
+                <td>
+                    <div class="view-stats-btn">
+                        View Stats
+                    </div>
+                </td>
+            </tr>
+        `
+    }
+
     setTimeout(() => {
         // Add fade class
         leaderboardSection.classList.add("fade");
     }, 500);
-})
+}
 
-// Add event listener for close btn
-leaderboardCloseBtn.addEventListener("click", () => {
+/**
+ * Close leaderboard
+ */
+function closeLeaderboard() {
     // Get leaderboard section
     let leaderboardSection = document.querySelector(".leaderboard-section");
 
@@ -2504,31 +2591,26 @@ leaderboardCloseBtn.addEventListener("click", () => {
 
         // Remove play class
         startScreen.classList.remove("play");
+
+        // Get tbody
+        let tbody = document.querySelector(".leaderboard-tbody");
+
+        // Set innerhtml
+        tbody.innerHTML = `
+        <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Stats</th>
+        </tr>
+        `
     }, 500); 
-})
+}
 
 /**
- * Add player to leader board when btn is clicked
+ * Reset leaderboard
  */
-
-
-/**
- * Add player to leaderboard
- */
-function addPlayerToLeaderboard(name) {
-    // Set player name
-    let playerName = name;
-    // Get player stats
-    let gameStats = {
-        name: playerName,
-        time: game.time,
-        totalClicks: game.totalClicks,
-        power: game.power,
-        totalCoins: game.totalCoins
-    }
-
-    // Store variables in local storage as string
-    localStorage.setItem(`${name}GameStats`, JSON.stringify(gameStats));
+function resetLeaderboard() {
+    
 }
 
 /**
