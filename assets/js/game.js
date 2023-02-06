@@ -2505,6 +2505,17 @@ leaderboardCloseBtn.addEventListener("click", () => {
 })
 
 /**
+ * Close stats section
+ */
+// Define btns
+const statsCloseBtn = document.querySelector(".stats-close-btn");
+
+// Add event listener for click
+statsCloseBtn.addEventListener("click", () => {
+    closeStats();
+})
+
+/**
  * Add player to leaderboard
  */
 function addPlayerToLeaderboard(name) {
@@ -2566,21 +2577,13 @@ function openLeaderboard() {
                 <td>${getPlayerName(i)}</td>
                 <td>${getPlayerTime(i)}</td>
                 <td>
-                    <div class="view-stats-btn" data-index-number="${i}">
+                    <div class="view-stats-btn" data-index-number="${i}" onclick="openStats(${i})">
                         View Stats
                     </div>
                 </td>
             </tr>
         `
     }
-
-    // Get btns
-    let viewStatsBtns = document.querySelectorAll(".view-stats-btn");
-
-    // Add event listeners for each
-    viewStatsBtns.forEach((btn) => {
-        btn.addEventListener("click", openStats(btn.dataset.indexNumber))
-    })
 
     setTimeout(() => {
         // Add fade class
@@ -2656,10 +2659,25 @@ function getPlayerTime(index) {
  * Open Stats
  */
 function openStats(index) {
+    // Get game stats
+    let gameStats = JSON.parse(localStorage.getItem(`gameStatsPlayer${index}`));
+
+    // Get values
+    let time = document.querySelector(".stats-value-time");
+    let totalClicks = document.querySelector(".stats-value-total-clicks");
+    let power = document.querySelector(".stats-value-power");
+    let totalCoins = document.querySelector(".stats-value-total-coins");
+
+    // Set values
+    time.textContent = getPlayerTime(index);
+    totalClicks.textContent = gameStats.totalClicks;
+    power.textContent = gameStats.power;
+    totalCoins.textContent = gameStats.totalCoins;
+    
     // Get sections
     let leaderboardSection = document.querySelector(".leaderboard-section");
     let statsSection = document.querySelector(".stats-section");
-
+    
     // Fade leaderboard out
     leaderboardSection.classList.remove("fade");
 
@@ -2673,6 +2691,29 @@ function openStats(index) {
         // Fade in
         statsSection.classList.add("fade");
     }, 500)
+}
+
+/**
+ * Close stats
+ */
+function closeStats() {
+    // Get sections
+    let statsSection = document.querySelector(".stats-section");
+    let leaderboardSection = document.querySelector(".leaderboard-section");
+
+    // Remove fade class
+    statsSection.classList.remove("fade");
+
+    setTimeout(() => {
+        // Remove active class
+        statsSection.classList.remove("active");
+
+        // Add active class
+        leaderboardSection.classList.add("active");
+
+        // Add fade class
+        leaderboardSection.classList.add("fade");
+    }, 500); 
 }
 
 /**
