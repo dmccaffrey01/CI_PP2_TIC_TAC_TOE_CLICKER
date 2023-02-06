@@ -2566,13 +2566,21 @@ function openLeaderboard() {
                 <td>${getPlayerName(i)}</td>
                 <td>${getPlayerTime(i)}</td>
                 <td>
-                    <div class="view-stats-btn">
+                    <div class="view-stats-btn" data-index-number="${i}">
                         View Stats
                     </div>
                 </td>
             </tr>
         `
     }
+
+    // Get btns
+    let viewStatsBtns = document.querySelectorAll(".view-stats-btn");
+
+    // Add event listeners for each
+    viewStatsBtns.forEach((btn) => {
+        btn.addEventListener("click", openStats(btn.dataset.indexNumber))
+    })
 
     setTimeout(() => {
         // Add fade class
@@ -2642,6 +2650,29 @@ function getPlayerTime(index) {
     if (hrs < 10) hrs = "0" + hrs;
 
     return `${hrs}:${mins}:${secs}`;
+}
+
+/**
+ * Open Stats
+ */
+function openStats(index) {
+    // Get sections
+    let leaderboardSection = document.querySelector(".leaderboard-section");
+    let statsSection = document.querySelector(".stats-section");
+
+    // Fade leaderboard out
+    leaderboardSection.classList.remove("fade");
+
+    setTimeout(() => {
+        // Remove leaderboard
+        leaderboardSection.classList.remove("active");
+
+        // Add stats
+        statsSection.classList.add("active");
+
+        // Fade in
+        statsSection.classList.add("fade");
+    }, 500)
 }
 
 /**

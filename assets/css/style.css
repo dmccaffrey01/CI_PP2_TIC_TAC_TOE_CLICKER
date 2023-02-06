@@ -2656,6 +2656,67 @@ footer {
     font-size: 2.5rem;
 }
 
+/* Stats section */
+
+.stats-section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100% - 75px);
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.stats-section.active {
+    display: flex;
+}
+
+.stats-section.fade {
+    opacity: 1;
+}
+
+.stats-container {
+    width: 800px;
+    background-color: var(--MAIN-DARK);
+    border: 2px solid white;
+    border-radius: 20px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    padding: 70px;
+}
+
+.stats-close-btn {
+    cursor: pointer;
+    font-size: 4rem;
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 2.5rem;
+    color: white;
+}
+
 /* Congrats section */
 
 .congrats-section {
