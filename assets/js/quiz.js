@@ -294,6 +294,15 @@ highScoresBtn.addEventListener("click", () => {
     // Fade out home section
     homeSection.classList.add("fade");
 
+    // Get high scores from local storage
+    quizHighScores = JSON.parse(localStorage.getItem("quizHighScores")) || [];
+
+    // Create li for each high score and add to list
+    highScoresList.innerHTML = 
+        quizHighScores.map((score) => {
+            return `<li class="high-score-li">${score.name} - ${score.score}</li>`;
+        }).join("");
+
     // Wait 0.5s
     setTimeout(() => {
         // Add play class
