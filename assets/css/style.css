@@ -2960,3 +2960,68 @@ footer {
     font-size: 1.5rem;
     color: white;
 }
+
+/* Quiz end section */
+
+.quiz-end-section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 75px);
+    top: 75px;
+}
+
+.quiz-end-section.active {
+    display: flex;
+}
+
+.quiz-end-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quiz-end-score {
+    font-size: 4rem;
+    color: white;
+}
+
+.quiz-name-entry {
+    width: 200px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 2px solid white;
+    color: white;
+    font-size: 2rem;
+    background-color: var(--MAIN);
+}
+
+.quiz-name-entry:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
+.quiz-end-btn {
+    width: 200px;
+    height: 50px;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--DARK-BLUE);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.quiz-end-btn:hover {
+    outline: 2px solid white;
+    outline-offset: -2px;
+    box-shadow: 0 0.4rem 1.4rem 0 var(--MAIN-LIGHT);
+    transform: translateY(-0.1rem);
+    transition: transform 0.15s;
+}
