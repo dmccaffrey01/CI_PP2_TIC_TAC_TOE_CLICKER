@@ -2893,6 +2893,8 @@ footer {
 .quiz-game-question {
     color: white;
     font-size: 2.5rem;
+    width: 600px;
+    text-align: center;
 }
 
 .quiz-choices-container {

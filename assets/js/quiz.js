@@ -52,22 +52,43 @@ let availableQuestions = [];
 
 let questions = [];
 
-// Fetch quesitons
-fetch("questions.json")
+// Fetch quesitons through api
+fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple")
     .then(res => {
+        // Return as json
         return res.json();
     })
     .then(loadedQuestions => {
-        console.log(loadedQuestions);
-        questions = loadedQuestions;
+        // Map the loaded questions and format properly
+        questions = loadedQuestions.results.map(loadedQuestion => {
+            const formattedQuestion = {
+                question: loadedQuestion.question
+            };
+
+            // Add incorrect choices
+            const answerChoices = [...loadedQuestion.incorrect_answers];
+            // Add correct choice in random position
+            formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+            answerChoices.splice(formattedQuestion.answer -1, 0,
+            loadedQuestion.correct_answer);
+            
+            // Add choice number to each
+            answerChoices.forEach((choice, index) => {
+                formattedQuestion["choice" + (index + 1)] = choice;
+            })
+
+            return formattedQuestion;
+        })
+        
     })
+    // Handle error
     .catch(err => {
         console.error(err);
     });
 
 // Create constants
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 4;
+const MAX_QUESTIONS = 10;
 
 /**
  * Start the quiz game
@@ -185,6 +206,9 @@ function endGame() {
 
     // Wait 0.5s
     setTimeout(() => {
+        // Remove fade
+        quizGameSection.classList.remove("play");
+        
         // Add active
         quizEndGameSection.classList.add("active");
 
@@ -256,8 +280,6 @@ function resetGame() {
 
         // Remove play  and fade class
         homeSection.classList.remove("play", "fade");
-
-        
     }, 500)
 }
 
