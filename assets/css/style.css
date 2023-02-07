@@ -2931,3 +2931,11 @@ footer {
     align-items: center;
     background-color: var(--MAIN-LIGHT);
 }
+
+.choice-text.correct {
+    background-color: var(--ADD-GREEN);
+}
+
+.choice-text.incorrect {
+    background-color: var(--MINUS-RED);
+}

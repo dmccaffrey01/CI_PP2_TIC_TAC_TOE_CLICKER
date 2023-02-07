@@ -115,8 +115,20 @@ choices.forEach((choice) => {
         let selectedChoice = e.target;
         let selectedAnswer = selectedChoice.dataset["number"];
 
-        // Get new question once selected
-        getNewQuesiton();
+        // Check if correct or incorrect
+        let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+
+        // Add class to choice
+        selectedChoice.classList.add(classToApply);
+
+        // Wait 1 sec
+        setTimeout(() => {
+            // Remove class
+            selectedChoice.classList.remove(classToApply);
+
+            // Get new question once selected
+            getNewQuesiton();
+        }, 1000);
     });
 });
 
