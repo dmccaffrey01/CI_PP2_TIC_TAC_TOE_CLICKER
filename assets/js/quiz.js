@@ -4,6 +4,12 @@ const question = document.querySelector(".quiz-game-question");
 // Get choices
 const choices = Array.from(document.querySelectorAll(".choice-text"));
 
+// Get question counter text
+const questionCounterText = document.querySelector(".quiz-question-count");
+
+// Get score text
+const scoreText = document.querySelector(".quiz-score");
+
 // Create let variables
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -77,6 +83,9 @@ function getNewQuesiton() {
     // Increment question counter
     questionCounter++;
 
+    // Update question text
+    questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+
     // Get random question index
     let questionIndex = Math.floor(Math.random() * availableQuestions.length);
 
@@ -118,6 +127,11 @@ choices.forEach((choice) => {
         // Check if correct or incorrect
         let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
+        // Increment score if correct
+        if (classToApply == "correct") {
+            incrementScore(CORRECT_BONUS);
+        }
+
         // Add class to choice
         selectedChoice.classList.add(classToApply);
 
@@ -131,5 +145,16 @@ choices.forEach((choice) => {
         }, 1000);
     });
 });
+
+/**
+ * Increment score by number passed into it
+ */
+function incrementScore(num) {
+    // Add to score
+    score += num;
+
+    // Update score display
+    scoreText.innerText = score;
+}
 
 startGame();

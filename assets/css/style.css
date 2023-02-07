@@ -2939,3 +2939,24 @@ footer {
 .choice-text.incorrect {
     background-color: var(--MINUS-RED);
 }
+
+/* Hud */
+
+.quiz-hud {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 600px;
+}
+
+.hud-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hud-text {
+    font-size: 1.5rem;
+    color: white;
+}
