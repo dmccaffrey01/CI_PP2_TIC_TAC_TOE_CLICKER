@@ -2794,3 +2794,137 @@ footer {
     color: white;
     font-size: 2rem;
 }
+
+/* Quiz Page */
+
+/* Quiz home screen section */
+
+.quiz-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 75px);
+    top: 75px;
+}
+
+.quiz-home.play {
+    display: none;
+}
+
+.quiz-home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.quiz-home-heading {
+    font-size: 3rem;
+    color: white;
+}
+
+.quiz-btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-home-btn {
+    background-color: var(--DARK-BLUE);
+    width: 250px;
+    height: 50px;
+    border: 2px solid white;
+    font-size: 2rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quiz-home-btn:hover {
+    box-shadow: 0 0.4rem 1.4rem 0 var(--MAIN-LIGHT);
+    transform: translateY(-0.1rem);
+    transition: transform 0.15s;
+}
+
+/* Quiz game section */
+
+.quiz-game-section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 75px);
+    top: 75px;
+}
+
+.quiz-game-section.play {
+    display: flex;
+}
+
+.quiz-game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.quiz-game-heading {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.quiz-choices-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    padding: 20px;
+    background-color: var(--MAIN-DARK);
+    border: 2px solid white;
+    border-radius: 20px;
+    gap: 5px;
+}
+
+.choice-container {
+    width: 270px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.choice-container:hover {
+    outline: 2px solid white;
+    outline-offset: -2px;
+}
+
+.choice-prefix {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--DARK-BLUE);
+}
+
+.choice-text {
+    width: calc(100% - 50px);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--MAIN-LIGHT);
+}
