@@ -76,7 +76,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=mu
             answerChoices.forEach((choice, index) => {
                 formattedQuestion["choice" + (index + 1)] = choice;
             })
-
+            
             return formattedQuestion;
         })
         
@@ -130,7 +130,7 @@ function getNewQuesiton() {
     currentQuestion = availableQuestions[questionIndex];
 
     // Update question display
-    question.innerText = currentQuestion.question;
+    question.innerText = decodeHtml(currentQuestion.question);
 
     // Update choices display
     choices.forEach((choice) => {
@@ -138,7 +138,7 @@ function getNewQuesiton() {
         let num = choice.dataset["number"];
 
         // Change choice text to current question choice
-        choice.innerText = currentQuestion["choice" + num];
+        choice.innerText = decodeHtml(currentQuestion["choice" + num]);
     });
 
     // Take question out of available questions
@@ -239,7 +239,7 @@ saveScoreBtn.addEventListener("click", () => {
 function saveHighScore() {
     // Save score and name in object
     const recentScore = {
-        score: Math.floor(Math.random() * 100),
+        score: score,
         name: nameEntry.value
     }
     
@@ -332,4 +332,8 @@ goHomeBtn.addEventListener("click", () => {
     }, 500)
 })
 
-
+function decodeHtml(html) {
+    let txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
