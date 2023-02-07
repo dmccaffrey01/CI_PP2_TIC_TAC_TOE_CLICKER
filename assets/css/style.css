@@ -2878,7 +2878,7 @@ footer {
     gap: 40px;
 }
 
-.quiz-game-heading {
+.quiz-game-question {
     color: white;
     font-size: 2.5rem;
 }
@@ -2909,6 +2909,9 @@ footer {
 .choice-container:hover {
     outline: 2px solid white;
     outline-offset: -2px;
+    box-shadow: 0 0.4rem 1.4rem 0 var(--MAIN-LIGHT);
+    transform: translateY(-0.1rem);
+    transition: transform 0.15s;
 }
 
 .choice-prefix {
