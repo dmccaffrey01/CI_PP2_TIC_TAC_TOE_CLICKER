@@ -214,7 +214,7 @@ function endGame() {
 }
 
 // Get high scores
-const quizHighScores = JSON.parse(localStorage.getItem("quizHighScores")) || [];
+let quizHighScores = JSON.parse(localStorage.getItem("quizHighScores")) || [];
 
 /**
  * End screen
@@ -280,5 +280,45 @@ function resetGame() {
         
     }, 500)
 }
+
+/**
+ * High scores
+ */
+const highScoresBtn = document.querySelector(".quiz-high-scores-btn");
+const highScoresSection = document.querySelector(".high-scores-section");
+const highScoresList = document.querySelector(".high-scores-list");
+const goHomeBtn = document.querySelector(".go-home-btn");
+
+// Add event listener to open high scores
+highScoresBtn.addEventListener("click", () => {
+    // Fade out home section
+    homeSection.classList.add("fade");
+
+    // Wait 0.5s
+    setTimeout(() => {
+        // Add play class
+        homeSection.classList.add("play");
+
+        // Add active class and remove fade class
+        highScoresSection.classList.add("active");
+        highScoresSection.classList.remove("fade");
+    }, 500)
+})
+
+// Add event listener to close high scores
+goHomeBtn.addEventListener("click", () => {
+    // Fade out home section
+    highScoresSection.classList.add("fade");
+
+    // Wait 0.5s
+    setTimeout(() => {
+        // Remove active class
+        highScoresSection.classList.remove("active");
+
+        // Remove play and fade class
+        homeSection.classList.remove("play");
+        homeSection.classList.remove("fade");
+    }, 500)
+})
 
 
