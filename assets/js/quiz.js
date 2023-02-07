@@ -50,40 +50,20 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [
-    {
-        question: "a",
-        choice1: "1a",
-        choice2: "2a",
-        choice3: "3a",
-        choice4: "4a",
-        answer: 1
-    },
-    {
-        question: "b",
-        choice1: "1b",
-        choice2: "2b",
-        choice3: "3b",
-        choice4: "4b",
-        answer: 2
-    },
-    {
-        question: "c",
-        choice1: "1c",
-        choice2: "2c",
-        choice3: "3c",
-        choice4: "4c",
-        answer: 3
-    },
-    {
-        question: "d",
-        choice1: "1d",
-        choice2: "2d",
-        choice3: "3d",
-        choice4: "4d",
-        answer: 4
-    }
-]
+let questions = [];
+
+// Fetch quesitons
+fetch("questions.json")
+    .then(res => {
+        return res.json();
+    })
+    .then(loadedQuestions => {
+        console.log(loadedQuestions);
+        questions = loadedQuestions;
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 // Create constants
 const CORRECT_BONUS = 10;
