@@ -44,7 +44,7 @@
     </header>
 
     <!-- Quiz home screen -->
-    <section class="quiz-home">
+    <section class="quiz-home play">
         <div class="quiz-home-container">
             <div class="quiz-home-heading">
                 General Knowledge Quiz
@@ -98,18 +98,23 @@
     </section>
 
     <!-- End quiz section -->
-    <section class="quiz-end-section">
+    <section class="quiz-end-section active">
         <div class="quiz-end-container">
             <div class="quiz-end-score">0</div>
             <input type="text" class="quiz-name-entry">
             <div class="quiz-name-save-btn quiz-end-btn">
                 Save
             </div>
-            <div class="quiz-play-again-btn quiz-end-btn">
-                Play Again
-            </div>
-            <div class="quiz-go-home-btn quiz-end-btn">
-                Go home
+        </div>
+    </section>
+
+    <!-- High scores section -->
+    <section class="high-scores-section">
+        <div class="high-scores-container">
+            <div class="high-scores-heading">High Scores</div>
+            <ul class="high-scores-list"></ul>
+            <div class="go-home-btn">
+                Go Home
             </div>
         </div>
     </section>

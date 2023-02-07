@@ -1,11 +1,17 @@
 // Get home play btn
 const homePlayBtn = document.querySelector(".quiz-play-btn");
 
-// Add event listener
+// Get home section
+const homeSection = document.querySelector(".quiz-home");
+
+// Get quiz game section
+const quizGameSection = document.querySelector(".quiz-game-section");
+
+// Get end game section
+const quizEndGameSection = document.querySelector(".quiz-end-section");
+
+// Add event listener for home play btn
 homePlayBtn.addEventListener("click", () => {
-    // Get home section
-    let homeSection = document.querySelector(".quiz-home");
-    
     // Fade out
     homeSection.classList.add("fade");
 
@@ -13,9 +19,6 @@ homePlayBtn.addEventListener("click", () => {
     setTimeout(() => {
         // Add play class
         homeSection.classList.add("play");
-
-        // Get quiz game section
-        let quizGameSection = document.querySelector(".quiz-game-section");
 
         // Add play
         quizGameSection.classList.add("play");
@@ -194,8 +197,24 @@ function incrementScore(num) {
  * End the game
  */
 function endGame() {
+    // Change final score
+    finalScore.innerText = score;
+    
+    // Fade out game section
+    quizGameSection.classList.add("fade");
 
+    // Wait 0.5s
+    setTimeout(() => {
+        // Add active
+        quizEndGameSection.classList.add("active");
+
+        // Remove fade
+        quizEndGameSection.classList.remove("fade");
+    }, 500)
 }
+
+// Get high scores
+const quizHighScores = JSON.parse(localStorage.getItem("quizHighScores")) || [];
 
 /**
  * End screen
@@ -203,5 +222,63 @@ function endGame() {
 // Define element variables
 const nameEntry = document.querySelector(".quiz-name-entry");
 const saveScoreBtn = document.querySelector(".quiz-name-save-btn");
-const finalScore = document.querySelector("quiz-end-score");
+const finalScore = document.querySelector(".quiz-end-score");
+
+// Add event listener for click
+saveScoreBtn.addEventListener("click", () => {
+    saveHighScore();
+})
+
+/**
+ * Save name and score to high scores
+ */
+function saveHighScore() {
+    // Save score and name in object
+    const recentScore = {
+        score: Math.floor(Math.random() * 100),
+        name: nameEntry.value
+    }
+    
+    // Push score to high scores
+    quizHighScores.push(recentScore);
+    
+    // Sort the high scores
+    quizHighScores.sort((a, b) => b.score - a.score)
+
+    // Remove 6th high score
+    quizHighScores.splice(5);
+
+    // Update local storage
+    localStorage.setItem("quizHighScores", JSON.stringify(quizHighScores));
+
+    // Reset game
+    resetGame();
+}
+
+/**
+ * Reset Game
+ */
+function resetGame() {
+    // Reset variables
+    currentQuestion = {};
+    acceptingAnswers = false;
+    score = 0;
+    questionCounter = 0;
+    availableQuestions = [];
+
+    // Go back to home screen
+    quizEndGameSection.classList.add("fade");
+
+    // Wait 0.5s
+    setTimeout(() => {
+        // Remove active class
+        quizEndGameSection.classList.remove("active");
+
+        // Remove play  and fade class
+        homeSection.classList.remove("play", "fade");
+
+        
+    }, 500)
+}
+
 
