@@ -1,3 +1,33 @@
+// Get home play btn
+const homePlayBtn = document.querySelector(".quiz-play-btn");
+
+// Add event listener
+homePlayBtn.addEventListener("click", () => {
+    // Get home section
+    let homeSection = document.querySelector(".quiz-home");
+    
+    // Fade out
+    homeSection.classList.add("fade");
+
+    // Wait 0.5s
+    setTimeout(() => {
+        // Add play class
+        homeSection.classList.add("play");
+
+        // Get quiz game section
+        let quizGameSection = document.querySelector(".quiz-game-section");
+
+        // Add play
+        quizGameSection.classList.add("play");
+
+        // Start game
+        startGame();
+
+        // Remove fade
+        quizGameSection.classList.remove("fade");
+    }, 500)
+})
+
 // Get question
 const question = document.querySelector(".quiz-game-question");
 
@@ -76,7 +106,7 @@ function getNewQuesiton() {
     // Check if all questions answered
     if (availableQuestions.length <= 0 || questionCounter >= MAX_QUESTIONS) {
         // Go to end section
-        console.log("end");
+        endGame();
         return;
     }
     
@@ -85,6 +115,9 @@ function getNewQuesiton() {
 
     // Update question text
     questionCounterText.innerText = `${questionCounter}/${MAX_QUESTIONS}`;
+
+    // Update score
+    scoreText.innerText = score;
 
     // Get random question index
     let questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -157,4 +190,18 @@ function incrementScore(num) {
     scoreText.innerText = score;
 }
 
-startGame();
+/**
+ * End the game
+ */
+function endGame() {
+
+}
+
+/**
+ * End screen
+ */
+// Define element variables
+const nameEntry = document.querySelector(".quiz-name-entry");
+const saveScoreBtn = document.querySelector(".quiz-name-save-btn");
+const finalScore = document.querySelector("quiz-end-score");
+

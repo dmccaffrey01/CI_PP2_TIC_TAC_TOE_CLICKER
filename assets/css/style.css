@@ -2807,6 +2807,12 @@ footer {
     width: 100%;
     height: calc(100% - 75px);
     top: 75px;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.quiz-home.fade {
+    opacity: 0;
 }
 
 .quiz-home.play {
@@ -2864,6 +2870,12 @@ footer {
     width: 100%;
     height: calc(100% - 75px);
     top: 75px;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.quiz-game-section.fade {
+    opacity: 0;
 }
 
 .quiz-game-section.play {
