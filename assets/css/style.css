@@ -3129,6 +3129,55 @@ footer {
     transition: all 0.5s ease-in-out;
 }
 
+.form-container {
+    padding: 20px;
+    background-color: var(--MAIN-DARK);
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.form-input {
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 2px solid white;
+    color: white;
+    font-size: 2rem;
+    background-color: var(--MAIN);
+    text-align: center;
+}
+
+.form-input:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
+.contact-email-input {
+    width: 450px;
+}
+
+.contact-message-input {
+    width: 600px;
+}
+
+.form-textarea:focus {
+    border: 2px solid var(--DARK-BLUE);
+    outline: none;
+}
+
 .send-email-btn {
     color: white;
     font-size: 2rem;
