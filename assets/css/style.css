@@ -2836,6 +2836,53 @@ footer {
     cursor: pointer;
 }
 
+/* Media query for table size */
+
+@media (max-width: 1280px) {
+    .leaderboard-container {
+        width: 600px;
+        height: 450px;
+        padding: 50px;
+    }
+}
+
+/* Media query for phone size */
+
+@media (max-width: 769px) {
+    .leaderboard-container {
+        width: 300px;
+        height: 450px;
+        padding: 30px;
+    }
+
+    .leaderboard-close-btn {
+        font-size: 2rem;
+        right: 10px;
+        top: 10px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .leaderboard-table th {
+        padding: 5px;
+        font-size: 1rem;
+    }
+    
+    .leaderboard-table td {
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+    
+    .leaderboard-placeholder-text {
+        font-size: 1.5rem;
+    }
+    
+    .leaderboard-reset-btn {
+        bottom: 5px;
+        font-size: 1.5rem;
+    }
+}
+
 /* Stats section */
 
 .stats-section {
