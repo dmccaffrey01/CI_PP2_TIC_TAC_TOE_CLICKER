@@ -1022,7 +1022,7 @@ footer {
     transition: all 0.1s linear;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .remember-number {
         font-size: 20rem;
     }
@@ -2684,7 +2684,7 @@ footer {
 
 /* Media query for mobile size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .htp-container {
         width: 300px;
         height: 400px;
@@ -2854,7 +2854,7 @@ footer {
 
 /* Media query for phone size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .leaderboard-container {
         width: 300px;
         height: 450px;
@@ -2962,7 +2962,7 @@ footer {
 
 /* Media query for phone size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .stats-container {
         width: 300px;
         height: 450px;
@@ -3059,7 +3059,7 @@ footer {
 
 /* Media query for phone size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .congrats-text {
         font-size: 1.5rem;
     }
@@ -3132,7 +3132,7 @@ footer {
 
 /* Media query for phone size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .quiz-home-heading {
         font-size: 1.5rem;
 
@@ -3337,7 +3337,7 @@ footer {
 
 /* Media query for phone size */
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .quiz-game-container {
         gap: 30px;
     }
@@ -3377,78 +3377,6 @@ footer {
     .hud-text {
         font-size: 1.2rem;
     }
-    
-    /* Quiz end section */
-    
-    .quiz-end-section {
-        display: none;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        width: 100%;
-        height: calc(100% - 75px);
-        top: 75px;
-        opacity: 1;
-        transition: all 0.5s ease-in-out;
-    }
-    
-    .quiz-end-section.fade {
-        opacity: 0;
-    }
-    
-    .quiz-end-section.active {
-        display: flex;
-    }
-    
-    .quiz-end-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .quiz-end-score {
-        font-size: 4rem;
-        color: white;
-    }
-    
-    .quiz-name-entry {
-        width: 200px;
-        padding: 10px 20px;
-        border-radius: 40px;
-        border: 2px solid white;
-        color: white;
-        font-size: 2rem;
-        background-color: var(--MAIN);
-    }
-    
-    .quiz-name-entry:focus {
-        border: 2px solid var(--DARK-BLUE);
-        outline: none;
-    }
-    
-    .quiz-end-btn {
-        width: 200px;
-        height: 50px;
-        color: white;
-        font-size: 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--DARK-BLUE);
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    
-    .quiz-end-btn:hover {
-        outline: 2px solid white;
-        outline-offset: -2px;
-        box-shadow: 0 0.4rem 1.4rem 0 var(--MAIN-LIGHT);
-        transform: translateY(-0.1rem);
-        transition: transform 0.15s;
-    }
-    
 }
 
 /* High scores section */
@@ -3516,6 +3444,24 @@ footer {
     color: white;
     font-size: 2rem;
     padding: 10px 0;
+}
+
+/* Media query for phone size */
+
+@media (max-width: 768px) {
+    .high-scores-heading {
+        font-size: 2rem;
+    }
+    
+    .go-home-btn {
+        width: 150px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .high-score-li {
+        font-size: 1.7rem;
+    }
 }
 
 /* Contact Page */
@@ -3591,4 +3537,8 @@ footer {
     border-radius: 5px;
     border: 2px solid white;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    
 }
