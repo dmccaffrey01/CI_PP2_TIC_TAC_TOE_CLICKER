@@ -3112,3 +3112,28 @@ footer {
     font-size: 2rem;
     padding: 10px 0;
 }
+
+/* Contact Page */
+
+/* Contact Form section */
+
+.contact-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 75px);
+    top: 75px;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.send-email-btn {
+    color: white;
+    font-size: 2rem;
+    padding: 20px;
+    background-color: var(--DARK-BLUE);
+    border-radius: 5px;
+    cursor: pointer;
+}
