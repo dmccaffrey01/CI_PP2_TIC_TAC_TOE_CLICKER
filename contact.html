@@ -45,9 +45,17 @@
 
     <!-- Contact form section -->
     <section class="contact-form-section">
-        <form method="post">
-            <input type="button" value="Send Email" class="send-email-btn" onclick="sendEmail()"/>
-        </form>  
+        <div class="form-container">
+            <form method="post">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-text contact-name-input" name="name">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-text contact-email-input" name="email">
+                <label for="message" class="form-label">Email:</label>
+                <textarea rows="3" class="form-textarea contact-message-input" name="message"></textarea>
+                <input type="button" value="Send Email" class="send-email-btn" onclick="sendEmail()"/>
+            </form> 
+        </div> 
     </section>
     
     <!-- Footer -->

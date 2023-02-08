@@ -3135,5 +3135,6 @@ footer {
     padding: 20px;
     background-color: var(--DARK-BLUE);
     border-radius: 5px;
+    border: 2px solid white;
     cursor: pointer;
 }
