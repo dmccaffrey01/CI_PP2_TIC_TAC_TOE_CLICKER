@@ -2944,6 +2944,39 @@ footer {
     color: white;
 }
 
+/* Media query for table size */
+
+@media (max-width: 1280px) {
+    .stats-container {
+        width: 600px;
+        height: 450px;
+        padding: 50px;
+    }
+}
+
+/* Media query for phone size */
+
+@media (max-width: 769px) {
+    .stats-container {
+        width: 300px;
+        height: 450px;
+        padding: 30px;
+    }
+
+    .stats-close-btn {
+        font-size: 2rem;
+        right: 10px;
+        top: 10px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .stats-line {
+        font-size: 1.7rem;
+    }
+}
+
+
 /* Congrats section */
 
 .congrats-section {
