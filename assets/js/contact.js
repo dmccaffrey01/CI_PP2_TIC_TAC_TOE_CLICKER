@@ -8,7 +8,7 @@ sendEmailBtn.addEventListener("click", () => {
 
 function sendEmail() {
 	Email.send({
-		SecureToken : "936da713-e86c-4992-b5e0-12090be9d7d8 ",
+		SecureToken : "38409570-4dc0-4846-9923-ab69e941e08e",
 		To : 'dillonmccaffrey.ci@outlook.com',
 		From : "dillonmccaffrey.ci@outlook.com",
 		Subject : "This is the subject",
