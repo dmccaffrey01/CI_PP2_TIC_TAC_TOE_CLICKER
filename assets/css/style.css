@@ -1425,7 +1425,8 @@ footer {
         height: 365px;
         position: fixed;
         right: calc(50vw - 100px);
-        top: 95px;
+        top: 50%;
+        transform: translateY(-151px);
         background-color: var(--MAIN-DARK);
         z-index: 200;
         opacity: 1;
@@ -1751,10 +1752,11 @@ footer {
 
     .save-menu.active {
         width: 200px;
-        height: 365px;
+        height: 366px;
         position: fixed;
         left: calc(50vw - 100px);
-        top: 95px;
+        top: 50%;
+        transform: translateY(-151px);
         background-color: var(--MAIN-DARK);
         z-index: 200;
         opacity: 1;
@@ -2364,10 +2366,6 @@ footer {
     bottom: 45px;
 }
 
-.hover-cell {
-    background-color: var(--LIGHT-GRAY);
-}
-
 .ttt-icon-o {
     width: 80%;
     height: 80%;
@@ -2447,6 +2445,90 @@ footer {
     height: 30px;
     transform: rotate(-45deg);
     transition: all 0.1s linear;
+}
+
+/* Media query for mobile screen size */
+
+@media (max-width: 768px) {
+    .ttt-game-container {
+        width: 300px;
+        height: 300px;
+        gap: 9px;       
+    }
+    
+    .ttt-heading-text {
+        font-size: 1.5rem;
+    }
+    
+    .ttt-cell {
+        width: 94px;
+        height: 94px;
+        border-radius: 10px;
+    }
+    
+    .cell-text {
+        bottom: -0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .ttt-bar {
+        height: 15px;
+    }
+    
+    .ttt-bar:nth-child(1) {
+        top: 30px;
+    }
+    
+    .ttt-bar:nth-child(2) {
+        bottom: 30px;
+    }
+
+    .ttt-icon-o {
+        outline: 15px solid white;
+        outline-offset: -15px;
+    }
+    
+    .winning-line.combo-1 {
+        top: 36px;
+        height: 15px;
+    }
+    
+    .winning-line.combo-2 {
+        top: 141px;
+        height: 15px;
+    }
+    
+    .winning-line.combo-3 {
+        top: 246px;
+        height: 15px;
+    }
+    
+    .winning-line.combo-4 {
+        left: 36px;
+        width: 15px;
+    }
+    
+    .winning-line.combo-5 {
+        left: 141px;
+        width: 15px;
+    }
+    
+    .winning-line.combo-6 {
+        left: 246px;
+        width: 15px;
+    }
+    
+    .winning-line.combo-7 {
+        top: 141px;
+        left: -54px;
+        height: 15px;
+    }
+    
+    .winning-line.combo-8 {
+        top: 141px;
+        left: -54px;
+        height: 15px;
+    } 
 }
 
 /* Scroll Bar */
