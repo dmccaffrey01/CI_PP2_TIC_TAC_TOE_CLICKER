@@ -11,6 +11,14 @@ const emailInput = document.querySelector(".contact-email-input");
 const messageInput = document.querySelector(".contact-message-input");
 
 // Add event listener
+messageInput.addEventListener("focus", () => {
+	// Check for placeholder text
+	if (messageInput.value == "Leave a message for Dillon...") {
+		messageInput.value = "";
+	}
+})
+
+// Add event listener
 sendEmailBtn.addEventListener("click", () => {
 	sendEmail();
 })
