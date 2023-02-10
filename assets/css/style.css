@@ -949,7 +949,7 @@ footer {
     width: 90px;
     height: 100%;
     left: 50%;
-    translate: -50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2312,7 +2312,7 @@ footer {
 .ttt-heading {
     position: absolute;
     left: 50%;
-    translate: -50%;
+    transform: translateX(-50%);
     top: -50px;
     width: 100%;
     display: flex;
@@ -3647,7 +3647,7 @@ footer {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: var(te);
+    color: var(--TEXT);
 }
 
 .alert-btn.remove {
