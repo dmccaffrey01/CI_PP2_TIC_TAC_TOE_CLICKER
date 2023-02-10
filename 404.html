@@ -25,13 +25,13 @@
             <nav class="navbar">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link current">Home</a>
+                        <a href="index.html" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="game.html" class="nav-link">Game</a>
                     </li>
                     <li class="nav-item">
-                        <a href="quiz.html" class="nav-link">Quiz</a>
+                        <a href="quiz.html" class="nav-link current">Quiz</a>
                     </li>
                     <li class="nav-item">
                         <a href="contact.html" class="nav-link">Contact</a>
@@ -46,43 +46,21 @@
         </div>
     </header>
 
-    <!-- Home Buttons Section -->
-    <section id="home-buttons" class="home-section">
-        <div class="home-card">
-            <!-- Buttons Container -->
-            <div class="buttons-container">
-                <a href="game.html" class="home-btn">
-                    Play Game
-                </a>
-                <a href="quiz.html" class="home-btn">
-                    Go to Quiz
-                </a>
-                <a href="contact.html" class="home-btn">
-                    Contact Us
-                </a>
+     <!-- 404 error content -->
+     <section id="error-404">
+        <div class="content-404">
+            <!-- Image -->
+            <div class="error-image">
+                <img src="assets/images/file-not-found-404.png" alt="missing page 404 error image">
             </div>
-        </div>
-    </section>
-
-    <!-- Randome Quote Section -->
-    <section id="random-quote-section" class="home-section">
-        <div class="quote-card">
-            <div class="home-card-body">
-                <div class="quote-container">
-                    <i class="fa fa-quote-left quote-icon" aria-hidden="true"></i>
-                    <div class="quote-text-author">
-                        <div class="quote-text" id="quote-text"></div>
-                        <div class="quote-author" id="quote-author"></div>
-                    </div>
-                </div>
-                <div class="quote-buttons-container">
-                    <button id="new-quote" class="quote-btn" onclick="generateQuote()">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="quote-btn-text">New Quote</span>
-                    </button>
-                    <a id="tweet-quote" class="quote-btn" target="_blank" href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i> <span class="quote-btn-text">Tweet</span>
-                    </a>
-                </div>
+            <!-- Error text -->
+            <div class="error-text">
+                <h2>404</h2>
+                <h3> Page Not Found</h3>
+            </div>
+            <!-- Return home button -->
+            <div class="btn">
+                <a href="index.html">Return Home</a>
             </div>
         </div>
     </section>
@@ -114,6 +92,6 @@
     
     <!-- JavaScript -->
     <script src="assets/js/nav-menu.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/quiz.js" type="module"></script>
 </body>
 </html>
