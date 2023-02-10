@@ -3663,6 +3663,13 @@ footer {
     align-items: center;
 }
 
+.content-404 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .error-image {
     display: flex;
     justify-content: center;
@@ -3678,6 +3685,7 @@ footer {
 .error-text {
     text-align: center;
     margin: -20px auto 30px auto;
+    color: white;
 }
 
 .error-text h2 {
@@ -3688,4 +3696,19 @@ footer {
 .error-text h3 {
     font-size: 2rem;
     color: var(--QUOTE);
+}
+
+.error-404-btn {
+    width: 150px;
+    height: 50px;
+    background-color: var(--DARK-BLUE);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.error-404-btn a {
+    display: block;
 }

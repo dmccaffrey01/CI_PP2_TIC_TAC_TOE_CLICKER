@@ -13,11 +13,11 @@ var game = {
     monsterHealthMax: 10,
     monsterCount: 0,
     monstersPerLevel: 10,
-    level: 18,
+    level: 1,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
-    coinsToGet: 500,
+    coinsToGet: 10,
     coinsAdded: 0,
     isMonsterDead: false,
     newMonsterDelay: 800,
@@ -71,6 +71,7 @@ var game = {
     checkMonsterHP: function() {
         if (this.monsterHP <= 0) {
             if (this.monsterCount == 4 || this.monsterCount == 9) {
+                this.isMonsterDead = true;
                 // Start kill monster game
                 this.startKillMonsterGame();
             } else {
@@ -169,14 +170,14 @@ var game = {
         // Update the display
         display.updateMonsterCount();
 
+        // Set Monster Max Health
+        this.monsterHealthMax = 10 * this.level;
+
         // Set new hp of monster
-        this.monsterHP = 10;
+        this.monsterHP = 10 * this.level;
 
         // Update the display
         display.updateMonsterHP();
-
-        // Set Monster Max Health
-        this.monsterHealthMax = 10;
 
         // Display new monster
         display.createNewMonster();
@@ -229,17 +230,17 @@ var game = {
      * Set the boss hp
      */
     createBossRound: function() {
+        // Set Monster Max Health
+        this.monsterHealthMax = this.level * 100;
+        
         // Set hp of boss
-        this.monsterHP = 200;
+        this.monsterHP = this.level * 100;
 
         // Update the display
         display.updateBossRound();
 
         // Play boss level sound effect
         audio.playBossLevel();
-
-        // Set Monster Max Health
-        this.monsterHealthMax = 200;
 
         // Set isBossRound to true
         this.isBossRound = true;
@@ -384,14 +385,14 @@ var game = {
      * Respawn the monster
      */
     respawnMonster: function() {
+        // Set Monster Max Health
+        this.monsterHealthMax = 10 * this.level;
+        
         // Set new hp of monster
-        this.monsterHP = 10;
+        this.monsterHP = 10 * this.level;
 
         // Update the display
         display.updateMonsterHP();
-
-        // Set Monster Max Health
-        this.monsterHealthMax = 10;
 
         // Display new monster
         display.createNewMonster();
@@ -427,9 +428,9 @@ var upgrades = {
         10
     ],
     cost: [
-        1,
-        2,
-        3
+        50,
+        500,
+        5000
     ],
     previousCost: [
         1,
