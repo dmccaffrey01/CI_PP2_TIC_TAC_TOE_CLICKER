@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 // Get home play btn
 const homePlayBtn = document.querySelector(".quiz-play-btn");
 
@@ -28,8 +30,8 @@ homePlayBtn.addEventListener("click", () => {
 
         // Remove fade
         quizGameSection.classList.remove("fade");
-    }, 500)
-})
+    }, 500);
+});
 
 // Get question
 const question = document.querySelector(".quiz-game-question");
@@ -75,10 +77,10 @@ fetch("https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=mu
             // Add choice number to each
             answerChoices.forEach((choice, index) => {
                 formattedQuestion["choice" + (index + 1)] = choice;
-            })
+            });
             
             return formattedQuestion;
-        })
+        });
         
     })
     // Handle error
@@ -135,7 +137,7 @@ function getNewQuesiton() {
     // Update choices display
     choices.forEach((choice) => {
         // Get number
-        let num = choice.dataset["number"];
+        let num = choice.dataset.number;
 
         // Change choice text to current question choice
         choice.innerText = decodeHtml(currentQuestion["choice" + num]);
@@ -159,7 +161,7 @@ choices.forEach((choice) => {
 
         // Get selected choice and answer
         let selectedChoice = e.target;
-        let selectedAnswer = selectedChoice.dataset["number"];
+        let selectedAnswer = selectedChoice.dataset.number;
 
         // Check if correct or incorrect
         let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
@@ -214,7 +216,7 @@ function endGame() {
 
         // Remove fade
         quizEndGameSection.classList.remove("fade");
-    }, 500)
+    }, 500);
 }
 
 // Get high scores
@@ -231,7 +233,7 @@ const finalScore = document.querySelector(".quiz-end-score");
 // Add event listener for click
 saveScoreBtn.addEventListener("click", () => {
     saveHighScore();
-})
+});
 
 /**
  * Save name and score to high scores
@@ -241,13 +243,13 @@ function saveHighScore() {
     const recentScore = {
         score: score,
         name: nameEntry.value
-    }
+    };
     
     // Push score to high scores
     quizHighScores.push(recentScore);
     
     // Sort the high scores
-    quizHighScores.sort((a, b) => b.score - a.score)
+    quizHighScores.sort((a, b) => b.score - a.score);
 
     // Remove 6th high score
     quizHighScores.splice(5);
@@ -280,7 +282,7 @@ function resetGame() {
 
         // Remove play  and fade class
         homeSection.classList.remove("play", "fade");
-    }, 500)
+    }, 500);
 }
 
 /**
@@ -313,8 +315,8 @@ highScoresBtn.addEventListener("click", () => {
         // Add active class and remove fade class
         highScoresSection.classList.add("active");
         highScoresSection.classList.remove("fade");
-    }, 500)
-})
+    }, 500);
+});
 
 // Add event listener to close high scores
 goHomeBtn.addEventListener("click", () => {
@@ -329,8 +331,8 @@ goHomeBtn.addEventListener("click", () => {
         // Remove play and fade class
         homeSection.classList.remove("play");
         homeSection.classList.remove("fade");
-    }, 500)
-})
+    }, 500);
+});
 
 function decodeHtml(html) {
     let txt = document.createElement("textarea");

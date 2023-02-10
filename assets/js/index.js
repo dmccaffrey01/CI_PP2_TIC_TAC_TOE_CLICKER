@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /**
  * Generate Random Quotes
  */
@@ -30,7 +32,7 @@ const QUOTEBANK = [
         quote:"Every strike brings me closer to the next home run.",
         author:"Babe Ruth"
     } 
-]
+];
 
 const COLORS = ['#205295', '#3B185F', '#C060A1', '#735F32', '#624F82', '#50577A', '#3F3B6C', '#342224', "#4C0033", "#2C3333", "#1E5128", "#734046"];
 
@@ -56,9 +58,9 @@ function generateQuote() {
     lastNum = randomNum;
 
     // Use random number to get random quote
-    randomQuoteData = QUOTEBANK[randomNum];
+    let randomQuoteData = QUOTEBANK[randomNum];
 
-    let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22"
+    let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22";
 
     // Add the Quote
     let quoteInApiFormat = randomQuoteData.quote.replace(/ /g, "%20");

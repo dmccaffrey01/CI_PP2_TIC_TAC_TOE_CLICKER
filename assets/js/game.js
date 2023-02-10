@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 /**
  * Code to do with clicker game
  */
@@ -11,7 +13,7 @@ var game = {
     monsterHealthMax: 10,
     monsterCount: 0,
     monstersPerLevel: 10,
-    level: 19,
+    level: 18,
     bossRounds: [5, 10, 15, 20, 25, 30],
     isBossRound: false,
     coins: 0,
@@ -312,7 +314,7 @@ var game = {
     startTimer: function() {
         // If already started return
         if (this.interval) {
-            return
+            return;
         }
         
         // Create interval for timer
@@ -354,7 +356,7 @@ var game = {
      */
     addToTimingCount: function() {
         // Increment timing count
-        this.timingCount++
+        this.timingCount++;
 
         // Update display
         display.updateTimingCount();
@@ -402,11 +404,11 @@ var game = {
         setTimeout(() => {
             // Display congratulations section
             display.beatTheGame();
-        }, 500)
+        }, 500);
 
         // Reset game
     }
-}
+};
 
 /**
  * Anything to do with upgrades
@@ -444,7 +446,7 @@ var upgrades = {
     purchase: function(index) {
         // Return if delay is active
         if (this.buyUpgradeDelay) {
-            return
+            return;
         }
         
         // Check if player has enough coins
@@ -480,7 +482,7 @@ var upgrades = {
             this.buyUpgradeDelay = true;
         }
     }
-}
+};
 
 
 /**
@@ -546,7 +548,7 @@ var display = {
         setTimeout(() => {
             // Update music
             audio.updateMusic();
-        }, 500)
+        }, 500);
 
         // Create new island and monster
         this.newIsland();
@@ -584,7 +586,7 @@ var display = {
                     upOrDown = "up";
                 }
             }
-        }, 1000)
+        }, 1000);
     },
 
     /**
@@ -648,7 +650,7 @@ var display = {
         // Fade out after 1s
         fadeOut(div, 1000, 0.2, () => {
             div.remove();
-        })
+        });
     },
 
     /**
@@ -686,7 +688,7 @@ var display = {
         // Start timing bar
         setTimeout(() => {
             this.startTimingBar();
-        }, 250)
+        }, 250);
     },
 
     /**
@@ -701,7 +703,7 @@ var display = {
         timingBar.style.left = positionX + "px";
 
         // Get timing box container
-        let timingBoxContainer = document.querySelector(".timing-box-container")
+        let timingBoxContainer = document.querySelector(".timing-box-container");
 
         // Get width of timing box conatiner
         let tbcWidth = timingBoxContainer.offsetWidth;
@@ -712,7 +714,7 @@ var display = {
         // Start duration timer
         setTimeout(()=> {
             duration = true;
-        }, (game.timingTimeMax * 1000) - 100)
+        }, (game.timingTimeMax * 1000) - 100);
 
         // Set movement direction
         let moveRight = true;
@@ -746,7 +748,7 @@ var display = {
                 // Change style
                 timingBar.style.left = positionX + "px";
             }
-        }, 1)
+        }, 1);
     },
 
     /**
@@ -933,7 +935,7 @@ var display = {
         number.textContent = "+" + addedPower;
 
         // Get power container
-        let powerNumber = document.querySelector(".power-count-number")
+        let powerNumber = document.querySelector(".power-count-number");
         let powerContainer = document.querySelector(".power-container");
 
         // Get power position
@@ -956,7 +958,7 @@ var display = {
 
             // Change buy upgrade delay
             upgrades.buyUpgradeDelay = false;
-        })
+        });
     },
 
     /**
@@ -1028,7 +1030,7 @@ var display = {
         fadeOut(number, 1000, 0.2, function() {
             // Remove number
             number.remove();
-        })
+        });
     },
 
     /**
@@ -1072,7 +1074,7 @@ var display = {
         fadeOut(number, 1000, 0.2, function() {
             // Remove number
             number.remove();
-        })
+        });
     },
 
     /**
@@ -1116,7 +1118,7 @@ var display = {
        fadeOut(number, 1000, 0.2, function() {
            // Remove number
            number.remove();
-       })
+       });
     },
 
     /**
@@ -1159,7 +1161,7 @@ var display = {
                 if (width >= maxWidth) {
                     upgradeNameBar.style.width = maxWidth + "px";
                 }
-            }, 10)
+            }, 10);
         }
         
     },
@@ -1207,7 +1209,7 @@ var display = {
         let position = {
             x: event.pageX - cursorOffset.left + randomOffset,
             y: event.pageY - cursorOffset.top
-        }
+        };
 
         // Create the number as html element
         let element = document.createElement("div");
@@ -1231,7 +1233,7 @@ var display = {
         // Slowly fade out
         fadeOut(element, 2000, 0.2, function() {
             element.remove();
-        })
+        });
     },
 
     /**
@@ -1272,7 +1274,7 @@ var display = {
 
             // Set new island image src
             island.src = newIslandSrc;
-        }, 250)
+        }, 250);
     },
 
     /**
@@ -1324,7 +1326,7 @@ var display = {
         setTimeout(() => {
             monster.classList.remove("transition");
             monsterWrapper.classList.remove("transition");
-        }, 500)
+        }, 500);
         
         setTimeout(() => {
             monster.style.transform = "scale(1)";
@@ -1354,7 +1356,7 @@ var display = {
         let randNum = randomNumber(0, 15, monsterIndex);
 
         // Set new monster image to random monster
-        let newMonsterImgName = this.monsterNames[randNum]
+        let newMonsterImgName = this.monsterNames[randNum];
 
         // Create new src words
         let newSrcWords = srcWords.slice(0, srcWords.length-1);
@@ -1448,19 +1450,19 @@ var display = {
 
             // Get new image index
             if (imgIndex >= this.coinImages.length-1) {
-                imgIndex = 0
+                imgIndex = 0;
             } else {
                 imgIndex++;
             }
 
             // Set new image to index + 1
-            coin.src = `./assets/images/coins/${this.coinImages[imgIndex]}`
+            coin.src = `./assets/images/coins/${this.coinImages[imgIndex]}`;
 
             // Clear interval when duration is 0
             if (duration <= 0) {
                 clearInterval(coinAnimatingInterval);
             }
-        }, 120)
+        }, 120);
     },
 
     /**
@@ -1483,7 +1485,7 @@ var display = {
             let position = {
                 x: coinRect.left - monsterClickerRect.left,
                 y: coinRect.top - monsterClickerRect.top - 10
-            }
+            };
 
             // Create number element
             let number = document.createElement("div");
@@ -1519,7 +1521,7 @@ var display = {
             // Slowly fade out
             fadeOut(number, 1000, 0.2, function() {
                 number.remove();
-            })
+            });
         }
     },
 
@@ -1554,7 +1556,7 @@ var display = {
         // Fade out slowly
         fadeOut(element, 3000, 0.2, () => {
             element.remove();
-        })
+        });
     },
 
     /**
@@ -1581,7 +1583,7 @@ var display = {
             setTimeout(() => {
                 // Display leaderboard entry
                 this.leaderboardEntry();
-            }, 2000)
+            }, 2000);
         }, 500);
     },
 
@@ -1604,7 +1606,7 @@ var display = {
                 <div class="leaderboard-name-entry-btn">
                     <i class="fa-solid fa-right-to-bracket leaderboard-name-entry-icon"></i>
                 </div>
-            `
+            `;
 
             // Get entry btn
             let entryBtn = document.querySelector(".leaderboard-name-entry-btn");
@@ -1629,21 +1631,21 @@ var display = {
                             <div class="congrats-text">Congratulations!</div>
                             <div class="congrats-text">You Beat The Game</div>
                         </div>
-                    `
+                    `;
                     
                     // Add player to leaderboard
                     addPlayerToLeaderboard(name);
 
                     // Open leaderboard
                     openLeaderboard();
-                }, 500)
-            })
+                }, 500);
+            });
             
             // Fade back in
             congratsContentContainer.classList.remove("fade");
-        }, 1000)
+        }, 1000);
     }
-}
+};
 
 /**
  * Audio Settings
@@ -1663,7 +1665,7 @@ var audio = {
         let audio = document.getElementById("bg-soundtrack");
 
         // Add class 
-        audio.classList.add(`music${this.musicPlayedIndex}`)
+        audio.classList.add(`music${this.musicPlayedIndex}`);
         
         this.musicPlayedIndex++;
 
@@ -1685,7 +1687,7 @@ var audio = {
         // Add event listener
         audio.addEventListener("ended", () => {
             this.playSoundtrackBG();
-        })
+        });
     },
     
     /**
@@ -1867,7 +1869,7 @@ var audio = {
         audio.load();
         audio.play();
     }
-}
+};
 
 /**
  * Code to do with tic tac toe game
@@ -1888,7 +1890,7 @@ var tttGame = {
         this.resetBoard();
 
         // Reset Text
-        this.updateHeadingText("You Start Place an X")
+        this.updateHeadingText("You Start Place an X");
 
         // Display ttt section
         this.displaySection();
@@ -1964,8 +1966,8 @@ var tttGame = {
             // Add fade class
             setTimeout(() => {
                 tttSection.classList.add("fade");
-            }, 500)
-        }, 500)
+            }, 500);
+        }, 500);
     },
 
     /**
@@ -1991,8 +1993,8 @@ var tttGame = {
             // Add fade class
             setTimeout(() => {
                 clickerSection.classList.add("fade");
-            }, 500)
-        }, 500)
+            }, 500);
+        }, 500);
     },
 
     /**
@@ -2049,7 +2051,7 @@ var tttGame = {
             [2, 5, 8],
             [0, 4, 8],
             [2, 4, 6]
-        ]
+        ];
 
         // Loop through each combination and check icon
         for (let i = 0; i < winningCombinations.length; i++) {
@@ -2124,7 +2126,7 @@ var tttGame = {
         `;
 
         // Add placed class
-        cell.classList.add("placed")
+        cell.classList.add("placed");
 
         // Get index of cell
         let parent = cell.parentElement;
@@ -2148,7 +2150,7 @@ var tttGame = {
             `;
 
             // Add placed class
-            cell.classList.add("placed")
+            cell.classList.add("placed");
 
             // Get index of cell
             let parent = cell.parentElement;
@@ -2201,10 +2203,10 @@ var tttGame = {
         setTimeout(() => {
             if (this.cpuTurn) {
                 // Update text
-                this.updateHeadingText("CPU WINS!")
+                this.updateHeadingText("CPU WINS!");
             } else {
                 // Update text
-                this.updateHeadingText("YOU WIN!")
+                this.updateHeadingText("YOU WIN!");
             }
         }, 2000);
 
@@ -2295,7 +2297,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.width = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 2:
                     // Add class
@@ -2312,7 +2314,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.width = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 3:
                     // Add class
@@ -2329,7 +2331,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.width = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 4:
                     // Add class
@@ -2346,7 +2348,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.height = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 5:
                     // Add class
@@ -2363,7 +2365,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.height = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 6:
                     // Add class
@@ -2380,7 +2382,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.height = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 7:
                     // Add class
@@ -2397,7 +2399,7 @@ var tttGame = {
                         
                         // Change line
                         line.style.width = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 case 8:
                     // Add class
@@ -2414,14 +2416,14 @@ var tttGame = {
                         
                         // Change line
                         line.style.width = width + "px";
-                    }, 1)
+                    }, 1);
                     break;
                 default:
                     break;
             }
-        }, 2500)
+        }, 2500);
     }
-}
+};
 
 /**
  * Start the game when play btn is clicked
@@ -2436,7 +2438,7 @@ playBtn.addEventListener("click", () => {
 
     // Start game functions
     game.startGame();
-})
+});
 
 /**
  * Open and close how to play section
@@ -2463,7 +2465,7 @@ htpBtn.addEventListener("click", () => {
         // Add fade class
         htpSection.classList.add("fade");
     }, 500);
-})
+});
 
 // Add event listener for close btn
 htpCloseBtn.addEventListener("click", () => {
@@ -2483,7 +2485,7 @@ htpCloseBtn.addEventListener("click", () => {
         // Remove play class
         startScreen.classList.remove("play");
     }, 500); 
-})
+});
 
 /**
  * Open and close leaderboard section
@@ -2495,7 +2497,7 @@ const leaderboardCloseBtn = document.querySelector(".leaderboard-close-btn");
 // Add event listener for click
 leaderboardBtn.addEventListener("click", () => {
     openLeaderboard();
-})
+});
 
 // Add event listener for close btn
 leaderboardCloseBtn.addEventListener("click", () => {
@@ -2506,7 +2508,7 @@ leaderboardCloseBtn.addEventListener("click", () => {
     if (game.level >= 20) {
         resetGame();
     }
-})
+});
 
 /**
  * Close stats section
@@ -2517,7 +2519,7 @@ const statsCloseBtn = document.querySelector(".stats-close-btn");
 // Add event listener for click
 statsCloseBtn.addEventListener("click", () => {
     closeStats();
-})
+});
 
 /**
  * Add player to leaderboard
@@ -2539,7 +2541,7 @@ function addPlayerToLeaderboard(name) {
         totalClicks: game.totalClicks,
         power: game.power,
         totalCoins: game.totalCoins
-    }
+    };
 
     // Store variables in local storage as string
     localStorage.setItem(`gameStatsPlayer${game.leaderboardPlayers-1}`, JSON.stringify(gameStats));
@@ -2564,7 +2566,7 @@ function openLeaderboard() {
     // Remove placeholder if there are leaderboard players
     if (game.leaderboardPlayers >= 1) {
         // Get placeholder text
-        let placeholder = document.querySelector(".leaderboard-placeholder-text")
+        let placeholder = document.querySelector(".leaderboard-placeholder-text");
 
         // Remove
         placeholder.classList.add("remove");
@@ -2586,7 +2588,7 @@ function openLeaderboard() {
                     </div>
                 </td>
             </tr>
-        `
+        `;
     }
 
     setTimeout(() => {
@@ -2625,7 +2627,7 @@ function closeLeaderboard() {
             <th>Time</th>
             <th>Stats</th>
         </tr>
-        `
+        `;
     }, 500); 
 }
 
@@ -2694,7 +2696,7 @@ function openStats(index) {
 
         // Fade in
         statsSection.classList.add("fade");
-    }, 500)
+    }, 500);
 }
 
 /**
@@ -2724,7 +2726,7 @@ function closeStats() {
  * Reset leaderboard
  */
 function resetLeaderboard() {
-    if (confirm("Are you sure you want to reset leaderboard")) {
+    dispalyAlert("Are you sure you want to reset leaderboard", "OK", () => {
         // Loop through each player
         for (let i = 0; i < game.leaderboardPlayers; i++) {
             // Set game stats to empty
@@ -2748,15 +2750,14 @@ function resetLeaderboard() {
             <th>Time</th>
             <th>Stats</th>
         </tr>
-        `
+        `;
 
         // Get placeholder text
         let placeholder = document.querySelector(".leaderboard-placeholder-text");
 
         // Add placeholder
         placeholder.classList.remove("remove");
-
-    }  
+    }, "Cancel", () => {return});
 }
 
 /**
@@ -2767,7 +2768,7 @@ let resetLeaderboardBtn = document.querySelector(".leaderboard-reset-btn");
 // Add event listener
 resetLeaderboardBtn.addEventListener("click", () => {
     resetLeaderboard();
-})
+});
 
 /**
  * Update game when monster is clicked
@@ -2782,7 +2783,7 @@ monsterClicker.addEventListener("click", () => {
     
     // Deal damage to monster when clicked
     game.dealDamage(game.power);
-})
+});
 
 /**
  * Attack monster when timing attack btn is clicked
@@ -2797,7 +2798,7 @@ timingAttackBtn.addEventListener("click", () => {
 
     // Play hit marker sound
     audio.playHitMarker();
-})
+});
 
 /**
  * Place ttt icon when cell is clicked
@@ -2810,12 +2811,12 @@ tttGameContainer.addEventListener("click", (e) => {
     // Check if target is a non placed cell
     if (e.target.classList.contains("ttt-cell") && !e.target.classList.contains("placed") && !tttGame.cpuTurn) {
         // Set selected cell
-        selectedCell = e.target;
+        let selectedCell = e.target;
 
         // Play players turn
         tttGame.playPlayersTurn(selectedCell);
     }
-})
+});
 
 /**
  * Makes an element slowly fade out
@@ -2900,7 +2901,7 @@ upgradeMenuBtn.addEventListener("click", () => {
 
             // Remove transition class
             setTimeout(() => {
-                overlay.classList.toggle("transition")
+                overlay.classList.toggle("transition");
 
                 // Turn upgradeMenuOpen to false
                 upgradeMenuOpen = false;
@@ -2919,7 +2920,7 @@ upgradeMenuBtn.addEventListener("click", () => {
 
                 // Turn upgradeMenuOpen to true
                 upgradeMenuOpen = true;
-            }, 300)
+            }, 300);
         }
     } else {
         // Change upgradeMenuOpen
@@ -2941,7 +2942,7 @@ upgradeMenuBtn.addEventListener("click", () => {
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-left");
         upgradeMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
-})
+});
 
 /**
  * Toggle active class to upgrade menu elements
@@ -3011,7 +3012,7 @@ saveMenuBtn.addEventListener("click", () => {
 
             // Remove transition class
             setTimeout(() => {
-                overlay.classList.toggle("transition")
+                overlay.classList.toggle("transition");
 
                 // Turn saveMenuOpen to false
                 saveMenuOpen = false;
@@ -3030,7 +3031,7 @@ saveMenuBtn.addEventListener("click", () => {
 
                 // Turn saveMenuOpen to true
                 saveMenuOpen = true;
-            }, 300)
+            }, 300);
         }
     } else {
         // Change saveMenuOpen
@@ -3052,7 +3053,7 @@ saveMenuBtn.addEventListener("click", () => {
         saveMenuBtnIcon.classList.toggle("fa-chevron-left");
         saveMenuBtnIcon.classList.toggle("fa-chevron-right");
     }, 150);
-})
+});
 
 /**
  * Toggle active class to save menu elements
@@ -3089,7 +3090,7 @@ const saveGameBtn = document.querySelector(".save-game-btn");
 saveGameBtn.addEventListener("click", () => {
     // Save game function
     saveGame();
-})
+});
 
 /**
  * Save the game when ctrl + s is hit
@@ -3150,7 +3151,7 @@ function saveGame() {
  */
 window.onload = function() {
     loadGame();
-}
+};
 
 /**
  * Load game save
@@ -3176,20 +3177,20 @@ function loadGame() {
         if (typeof savedGame.coinsAdded !== "undefined") game.coinsAdded = savedGame.coinsAdded;
         if (typeof savedGame.time !== "undefined") game.time = savedGame.time;
         if (typeof savedGame.count !== "undefined") {
-            for (i=0; i < savedGame.count.length; i++) {
+            for (let i=0; i < savedGame.count.length; i++) {
                 upgrades.count[i] = savedGame.count[i];
             }
-        };
+        }
         if (typeof savedGame.powerIncrease !== "undefined") {
-            for (i=0; i < savedGame.powerIncrease.length; i++) {
+            for (let i=0; i < savedGame.powerIncrease.length; i++) {
                 upgrades.powerIncrease[i] = savedGame.powerIncrease[i];
             }
-        };
+        }
         if (typeof savedGame.cost !== "undefined") {
-            for (i=0; i < savedGame.cost.length; i++) {
+            for (let i=0; i < savedGame.cost.length; i++) {
                 upgrades.cost[i] = savedGame.cost[i];
             }
-        };
+        }
         if (typeof savedGame.musicVolume !== "undefined") {
             // Change slider text value
             musicSliderValue.textContent = savedGame.musicVolume;
@@ -3199,7 +3200,7 @@ function loadGame() {
 
             // Update music volume
             audio.updateMusicVolume(savedGame.musicVolume);
-        };
+        }
         if (typeof savedGame.musicToggleOn !== "undefined") {
             if (!savedGame.musicToggleOn && musicToggleOn) {
                 
@@ -3210,7 +3211,7 @@ function loadGame() {
                 musicToggleOn = switchToggleBool(musicToggleOn);
                 
             }
-        };
+        }
         if (typeof savedGame.soundEffectVolume !== "undefined") {
             // Change slider text value
             seSliderValue.textContent = savedGame.soundEffectVolume;
@@ -3220,7 +3221,7 @@ function loadGame() {
 
             // Change sound effec volume
             audio.soundEffectVolume = savedGame.soundEffectVolume;
-        };
+        }
         if (typeof savedGame.seToggleOn !== "undefined") {
             if (!savedGame.seToggleOn && seToggleOn) {
                 
@@ -3230,7 +3231,7 @@ function loadGame() {
                 // Change toggle on
                 seToggleOn = switchToggleBool(seToggleOn);
             }
-        };
+        }
 
         // Update displays
         display.updateLevel();
@@ -3254,20 +3255,20 @@ const resetGameBtn = document.querySelector(".reset-game-btn");
 resetGameBtn.addEventListener("click", () => {
     // Save game function
     resetGame();
-})
+});
 
 /**
  * Reset the game
  */
 function resetGame() {
-    if (confirm("Are you sure you want to reset your game")) {
+    dispalyAlert("Are you sure you want to reset your game", "OK", () => {
         var gameSave = {
             leaderboardPlayers: game.leaderboardPlayers
-        }
+        };
         localStorage.setItem("gameSave", JSON.stringify(gameSave));
         location.reload();
         loadGame();
-    }
+    }, "Cancel", () => {return})
 }
 
 /**
@@ -3295,7 +3296,7 @@ settingsBtn.addEventListener("click", () => {
         // Change color of background 
         document.documentElement.style.setProperty("--MAIN", "#262626"); 
     }
-})
+});
 
 /**
  * Close settings menu when btn is clicked
@@ -3306,7 +3307,7 @@ const closeSettingsMenuBtn = document.querySelector(".close-settings-menu-btn");
 // Add listener for btn click to close menu
 closeSettingsMenuBtn.addEventListener("click", () => {
     closeSettingsMenu();
-})
+});
 
 function closeSettingsMenu() {
     // Remove active class from settings section and wrapper
@@ -3339,7 +3340,7 @@ returnSettingsMenuBtn.addEventListener("click", () => {
     } else {
         returnToWrapperHome();
     }
-})
+});
 
 /**
  * Return the settings menu wrapper to home
@@ -3354,7 +3355,7 @@ function returnToWrapperHome() {
     settingsWrapper.classList.add("active");
 
     // Set settings wrapper type
-    settingsWrapperType = "home"
+    settingsWrapperType = "home";
 }
 
 /**
@@ -3384,7 +3385,7 @@ const audioSettingsBtn = document.querySelector(".audio-settings-btn");
 // Add listener for btn click to open menu
 audioSettingsBtn.addEventListener("click", () => {
     setSettingsWrapper("audio");
-})
+});
 
 /**
  * Open display settings menu when btn is clicked
@@ -3396,7 +3397,7 @@ const displaySettingsBtn = document.querySelector(".display-settings-btn");
 // Add listener for btn click to open menu
 displaySettingsBtn.addEventListener("click", () => {
     setSettingsWrapper("display");
-})
+});
 
 /**
  * Open secret settings menu when btn is clicked
@@ -3408,7 +3409,7 @@ const secretSettingsBtn = document.querySelector(".secret-settings-btn");
 // Add listener for btn click to open menu
 secretSettingsBtn.addEventListener("click", () => {
     setSettingsWrapper("secret");
-})
+});
 
 /**
  * Toggle music on and off
@@ -3430,7 +3431,7 @@ musicToggleBtn.addEventListener("click", () => {
 
     // Update music
     audio.updateMusic();
-})
+});
 
 /**
  * Move toggle btn over
@@ -3469,7 +3470,7 @@ function animateToggleBtn(toggleBtn, toggle, toggleText, toggleOn) {
         toggleBtn.style.left = positionX + "px";
 
         // Change color of toggle
-        toggle.style.backgroundColor = "var(--ADD-GREEN)"
+        toggle.style.backgroundColor = "var(--ADD-GREEN)";
 
         //Change text of toggle
         toggleText.textContent = "ON";
@@ -3502,7 +3503,7 @@ musicSlider.oninput = () => {
 
     // Update music volume
     audio.updateMusicVolume(musicSlider.value);
-}
+};
 
 /**
  * Toggle sound effects (se) on and off
@@ -3521,7 +3522,7 @@ seToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     seToggleOn = switchToggleBool(seToggleOn);
-})
+});
 
 /**
  * Change se volume level
@@ -3538,7 +3539,7 @@ seSlider.oninput = () => {
 
     // Change sound effect volume
     audio.soundEffectVolume = seSlider.value;
-}
+};
 
 /**
  * Toggle island animation (ia) on and off
@@ -3564,7 +3565,7 @@ iaToggleBtn.addEventListener("click", () => {
         // Start clicker hover animation
         display.clickerHoverAnimation();
     }
-})
+});
 
 /**
  * Toggle number animation (na) on and off
@@ -3583,7 +3584,7 @@ naToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     naToggleOn = switchToggleBool(naToggleOn);
-})
+});
 
 /**
  * Toggle monster animation (ma) on and off
@@ -3602,7 +3603,7 @@ maToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     maToggleOn = switchToggleBool(maToggleOn);
-})
+});
 
 /**
  * Toggle coin animation (ca) on and off
@@ -3620,7 +3621,7 @@ caToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     caToggleOn = switchToggleBool(caToggleOn);
-})
+});
 
 /**
  * Toggle all animations (dea) on and off
@@ -3635,7 +3636,7 @@ let toggleAnimations = [
     [naToggleBtn, naToggle, naToggleText, naToggleOn],
     [maToggleBtn, maToggle, maToggleText, maToggleOn],
     [caToggleBtn, caToggle, caToggleText, caToggleOn]
-]
+];
 let deaToggleOn = true;
 
 // Add event listener for toggle btn
@@ -3652,7 +3653,7 @@ deaToggleBtn.addEventListener("click", () => {
         "naToggleOn": naToggleOn,
         "maToggleOn": maToggleOn,
         "caToggleOn": caToggleOn
-    }
+    };
 
     // Change toggle
     for (let i = 0; i < toggleAnimations.length; i++) {
@@ -3704,7 +3705,7 @@ deaToggleBtn.addEventListener("click", () => {
             animateToggleBtn(toggleAnimations[i][0], toggleAnimations[i][1], toggleAnimations[i][2], !toggleAnimations[i][3]);
         }
     }
-})
+});
 
 /**
  * Enter and check password guess to cheats
@@ -3747,7 +3748,7 @@ cheatPasswordBtn.addEventListener("click", () => {
     }
 
     cheatPasswordInput.value = "";
-})
+});
 
 /**
  * Change password btn
@@ -3836,14 +3837,14 @@ function updateCheatPasswordText(passwordState) {
 
             // Flash cursor
             passwordTextCursor.classList.toggle("active");
-        }, passwordTextCursorDelay)
+        }, passwordTextCursorDelay);
 
 
         // Create interval to update letters
         let letterInterval = window.setInterval(() => {
             // Clear interval when duration is 0
             if (duration <= delayPerLetter) {
-                passwordText.innerHTML = "Password:"
+                passwordText.innerHTML = "Password:";
                 clearInterval(letterInterval);
             }
 
@@ -3871,7 +3872,7 @@ function updateCheatPasswordText(passwordState) {
             }
 
             duration -= delayPerLetter;
-        }, delayPerLetter)
+        }, delayPerLetter);
     }, passwordTextStartDelay);
 }
 
@@ -3903,7 +3904,7 @@ const mplSliderValue = document.querySelector(".mpl-slider-value");
 mplSlider.oninput = () => {
     // Change slider value
     mplSliderValue.textContent = mplSlider.value;
-}
+};
 
 /**
  * Toggle easy game (eg) on and off
@@ -3921,7 +3922,7 @@ egToggleBtn.addEventListener("click", () => {
 
     // Change toggle on
     egToggleOn = switchToggleBool(egToggleOn);
-})
+});
 
 /**
  * Change game when cheats are enabled
@@ -3933,7 +3934,7 @@ const cheatChangeBtn = document.querySelector(".cheat-change-btn");
 cheatChangeBtn.addEventListener("click", () => {
     // Get all cheat values and replace game values
     changeCheatSettings();
-})
+});
 
 /**
  * Get all cheat values and replace game values
@@ -3965,4 +3966,48 @@ function changeCheatSettings() {
     
     // Close settings menu
     closeSettingsMenu();
+}
+
+/**
+ * Display alert message
+ */
+function dispalyAlert(message, btn1, btn1Function, btn2, btn2Function) {
+	// Define vars
+	let alertSection = document.querySelector(".alert-section");
+	let alertText = document.querySelector(".alert-text");
+	let alertBtn1 = document.querySelector(".alert-btn1");
+	let alertBtn2 = document.querySelector(".alert-btn2");
+	
+	// Check if 2 buttons
+	if (arguments.length <= 4) {
+		alertBtn2.classList.add("remove");
+	} else {
+		// Set btn 2
+		alertBtn2.innerText = btn2;
+
+		// Call function when clicked
+		alertBtn2.addEventListener("click", () => {
+			btn2Function();
+			
+			// Close alert
+			alertSection.classList.remove("active");
+		});
+	}
+
+	// Set text
+	alertText.innerText = message;
+
+	// Set btn 1
+	alertBtn1.innerText = btn1;
+
+	// Display section
+	alertSection.classList.add("active");
+
+	// Call function when clicked
+	alertBtn1.addEventListener("click", () => {
+		btn1Function();
+
+		// Close alert
+		alertSection.classList.remove("active");
+	});
 }
