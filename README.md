@@ -89,6 +89,7 @@
 15. I want the user to understand the game
 16. I want the user to get in contact with me
 17. I want the user to return home when entering a url that doesn't exist
+18. I want the user to easily navigate through the website
 
 ## Design
 
@@ -166,5 +167,163 @@ Wireframes were created desktop first and outline the initial design concept for
 <img src="docs/error-404-wireframe.jpg" alt="wireframe for 404 error page">
 </details>
 <br>
+
+## Technologies Used
+
+### Languages
+- HTML
+- CSS
+- Javascript
+
+### Frameworks & Tools
+[Balsamiq](https://balsamiq.com/wireframes/) - Used to for wireframes.
+
+[Github](https://github.com/) - To save and store the files for the website and for version control.
+
+[Github Pages](https://pages.github.com/) (Jekyll) - to host the site 
+
+[W3C validator](https://validator.w3.org/) - to test for syntax errors in HTML code
+
+[Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/) - check for syntactic errors in the css code 
+
+[WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) - check accessibility
+
+[Google Fonts](https://fonts.google.com/about) - fonts used on the website were imported from here
+
+[Font Awesome](https://fontawesome.com/search) - for iconography on the website
+
+[Google Dev Tools](https://developer.chrome.com/docs/devtools/) - troubleshooting and testing features as well as implement responsive styling
+
+[GitPod](https://www.gitpod.io/) - for active development 
+
+[Tiny PNG](https://tinypng.com/) - compressing images.
+
+[Favicon.io](https://favicon.io/) - create favicon.
+
+[Am I Responsive?](https://ui.dev/amiresponsive) - prototyping website image on a range of devices.
+
+## Features
+The website consists of five pages, four are accessible through the navigation menu (index/home page, game page, quiz page, contact page). The last page is a 404 error page which the user can click a button to return home.
+
+### Logo and Navigation Bar
+- Featured on all five pages
+- The Logo when clicked brings the user back to the home page
+- The navbar is uses a hamburger menu that when clicked opens a transparent dropdown menu with links to the home, game, quiz and contact pages
+- It is easy for the user to navigate through the website
+- The page the user is currently on gets highlighted
+- User stories covered: 18
+
+![Logo and navbar](docs/logo-and-navbar-feature.jpg)
+
+![Menu dropdown](docs/menu-dropdown-feature.jpg)
+
+### Home page navigation card
+- A card with 3 buttons in it, play game, play quiz and contact
+- Play game button brings you to the game page where you can play the game
+- Play quiz button brings you to the quiz page where you can play the quiz
+- Contact button brings you to the contact page where you can send a message
+- User stories covered: 18
+
+![Home page nav card](docs/home-page-nav-feature.jpg)
+
+### Quote
+- A card where a random quote is displayed
+- There is a new quote button that when pressed displays a new quote and author, the background colour of website is also changed
+- There is a tweet button that when pressed brings the user to twitter and automatically generates a quote for the user to tweet
+- User stories covered: 14
+
+![Quote](docs/quote-feature.jpg)
+
+### Footer
+- Displayed on all five pages
+- Displays copyrigh and social media links
+- The links bring you to github, linkedIn and email
+
+![Footer](docs/footer.jpg)
+
+### Game start screen
+- A card that displays 3 buttons
+- Play starts the game and opens the game section
+- How to play opens the how to play section where rules and instructions of the game are displayed
+- Leaderboard opens up the game leaderboard
+
+![Game start screen](docs/game-start-screen-feature.jpg)
+
+### How to play
+- Information on how the game is played
+- Includes text and a gif image showing the game functions
+- Includes close button to return to start screen
+
+![How to play](docs/how-to-play-feature.jpg)
+
+### Leaderboard
+- Displays players of the game and the time they completed the game
+- There is a view stats button so the user can view the stats the player had during that game
+- Includes close button to return to start screen
+- Includes reset button to reset the leaderboard
+
+![Leaderboard](docs/leaderboard.jpg)
+
+### Stats
+- Displays the stats of the player during that game
+- Includes time, power, total clicks and total coins
+- Includes close button to return to leaderboard
+
+![Stats](docs/stats-feature.jpg)
+
+### Game
+- Displays when play button is clicked
+- Includes monster stats, monster clicker, power stats, time, coins, settings button and shop button
+
+![Game](docs/game-feature.jpg)
+
+### Monster stats
+- Displays information on the current level, monster count, monster health bar and monster health points (hp)
+
+![Monster stats](docs/monster-stats-feature.jpg)
+
+### Power stats
+- Displays information on the players current power
+
+![Power stats](docs/power-stats.jpg)
+
+### Monster clicker
+- A monster with an island background is displayed
+- This monster can be clicked on to deal damage to it decreasing its health points (hp)
+
+![Monster clicker](docs/monster-clicker-feature.jpg)
+
+### Monster damage
+- Once the monster is clicked damage is dealt to the monster equal to the players power
+- The monster health bar shrinks and the number decreases
+- A fading and ascending number appears where clicked equal to the power
+- A hitmarker sound effect plays when clicked
+- The monster animates when taking damages and decreases in size
+- Once enough damage is dealt the monster dies
+
+![Monster damage](docs/monster-damage-feature.jpg)
+
+### Monster death
+- Once enough damage is dealt to the monster and its hp is 0 or below it dies and disappears
+- The monster animates, it shakes and decreases in size to nothing
+- Coins are then dropped from the monster in random directions, each coin displayed is worth 10 coins
+- The coins are then collected and players coins increases
+- After a while a new monster spawns
+
+![Monster death](docs/monster-death-feature.jpg)
+
+### Coin collection
+- Coins are spread out after a monster dies
+- The coins are then brought to one area and collected
+- A green fading ascending number appears at coins and the players coins increases
+
+![Coin collection](docs/coin-collection-feature.jpg)
+
+
+
+
+
+
+
 
 
