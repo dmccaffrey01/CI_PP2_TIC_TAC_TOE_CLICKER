@@ -90,4 +90,27 @@
 16. I want the user to get in contact with me
 17. I want the user to return home when entering a url that doesn't exist
 
+## Design
+
+### Design Selection
+The website was designed to have a feeling of minimalistic and new to match the unique game
+
+### Colour
+The colour scheme is a minimal gray and blue to help the user focus on the game and not have the background stand out. I choose the colour scheme and tested the contrast using WebAIM.
+
+![Colour Scheme](docs/colour-scheme.jpg)
+
+### Fonts
+Google Fonts were used throughout the whole page.
+Source-Sans-Pro was used for the navigation bar including the logo with sans-serif as a fallback.
+Lato was used for the body with sans-serif as a fallback.
+
+### Structure
+The page is strucutred in a well known, recognizable, user friendly, and easy to learn way. When reaching the website the user sees the company logo on the left and a navigation menu button on the right.
+The website has 4 seperate pages and 1 404 error page rerouting the user back to the home page.
+- Home page including a card with navigation buttons and a random quote generator
+- Game page with buttons to start the interactive clicker game, a how to play section, and a leaderboard section
+    - adfasdf
+- Quiz page with buttons to start the computer quiz and a highscore section
+- Contact page to enter your name and email and leave a message
 
