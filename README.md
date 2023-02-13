@@ -110,7 +110,61 @@ The page is strucutred in a well known, recognizable, user friendly, and easy to
 The website has 4 seperate pages and 1 404 error page rerouting the user back to the home page.
 - Home page including a card with navigation buttons and a random quote generator
 - Game page with buttons to start the interactive clicker game, a how to play section, and a leaderboard section
-    - adfasdf
+    - Game includes main area where monster stats, and power are displayed and the monster to click
+    - Includes a setting section where time is displayed along with save and reset game options along with audio, display and cheat options
+    - Includes a upgrade shop section where coins are displayed along with buttons to buy upgrades
+    - How to play section includes card with text description along with gifs on how the game works
+    - Leaderboard seciton includes players name and time along with a view stats link to check players game stats
 - Quiz page with buttons to start the computer quiz and a highscore section
+    - Quiz includes a question with 4 answer choics
+    - Highscores section includes name and points of player
 - Contact page to enter your name and email and leave a message
+
+### Wireframes
+
+Wireframes were created desktop first and outline the initial design concept for the website
+<br>
+<details>
+<summary>Home Page Wireframe</summary>
+<br>
+<img src="docs/home-page-wireframe.jpg" alt="wireframe for home page">
+</details>
+<br>
+<details>
+<summary>Game Mobile Wireframe</summary>
+<br>
+<img src="docs/game-mobile-wireframe.jpg" alt="wireframe for mobile game page">
+</details>
+<br>
+<details>
+<summary>Game Tablet Wireframe</summary>
+<br>
+<img src="docs/game-tablet-wireframe.jpg" alt="wireframe for tablet game page">
+</details>
+<br>
+<details>
+<summary>Game Desktop Wireframe</summary>
+<br>
+<img src="docs/game-desktop-wireframe.jpg" alt="wireframe for desktop game page">
+</details>
+<br>
+<details>
+<summary>Quiz Page Wireframe</summary>
+<br>
+<img src="docs/quiz-wireframe.jpg" alt="wireframe for quiz">
+</details>
+<br>
+<details>
+<summary>Contact Page Wireframe</summary>
+<br>
+<img src="docs/contact-wireframe.jpg" alt="wireframe for contact">
+</details>
+<br>
+<details>
+<summary>404 Error Page Wireframe</summary>
+<br>
+<img src="docs/error-404-wireframe.jpg" alt="wireframe for 404 error page">
+</details>
+<br>
+
 
