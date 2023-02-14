@@ -542,3 +542,18 @@ The website consists of five pages, four are accessible through the navigation m
 
 ![Error 404](docs/error-404-feature.jpg)
 
+## Testing
+ 
+### HTML Validation
+
+To validate the HTML of the website, W3C Markup Validation service was used
+
+- index.html: [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP1_SPIRITUAL_JOURNEY%2Findex.html) - No Errors Found
+
+2 Warning displayed
+| **Level** | **Feature** | **Issue Description** | **Comment** |
+|-------------|-------------|----------------------|-------------|
+| Warning | `<section id="hero-image-section-hp">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes hero image and quote |
+| Warning | `<section id="continue-further-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes image and choice of buttons |
+
+
