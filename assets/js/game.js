@@ -396,6 +396,8 @@ var game = {
 
         // Display new monster
         display.createNewMonster();
+
+        this.isMonsterDead = false;
     },
 
     /**
