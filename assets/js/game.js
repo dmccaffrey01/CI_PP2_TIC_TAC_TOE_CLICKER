@@ -2760,7 +2760,7 @@ function resetLeaderboard() {
 
         // Add placeholder
         placeholder.classList.remove("remove");
-    }, "Cancel", () => {return});
+    }, "Cancel", () => {return;});
 }
 
 /**
@@ -3271,7 +3271,7 @@ function resetGame() {
         localStorage.setItem("gameSave", JSON.stringify(gameSave));
         location.reload();
         loadGame();
-    }, "Cancel", () => {return})
+    }, "Cancel", () => {return;});
 }
 
 /**

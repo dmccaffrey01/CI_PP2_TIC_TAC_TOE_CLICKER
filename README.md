@@ -27,15 +27,16 @@
 6. [Testing](#testing)
     1. [HTML Validation](#HTML-validation)
     2. [CSS Validation](#CSS-validation)
-    3. [Accessibility](#accessibility)
+    3. [JS Validation](#javascript-validation)
+    4. [Accessibility](#accessibility)
     4. [Performance](#performance)
-    5. [Device testing](#performing-tests-on-various-devices)
-    6. [Browser compatibility](#browser-compatability)
-    7. [Testing user stories](#testing-user-stories)
-8. [Bugs](#Bugs)
-9. [Deployment](#deployment)
-10. [Credits](#credits)
-11. [Acknowledgements](#acknowledgements)
+    6. [Device testing](#performing-tests-on-various-devices)
+    7. [Browser compatibility](#browser-compatability)
+    8. [Testing user stories](#testing-user-stories)
+7. [Bugs](#Bugs)
+8. [Deployment](#deployment)
+9. [Credits](#credits)
+10. [Acknowledgements](#acknowledgements)
 
 ## Project Goals
 
@@ -76,20 +77,20 @@
 5. I want to save the game to keep my progress
 6. I want to reset the game to restart my progress
 7. I want background sound track and sound effects
-7. I want to disable and change audio
-8. I want to disable and enable animations
-9. I want to enter my name when I have completed the game
-10. I want a highscore system for the quiz
-11. I want unique questions for the quiz
-12. I want to enter my name when I have completed the quiz
-13. I want to contact the creator
+8. I want to disable and change audio
+9. I want to disable and enable animations
+10. I want to enter my name when I have completed the game
+11. I want a highscore system for the quiz
+12. I want unique questions for the quiz
+13. I want to enter my name when I have completed the quiz
+14. I want to contact the creator
 
 #### Site owner
-14. I want the user to receive an inspirational quote
-15. I want the user to understand the game
-16. I want the user to get in contact with me
-17. I want the user to return home when entering a url that doesn't exist
-18. I want the user to easily navigate through the website
+15. I want the user to receive an inspirational quote
+16. I want the user to understand the game
+17. I want the user to get in contact with me
+18. I want the user to return home when entering a url that doesn't exist
+19. I want the user to easily navigate through the website
 
 ## Design
 
@@ -211,7 +212,7 @@ The website consists of five pages, four are accessible through the navigation m
 - The navbar is uses a hamburger menu that when clicked opens a transparent dropdown menu with links to the home, game, quiz and contact pages
 - It is easy for the user to navigate through the website
 - The page the user is currently on gets highlighted
-- User stories covered: 18
+- User stories covered: 19
 
 ![Logo and navbar](docs/logo-and-navbar-feature.jpg)
 
@@ -222,7 +223,7 @@ The website consists of five pages, four are accessible through the navigation m
 - Play game button brings you to the game page where you can play the game
 - Play quiz button brings you to the quiz page where you can play the quiz
 - Contact button brings you to the contact page where you can send a message
-- User stories covered: 1, 18
+- User stories covered: 1, 19
 
 ![Home page nav card](docs/home-page-nav-feature.jpg)
 
@@ -230,7 +231,7 @@ The website consists of five pages, four are accessible through the navigation m
 - A card where a random quote is displayed
 - There is a new quote button that when pressed displays a new quote and author, the background colour of website is also changed
 - There is a tweet button that when pressed brings the user to twitter and automatically generates a quote for the user to tweet
-- User stories covered: 14
+- User stories covered: 15
 
 ![Quote](docs/quote-feature.jpg)
 
@@ -253,7 +254,7 @@ The website consists of five pages, four are accessible through the navigation m
 - Information on how the game is played
 - Includes text and a gif image showing the game functions
 - Includes close button to return to start screen
-- User stories covered: 2, 15
+- User stories covered: 2, 16
 
 ![How to play](docs/how-to-play-feature.jpg)
 
@@ -531,7 +532,7 @@ The website consists of five pages, four are accessible through the navigation m
 ### Contact
 - Form with name, email and message to send
 - After clickind send button an alert pops up to confirm the message
-- User stories covered: 14, 16
+- User stories covered: 14, 17
 
 ![Contact](docs/contact-feature.jpg)
 ![Alert](docs/contact-alert-feature.jpg)
@@ -539,6 +540,7 @@ The website consists of five pages, four are accessible through the navigation m
 ### Error 404
 - If the user enters a invalid url the website brings the user to a 404 page
 - Displays error message and has a return to home page button
+- User stories covered: 18
 
 ![Error 404](docs/error-404-feature.jpg)
 
@@ -602,6 +604,27 @@ site [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fd
 
 112 Warnings due to using CSS variables for colour as they are not statically checked.
 More information about this in the [Bugs](#bugs) section
+
+### JavaScript Validation
+
+JSHint JS Validation Service was used to validate the Javascript files. No significant issues were found.
+
+<details><summary>index.js</summary>
+<img src="docs/index-jshint.jpg">
+</details>
+<details><summary>nav-menu.js</summary>
+<img src="docs/nav-bar-jshint.jpg">
+</details>
+<details><summary>game.js</summary>
+<img src="docs/game-jshint.jpg">
+</details>
+<details><summary>quiz.js</summary>
+<img src="docs/quiz-jshint.jpg">
+</details>
+<details><summary>contact.js</summary>
+<img src="docs/contact-jshint.jpg">
+</details>
+
 
 ### Accessibility
 
@@ -817,12 +840,12 @@ The website was tested on the following browsers:
 
 <br>
 <details>
-<summary>Audio change Results</summary>
+<summary>Display settings Results</summary>
 <br>
-<img alt="Audio Game a Results" src="docs/save-game-a-tus.jpg">
-<img alt="Audio Game b Results" src="docs/save-game-b-tus.jpg">
-<img alt="Audio Game c Results" src="docs/audio-a-tus.jpg">
-<img alt="Audio Game d Results" src="docs/audio-c-tus.jpg">
+<img alt="Display settings a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Display settings b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Display settings c Results" src="docs/audio-a-tus.jpg">
+<img alt="Display settings d Results" src="docs/audio-c-tus.jpg">
 <br>
 </details>
 <br>
@@ -835,7 +858,7 @@ The website was tested on the following browsers:
 
 <br>
 <details>
-<summary> Win the game Results</summary>
+<summary>Win the game Results</summary>
 <br>
 <img alt="Win Game a Results" src="docs/save-game-a-tus.jpg">
 <img alt="Win Game b Results" src="docs/save-game-b-tus.jpg">
@@ -850,17 +873,190 @@ The website was tested on the following browsers:
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Win the game | Navigate to game page, click play button, play the game, at the end an input box appears to enter your name  | Works as expected | 
+| Highscores | Navigate to quiz page, click highscores button, view highscores | Works as expected | 
 
 <br>
 <details>
-<summary> Win the game Results</summary>
+<summary>Highscores Results</summary>
 <br>
-<img alt="Win Game a Results" src="docs/save-game-a-tus.jpg">
-<img alt="Win Game b Results" src="docs/save-game-b-tus.jpg">
-<img alt="Win Game c Results" src="docs/win-game-a-tus.jpg">
-<img alt="Win Game d Results" src="docs/win-game-b-tus.jpg">
-<img alt="Win Game e Results" src="docs/win-game-c-tus.jpg">
+<img alt="Highscores Results" src="docs/highscores-a-tus.jpg">
 <br>
 </details>
 <br>
+
+12. I want unique questions for the quiz
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Quiz question | Navigate to quiz page, click play quiz button, view quiz question | Works as expected | 
+
+<br>
+<details>
+<summary>Quiz question Results</summary>
+<br>
+<img alt="Quiz question a Results" src="docs/quiz-question-a-tus.jpg">
+<img alt="Quiz question b Results" src="docs/quiz-question-b-tus.jpg">
+<br>
+</details>
+<br>
+
+13. I want to enter my name when I have completed the quiz
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Quiz name entry | Navigate to quiz page, click play quiz button, play quiz, at the end input appears to enter name | Works as expected | 
+
+<br>
+<details>
+<summary>Quiz name entry Results</summary>
+<br>
+<img alt="Quiz name entry a Results" src="docs/quiz-name-entry-a-tus.jpg">
+<img alt="Quiz name entry b Results" src="docs/quiz-name-entry-b-tus.jpg">
+<img alt="Quiz name entry c Results" src="docs/quiz-name-entry-c-tus.jpg">
+<br>
+</details>
+<br>
+
+14. I want to contact the creator
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Contact | Navigate to contact page, fill in your details, click send button | Works as expected | 
+
+<br>
+<details>
+<summary>Contact Results</summary>
+<br>
+<img alt="Contact Results" src="docs/contact-tus.jpg">
+<br>
+</details>
+<br>
+
+15. I want the user to receive an inspirational quote
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Quote | Navigate to home page, view quote generator | Works as expected | 
+
+<br>
+<details>
+<summary>Quote Results</summary>
+<br>
+<img alt="Quote Results" src="docs/quote-tus.jpg">
+<br>
+</details>
+<br>
+
+16. I want the user to understand the game
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| How to play | Navigate to game page, click how to play button, view how to play rules | Works as expected | 
+
+<br>
+<details>
+<summary>How to play Results</summary>
+<br>
+<img alt="How to play Results" src="docs/how-to-play-tus.jpg">
+<br>
+</details>
+<br>
+
+17. I want to contact the creator
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Contact | Navigate to contact page, fill in your details, click send button | Works as expected | 
+
+<br>
+<details>
+<summary>Contact Results</summary>
+<br>
+<img alt="Contact Results" src="docs/contact-tus.jpg">
+<br>
+</details>
+<br>
+
+18. I want the user to return home when entering a url that doesn't exist
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Error 404 | Navigate to any invalid url, site brings you to 404 page, click return home button | Works as expected | 
+
+<br>
+<details>
+<summary>Error 404 Results</summary>
+<br>
+<img alt="Error 404 Results" src="docs/error-404-tus.jpg">
+<br>
+</details>
+<br>
+
+19. I want the user to easily navigate through the website
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Logo and Navigation Bar | On any of the pages, go to the header and there will be a nav bar with working links to all pages | Works as expected | 
+
+<br>
+<details>
+<summary>Logo and Navigation Bar Results</summary>
+<br>
+<img alt="Logo and Navigation Bar Results" src="docs/logo-nav-tus.jpg">
+<br>
+</details>
+<br>
+
+## Bugs 
+
+### Clicker Game glitch
+During the game as the player clicks and kills the monster, if the player is clicking to fast the monster and the timing game starts the game can glitch out and breaks the timing game then the monster changes every second.
+I tried to fix this by adding a monster spawn delay and also adding an isMonsterDead variable to help block the clicks as the monster dies but still sometimes the game can still glitch.
+
+## Deployment & Local Development
+
+The Following steps require a logged in github account.
+
+### Deployment
+Github Pages was used to deploy the live website.
+To deploy a live website using github pages these instructions can be followed [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+
+### How to Fork
+To fork this repository:
+
+1. Go to the repository for this project.
+2. Click the Fork button in the top right corner.
+
+### How to Clone
+To clone this repository:
+
+1. Go to the repository for this project.
+2. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+3. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
+4. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+
+## Credits
+
+### Code Used
+[Tankot Games](https://www.youtube.com/watch?v=d-AbDEwpp6g&list=PLEyTwruuVAqlEvj8QxTFdVPc6_AwpgF2w&ab_channel=TanktotGames) for help with building clicker game
+[FreeCodeCamp](https://www.freecodecamp.org/learn/) for help with javascript used in random quote generator and quiz
+[Stackoverflow](https://stackoverflow.com/) for help with javascript bugs
+[W3C Schools](https://www.w3schools.com/) for various CSS help
+[MDM web docs](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) for various CSS help
+
+### Media
+
+- Most images were taken from [Pexels](https://www.pexels.com/) and [freepik](https://www.freepik.com/)
+- Most audio were taken from [BreakCopyright](https://www.youtube.com/@BreakingCopyright) and [freesound](https://freesound.org/)
+
+## Acknowledgements
+
+I would like to thank and acknowledge the following people who helped me along the way in completting this project:
+
+Code Institute - for giving me guideance and support throughout the project
+
+Mo Shami - for being the mentor to guide me through the project and give essential feedback
+
+Amy Connolly - for peer reviewing and giving feedback on the website
+
+Gary Mc Caffrey - for peer reviewing and giving feedback on the project

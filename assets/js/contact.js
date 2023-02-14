@@ -40,7 +40,7 @@ function sendEmail() {
 
 	// Check if empty
 	if (name == "" || email == "") {
-		dispalyAlert("Please fill in your name and email", "OK", () => {return});
+		dispalyAlert("Please fill in your name and email", "OK", () => {return;});
 		return false;
 	}
 	
@@ -63,7 +63,7 @@ function sendEmail() {
 		Subject : "Message from API",
 		Body : `${name} sent you a message. There message is: ${message}`
 	}).then(
-	  message => dispalyAlert(`Email sent to ${email}! Check your junk or spam inbox. And your message was sent to Dillon, Thank you ${name}`, "OK", () => {return})
+	  message => dispalyAlert(`Email sent to ${email}! Check your junk or spam inbox. And your message was sent to Dillon, Thank you ${name}`, "OK", () => {return;})
 	);
 	
 	resetForm();
