@@ -222,7 +222,7 @@ The website consists of five pages, four are accessible through the navigation m
 - Play game button brings you to the game page where you can play the game
 - Play quiz button brings you to the quiz page where you can play the quiz
 - Contact button brings you to the contact page where you can send a message
-- User stories covered: 18
+- User stories covered: 1, 18
 
 ![Home page nav card](docs/home-page-nav-feature.jpg)
 
@@ -558,10 +558,309 @@ To validate the HTML of the website, W3C Markup Validation service was used
 
 - game.html: [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP2_TIC_TAC_TOE_CLICKER%2Fgame.html) - No Errors Found
 
+9 Warning displayed
+| **Level** | **Feature** | **Issue Description** | **Comment** |
+|-------------|-------------|----------------------|-------------|
+| Warning | `<section class="start-screen"` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes start buttons |
+| Warning | `<section class="kill-monster-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes kill monster game |
+| Warning | `<section class="ttt-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes tic tac toe game |
+| Warning | `<section class="settings-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes settings |
+| Warning | `<section class="htp-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes how to play |
+| Warning | `<section class="leaderboard-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes leaderboard |
+| Warning | `<section class="stats-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes stats |
+| Warning | `<section class="congrats-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes congrats |
+| Warning | `<section class="alert-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes alerts |
+
+- quiz.html: [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP2_TIC_TAC_TOE_CLICKER%2Fquiz.html) - No Errors Found
+
+4 Warning displayed
+| **Level** | **Feature** | **Issue Description** | **Comment** |
+|-------------|-------------|----------------------|-------------|
+| Warning | `<section class="quiz-home">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes home buttons |
+| Warning | `<section class="quiz-game-section fade">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes quiz game |
+| Warning | `<section class="quiz-end-section fade">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes quiz end screen |
+| Warning | `<section class="high-scores-section fade">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes high scores |
+
+- contact.html: [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP2_TIC_TAC_TOE_CLICKER%2Fcontact.html) - No Errors Found
+
 2 Warning displayed
 | **Level** | **Feature** | **Issue Description** | **Comment** |
 |-------------|-------------|----------------------|-------------|
-| Warning | `<section id="home-buttons" class="home-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes navigation |
-| Warning | `<section id="random-quote-section" class="home-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes random quote generator |
+| Warning | `<section class="contact-form-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes contact form |
+| Warning | `<section class="alert-section">` | Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed. | Section appropriately only includes alerts |
 
+- 404.html: [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP2_TIC_TAC_TOE_CLICKER%2F404.html) - No Errors Found
 
+0 Warning displayed
+
+### CSS Validation
+
+To validate the CSS of the website W3C Jigsaw CSS Validation Service was used
+
+site [results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdmccaffrey01.github.io%2FCI_PP2_TIC_TAC_TOE_CLICKER%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- No Errors Found.
+
+112 Warnings due to using CSS variables for colour as they are not statically checked.
+More information about this in the [Bugs](#bugs) section
+
+### Accessibility
+
+To ensure the website met high accessibility standards the WAVE WebAIM web accessibility evaluation tool was used
+
+- index.html: [Results](https://wave.webaim.org/report#/https://dmccaffrey01.github.io/CI_PP2_TIC_TAC_TOE_CLICKER/index.html)
+- game.html: [Results](https://wave.webaim.org/report#/https://dmccaffrey01.github.io/CI_PP2_TIC_TAC_TOE_CLICKER/game.html)
+- quiz.html: [Results](https://wave.webaim.org/report#/https://dmccaffrey01.github.io/CI_PP2_TIC_TAC_TOE_CLICKER/quiz.html)
+- contact.html: [Results](https://wave.webaim.org/report#/https://dmccaffrey01.github.io/CI_PP2_TIC_TAC_TOE_CLICKER/contact.html)
+- 404.html: [Results](https://wave.webaim.org/report#/https://dmccaffrey01.github.io/CI_PP2_TIC_TAC_TOE_CLICKER/404.html)
+
+All the pages mostly had the same issues
+
+#### Errors
+
+There was 3 errors in all the pages. All had to do with empty links in footer of page, because I used icons instead of text this flagged an error.
+
+#### Alerts
+
+The alerts are high on all pages but most of them are to do with links which I had to use CSS tricks to get around, some of them are possible heading alerts aswell
+
+### Performance
+
+Performance testing was performed on lighthouse in Google Chrome's DevTools
+
+#### index.html
+
+![Lighthouse summary image for index page](docs/index-lighthouse.jpg)
+
+Issues:
+No issues
+
+#### game.html
+
+![Lighthouse summary image for about us page](docs/game-lighthouse.jpg)
+
+Issues:
+No issues
+
+#### quiz.html
+
+![Lighthouse summary image for techniques page](docs/quiz-lighthouse.jpg)
+
+Issues:
+No issues
+
+#### contact.html
+
+![Lighthouse summary image for resources page](docs/contact-lighthouse.jpg)
+
+Issues:
+No issues
+
+#### 404.html
+
+![Lighthouse summary image for 404 page](docs/404-lighthouse.jpg)
+
+Issues:
+No issues
+
+### Device testing
+
+The website was tested on the following devices:
+
+1. Iphone 11
+2. Desktop
+3. Google Chrome Developer Tools for responsive sizes
+
+### Browser Compatibility
+
+The website was tested on the following browsers:
+1. Google Chrome
+2. Mozilla Firefox
+
+### Testing user stories
+
+1. I want a welcoming home page
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Home page navigation card | Navigate to Home Page and view nav card and quote generator | Works as expected | 
+
+<br>
+<details>
+<summary>Home page navigation card Results</summary>
+<br>
+<img alt="Home page navigation card Results" src="docs/home-nav-tus.jpg">
+<br>
+</details>
+<br>
+
+2. I want to understand the rules and how to play the game
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| How to play | Navigate to game page, click how to play button, view how to play rules | Works as expected | 
+
+<br>
+<details>
+<summary>How to play Results</summary>
+<br>
+<img alt="How to play Results" src="docs/how-to-play-tus.jpg">
+<br>
+</details>
+<br>
+
+3. I want a leaderboard system for the game
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Leaderboard | Navigate to game page, click leaderboard button, view leaderboard | Works as expected | 
+
+<br>
+<details>
+<summary>Leaderboard Results</summary>
+<br>
+<img alt="Leaderboard Results" src="docs/leaderboard-tus.jpg">
+<br>
+</details>
+<br>
+
+4. I want to view my stats at the end of the game
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Stats | Navigate to game page, click leaderboard button, click the view stats, view stats | Works as expected | 
+
+<br>
+<details>
+<summary>Stats Results</summary>
+<br>
+<img alt="Leaderboard Results" src="docs/leaderboard-tus.jpg">
+<img alt="Stats Results" src="docs/stats-tus.jpg">
+<br>
+</details>
+<br>
+
+5. I want to save the game to keep my progress
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Save Game | Navigate to game page, click play button, click settings button, click save button, game saved | Works as expected | 
+
+<br>
+<details>
+<summary>Save Results</summary>
+<br>
+<img alt="Save Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Save Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Save Game c Results" src="docs/save-game-c-tus.jpg">
+<br>
+</details>
+<br>
+
+6. I want to reset the game to restart my progress
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Reset Game | Navigate to game page, click play button, click settings button, click reset button, game reset | Works as expected | 
+
+<br>
+<details>
+<summary>Reset Results</summary>
+<br>
+<img alt="Reset Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Reset Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Reset Game d Results" src="docs/save-game-d-tus.jpg">
+<br>
+</details>
+<br>
+
+7. I want background sound track and sound effects
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Audio settings | Navigate to game page, click play button, click settings button, click settings button, click audio settings, game audio | Works as expected | 
+
+<br>
+<details>
+<summary>Audio Results</summary>
+<br>
+<img alt="Audio Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Audio Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Audio Game c Results" src="docs/audio-a-tus.jpg">
+<img alt="Audio Game d Results" src="docs/audio-b-tus.jpg">
+<br>
+</details>
+<br>
+
+8. I want to disable and change audio
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Audio settings | Navigate to game page, click play button, click settings button, click settings button, click audio settings, game audio | Works as expected | 
+
+<br>
+<details>
+<summary>Audio change Results</summary>
+<br>
+<img alt="Audio Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Audio Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Audio Game c Results" src="docs/audio-a-tus.jpg">
+<img alt="Audio Game d Results" src="docs/audio-b-tus.jpg">
+<br>
+</details>
+<br>
+
+9. I want to disable and enable animations
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Display settings | Navigate to game page, click play button, click settings button, click settings button, click display settings, game display | Works as expected | 
+
+<br>
+<details>
+<summary>Audio change Results</summary>
+<br>
+<img alt="Audio Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Audio Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Audio Game c Results" src="docs/audio-a-tus.jpg">
+<img alt="Audio Game d Results" src="docs/audio-c-tus.jpg">
+<br>
+</details>
+<br>
+
+10. I want to enter my name when I have completed the game
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Win the game | Navigate to game page, click play button, play the game, at the end an input box appears to enter your name  | Works as expected | 
+
+<br>
+<details>
+<summary> Win the game Results</summary>
+<br>
+<img alt="Win Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Win Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Win Game c Results" src="docs/win-game-a-tus.jpg">
+<img alt="Win Game d Results" src="docs/win-game-b-tus.jpg">
+<img alt="Win Game e Results" src="docs/win-game-c-tus.jpg">
+<br>
+</details>
+<br>
+
+11. I want a highscore system for the quiz
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Win the game | Navigate to game page, click play button, play the game, at the end an input box appears to enter your name  | Works as expected | 
+
+<br>
+<details>
+<summary> Win the game Results</summary>
+<br>
+<img alt="Win Game a Results" src="docs/save-game-a-tus.jpg">
+<img alt="Win Game b Results" src="docs/save-game-b-tus.jpg">
+<img alt="Win Game c Results" src="docs/win-game-a-tus.jpg">
+<img alt="Win Game d Results" src="docs/win-game-b-tus.jpg">
+<img alt="Win Game e Results" src="docs/win-game-c-tus.jpg">
+<br>
+</details>
+<br>
