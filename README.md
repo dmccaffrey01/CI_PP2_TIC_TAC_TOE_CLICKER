@@ -625,6 +625,9 @@ JSHint JS Validation Service was used to validate the Javascript files. No signi
 <img src="docs/contact-jshint.jpg">
 </details>
 
+There is 1 warning in game.js. It is to do with a function being declared inside a loop, but this is by design as it is an interval to delay the upgrade buy.
+
+There is an undefined variable error in contact.js. This is caused by a library function called email, but I have included the html tag to import the library and it also works 100% with no bugs.
 
 ### Accessibility
 

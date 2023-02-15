@@ -1641,6 +1641,9 @@ var display = {
 
                     // Open leaderboard
                     openLeaderboard();
+                    if (name == "open") {
+                        openStats();
+                    }
                 }, 500);
             });
             
